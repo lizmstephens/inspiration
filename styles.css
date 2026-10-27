@@ -14,3 +14,11 @@ body{background:var(--bg);color:#fff;font-family:Arial,Helvetica,sans-serif}
 .below .small-card{background:transparent;color:white;border:1px solid #4c6178;box-shadow:none}.below .small-card h3,.below .small-card h3.purple{color:white;font-size:26px;letter-spacing:-.03em;text-transform:none}.archive-preview h4{font-weight:750}.archive-preview p,.small-card p{color:#d9e2ed}.small-card a{color:#ffe17a}.archive-tags .tag{color:#1d2735}.small-card .seed{color:#ffe17a}footer{color:#bccadd}footer a{color:#f8e8ac}.page-title{font-weight:750}.lead{color:#dbe6ef}.entry,.copy-panel{color:#172235;background:#fffdf7}.entry h2{font-weight:750}.entry .tag{color:#1c2730}.fine{color:#b2b8c4}.entry .fine{color:#555}.copy-panel a{color:#23538c}
 @media(max-width:850px){.mast-inner{min-height:220px}.flight-art{opacity:.9}.mast-words p{margin-top:40px}.feature-image{min-height:270px;margin:20px}.feature-content{padding:24px}.feature-details{gap:16px;margin:0 14px;padding:20px 12px}}
 @media(max-width:620px){.mast-inner{min-height:205px}.mast-words{padding-top:34px}.mast-words h1{font-size:clamp(40px,9vw,63px)}.mast-words p{margin-top:38px;max-width:93%}.flight-art{top:18px;height:160px}.feature{grid-template-columns:1fr}.feature-content,.feature-image,.feature-details,.feature>.meta{grid-column:1}.feature-content{grid-row:1}.feature-image{grid-row:2;margin:0 18px 18px;min-height:220px}.feature-details{grid-row:3;grid-template-columns:1fr}.feature-details .thoughts{border-left:0;border-top:1px solid #c6af73;padding:15px 0 0}.feature>.meta{grid-row:4}.below{grid-template-columns:1fr}}
+
+/* Masthead refinements: keep dashed flight underline clear of curator credit */
+.mast-inner{min-height:260px}
+.mast-words{padding-top:28px;padding-bottom:32px}
+.mast-words h1{font-weight:650!important;font-size:clamp(42px,5.8vw,78px)!important;line-height:1.06}
+.mast-words p{position:relative;z-index:3;margin-top:65px!important;max-width:800px}
+.flight-art{top:-3px;height:205px;overflow:visible}
+@media(max-width:620px){.mast-inner{min-height:255px}.mast-words h1{font-size:clamp(36px,8vw,56px)!important}.mast-words p{margin-top:65px!important}.flight-art{top:22px;height:145px}}
