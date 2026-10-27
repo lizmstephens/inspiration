@@ -34,3 +34,6 @@ The Discovery is the AI-generated/AI-assisted description stored in `summary`, a
 
 ## About Me
 Uses the latest user-edited About Me copy provided on 27 October 2026.
+
+## October 27 identity update
+The site now uses a navy wrapper, a pale yellow feature, a subtle scalloped yellow mark, a 50%-larger hummingbird SVG, and broad content tags. The About Me page links to the University of Reading staff profile.
