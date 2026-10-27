@@ -1,0 +1,38 @@
+[
+  {
+    "id": "wind-phone",
+    "date": "2026-10-27",
+    "title": "The Wind Phone",
+    "summary": "A disconnected telephone in a Japanese garden where people speak to loved ones they have lost. What began as a personal space for grief became a place others could visit too.",
+    "thoughts": "A life lost isn’t just a statistic. The consequences ripple through many other lives. It changed the way I think about Zero Lives Lost.",
+    "tags": [
+      "Art",
+      "Society",
+      "Communication"
+    ],
+    "source": "https://windphone.org/about",
+    "image": "https://commons.wikimedia.org/wiki/Special:FilePath/%C5%8Ctsuchi_wind_phone_5.jpg?width=1400",
+    "image_credit": "Photograph: Matthew Komatsu · CC BY-SA 4.0 · Wikimedia Commons",
+    "image_credit_url": "https://commons.wikimedia.org/wiki/File:%C5%8Ctsuchi_wind_phone_5.jpg",
+    "image_license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "image_status": "licensed"
+  },
+  {
+    "id": "floodnet-nyc",
+    "date": "2026-10-26",
+    "title": "FloodNet NYC",
+    "summary": "A community-engaged network of street-level sensors documenting urban flooding in New York City and making the observations accessible to residents, agencies and researchers.",
+    "thoughts": "Interesting technology, but I wanted to see clearer evidence of what changes because the data exist. And I wouldn’t assume that an approach designed for New York would transfer easily to places with very different infrastructure.",
+    "tags": [
+      "Science",
+      "Technology",
+      "Research"
+    ],
+    "source": "https://www.floodnet.nyc/flood-event-summaries",
+    "image": "",
+    "image_credit": "",
+    "image_credit_url": "",
+    "image_license_url": "",
+    "image_status": "placeholder"
+  }
+]
