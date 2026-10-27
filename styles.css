@@ -22,3 +22,6 @@ body{background:var(--bg);color:#fff;font-family:Arial,Helvetica,sans-serif}
 .mast-words p{position:relative;z-index:3;margin-top:65px!important;max-width:800px}
 .flight-art{top:-3px;height:205px;overflow:visible}
 @media(max-width:620px){.mast-inner{min-height:255px}.mast-words h1{font-size:clamp(36px,8vw,56px)!important}.mast-words p{margin-top:65px!important}.flight-art{top:22px;height:145px}}
+
+/* Brand masthead letter spacing */
+.mast-words h1{letter-spacing:.012em!important}
