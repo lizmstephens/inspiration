@@ -28,7 +28,7 @@
     "date": "2026-10-26",
     "title": "FloodNet NYC",
     "summary": "FloodNet installs sensors to record street-level flooding in New York City. Its website offers observations and event summaries.",
-    "thoughts": "Looking through the data they had collected for different events showed the complexity of an individual flood event, and it very directly connected to the flooding people were experiencing on the ground.",
+    "thoughts": "Looking through the data they had collected for different events showed the complexity of an individual flood event, and it very directly connected to the flooding people were experiencing on the ground. I'm interested to see where they might go next with this project, both in terms of the research and development - I can see benefits for impact-based forecasting - and in the direct decision-making application.",
     "tags": [
       "Science",
       "Technology"
