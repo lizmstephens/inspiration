@@ -39,6 +39,16 @@
     "image_credit_url": "",
     "image_license_url": "",
     "image_status": "placeholder",
-    "discovery": "Street-level flood observations can help connect weather forecasts and flood models with actual conditions experienced locally. This could be useful for evaluating impact-based forecasts. Turning detailed measurements into practical decisions remains an important challenge."
+    "discovery": "Street-level flood observations can help connect weather forecasts and flood models with actual conditions experienced locally. This could be useful for evaluating impact-based forecasts. Turning detailed measurements into practical decisions remains an important challenge.",
+    "sources": [
+      {
+        "label": "FloodNet event summaries",
+        "url": "https://www.floodnet.nyc/flood-event-summaries"
+      },
+      {
+        "label": "FloodNet project website",
+        "url": "https://www.floodnet.nyc/"
+      }
+    ]
   }
 ]
