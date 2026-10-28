@@ -3,8 +3,8 @@
     "id": "wind-phone",
     "date": "2026-10-27",
     "title": "The Wind Phone",
-    "summary": "A disconnected telephone in a Japanese garden where people speak to loved ones they have lost. What began as a personal space for grief became a place others could visit too.",
-    "thoughts": "A life lost isn’t just a statistic. The consequences ripple through many other lives. It changed the way I think about Zero Lives Lost.",
+    "summary": "The Wind Phone is an unconnected telephone booth in a garden in Ōtsuchi, Japan. Created by Itaru Sasaki as a place to speak to someone who had died, it later became a place for other visitors to remember loved ones.",
+    "thoughts": "After the Nepal floods I started to reflect more on how a fatality shouldn't be just a statistic. This is a powerful reminder that for every death there are many people grieving that death, and that grief is carried through time. Creating gentle ways for people to grieve should be an important part of disaster response, and not just in the immediate aftermath.",
     "tags": [
       "Art",
       "Society"
@@ -14,7 +14,14 @@
     "image_credit": "Photograph: Matthew Komatsu · CC BY-SA 4.0 · Wikimedia Commons",
     "image_credit_url": "https://commons.wikimedia.org/wiki/File:%C5%8Ctsuchi_wind_phone_5.jpg",
     "image_license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
-    "image_status": "licensed"
+    "image_status": "licensed",
+    "discovery": "The Wind Phone draws attention to experiences that disaster mortality statistics cannot show. For humanitarian work, the effects of a death continue through families and communities long after an emergency. The project offers an example of how an informal, self-directed space for remembrance can complement organised psychosocial support.",
+    "sources": [
+      {
+        "label": "Wind Phone project website",
+        "url": "https://windphone.org/about"
+      }
+    ]
   },
   {
     "id": "floodnet-nyc",
