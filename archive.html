@@ -29,14 +29,12 @@
         </a>
       </nav>
       <section class="masthead">
-        <div class="wrap mast-inner">
-          <div class="mast-words mast-image-words">
-            <picture class="mast-banner">
-              <source media="(max-width: 650px)" srcset="assets/hummingbird-mobile-transparent.png">
-              <img src="assets/hummingbird-desktop-transparent.png" alt="Daily Hummingbird" width="1880" height="405">
-            </picture>
-            <p>Daily inspiration through the cross-pollination of ideas and perspectives. An experiment in human collaboration, facilitated by AI.</p>
-          </div>
+        <div class="responsive-masthead">
+          <picture class="responsive-masthead-picture">
+            <source media="(max-width: 650px)" srcset="assets/hummingbird-mobile-transparent.png">
+            <img src="assets/hummingbird-desktop-transparent.png" alt="Daily Hummingbird" style="display:block;width:100%;max-width:100%;height:auto;">
+          </picture>
+          <p class="responsive-masthead-tagline">Daily inspiration through the cross-pollination of ideas and perspectives. An experiment in human collaboration, facilitated by AI.</p>
         </div>
       </section>
     </header>
