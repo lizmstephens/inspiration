@@ -86,3 +86,15 @@ body{background:var(--bg);color:#fff;font-family:Arial,Helvetica,sans-serif}
 .feature-details .reveal.contributor{background:#fff0bd}
 .archive-reveals{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));align-items:start;gap:12px}
 @media(max-width:700px){.feature-details,.archive-reveals{grid-template-columns:1fr}}
+
+/* Static masthead artwork, with a separate mobile composition. */
+.mast-inner{min-height:0;display:block}
+.mast-image-words{padding:8px 0 27px;max-width:100%;width:100%}
+.mast-banner{display:block;width:100%}
+.mast-banner img{display:block;width:100%;height:auto;object-fit:contain}
+.mast-image-words p{margin:0!important;max-width:900px;line-height:1.5}
+@media(max-width:650px){
+ .mast-image-words{padding:8px 0 24px}
+ .mast-banner{width:100%}
+ .mast-image-words p{margin:0!important}
+}
