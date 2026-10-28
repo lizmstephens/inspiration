@@ -54,3 +54,9 @@ body{background:var(--bg);color:#fff;font-family:Arial,Helvetica,sans-serif}
 .entry .reveal summary{padding:13px 15px}
 .entry .reveal-body{padding:3px 15px 15px}
 @media(max-width:620px){.feature-details{grid-template-columns:1fr}.reveal-title{font-size:22px}.reveal summary{padding:15px}}
+
+/* Keep the two collapsible cards independent of the previous open-column styles. */
+.feature-details .reveal.discovery,.feature-details .reveal.thoughts{width:100%;margin:0;padding:0;border:1px solid #c9af70;border-radius:8px}
+.feature-details .reveal.thoughts{border-left:1px solid #c9af70}
+.feature-details .reveal .reveal-body p{font-size:16px;line-height:1.65;margin:12px 0 0;color:#18253a}
+@media(max-width:620px){.feature-details .reveal.thoughts{padding:0;border:1px solid #c9af70}}
