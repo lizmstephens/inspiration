@@ -78,3 +78,11 @@ body{background:var(--bg);color:#fff;font-family:Arial,Helvetica,sans-serif}
 .collaborator-note{display:block;font-size:11px;letter-spacing:.13em;text-transform:uppercase;font-weight:700;margin-top:19px;color:#35455c}
 @media(max-width:900px){.collaborator-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:600px){.collaborator-grid{grid-template-columns:1fr}.collaborator-photo{height:240px}.mast-words h1{font-size:clamp(33px,7.8vw,52px)!important}}
+
+/* Reflection cards form a two-column deck where space allows; any number of
+   approved contributor cards can follow AI Reflection and My Thoughts. */
+.feature-details{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));align-items:start;gap:18px}
+.feature-details .reveal.discovery,.feature-details .reveal.thoughts,.feature-details .reveal.contributor{width:100%;margin:0;padding:0;border:1px solid #c9af70;border-radius:8px}
+.feature-details .reveal.contributor{background:#fff0bd}
+.archive-reveals{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));align-items:start;gap:12px}
+@media(max-width:700px){.feature-details,.archive-reveals{grid-template-columns:1fr}}
