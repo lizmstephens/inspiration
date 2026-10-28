@@ -25,3 +25,32 @@ body{background:var(--bg);color:#fff;font-family:Arial,Helvetica,sans-serif}
 
 /* Brand masthead letter spacing */
 .mast-words h1{letter-spacing:.012em!important}
+
+/* Original story first; reflections hidden until readers choose to reveal them. */
+.original-heading{font-size:15px;letter-spacing:.02em;margin:9px 0 5px;color:#23344c}
+.feature-deck{margin:6px 0 12px}
+.source-links{display:flex;flex-wrap:wrap;gap:8px 16px;line-height:1.6;font-size:14px;margin:3px 0 12px}
+.source-links a{color:#173a64;text-underline-offset:3px}
+.feature-details{align-items:start}
+.reveal{min-width:0;border:1px solid #c9af70;border-radius:8px;overflow:hidden;background:#fff0bd;color:#18253a}
+.reveal summary{cursor:pointer;list-style:none;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:17px 19px}
+.reveal summary::-webkit-details-marker{display:none}
+.reveal summary:focus-visible{outline:3px solid #805a98;outline-offset:-3px}
+.reveal-title{font-size:25px;font-weight:700;line-height:1.2}
+.reveal-title small{font-size:11px;letter-spacing:.035em;font-weight:500;display:block;margin-top:6px;color:#4f5260}
+.reveal-action{white-space:nowrap;border:1px solid #63718a;border-radius:25px;padding:7px 11px;font-size:13px;font-weight:650}
+.reveal-action span[aria-hidden]{display:inline-block;margin-left:4px;transition:transform .2s}
+.reveal-open{display:none}
+.reveal[open] .reveal-open{display:inline}
+.reveal[open] .reveal-closed{display:none}
+.reveal[open] .reveal-action span[aria-hidden]{transform:rotate(180deg)}
+.reveal-body{border-top:1px solid #c9af70;padding:5px 19px 18px}
+.reveal-body p{font-size:16px;line-height:1.65;margin:12px 0 0}
+.entry .original-heading{margin:12px 0 3px}
+.entry .source-links{margin:8px 0 14px}
+.archive-reveals{display:grid;gap:10px;margin:14px 0}
+.entry .reveal{background:#fff3cb}
+.entry .reveal-title{font-size:20px}
+.entry .reveal summary{padding:13px 15px}
+.entry .reveal-body{padding:3px 15px 15px}
+@media(max-width:620px){.feature-details{grid-template-columns:1fr}.reveal-title{font-size:22px}.reveal summary{padding:15px}}
