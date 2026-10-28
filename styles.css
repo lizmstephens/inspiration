@@ -106,3 +106,10 @@ body{background:var(--bg);color:#fff;font-family:Arial,Helvetica,sans-serif}
 .masthead .mast-banner img{display:block;width:100%;max-width:100%;height:auto;object-fit:contain}
 .masthead .mast-image-words p{padding:0 26px;margin:0 auto!important;max-width:1280px}
 @media(max-width:650px){.masthead .mast-image-words p{padding:0 17px}}
+
+/* Isolated full-width masthead, without legacy wrap/word constraints */
+.responsive-masthead{display:block;width:100%;max-width:none;margin:0;padding:0}
+.responsive-masthead-picture{display:block;width:100%;max-width:none;line-height:0}
+.responsive-masthead-picture img{display:block;width:100%;max-width:100%;height:auto}
+.responsive-masthead-tagline{box-sizing:border-box;width:100%;max-width:1280px;margin:0 auto;padding:0 26px 22px;color:#e6edf5;font-size:clamp(12px,1.3vw,16px);line-height:1.5}
+@media(max-width:650px){.responsive-masthead-tagline{padding:0 17px 22px}}
