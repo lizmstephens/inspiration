@@ -78,3 +78,25 @@ body{background:var(--bg);color:#fff;font-family:Arial,Helvetica,sans-serif}
 .collaborator-note{display:block;font-size:11px;letter-spacing:.13em;text-transform:uppercase;font-weight:700;margin-top:19px;color:#35455c}
 @media(max-width:900px){.collaborator-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:600px){.collaborator-grid{grid-template-columns:1fr}.collaborator-photo{height:240px}.mast-words h1{font-size:clamp(33px,7.8vw,52px)!important}}
+
+/* Responsive masthead: decorations are anchored to the title, not the viewport. */
+.mast-inner{min-height:0!important;display:block}
+.mast-words{max-width:100%;padding:26px 0 32px!important}
+.mast-title-unit{display:inline-block;position:relative;max-width:100%;vertical-align:top;margin-bottom:82px}
+.mast-title-unit h1{font-size:clamp(35px,5.8vw,78px)!important;letter-spacing:.012em!important;line-height:1.06;margin:0!important;white-space:normal}
+.mast-title-unit h1 span,.mast-title-unit h1 em{white-space:nowrap}
+.mast-flower{position:absolute;width:104px;height:115px;left:-102px;top:0;pointer-events:none;overflow:visible}
+.mast-trail{position:absolute;top:calc(100% + 2px);left:0;width:100%;height:77px;pointer-events:none}
+.mast-trail-line{display:block;width:calc(100% - 48px);height:67px;overflow:visible}
+.mast-bird{position:absolute;width:108px;height:86px;object-fit:contain;right:-26px;top:-17px}
+.mast-words p{position:relative;margin:0!important;max-width:800px;line-height:1.5}
+@media(max-width:700px){
+ .mast-title-unit h1{font-size:clamp(33px,8vw,54px)!important}
+ .mast-title-unit h1 em{display:block}
+ .mast-title-unit{margin-bottom:70px}
+ .mast-trail{height:64px}
+ .mast-trail-line{height:54px}
+ .mast-bird{width:84px;height:67px;right:-10px;top:-14px}
+ .mast-flower{width:85px;height:98px;left:-83px;top:-5px}
+ .mast-words{padding:24px 0 24px!important}
+}
