@@ -60,3 +60,21 @@ body{background:var(--bg);color:#fff;font-family:Arial,Helvetica,sans-serif}
 .feature-details .reveal.thoughts{border-left:1px solid #c9af70}
 .feature-details .reveal .reveal-body p{font-size:16px;line-height:1.65;margin:12px 0 0;color:#18253a}
 @media(max-width:620px){.feature-details .reveal.thoughts{padding:0;border:1px solid #c9af70}}
+
+/* Collaborators: a responsive deck with a highlighted first card. */
+.collaborator-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px;align-items:stretch;margin:30px 0 18px}
+.collaborator-card{background:#fffdf7;border-radius:12px;overflow:hidden;color:#172235;box-shadow:0 4px 15px #00000014;display:flex;flex-direction:column;min-height:370px}
+.collaborator-card.founder{background:#ffe8a1}
+.collaborator-photo{height:235px;background:#e8e8e4;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.collaborator-card.founder .collaborator-photo{background:#f2d78b}
+.collaborator-photo img{width:100%;height:100%;object-fit:cover}
+.collaborator-photo.placeholder span{font-size:54px;font-weight:600;color:#765b24;letter-spacing:.1em}
+.collaborator-info{padding:22px 24px 25px}
+.collaborator-info h3{font-size:27px;line-height:1.15;margin:0 0 11px;letter-spacing:-.035em}
+.collaborator-info h3 a{text-decoration:none;border-bottom:1px solid currentColor}
+.collaborator-info h3 a:hover{text-decoration:underline}
+.collaborator-info p{margin:0 0 8px;line-height:1.45;font-size:15px}
+.collaborator-info .affiliation{font-size:13px;color:#48576a}
+.collaborator-note{display:block;font-size:11px;letter-spacing:.13em;text-transform:uppercase;font-weight:700;margin-top:19px;color:#35455c}
+@media(max-width:900px){.collaborator-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:600px){.collaborator-grid{grid-template-columns:1fr}.collaborator-photo{height:240px}.mast-words h1{font-size:clamp(33px,7.8vw,52px)!important}}
