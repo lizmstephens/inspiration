@@ -1,56 +1,45 @@
 [
   {
     "id": "wind-phone",
-    "date": "2026-10-27",
+    "date": "2026-10-29",
     "title": "The Wind Phone",
-    "summary": "The Wind Phone is an unconnected telephone booth in a garden in Ōtsuchi, Japan. Created by Itaru Sasaki as a place to speak to someone who had died, it later became a place for other visitors to remember loved ones.",
+    "summary": "In a garden in Japan, an unconnected telephone allows people to speak to loved ones they have lost. What began as one person's response to grief has become a place of comfort for thousands of visitors.",
     "thoughts": "After the Nepal floods I started to reflect more on how a fatality shouldn't be just a statistic. This is a powerful reminder that for every death there are many people grieving that death, and that grief is carried through time. Creating gentle ways for people to grieve should be an important part of disaster response, and not just in the immediate aftermath.",
-    "tags": [
-      "Art",
-      "Society"
-    ],
-    "source": "https://windphone.org/about",
-    "image": "https://commons.wikimedia.org/wiki/Special:FilePath/%C5%8Ctsuchi_wind_phone_5.jpg?width=1400",
+    "tags": [],
+    "source": "https://en.wikipedia.org/wiki/Wind_phone",
+    "image": "",
     "image_credit": "Photograph: Matthew Komatsu · CC BY-SA 4.0 · Wikimedia Commons",
-    "image_credit_url": "https://commons.wikimedia.org/wiki/File:%C5%8Ctsuchi_wind_phone_5.jpg",
-    "image_license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "image_credit_url": "Wikimedia Commons file-page URL",
+    "image_license_url": "Creative Commons BY-SA 4.0 licence URL",
     "image_status": "licensed",
-    "discovery": "The Wind Phone draws attention to experiences that disaster mortality statistics cannot show. For humanitarian work, the effects of a death continue through families and communities long after an emergency. The project offers an example of how an informal, self-directed space for remembrance can complement organised psychosocial support.",
+    "discovery": "The Wind Phone demonstrates how a simple idea can transform how we understand loss. It reminds us that the consequences of a death extend far beyond the individual.",
     "sources": [
       {
-        "label": "Wind Phone project website",
-        "url": "https://windphone.org/about"
+        "label": "Original source",
+        "url": "https://en.wikipedia.org/wiki/Wind_phone"
       }
     ],
-    "reflections": []
-  },
-  {
-    "id": "floodnet-nyc",
-    "date": "2026-10-26",
-    "title": "FloodNet NYC",
-    "summary": "FloodNet installs sensors to record street-level flooding in New York City. Its website offers observations and event summaries.",
-    "thoughts": "Looking through the data they had collected for different events showed the complexity of an individual flood event, and it very directly connected to the flooding people were experiencing on the ground. I'm interested to see where they might go next with this project, both in terms of the research and development - I can see benefits for impact-based forecasting - and in the direct decision-making application.",
-    "tags": [
-      "Science",
-      "Technology"
-    ],
-    "source": "https://www.floodnet.nyc/flood-event-summaries",
-    "image": "",
-    "image_credit": "",
-    "image_credit_url": "",
-    "image_license_url": "",
-    "image_status": "placeholder",
-    "discovery": "Street-level flood observations can help connect weather forecasts and flood models with actual conditions experienced locally. This could be useful for evaluating impact-based forecasts. Turning detailed measurements into practical decisions remains an important challenge.",
-    "sources": [
+    "reflections": [
       {
-        "label": "FloodNet event summaries",
-        "url": "https://www.floodnet.nyc/flood-event-summaries"
+        "name": "Joe Bloggs",
+        "text": "This is a test reflection",
+        "approved": true
       },
       {
-        "label": "FloodNet project website",
-        "url": "https://www.floodnet.nyc/"
+        "name": "Jane Bloggs",
+        "text": "This also a test reflection",
+        "approved": true
+      },
+      {
+        "name": "Liz",
+        "text": "This is a test response.",
+        "approved": true
+      },
+      {
+        "name": "Also Liz",
+        "text": "This is a test response.",
+        "approved": true
       }
-    ],
-    "reflections": []
+    ]
   }
 ]
