@@ -229,3 +229,7 @@ body{background:var(--bg);color:#fff;font-family:Arial,Helvetica,sans-serif}
 .header-tagline.wrap{max-width:1280px;margin:0 auto;padding:5px 26px 0;color:#d8e3ed;font-style:italic;font-size:clamp(15px,1.45vw,18px);line-height:1.5;font-weight:400}
 .masthead .responsive-masthead{padding-top:30px}
 @media(max-width:650px){.header-tagline.wrap{padding:9px 17px 0;font-size:15px}.masthead .responsive-masthead{padding-top:24px}}
+
+/* Match italic tagline to top navigation link size. */
+.header-tagline.wrap{font-size:14px;font-style:italic}
+@media(max-width:650px){.header-tagline.wrap{font-size:12px;font-style:italic}}
