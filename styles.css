@@ -138,3 +138,13 @@ body{background:var(--bg);color:#fff;font-family:Arial,Helvetica,sans-serif}
 /* Homepage secondary panels: soft navy surfaces without borders */
 .below .small-card{background:#203751;border:0;box-shadow:none;border-radius:12px}
 .below .small-card:hover{background:#253d58}
+
+/* Final editorial spacing and disclosure refinements */
+.feature-content h2{margin-bottom:5px}
+.feature .feature-deck{margin-top:8px}
+.feature .topic-tags{margin-bottom:0}
+.feature .source-links{font-size:clamp(17px,1.65vw,21px);line-height:1.63;margin-top:4px}
+.feature .source-links a{font-size:inherit}
+.reveal summary{align-items:center}
+.reveal-action{display:flex;align-items:center;justify-content:center;width:24px;height:24px;line-height:1;flex-shrink:0}
+.reveal-action svg{display:block;width:20px;height:20px}
