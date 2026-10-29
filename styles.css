@@ -224,3 +224,8 @@ body{background:var(--bg);color:#fff;font-family:Arial,Helvetica,sans-serif}
 .archive-bubble-4{background:#d4dff3}
 .archive-bubble.is-active{border-color:#fff;box-shadow:0 0 0 2px #10243d inset}
 @media(max-width:600px){.archive-topic-bubbles{gap:9px;margin:23px 0}.archive-bubble{font-size:14px;min-height:40px;padding:9px 15px}}
+
+/* Editorial header: italic tagline beneath navigation, before brand artwork */
+.header-tagline.wrap{max-width:1280px;margin:0 auto;padding:5px 26px 0;color:#d8e3ed;font-style:italic;font-size:clamp(15px,1.45vw,18px);line-height:1.5;font-weight:400}
+.masthead .responsive-masthead{padding-top:30px}
+@media(max-width:650px){.header-tagline.wrap{padding:9px 17px 0;font-size:15px}.masthead .responsive-masthead{padding-top:24px}}
