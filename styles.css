@@ -190,3 +190,24 @@ body{background:var(--bg);color:#fff;font-family:Arial,Helvetica,sans-serif}
  .feature .feature-image{margin:0 23px 20px}
  .feature .feature-details{margin:0;padding:10px 23px 18px;grid-template-columns:1fr}
 }
+
+/* Tagline as a quiet editorial strip aligned with the main feature card. */
+.responsive-masthead-tagline{
+  box-sizing:border-box;
+  width:calc(100% - 52px);
+  max-width:1228px;
+  margin:0 auto 0;
+  padding:17px 24px 18px;
+  background:#fff2c9;
+  border-radius:10px;
+  color:#10243d;
+  font-size:clamp(16px,1.55vw,20px);
+  line-height:1.5;
+}
+@media(max-width:520px){
+  .responsive-masthead-tagline{
+    width:calc(100% - 34px);
+    padding:15px 17px 16px;
+    font-size:16px;
+  }
+}
