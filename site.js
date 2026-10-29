@@ -4,7 +4,7 @@ const escapeHtml=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;'
 const pic=(x)=>x.image?`<img src="${escapeHtml(x.image)}" alt="Photograph illustrating ${escapeHtml(x.title)}" loading="lazy" referrerpolicy="no-referrer">`:`<div class="visual-placeholder"><span>≈</span></div>`;
 const imgcredit=x=>x.image_credit?`<div class="visual-caption"><a href="${escapeHtml(x.image_credit_url)}" target="_blank" rel="noopener noreferrer">${escapeHtml(x.image_credit)}</a></div>`:'';
 const sources=x=>(x.sources&&x.sources.length?x.sources:[{label:'Read more',url:x.source}]).map(z=>'<a href="'+escapeHtml(z.url)+'" target="_blank" rel="noopener noreferrer">Read more ↗</a>').join(' · ');
-const reveal=(title,label,body,kind)=>'<details class="reveal '+kind+'"><summary><span class="reveal-title">'+title+'</span><span class="reveal-action" aria-hidden="true">⌄</span></summary><div class="reveal-body"><p>'+escapeHtml(body)+'</p></div></details>';
+const reveal=(title,label,body,kind)=>'<details class="reveal '+kind+'"><summary><span class="reveal-title">'+title+'</span><span class="reveal-action" aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m5 9 7 7 7-7"/></svg></span></summary><div class="reveal-body"><p>'+escapeHtml(body)+'</p></div></details>';
 // Optional human reflections. Only entries with actual supplied text are displayed.
 const contributorCards=x=>(Array.isArray(x.reflections)?x.reflections:[])
   .filter(c=>c&&typeof c.name==='string'&&c.name.trim()&&typeof c.text==='string'&&c.text.trim()&&c.approved===true)
