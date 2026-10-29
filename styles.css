@@ -211,3 +211,16 @@ body{background:var(--bg);color:#fff;font-family:Arial,Helvetica,sans-serif}
     font-size:16px;
   }
 }
+
+/* Archive topic bubbles: immediate, compact navigation without search chrome. */
+.archive-topic-bubbles{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin:30px 0 28px}
+.archive-bubble{display:inline-flex;align-items:center;justify-content:center;min-height:43px;padding:10px 20px;border-radius:999px;color:#10243d;text-decoration:none;font-size:15px;font-weight:600;line-height:1.2;text-transform:capitalize;border:2px solid transparent;transition:transform .15s,filter .15s}
+.archive-bubble:hover{transform:translateY(-2px);filter:brightness(1.04)}
+.archive-bubble:focus-visible{outline:3px solid #ffe8a1;outline-offset:3px}
+.archive-bubble-0{background:#ffe8a1}
+.archive-bubble-1{background:#cde6dd}
+.archive-bubble-2{background:#dfd2ef}
+.archive-bubble-3{background:#f2cfc9}
+.archive-bubble-4{background:#d4dff3}
+.archive-bubble.is-active{border-color:#fff;box-shadow:0 0 0 2px #10243d inset}
+@media(max-width:600px){.archive-topic-bubbles{gap:9px;margin:23px 0}.archive-bubble{font-size:14px;min-height:40px;padding:9px 15px}}
