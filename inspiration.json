@@ -1,5 +1,32 @@
 [
   {
+    "id": "evolution-of-trust",
+    "date": "2026-10-30",
+    "title": "The Evolution of Trust",
+    "summary": "The Evolution of Trust is an interactive browser game by Nicky Case that uses repeated game-theory scenarios to explore how cooperation, mistrust, retaliation and forgiveness emerge between individuals. Players test different strategies against one another and can alter conditions such as the frequency of mistakes or the likelihood of meeting again, showing how small changes in the rules of interaction can produce very different collective outcomes.\n\nBackground on the game and its game-theory foundations: https://exploring-economics.org/en/discover/the-evolution-of-trust/",
+    "thoughts": "Pablo Suarez used to say that “change happens at the speed of trust”. I like that this is an interactive game which speaks to that, using game theory (the prisoner's dilemma) to support a message of \"Build relationships. Find win-wins. Communicate clearly\"",
+    "tags": [
+      "behaviour",
+      "collaboration",
+      "communication",
+      "resilience"
+    ],
+    "source": "https://ncase.me/trust/",
+    "image": "https://ncase.me/trust/social/thumbnail.png",
+    "image_credit": "Artwork: Nicky Case · CC0 1.0",
+    "image_credit_url": "https://ncase.me/trust/",
+    "image_license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "image_status": "licensed",
+    "discovery": "The game shows that trust is not simply a virtue; it can be a practical condition for successful cooperation. In repeated versions of the Prisoner’s Dilemma, the best collective outcomes emerge when people expect to interact again, can communicate, find mutually beneficial arrangements, and have enough forgiveness to recover from occasional mistakes. “Build relationships. Find win-wins. Communicate clearly” is therefore not just good interpersonal advice: game theory helps explain why these behaviours can make cooperation more resilient.",
+    "sources": [
+      {
+        "label": "Original source",
+        "url": "https://ncase.me/trust/"
+      }
+    ],
+    "reflections": []
+  },
+  {
     "id": "wind-phone",
     "date": "2026-10-29",
     "title": "The Wind Phone",
