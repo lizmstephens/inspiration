@@ -79,27 +79,6 @@
         "url": "https://en.wikipedia.org/wiki/Wind_phone"
       }
     ],
-    "reflections": [
-      {
-        "name": "Joe Bloggs",
-        "text": "This is a test reflection",
-        "approved": true
-      },
-      {
-        "name": "Jane Bloggs",
-        "text": "This also a test reflection",
-        "approved": true
-      },
-      {
-        "name": "Liz",
-        "text": "This is a test response.",
-        "approved": true
-      },
-      {
-        "name": "Also Liz",
-        "text": "This is a test response.",
-        "approved": true
-      }
-    ]
+    "reflections": []
   }
 ]
