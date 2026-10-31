@@ -249,3 +249,34 @@ body{background:var(--bg);color:#fff;font-family:Arial,Helvetica,sans-serif}
 
 /* Discreet chronological discovery number beside the date */
 .discovery-number{margin-left:12px;font-weight:650;letter-spacing:.025em;white-space:nowrap;color:#10243d}
+
+/* Flowing magazine layout for both short and long discoveries. */
+.feature{display:block}
+.feature .story-main{padding:32px 32px 7px;color:#10243d}
+.story-heading{display:grid;grid-template-columns:minmax(0,56%) minmax(0,44%);column-gap:0;align-items:start}
+.story-heading-left{padding-right:30px;min-width:0}
+.story-heading .kicker{margin:0 0 18px;font-size:15px}
+.story-heading h2{font-size:clamp(34px,4vw,56px);line-height:1.08;margin:0 0 25px;letter-spacing:-.04em;font-weight:750}
+.story-heading .topic-tags{display:flex;flex-wrap:wrap;align-content:flex-start;gap:8px;margin:51px 0 0;padding-left:12px}
+.story-heading .topic-tags .tag{font-size:15px;padding:7px 13px;background:#fff5d1;border:1px solid #d4bb77;border-radius:25px;color:#10243d}
+.story-flow{display:flow-root;font-size:clamp(17px,1.65vw,20px);line-height:1.65}
+.story-flow .story-photo{float:right;width:43%;margin:0 0 25px 32px}
+.story-photo img{display:block;width:100%;height:auto;max-height:360px;object-fit:cover;border-radius:10px}
+.story-photo .visual-caption{position:static;background:transparent;padding:8px 2px 0;color:#675f51;font-size:11px;line-height:1.4}
+.story-photo .visual-caption a{color:inherit;text-decoration:none;border-bottom:1px solid #bea975}
+.story-lead,.story-continuation{margin:0 0 16px;white-space:pre-line}
+.story-lead{font-weight:600}
+.story-flow .story-continuation{font-weight:400}
+.story-main .source-links{font-size:clamp(17px,1.65vw,20px);margin:6px 0 12px}
+.feature .feature-details{grid-column:auto;margin:0;padding:16px 32px 18px}
+.feature>.meta{padding:4px 32px 25px}
+@media(max-width:700px){
+ .feature .story-main{padding:23px 23px 8px}
+ .story-heading{display:block}
+ .story-heading-left{padding-right:0}
+ .story-heading h2{margin-bottom:12px}
+ .story-heading .topic-tags{padding-left:0;margin:0 0 20px}
+ .story-flow .story-photo{float:none;width:100%;margin:0 0 21px}
+ .story-photo img{max-height:none}
+ .feature .feature-details{padding:12px 23px 18px}
+}
