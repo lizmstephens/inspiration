@@ -280,3 +280,12 @@ body{background:var(--bg);color:#fff;font-family:Arial,Helvetica,sans-serif}
  .story-photo img{max-height:none}
  .feature .feature-details{padding:12px 23px 18px}
 }
+
+/* At split-screen widths, give tags a full row instead of squeezing them into
+   the title column; the image still starts level with the opening text. */
+@media(min-width:701px) and (max-width:1150px){
+ .story-heading{display:block}
+ .story-heading-left{padding-right:0}
+ .story-heading h2{margin-bottom:16px}
+ .story-heading .topic-tags{padding-left:0;margin:0 0 22px;gap:8px}
+}
