@@ -1,5 +1,33 @@
 [
   {
+    "id": "subway-emergency-behaviour",
+    "date": "2026-10-31",
+    "title": "What people actually do in an emergency",
+    "summary": "In 2017, an accidental explosion and small fire on a London Underground train was captured on CCTV, allowing researchers to analyse the immediate reactions of 40 passengers. Rather than a uniform response of panic and flight, they observed remarkably varied behaviours. Some passengers ran, others walked, six initially retrieved belongings, five stopped to observe what was happening, and five waited or moved aside to let others pass. Researchers identified only two instances of antisocial behaviour, alongside numerous examples of cooperation, including passengers making space for others and a parent shielding her child. The study provides unusually detailed evidence of how people behave during a real, unexpected emergency.",
+    "thoughts": "The research itself points to how initial reactions to an explosion show a high degree of variability, but over time behaviour becomes more homogenous. I think this is worth considering when thinking about early warning systems and anticipating unprecedented extremes, particularly for rapid onset hazards. How do people respond to an early warning, and how do interactions with others shape that response? And if we can understand that better, how might we design early warning systems differently to account for that?",
+    "tags": [
+      "science",
+      "behaviour",
+      "communication",
+      "warning",
+      "resilience"
+    ],
+    "source": "https://doi.org/10.1177/00139165211031193",
+    "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Parsons_Green_Station%2C_District_Line_-_geograph.org.uk_-_3464471.jpg?width=1400",
+    "image_credit": "Photograph: Dr Neil Clifton · CC BY-SA 2.0 · Wikimedia Commons",
+    "image_credit_url": "https://commons.wikimedia.org/wiki/File:Parsons_Green_Station,_District_Line_-_geograph.org.uk_-_3464471.jpg",
+    "image_license_url": "https://creativecommons.org/licenses/by-sa/2.0/",
+    "image_status": "licensed",
+    "discovery": "Disaster systems can be remarkably paternalistic, often assuming that people will panic, misunderstand uncertainty or need tightly controlled instructions. Yet real emergencies frequently show something more complex: people retain judgement, relationships and a capacity to help one another. Perhaps warning systems should leave more room for people themselves to cope intelligently when the prescribed response does not quite fit. A system designed around compliance may look very different from one designed around enabling judgement.",
+    "sources": [
+      {
+        "label": "Original source",
+        "url": "https://doi.org/10.1177/00139165211031193"
+      }
+    ],
+    "reflections": []
+  },
+  {
     "id": "evolution-of-trust",
     "date": "2026-10-30",
     "title": "The Evolution of Trust",
