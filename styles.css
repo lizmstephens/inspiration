@@ -289,3 +289,6 @@ body{background:var(--bg);color:#fff;font-family:Arial,Helvetica,sans-serif}
  .story-heading h2{margin-bottom:16px}
  .story-heading .topic-tags{padding-left:0;margin:0 0 22px;gap:8px}
 }
+
+/* Keep artwork aligned with the main yellow feature's 1280px content container. */
+.masthead .responsive-masthead{width:100%;max-width:1280px;margin-left:auto;margin-right:auto}
