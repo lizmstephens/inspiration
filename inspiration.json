@@ -1,5 +1,33 @@
 [
   {
+    "id": "thing-from-the-future",
+    "date": "2026-11-01",
+    "title": "The Thing From The Future",
+    "summary": "The Thing From The Future is an imagination game created by Stuart Candy and Jeff Watson in which players combine cards describing a type of future, a domain, an object and a mood, then invent an artefact that could plausibly exist in that world. The print-and-play deck contains more than 3.7 million possible prompt combinations, deliberately forcing players away from a single expected future and towards multiple, sometimes uncomfortable or surprising possibilities. The game has subsequently been adapted for workshops, education and digital play.",
+    "thoughts": "This was an older inspiration that I've recycled for the website. I've used the online version a number of times to help get people into an imaginative frame of mind within meetings. It's interesting to see the differences in the 'objects' that people imagine from the same prompts, sometimes revealing something previously unknown about their personalities!",
+    "tags": [
+      "design",
+      "imagination",
+      "decision-making",
+      "learning",
+      "resilience"
+    ],
+    "source": "https://www.researchgate.net/publication/364677670_The_Thing_From_The_Future_Print-and-Play_Edition",
+    "image": "",
+    "image_credit": "",
+    "image_credit_url": "",
+    "image_license_url": "",
+    "image_status": "placeholder",
+    "discovery": "Most planning starts by asking what is likely to happen. The Thing From The Future asks a different question: what could exist if the surrounding world changed enough? That shift matters because imagination is not the opposite of rigour; it can be a way of exposing assumptions that ordinary planning leaves untouched. A strange imagined object can make an unfamiliar future concrete enough to discuss, challenge and design for.",
+    "sources": [
+      {
+        "label": "Original source",
+        "url": "https://www.researchgate.net/publication/364677670_The_Thing_From_The_Future_Print-and-Play_Edition"
+      }
+    ],
+    "reflections": []
+  },
+  {
     "id": "subway-emergency-behaviour",
     "date": "2026-10-31",
     "title": "What people actually do in an emergency",
