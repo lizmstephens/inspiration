@@ -13,11 +13,11 @@
       "creativity"
     ],
     "source": "https://www.dear-data.com/theproject",
-    "image": "",
-    "image_credit": "Giorgia Lupi and Stefanie Posavec",
-    "image_credit_url": "https://www.dear-data.com/all",
-    "image_license_url": "",
-    "image_status": "permission required",
+    "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Giorgia%20Lupi%2C%202017.jpg?width=1400",
+    "image_credit": "Photograph: Sara Di Franco · CC BY-SA 2.0 · Wikimedia Commons",
+    "image_credit_url": "https://commons.wikimedia.org/wiki/File:Giorgia_Lupi,_2017.jpg",
+    "image_license_url": "https://creativecommons.org/licenses/by-sa/2.0/",
+    "image_status": "licensed",
     "discovery": "Dear Data shows that data can be a way of paying attention, not just measuring performance. By choosing what to notice and then drawing it by hand, the project turns everyday experience into something reflective and relational. It suggests that the value of data sometimes lies less in precision than in the questions it encourages us to ask about our own lives and about one another.",
     "sources": [
       {
