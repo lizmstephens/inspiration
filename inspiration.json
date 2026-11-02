@@ -1,5 +1,39 @@
 [
   {
+    "id": "dear-data",
+    "date": "2026-11-02",
+    "title": "Dear Data",
+    "summary": "Dear Data was a year-long project by information designers Giorgia Lupi and Stefanie Posavec. Each week, while living on opposite sides of the Atlantic, they chose one aspect of their everyday lives to track — from clocks and purchases to smiles, indecision and physical contact — then turned the data into a hand-drawn postcard and mailed it to the other person. Across 52 weeks, the project became both a record of their lives and a friendship built through data, using visualisation not just to quantify behaviour but to notice and communicate experience.",
+    "thoughts": "Such a creative experiment! On one hand, what a burden to be constantly recording data on the most seemingly mundane things. But also a reminder that in general we don't capture 'data' on some of the most beautiful things, like laughter, compliments and hugs. Then also behind this is a committed friendship and an example of how a single brief can result in two often very different outcomes. I didn't realise, but this probably inspired Hummingbird (this was a pre-website Inspiration that I decided to include)",
+    "tags": [
+      "data",
+      "communication",
+      "design",
+      "behaviour",
+      "creativity"
+    ],
+    "source": "https://www.dear-data.com/theproject",
+    "image": "",
+    "image_credit": "Giorgia Lupi and Stefanie Posavec",
+    "image_credit_url": "https://www.dear-data.com/all",
+    "image_license_url": "",
+    "image_status": "permission required",
+    "discovery": "Dear Data shows that data can be a way of paying attention, not just measuring performance. By choosing what to notice and then drawing it by hand, the project turns everyday experience into something reflective and relational. It suggests that the value of data sometimes lies less in precision than in the questions it encourages us to ask about our own lives and about one another.",
+    "sources": [
+      {
+        "label": "Original source",
+        "url": "https://www.dear-data.com/theproject"
+      }
+    ],
+    "reflections": [
+      {
+        "name": "Macarena",
+        "text": "I’m quite struck by how much care for the other person and human connection\nthis experiment/ story shows. The data points themselves, collected day by\nday, might not tell us much about someone on their own. But collecting\nthem, bringing them together in a drawing, and posting them! to someone\nelse with tireless effort, that’s care, that’s dedication! Imagine if we\nall approached our lives (and datashsring) and communication with this\nlevel of care and intention. How much better could we be at joining the\ndots, seeing the bigger picture and creating meaningful impact?",
+        "approved": true
+      }
+    ]
+  },
+  {
     "id": "thing-from-the-future",
     "date": "2026-11-01",
     "title": "The Thing From The Future",
@@ -13,11 +47,11 @@
       "resilience"
     ],
     "source": "https://www.researchgate.net/publication/364677670_The_Thing_From_The_Future_Print-and-Play_Edition",
-    "image": "https://static.wixstatic.com/media/9eaad4_f0bff82f0bfa4b72b017bccd6d2a5d18~mv2.png/v1/fill/w_1000%2Ch_756%2Cal_c%2Cq_90%2Cusm_0.66_1.00_0.01/9eaad4_f0bff82f0bfa4b72b017bccd6d2a5d18~mv2.png",
-    "image_credit": "Print-and-play cover excerpt: Stuart Candy and Jeff Watson (2015) · CC BY-NC-SA 2.0 · cropped",
-    "image_credit_url": "https://atelierdesfuturs.org/wp-content/uploads/2024/11/CandyWatson_2015_FUTURETHING_Print-and-Play.pdf",
-    "image_license_url": "https://creativecommons.org/licenses/by-nc-sa/2.0/",
-    "image_status": "licensed-noncommercial",
+    "image": "",
+    "image_credit": "",
+    "image_credit_url": "",
+    "image_license_url": "",
+    "image_status": "placeholder",
     "discovery": "Most planning starts by asking what is likely to happen. The Thing From The Future asks a different question: what could exist if the surrounding world changed enough? That shift matters because imagination is not the opposite of rigour; it can be a way of exposing assumptions that ordinary planning leaves untouched. A strange imagined object can make an unfamiliar future concrete enough to discuss, challenge and design for.",
     "sources": [
       {
