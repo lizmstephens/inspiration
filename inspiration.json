@@ -1,5 +1,43 @@
 [
   {
+    "id": "ise-jingu",
+    "date": "2026-11-03",
+    "title": "Ise Jingu",
+    "summary": "At Ise Jingu in Japan, the main Shinto shrine buildings are completely rebuilt every 20 years in a tradition known as Shikinen Sengu. The practice dates back more than 1,300 years and requires each generation of craftspeople to recreate the buildings, furnishings and ritual objects using traditional methods. Rather than preserving the same physical structure indefinitely, the process preserves the knowledge, skills and practices needed to rebuild it.\n\nKyodo News illustrated feature on the current rebuilding cycle: https://immersive.kyodonews.net/ise-jingu/index.html",
+    "thoughts": "We've been thinking a lot about disaster memory recently, and I generally think of memorials to floods which are in some ways designed to make sure people don't forget. However, this is a much more active way of engaging with history, and I wonder how to apply it to disasters.",
+    "tags": [
+      "resilience",
+      "culture",
+      "learning",
+      "continuity"
+    ],
+    "source": "https://www.isejingu.or.jp/en/ritual/",
+    "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Ise_Ise-jingu_02.jpg?width=1400",
+    "image_credit": "Photograph: Zairon · CC BY 4.0 · Wikimedia Commons",
+    "image_credit_url": "https://commons.wikimedia.org/wiki/File:Ise_Ise-jingu_02.jpg",
+    "image_license_url": "https://creativecommons.org/licenses/by/4.0/",
+    "image_status": "licensed",
+    "discovery": "Ise Jingu offers a striking alternative to the idea that resilience means making something last forever. The buildings are temporary, but the capability to recreate them is deliberately renewed across generations. It suggests that continuity can depend less on preserving an object unchanged than on repeatedly practising the knowledge, relationships and skills needed to rebuild it.",
+    "sources": [
+      {
+        "label": "Original source",
+        "url": "https://www.isejingu.or.jp/en/ritual/"
+      }
+    ],
+    "reflections": [
+      {
+        "name": "Erin",
+        "text": "What parts of our lives do we struggle to rebuild when they break? What\nwould it look like to practice that rebuilding before things break? In a\nway that is celebratory rather than scared?",
+        "approved": true
+      },
+      {
+        "name": "Macarena",
+        "text": "At a time when long-term perspectives and enduring, resilient, approaches\nto living, particularly regarding buildings and places, are top of mind for\nme, this story leaves me feeling quite divided. And it makes me wonder how\nthis tradition could be about enhancing places, instead of tearing them\ndown, passing this tradition also far beyond their immediate physical as\nwell as time boundaries. But I am no one to change traditions!",
+        "approved": true
+      }
+    ]
+  },
+  {
     "id": "dear-data",
     "date": "2026-11-02",
     "title": "Dear Data",
