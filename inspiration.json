@@ -1,5 +1,44 @@
 [
   {
+    "id": "one-million-checkboxes",
+    "date": "2026-11-04",
+    "title": "One Million Checkboxes",
+    "summary": "In June 2024, developer Nolen Royalty launched One Million Checkboxes: a webpage containing one million shared checkboxes, where every tick or untick was immediately visible to everyone else. He expected a few hundred users; instead, more than half a million people visited and collectively changed boxes more than 650 million times before the site was closed two weeks later. Players quickly moved beyond random clicking, using scripts and coordinated activity to create patterns, images and even hidden messages across the shared grid.",
+    "thoughts": "I think this shows how when we create something it can take on a beautiful life of its own that we perhaps couldn't have ever predicted. And I love how a group of strangers found a way to connect with the original developer.",
+    "tags": [
+      "behaviour",
+      "collaboration",
+      "technology",
+      "community",
+      "creativity"
+    ],
+    "source": "https://nolenroyalty.github.io/blog/",
+    "image": "https://commons.wikimedia.org/wiki/Special:FilePath/One_Million_Checkboxes_BSOD.png?width=1400",
+    "image_credit": "Nolen Royalty (Itseieio) · CC BY-SA 4.0 · Wikimedia Commons",
+    "image_credit_url": "https://commons.wikimedia.org/wiki/File:One_Million_Checkboxes_BSOD.png",
+    "image_license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "image_status": "licensed",
+    "discovery": "One Million Checkboxes is a reminder that participation is rarely predictable from the structure we design for it. A deliberately pointless interface became a space for play, coordination, competition and collective invention because people brought their own purposes to it. Sometimes the most interesting behaviour in a system is not what its designer intended, but what emerges once many people begin interacting through it.",
+    "sources": [
+      {
+        "label": "Original source",
+        "url": "https://nolenroyalty.github.io/blog/"
+      }
+    ],
+    "reflections": [
+      {
+        "name": "Macarena",
+        "text": "We always seem to organize ourselves, we simply can’t help it. Whether\ndriven by competition with others or ourselves, or a desire to share what\nwecare caosble of, we naturally seek structure and a sense of belonging\nwithin a group, leading to aligning with the collective whole, or at least\nmost of us do!",
+        "approved": true
+      },
+      {
+        "name": "Erin",
+        "text": "Ok why did all the users not crash the site?? But thinking bigger, how do\nyou predict what will go viral at any given time?",
+        "approved": true
+      }
+    ]
+  },
+  {
     "id": "ise-jingu",
     "date": "2026-11-03",
     "title": "Ise Jingu",
