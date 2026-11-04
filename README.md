@@ -37,3 +37,29 @@ Uses the latest user-edited About Me copy provided on 27 October 2026.
 
 ## October 27 identity update
 The site now uses a navy wrapper, a pale yellow feature, a subtle scalloped yellow mark, a 50%-larger hummingbird SVG, and broad content tags. The About Me page links to the University of Reading staff profile.
+
+
+## Automatic Collaborators updates
+
+The `collaborators.html` page loads `collaborators.json` at visit time using
+`collaborators.js`. The public JSON contains only name, country, background
+tags, LinkedIn URL, image URL and curator flag—never email addresses.
+
+To update it from the private **Contributors** tab, install the script in
+`automation/collaborators-sync.gs` into the editorial spreadsheet's existing
+Google Apps Script project. Create a fine-grained GitHub token restricted to
+`lizmstephens/inspiration` with Contents read/write and set it as the
+`GITHUB_TOKEN` **Script property** (not a spreadsheet cell).
+Run `syncApprovedCollaborators` once to authorise and test. Then either call
+the function from the existing 09:00 publishing job, or run
+`installCollaboratorDailyTrigger` once to create an approximately 09:00
+Europe/London daily trigger (Apps Script schedules within an hour).
+
+Only records with **Card Approved = Yes** are published. Every subsequent
+successful sync replaces the JSON atomically with approved records, retaining
+spreadsheet row order. If the fetch fails, the Collaborators page retains the
+previously saved static HTML cards rather than showing an empty page.
+
+Do not make the source Google Sheet public; never put a GitHub token into the
+repository or spreadsheet. Once the exporter is installed and verified, the
+old static HTML cards can be removed if desired.
