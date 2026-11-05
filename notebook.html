@@ -44,6 +44,62 @@ a{color:inherit}button,select{font:inherit}button{cursor:pointer}
 .fallback{max-width:650px;margin:15px auto;padding:0 20px}.fallback .page{display:block;margin:0 0 20px;min-height:460px;border-radius:8px}.fallback .page-inner{min-height:460px}.fallback-message{color:#eee;max-width:600px;margin:0 auto 15px}
 @media(max-width:700px){.top{padding:16px 20px;display:block;text-align:center}.top nav{justify-content:center;margin-top:12px;flex-wrap:wrap}.intro p{font-size:13px}.stage{min-height:480px;padding:12px 4px}.bird{left:auto;right:15px;top:4px;width:44px}.controls{margin-top:10px}.page .page-inner{padding:23px}.page .copy{font-size:15px}.reflection .copy{font-size:17px}.paper-photo img{height:120px}}
 @media(prefers-reduced-motion:reduce){.bird{transition:none}}
+
+/* Notebook experiment: everyday worn leather on a warm coffee-shop table.
+   Entirely CSS-based, with no generated or remotely loaded background image. */
+body{
+ background-color:#805336;
+ background-image:
+   linear-gradient(90deg,rgba(41,24,13,.28) 0 1px,transparent 2px 100%),
+   repeating-linear-gradient(94deg,transparent 0 18px,rgba(54,29,15,.09) 19px 21px,transparent 24px 47px,rgba(245,200,136,.07) 50px 52px),
+   repeating-linear-gradient(0deg,rgba(48,27,15,.12) 0 2px,transparent 3px 170px,rgba(35,21,12,.23) 171px 175px,rgba(225,175,111,.12) 177px 179px,transparent 180px 355px),
+   radial-gradient(ellipse at 50% 6%,rgba(249,202,137,.48),transparent 70%),
+   linear-gradient(95deg,#623c26,#996742 25%,#805031 52%,#a67349 78%,#68432c);
+ background-size:100% 100%,100% 100%,100% 100%,100% 100%,100% 100%;
+}
+body:before{content:"";pointer-events:none;position:fixed;inset:0;background:radial-gradient(ellipse at center,transparent 35%,rgba(33,20,12,.22));z-index:0}
+body>header,body>.intro,body>.chapters,body>main{position:relative;z-index:1}
+.top{background:rgba(31,27,26,.13);border-radius:0 0 12px 12px}
+.intro p,.chapters label{color:#fff4e7;text-shadow:0 1px 3px #301b13}
+.chapters select{background:#59402f;border-color:#c5a788}
+.stage{filter:drop-shadow(0 22px 20px rgba(26,13,8,.43))}
+#book .page{background:#f8f7f0;border-color:#ddd9cb}
+.page-inner{
+ background-color:#f9f8f2;
+ background-image:
+   repeating-linear-gradient(to bottom,transparent 0,transparent 30px,rgba(111,143,158,.15) 31px,transparent 32px),
+   linear-gradient(115deg,rgba(255,255,255,.86),rgba(246,243,232,.65));
+ background-size:100% 32px,100% 100%;
+}
+.page-inner:before{border-color:rgba(107,124,125,.07)}
+.page .cover{
+ background-color:#70513f;
+ background-image:
+   repeating-linear-gradient(92deg,rgba(35,22,17,.035) 0 1px,transparent 2px 5px),
+   radial-gradient(circle at 80% 12%,rgba(242,205,160,.12),transparent 50%),
+   radial-gradient(circle at 20% 90%,rgba(40,25,19,.21),transparent 52%),
+   linear-gradient(118deg,#604433,#81624a 42%,#634a3a 85%);
+ color:#c7ad87;
+ border:9px solid #674b38;
+ border-radius:19px;
+ box-shadow:
+   inset 0 0 0 1px rgba(255,226,179,.21),
+   inset 11px 0 15px rgba(45,28,20,.28),
+   inset -3px 1px 9px rgba(41,24,17,.2);
+}
+#book .coverpage{border-radius:20px;overflow:hidden;border:1px solid #483125}
+.page .cover:before{inset:12px;border:1px dashed rgba(218,184,139,.37);border-radius:12px}
+.cover .bigbrand{
+ color:#b89a73;
+ font:600 clamp(34px,4vw,51px)/1.2 Fraunces,Georgia,serif;
+ letter-spacing:-.045em;
+ text-shadow:0 1px 1px rgba(241,205,156,.25),0 -1px 1px rgba(34,21,15,.7);
+ transform:rotate(-2deg);
+}
+.controls button{background:#684730b0;border-color:#efd4a8;color:#fff0d3}
+.controls button:hover{background:#4b3025}
+#page-label{color:#fff6e6;text-shadow:0 1px 3px #3b2113}
+@media(max-width:700px){.stage{filter:drop-shadow(0 12px 12px rgba(26,13,8,.4))}}
 </style>
 <script src="https://cdn.jsdelivr.net/npm/page-flip@2.0.7/dist/js/page-flip.browser.min.js" defer></script>
 </head>
@@ -69,7 +125,7 @@ function foot(number,kind){return '<div class="page-foot"><span>Daily Hummingbir
 function thoughtsTitle(name){let n=String(name||'Contributor').trim().split(/\s+/)[0];return esc(n)+(n.toLowerCase().endsWith('s')?'’':'’s')+' Thoughts'}
 function build(x){
  let pieces=[];
- pieces.push(page('<div class="cover-small">A collection of discoveries</div><div class="bigbrand">Daily<br>Hummingbird</div><div class="cover-ornament">✺ · · · ✧</div><p class="cover-tail">One idea. Many perspectives.<br>Turn the page to begin.</p>','coverpage',true));
+ pieces.push(page('<div class="bigbrand">Hummingbird</div>','coverpage',true));
  const img=x.image?'<figure class="paper-photo"><img src="'+link(x.image)+'" alt="Image accompanying '+esc(x.title)+'" loading="lazy"><figcaption class="photo-credit">'+(x.image_credit_url?'<a href="'+link(x.image_credit_url)+'" target="_blank" rel="noopener noreferrer">'+esc(x.image_credit||'Image source')+'</a>':esc(x.image_credit||''))+(x.image_license_url?' · <a href="'+link(x.image_license_url)+'" target="_blank" rel="noopener noreferrer">Licence</a>':'')+'</figcaption></figure>':'';
  const tags=(x.tags||[]).map(t=>'<span class="tag">'+esc(t)+'</span>').join('');
  let sources=(x.sources&&x.sources.length?x.sources:[{url:x.source}]).filter(a=>a.url);
