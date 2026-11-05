@@ -1,5 +1,49 @@
 [
   {
+    "id": "fish-doorbell",
+    "date": "2026-11-05",
+    "title": "The Fish Doorbell",
+    "summary": "Every spring, thousands of fish migrate through Utrecht’s canals towards spawning grounds, but their route is interrupted by the historic Weerdsluis lock. In 2021, the city introduced the world’s first “Fish Doorbell”: an underwater livestream lets anyone watching online press a digital bell when fish are gathering at the closed lock. The signal goes to the lock keeper, who can then open the gates when enough fish are waiting. In its first season alone, people rang the bell more than 100,000 times; the project has since become an annual fixture attracting viewers from around the world.",
+    "thoughts": "I already knew about this, and had rung the doorbell! The fish doorbell is such a catchy, silly name and even if there isn't evidence that this has improved fish ecology, what a fantastic example of the reach of these kinds of citizen science initiatives. It made me wonder if we could use this kind of idea as a locally-led trigger for anticipatory action, for example people could 'ring the doorbell' when their indigenous forecast techniques are telling them a flood is coming.",
+    "tags": [
+      "communication",
+      "community",
+      "technology",
+      "nature",
+      "collaboration"
+    ],
+    "source": "https://visdeurbel.nl/en/",
+    "image": "",
+    "image_credit": "",
+    "image_credit_url": "https://visdeurbel.nl/en/press-folder/",
+    "image_license_url": "",
+    "image_status": "permission required",
+    "discovery": "The Fish Doorbell turns a hidden ecological process into something people can notice, understand and help with. Its charm matters: a small, playful interface makes participation feel immediate rather than abstract. It is a reminder that good design can create a relationship with a problem before it asks people to care about solving it.",
+    "sources": [
+      {
+        "label": "Original source",
+        "url": "https://visdeurbel.nl/en/"
+      }
+    ],
+    "reflections": [
+      {
+        "name": "Janot",
+        "text": "The crowd-sourced data from observers ringing the fish doorbell is a great \nexample of a human system (canal & locks) taking corrective responsibility \nfor interrupting natural systems (access to spawning grounds) but it also \nillustrates the utility in trusting crowd-sourced data for early warning \nsystems. In Togo when the national weather service could not afford to \nmaintain rainfall guage @ river level readings, over 1500 Red Cross \nvolunteers were trained as observers to SMS daily readings directly into a \ndata base, which in turn fed a Red Cross machine learning flood prediction \nmodel used by communities to prepare for high water…but the government \nagencies who trained the observers do not use the data because it is not \nvalidated. Here at the dawn of the big data era it’s great to see the \nWeerdsluis lock using trusted crowd-sourced data!",
+        "approved": true
+      },
+      {
+        "name": "Erin",
+        "text": "This is so sweet. I sent it to a bunch of friends and family, which made\nthem all happy. It is lovely to share a story about people coming together\nabout something so sweet. What I find most interesting about the story is\nthe naming of the webcam a \"doorbell\". I think that humanization of the\nprocess is probably what attracted so much attention, and it reminds me how\nimportant it is to incorporate imagination and whimsy when you want to\nstart a movement.",
+        "approved": true
+      },
+      {
+        "name": "Macarena",
+        "text": "I want to believe there is a genuine interest in coming closer to nature,\ncuriosity... but, I also see that this seamlessly harmless experiment\nrepresents how over and over, we think we can control nature,  that we are\nto control nature,  and that ultimately, this is just another way of\ngreenwashing. The empty or just unjustified management of natural resources\nbehind the \"I am improving nature\" kind of message.",
+        "approved": true
+      }
+    ]
+  },
+  {
     "id": "one-million-checkboxes",
     "date": "2026-11-04",
     "title": "One Million Checkboxes",
