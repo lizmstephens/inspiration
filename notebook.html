@@ -100,6 +100,33 @@ body>header,body>.intro,body>.chapters,body>main{position:relative;z-index:1}
 .controls button:hover{background:#4b3025}
 #page-label{color:#fff6e6;text-shadow:0 1px 3px #3b2113}
 @media(max-width:700px){.stage{filter:drop-shadow(0 12px 12px rgba(26,13,8,.4))}}
+
+/* Photo-backed journal experiment: keep the working StPageFlip mechanism. */
+body{
+ background-color:#a77955;
+ background-image:linear-gradient(rgba(79,53,33,.12),rgba(79,53,33,.14)),url('https://unsplash.com/photos/XnpWqPZNfXE/download?force=true&w=1800');
+ background-position:center center;
+ background-size:cover;
+ background-repeat:no-repeat;
+ background-attachment:fixed;
+}
+body:before{background:radial-gradient(ellipse at 50% 50%,transparent 40%,rgba(45,26,15,.16));}
+.top{background:rgba(42,32,24,.25);backdrop-filter:blur(2px)}
+.stage{filter:drop-shadow(0 20px 22px rgba(36,19,11,.4))}
+#book .coverpage{border:0!important;border-radius:22px 15px 15px 22px!important;background:#664532;overflow:hidden;box-shadow:3px 6px 0 #4c3225,8px 14px 15px #28180c77}
+.page .cover{background:none!important;border:0!important;border-radius:inherit!important;box-shadow:none!important;padding:0!important}
+.page .cover:before{content:none!important}
+.journal-cover-art{display:block;width:100%;height:100%;object-fit:cover;object-position:center;user-select:none}
+#book .page:not(.coverpage){background:#f9f8f2;border-color:#e0dacd}
+.page-inner:not(.cover){
+ background-color:#faf9f3;
+ background-image:repeating-linear-gradient(to bottom,transparent 0 29px,rgba(114,145,166,.17) 30px,transparent 31px),linear-gradient(105deg,#fffdf8,#f7f5ee);
+ background-size:100% 31px,100% 100%;
+}
+.page-inner:not(.cover):before{border-color:rgba(113,111,105,.06)}
+.controls button{background:rgba(74,48,32,.7);border-color:#eee0c6;color:#fff2df}
+#page-label{color:#fff8ea;text-shadow:0 1px 3px #3e2418}
+@media(max-width:700px){body{background-attachment:scroll}}
 </style>
 <script src="https://cdn.jsdelivr.net/npm/page-flip@2.0.7/dist/js/page-flip.browser.min.js" defer></script>
 </head>
@@ -125,7 +152,7 @@ function foot(number,kind){return '<div class="page-foot"><span>Daily Hummingbir
 function thoughtsTitle(name){let n=String(name||'Contributor').trim().split(/\s+/)[0];return esc(n)+(n.toLowerCase().endsWith('s')?'’':'’s')+' Thoughts'}
 function build(x){
  let pieces=[];
- pieces.push(page('<div class="bigbrand">Hummingbird</div>','coverpage',true));
+ pieces.push(page('<img src="assets/journal.png" class="journal-cover-art" alt="Leather notebook cover embossed with a hummingbird" draggable="false">','coverpage',true));
  const img=x.image?'<figure class="paper-photo"><img src="'+link(x.image)+'" alt="Image accompanying '+esc(x.title)+'" loading="lazy"><figcaption class="photo-credit">'+(x.image_credit_url?'<a href="'+link(x.image_credit_url)+'" target="_blank" rel="noopener noreferrer">'+esc(x.image_credit||'Image source')+'</a>':esc(x.image_credit||''))+(x.image_license_url?' · <a href="'+link(x.image_license_url)+'" target="_blank" rel="noopener noreferrer">Licence</a>':'')+'</figcaption></figure>':'';
  const tags=(x.tags||[]).map(t=>'<span class="tag">'+esc(t)+'</span>').join('');
  let sources=(x.sources&&x.sources.length?x.sources:[{url:x.source}]).filter(a=>a.url);
