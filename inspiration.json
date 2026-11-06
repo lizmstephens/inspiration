@@ -1,5 +1,44 @@
 [
   {
+    "id": "future-library",
+    "date": "2026-11-06",
+    "title": "Future Library",
+    "summary": "Future Library is a 100-year artwork by Katie Paterson that began in 2014 with the planting of a forest in Nordmarka, near Oslo. Each year, one writer contributes a new manuscript that is sealed away unread and unpublished. In 2114, the trees from the forest will be harvested to make the paper on which all 100 manuscripts will finally be printed. The writers already include Margaret Atwood, David Mitchell, Han Kang, Ocean Vuong and Tsitsi Dangarembga, with the project deliberately asking both authors and institutions to commit to readers they will never meet.",
+    "thoughts": "I like the idea of creating a tradition, and it is an opportunity to experience what it feels like for someone to create something that is only for our ancestors. If we plant a tree we at least get to see it grow, but the idea of locking something away that we can't use / enjoy ourselves feels quite frustrating! I'm guessing there are parallels with funding and designing climate adaptation and risk reduction measures - should we think about designing-in co-benefits for current generations?",
+    "tags": [
+      "culture",
+      "imagination",
+      "time",
+      "learning",
+      "resilience"
+    ],
+    "source": "https://katiepaterson.org/artwork/future-library/",
+    "image": "",
+    "image_credit": "",
+    "image_credit_url": "https://katiepaterson.org/artwork/future-library/",
+    "image_license_url": "",
+    "image_status": "permission required",
+    "discovery": "Future Library is an unusually literal act of trust in the future. The writers surrender control over when, how and by whom their work will be read, while the project itself depends on institutions and communities maintaining a promise for a century. It makes long-term thinking feel less like prediction and more like stewardship: creating something valuable now while accepting that its meaning may only become clear to people we will never know.",
+    "sources": [
+      {
+        "label": "Original source",
+        "url": "https://katiepaterson.org/artwork/future-library/"
+      }
+    ],
+    "reflections": [
+      {
+        "name": "Janot",
+        "text": "EEK I am stunned that the plan is to harvest the trees in 100 yrs to make PAPER - by then please oh please let us be making paper from sargassum or some sustainably circular source!!\nMaybe the unsealing & publishing of the manuscripts could instead inspire Daily Hummingbird responses;) That said, the Future Library project reminds me of a recent visit to Angers to see the approx 600-yr old Apocalypse tapestry...and the serendipitous surprise of arriving just in time to also see a new series of tapestries - all done using classical Aubusson methods - depicting the Tolkien illustrations from Lord of the Rings in splendrous grandeur of scale and colour!\n:) Janot",
+        "approved": true
+      },
+      {
+        "name": "Macarena",
+        "text": "There’s undeniable beauty in the Future Library’s commitment to hope and\nlong-term thinking, but I find it quite disconnected from the urgent\nrealities of climate change. It feels almost arrogant that, in 2014, when\nwe were already aware of accelerating climate disruption, we assumed we\ncould simply preserve a forest for 100 years. We continue to act as though\nwe can control nature while ignoring how rapidly it is degrading, and\ndissapearing, largely because the way we carry our lives, business and\neconomies. Will that forest even exist in 2114? Or will the Future Library\nbecome a beautiful reminder of how much effort we put into preserving\nstories for the future, while failing to take the action needed to ensure\nwe actually have one?",
+        "approved": true
+      }
+    ]
+  },
+  {
     "id": "fish-doorbell",
     "date": "2026-11-05",
     "title": "The Fish Doorbell",
