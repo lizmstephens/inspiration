@@ -4,7 +4,7 @@
 <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#10243d"><link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <title>Notebook experiment · Daily Hummingbird</title>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,450;9..144,600;9..144,700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,450;9..144,600;9..144,700&family=Caveat:wght@500;600;700&display=swap" rel="stylesheet">
 <style>
 :root{--navy:#10243d;--ink:#172942;--cream:#fff8e9;--gold:#ffe0a0}
 *{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 50% 10%,#223b58,var(--navy) 75%);color:white;font-family:'DM Sans',Arial,sans-serif;min-height:100vh}
@@ -186,13 +186,53 @@ body{background-color:#c9a17d!important;background-image:url('assets/table.jpg')
  #book .reflection .copy{font-size:14px;line-height:1.55}
  .page-logo{width:25px;height:25px;right:15px;top:14px}
 }
+
+/* Tactile book paper, handwritten headings and a loose peach marker stroke. */
+.stage{filter:drop-shadow(0 24px 20px rgba(45,25,13,.52)) drop-shadow(0 7px 5px rgba(35,19,10,.24))!important}
+#book{filter:drop-shadow(0 7px 9px rgba(37,20,12,.22))}
+#book .page:not(.coverpage){border:1px solid #e2cfac!important;box-shadow:inset 0 0 14px rgba(112,81,45,.1),0 3px 7px rgba(53,30,15,.24)!important}
+#book .page:not(.coverpage) .page-inner{
+ background-color:#fff3db!important;
+ background-image:
+  linear-gradient(90deg,rgba(85,58,33,.13),transparent 10%,transparent 87%,rgba(109,73,35,.12)),
+  radial-gradient(circle,rgba(151,113,74,.14) .7px,transparent 1px)!important;
+ background-size:100% 100%,17px 17px!important;
+ box-shadow:inset 8px 0 18px -13px rgba(74,47,27,.5),inset -7px 0 17px -13px rgba(74,47,27,.4)!important;
+}
+#book .page .eyebrow{
+ font-family:'Caveat','Segoe Print',cursive;
+ font-size:clamp(19px,2.5vw,25px);
+ font-weight:600;letter-spacing:0;text-transform:none;
+ color:#866443;margin-bottom:9px;line-height:1.1
+}
+#book .page h2{
+ font-family:'Caveat','Segoe Print',cursive!important;
+ font-size:clamp(34px,4vw,49px);font-weight:700;
+ line-height:1.12;letter-spacing:0;
+ background:none!important;position:relative;isolation:isolate;
+ padding:0 6px 4px 2px;margin-bottom:16px
+}
+#book .page h2:before{
+ content:"";position:absolute;left:-6px;right:-12px;top:45%;height:54%;
+ background:#f7bd9e;opacity:.55;z-index:-1;
+ border-radius:48% 12% 35% 16% / 30% 45% 35% 35%;
+ transform:rotate(-1.8deg) skewX(-8deg);
+ clip-path:polygon(0 24%,4% 9%,36% 3%,73% 8%,97% 0,100% 34%,98% 83%,67% 92%,28% 100%,2% 83%);
+}
+#book .page .page-foot{display:none!important}
+#book .page .story-links{margin-top:auto;padding-top:12px}
+#book .reflection .copy{margin-top:10px}
+@media(max-width:700px){
+ #book .page .eyebrow{font-size:19px;letter-spacing:0}
+ #book .page h2{font-size:clamp(32px,8vw,41px);margin-bottom:12px}
+ .stage{filter:drop-shadow(0 14px 13px rgba(45,25,13,.5))!important}
+}
 </style>
 <script src="https://cdn.jsdelivr.net/npm/page-flip@2.0.7/dist/js/page-flip.browser.min.js" defer></script>
 </head>
 <body>
 <header class="top"><nav aria-label="Site navigation"><a href="archive.html">Archive</a><a href="collaborators.html">Collaborators</a><a href="about.html">About</a></nav></header>
 
-<div class="chapters"><label for="discovery">Discoveries</label><select id="discovery" aria-label="Choose a discovery"><option>Loading…</option></select></div>
 <main>
  <div class="stage"><div id="book" aria-label="Interactive discovery notebook"></div></div>
  <div class="controls"><button id="prev" aria-label="Previous page" disabled>‹</button><div id="page-label" aria-live="polite">Opening notebook…</div><button id="next" aria-label="Next page" disabled>›</button></div>
@@ -203,11 +243,11 @@ body{background-color:#c9a17d!important;background-image:url('assets/table.jpg')
 const esc=s=>String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const link=u=>{try{const x=new URL(u,location.href);return ['http:','https:'].includes(x.protocol)?esc(x.href):'#'}catch(e){return '#'}};
 const date=s=>new Intl.DateTimeFormat('en-GB',{weekday:'long',day:'numeric',month:'long',year:'numeric',timeZone:'UTC'}).format(new Date(s+'T12:00:00Z'));
-const root=document.getElementById('book'),picker=document.getElementById('discovery');
+const root=document.getElementById('book');
 const label=document.getElementById('page-label'),prev=document.getElementById('prev'),next=document.getElementById('next');
 let flip=null,pages=[],all=[],current=0;
 function page(html,kind='',hard=false){return '<article class="page '+kind+'" '+(hard?'data-density="hard"':'')+'><div class="page-inner '+(kind==='coverpage'?'cover':'')+'">'+(kind==='coverpage'?'':'<img class="page-logo" src="assets/favicon.svg" alt="" aria-hidden="true">')+html+'</div></article>'}
-function foot(number,kind){return '<div class="page-foot"><span>Daily Hummingbird · '+esc(kind)+'</span><span>'+number+'</span></div>'}
+function foot(number,kind){return ''}
 function thoughtsTitle(name){let n=String(name||'Contributor').trim().split(/\s+/)[0];return esc(n)+(n.toLowerCase().endsWith('s')?'’':'’s')+' Thoughts'}
 function build(x){
  let pieces=[];
@@ -215,11 +255,11 @@ function build(x){
  const img=x.image?'<figure class="paper-photo"><img src="'+link(x.image)+'" alt="Image accompanying '+esc(x.title)+'" loading="lazy"><figcaption class="photo-credit">'+(x.image_credit_url?'<a href="'+link(x.image_credit_url)+'" target="_blank" rel="noopener noreferrer">'+esc(x.image_credit||'Image source')+'</a>':esc(x.image_credit||''))+(x.image_license_url?' · <a href="'+link(x.image_license_url)+'" target="_blank" rel="noopener noreferrer">Licence</a>':'')+'</figcaption></figure>':'';
  const tags=(x.tags||[]).map(t=>'<span class="tag">'+esc(t)+'</span>').join('');
  let sources=(x.sources&&x.sources.length?x.sources:[{url:x.source}]).filter(a=>a.url);
- pieces.push(page('<div class="eyebrow">'+esc(date(x.date))+' · Discovery</div><h2>'+esc(x.title)+'</h2><div class="tags">'+tags+'</div>'+img+'<div class="copy"><p>'+esc(x.summary)+'</p></div><div class="story-links">'+sources.map(z=>'<a href="'+link(z.url)+'" target="_blank" rel="noopener noreferrer">Read original story ↗</a>').join(' · ')+'</div>'+foot('01','The discovery'),'story'));
+ pieces.push(page('<div class="eyebrow">'+esc(date(x.date))+'</div><h2>'+esc(x.title)+'</h2><div class="tags">'+tags+'</div>'+img+'<div class="copy"><p>'+esc(x.summary)+'</p></div><div class="story-links">'+sources.map(z=>'<a href="'+link(z.url)+'" target="_blank" rel="noopener noreferrer">Read original story ↗</a>').join(' · ')+'</div>'+foot('01','The discovery'),'story'));
  const reflections=[{name:'AI Reflection',text:x.discovery||x.summary},{name:'Liz’s Thoughts',text:x.thoughts}];
  (x.reflections||[]).filter(c=>c&&c.approved===true&&c.name&&c.text).forEach(c=>reflections.push({name:thoughtsTitle(c.name),text:c.text}));
  reflections.filter(r=>r.text&&String(r.text).trim()).forEach((r,i)=>{pieces.push(page('<div class="eyebrow">A different perspective · '+String(i+1).padStart(2,'0')+'</div><h2 class="reflection-head">'+esc(r.name)+'</h2><div class="copy"><p>'+esc(r.text)+'</p></div>'+foot(String(i+2).padStart(2,'0'),r.name),'reflection'))});
- pieces.push(page('<div class="eyebrow">The end · For now</div><h2>Where might this idea lead?</h2><p>Every reflection is a different way of looking at the same discovery.</p><p><a href="archive.html">Explore the archive ↗</a></p><p>Or choose another discovery above.</p>','endpage',true));
+ pieces.push(page('<div class="eyebrow">The end · For now</div><h2>Where might this idea lead?</h2><p>Every reflection is a different way of looking at the same discovery.</p><p><a href="archive.html">Explore the archive ↗</a></p><p>Return tomorrow for another discovery.</p>','endpage',true));
  return pieces;
 }
 function update(){
@@ -244,10 +284,10 @@ function render(x){
 prev.addEventListener('click',()=>flip&&flip.flipPrev());
 next.addEventListener('click',()=>flip&&flip.flipNext());
 document.addEventListener('keydown',e=>{if(!flip||e.target.matches('input,textarea,select,button'))return;if(e.key==='ArrowRight')flip.flipNext();if(e.key==='ArrowLeft')flip.flipPrev()});
-picker.addEventListener('change',()=>{const x=all.find(y=>y.id===picker.value);if(x)render(x)});
+
 fetch('inspiration.json').then(r=>{if(!r.ok)throw Error('Could not load discoveries');return r.json()}).then(data=>{
- all=data.slice().sort((a,b)=>b.date.localeCompare(a.date));picker.innerHTML=all.map(x=>'<option value="'+esc(x.id)+'">'+esc(date(x.date))+' — '+esc(x.title)+'</option>').join('');
- const param=new URLSearchParams(location.search).get('id');const chosen=all.find(x=>x.id===param)||all[0];picker.value=chosen.id;render(chosen);
+ all=data.slice().sort((a,b)=>b.date.localeCompare(a.date));
+ const param=new URLSearchParams(location.search).get('id');const chosen=all.find(x=>x.id===param)||all[0];render(chosen);
 }).catch(err=>{console.error(err);label.textContent='Unable to load discoveries';root.innerHTML='<p class="fallback-message">The discovery data could not be loaded. Please refresh the page.</p>'});
 })();
 </script>
