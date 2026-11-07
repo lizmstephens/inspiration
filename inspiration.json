@@ -1,5 +1,39 @@
 [
   {
+    "id": "vision-zero",
+    "date": "2026-11-07",
+    "title": "Vision Zero",
+    "summary": "In 1995, shortly after becoming Sweden’s head of road safety, Claes Tingvall was confronted by a crash on the E4 motorway near Stockholm in which five young people were killed after their car left the road and struck the concrete base of a streetlight. As a 2024 BBC Future profile of Tingvall recounts, the crash helped crystallise a radically different way of thinking about road safety. Rather than asking only what the driver had done wrong, Tingvall asked why an ordinary mistake had been allowed to become fatal.\n\nThat thinking became the basis of Vision Zero, adopted by the Swedish Parliament in 1997. It accepts that people will sometimes speed, lose concentration or make bad decisions, so roads and vehicles should be designed to prevent those mistakes from killing them. One early experiment installed central wire barriers on a dangerous stretch of road despite fears they would cause more crashes. Tingvall’s response was essentially: that was the point — hitting a forgiving barrier was preferable to crossing into oncoming traffic. The approach helped shift responsibility for road deaths from individual road users alone towards the people who design and manage the transport system.",
+    "thoughts": "This is a fascinating profile of someone who has changed a mindset against a lot of pushback. I loved the example of how Tingvall had to persuade people to accept an increase in the number of crashes because it would bring down the number of fatalities.\n\nI wonder how it might change our thinking around Early Warning Systems. Changing the target and mindset changes the interventions.",
+    "tags": [
+      "risk",
+      "resilience",
+      "design",
+      "decision-making",
+      "behaviour"
+    ],
+    "source": "https://www.bbc.com/future/article/20240517-vision-zero-how-europe-cut-the-number-of-people-dying-on-its-roads",
+    "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Motortrafikled1.jpg?width=1400",
+    "image_credit": "Photograph: Lavas · CC BY-SA 3.0 · Wikimedia Commons",
+    "image_credit_url": "https://commons.wikimedia.org/wiki/File:Motortrafikled1.jpg",
+    "image_license_url": "https://creativecommons.org/licenses/by-sa/3.0/",
+    "image_status": "licensed",
+    "discovery": "Vision Zero reframes failure in a powerful way: the question is not simply whether people followed the rules, but whether the system was designed to tolerate predictable human error. That has implications far beyond road safety. In early warning, humanitarian action and climate-risk management, people will misunderstand, delay, improvise or make decisions under pressure. A resilient system should not depend on perfect behaviour; it should be designed so that ordinary mistakes do not cascade into catastrophe.",
+    "sources": [
+      {
+        "label": "Original source",
+        "url": "https://www.bbc.com/future/article/20240517-vision-zero-how-europe-cut-the-number-of-people-dying-on-its-roads"
+      }
+    ],
+    "reflections": [
+      {
+        "name": "Janot",
+        "text": "This people-centred normative learning response might in the USA trigger the tiresome nanny state debate around “me responsible for me” so public investment should minimise \"me responsible for we” spending. Brother’s keeper aside, the contrast is telling. Some years ago, Pablo & I were working on an urban development game for the Nordic Climate Festival (with Mohini Dutta & Ben Norskov, called Broken Cities:). Playtesting the game with Federico, a friend from Equatorial Guinea, I was surprised that he consistently chose to invest in the cheaper very climate unfriendly options - & was further surprised by his surprise that we didn’t see the obvious answer: people need housing. I was to be surprised Again when we played the game in Finland at the festival w/a large cohort of nordic university students. They consistently played to optimise clean green development. It struck me that during playtesting, urban planning students from many ethnic & economic backgrounds in Boston did Not have such a unified sense of social contract - green or otherwise. Debriefing w/the nordic students, I shared Federico’s strategy & rationale. As it turned out, the best learning outcome of the game was the realisation that while equally committed to upholding an equitable social contract, the divergence in strategies illuminated how prioritising basic human needs is intrinsic to - and needs to be explicit in - climate-responsive development. \nBest, Janot",
+        "approved": true
+      }
+    ]
+  },
+  {
     "id": "future-library",
     "date": "2026-11-06",
     "title": "Future Library",
