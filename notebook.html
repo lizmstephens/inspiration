@@ -380,14 +380,40 @@ body{background-color:#c9a17d!important;background-image:url('assets/table.jpg')
   background-position:center!important;
  }
 }
+
+/* Tabs are attached to the notebook, not a separate navigation bar. */
+.stage{padding-top:32px!important}
+.journal-tabs{position:absolute;z-index:20;top:0;right:30px;display:flex;gap:8px}
+.journal-tabs button{border:1px solid #aa795c;border-bottom:0;background:#e7bc94;color:#4c3227;border-radius:10px 10px 0 0;padding:10px 18px 13px;font:600 19px 'Caveat',cursive;box-shadow:0 -2px 7px #3e241b40}
+.journal-tabs button:nth-child(2){background:#f0d8ac}
+.journal-tabs button:focus-visible{outline:3px solid #10243d}
+.stage:not(.open-book):before{display:none!important}
+#book .coverpage .journal-cover-art{object-fit:cover;transform:scale(1.055);transform-origin:center}
+#book .coverpage{overflow:hidden!important}
+.stage.open-book:after{pointer-events:none!important}
+.stage.open-book:before{pointer-events:none!important}
+#book .page{touch-action:pan-y}
+.person-photo{margin:5px auto 15px;max-width:230px;width:75%;padding:7px 7px 17px;background:#fff9ec;box-shadow:0 3px 12px #4b2c1930;transform:rotate(-1.5deg)}
+.person-photo img{display:block;width:100%;height:190px;object-fit:cover}
+.person-copy{font-size:15px!important;line-height:1.5!important}
+.about-copy{font-size:14px!important;line-height:1.5!important}
+.about-copy p{margin-bottom:12px}
+@media(max-width:700px){
+ .stage{padding-top:32px!important}
+ .journal-tabs{top:0;right:20px;gap:6px}
+ .journal-tabs button{font-size:17px;padding:7px 12px 10px}
+ .stage.open-book:after{border-radius:18px 15px 15px 18px!important}
+ .person-photo{max-width:185px}
+ .person-photo img{height:145px}
+}
 </style>
 <script src="https://cdn.jsdelivr.net/npm/page-flip@2.0.7/dist/js/page-flip.browser.min.js" defer></script>
 </head>
 <body>
-<header class="top"><nav aria-label="Site navigation"><a href="archive.html">Archive</a><a href="collaborators.html">Collaborators</a><a href="about.html">About</a></nav></header>
+<header class="top"><nav aria-label="Site navigation"><a href="notebook.html">Journal</a><a href="archive.html">Archive</a></nav></header>
 
 <main>
- <div class="stage" id="journal-stage"><div id="book" aria-label="Interactive discovery notebook"></div></div>
+ <div class="stage" id="journal-stage"><div class="journal-tabs"><button type="button" data-section="about">About</button><button type="button" data-section="collaborators">Collaborators</button></div><div id="book" aria-label="Interactive discovery notebook"></div></div>
  <div class="controls"><button id="prev" aria-label="Previous page" disabled>‹</button><div id="page-label" aria-live="polite">Opening notebook…</div><button id="next" aria-label="Next page" disabled>›</button></div>
 </main>
 <script>
@@ -398,12 +424,12 @@ const link=u=>{try{const x=new URL(u,location.href);return ['http:','https:'].in
 const date=s=>new Intl.DateTimeFormat('en-GB',{weekday:'long',day:'numeric',month:'long',year:'numeric',timeZone:'UTC'}).format(new Date(s+'T12:00:00Z'));
 const root=document.getElementById('book');
 const label=document.getElementById('page-label'),prev=document.getElementById('prev'),next=document.getElementById('next');
-let flip=null,pages=[],all=[],current=0;
+let flip=null,pages=[],all=[],current=0,sectionPages={};
 function page(html,kind='',hard=false){return '<article class="page '+kind+'" '+(hard?'data-density="hard"':'')+'><div class="page-inner '+(kind==='coverpage'?'cover':'')+'">'+(kind==='coverpage'?'':'<img class="page-logo" src="assets/favicon.svg" alt="" aria-hidden="true">')+html+'</div></article>'}
 function foot(number,kind){return ''}
 function thoughtsTitle(name){let n=String(name||'Contributor').trim().split(/\s+/)[0];return esc(n)+(n.toLowerCase().endsWith('s')?'’':'’s')+' Thoughts'}
 function build(x){
- let pieces=[];
+ let pieces=[];sectionPages={};
  pieces.push(page('<img src="assets/journal.png" class="journal-cover-art" alt="Leather notebook cover embossed with a hummingbird" draggable="false">','coverpage',true));
  const img=x.image?'<figure class="paper-photo"><img src="'+link(x.image)+'" alt="Image accompanying '+esc(x.title)+'" loading="lazy"><figcaption class="photo-credit">'+(x.image_credit_url?'<a href="'+link(x.image_credit_url)+'" target="_blank" rel="noopener noreferrer">'+esc(x.image_credit||'Image source')+'</a>':esc(x.image_credit||''))+(x.image_license_url?' · <a href="'+link(x.image_license_url)+'" target="_blank" rel="noopener noreferrer">Licence</a>':'')+'</figcaption></figure>':'';
  const tags=(x.tags||[]).map(t=>'<span class="tag">'+esc(t)+'</span>').join('');
@@ -412,6 +438,13 @@ function build(x){
  const reflections=[{name:'AI Reflection',text:x.discovery||x.summary},{name:'Liz’s Thoughts',text:x.thoughts}];
  (x.reflections||[]).filter(c=>c&&c.approved===true&&c.name&&c.text).forEach(c=>reflections.push({name:thoughtsTitle(c.name),text:c.text}));
  reflections.filter(r=>r.text&&String(r.text).trim()).forEach((r,i)=>{pieces.push(page('<div class="eyebrow">A different perspective · '+String(i+1).padStart(2,'0')+'</div><h2 class="reflection-head">'+esc(r.name)+'</h2><div class="copy"><p>'+esc(r.text)+'</p></div>'+foot(String(i+2).padStart(2,'0'),r.name),'reflection'))});
+
+ sectionPages.about=pieces.length;
+ pieces.push(page('<div class="eyebrow">A note from the curator</div><h2>About Daily Hummingbird</h2><div class="copy about-copy">'+"\n        <p>\n          I'm Liz Stephens,\n          <a href=\"https://research.reading.ac.uk/meteorology/people/liz-stephens/\" target=\"_blank\" rel=\"noopener noreferrer\">\n            Professor of Climate Risks and Resilience at the University of Reading\n          </a>\n          , in a joint role with the Red Cross Red Crescent Climate Centre.\n        </p>\n        <p>\n          I spend much of my professional life thinking about climate risk, forecasting and how scientific information can be put to use. Though I'm a scientist by background, I find myself most energised and inspired by engaging with people and ideas from many different backgrounds.\n        </p>\n        <p>\n          I'm also experimenting with using generative AI in different areas of my work, trying to understand how it can make me better at what I do (rather than replace me!).\n        </p>\n        <p>\n          Daily Hummingbird has grown out of that experimentation. I use ChatGPT to find me interesting articles from, well, just about anywhere; science to humanities, art to technology. It's designed to be a quick, cup-of-tea-sized encounter with something to inspire me at the start of the day. Through our conversations, ChatGPT learns what interests me and why, helping me curate the content. I'm now adding my own reflections, so you can see what's AI-generated and what's human.\n        </p>\n        <p>\n          Sometimes the connection to my work is obvious, sometimes it's unexpected, and sometimes it's just a bit of fun.\n        </p>\n        <p>\n          Over time, I'd like to invite other people to share their perspectives too. Looking at the same idea from different backgrounds can help cross-pollinate ideas (hence the hummingbird).\n        </p>\n        <p>\n          <em>\n            This is a personal curation project, not an official publication of my affiliated institutions.\n          </em>\n        </p>\n        <p>\n          <a href=\"archive.html\" class=\"pill\">\n            Explore the archive →\n          </a>\n        </p>\n      "+'</div>','aboutpage'));
+ sectionPages.collaborators=pieces.length;
+ pieces.push(page('<div class="eyebrow">People and perspectives</div><h2>Collaborators</h2><div class="copy"><p>Different people see different things in the same story. These are some of the people sharing their perspectives.</p></div>','people-intro'));
+ const collaborators=[{"name":"Liz Stephens","url":"https://uk.linkedin.com/in/lizstephens","img":"https://www.climatecentre.org/wp-content/uploads/liz-01.png","note":"Curator &amp; Collaborator · UK","desc":"Science, climate, resilience, humanitarian action, anticipatory action and extreme weather"},{"name":"Dorothy Heinrich","url":"https://uk.linkedin.com/in/dorothy-heinrich","img":"https://www.climatecentre.org/wp-content/uploads/admin-ajax.png","note":"Collaborator · Canada, UK","desc":"Science, climate, humanitarian action, anticipatory action and unprecedented extremes"},{"name":"Macarena Cardenas","url":"https://uk.linkedin.com/in/macarena-l-c%C3%A1rdenas-phd-misep-cenv-45b8b712","img":"https://i1.rgstatic.net/ii/profile.image/11431281093535734-1667235254071_Q512/Macarena-Cardenas-2.jpg","note":"Collaborator · UK, Chile","desc":"Climate, resilience, nature and the built environment"},{"name":"Erin Coughlan de Perez","url":"https://www.linkedin.com/in/erin-coughlan-de-perez-0ab33b31","img":"https://fic.tufts.edu/wp-content/uploads/Erin-Coughlan-2022.png","note":"Collaborator · USA","desc":"Science, climate, humanitarian action and anticipatory action"},{"name":"Janot Mendler de Suarez","url":"https://www.linkedin.com/in/janot-mendler-de-suarez-4952374","img":"https://i0.wp.com/waylandlibrary.org/wp-content/uploads/2022/12/3-JANOT-MENDLER-DE-SUAREZ.jpg?w=1965&amp;ssl=1","note":"Collaborator · USA","desc":"Climate, resilience, humanitarian action, games, communication and collaboration"},{"name":"Karen Dall","url":"https://www.linkedin.com/in/karendall/","img":"https://www.anticipation-hub.org/Images/_processed_/9/2/csm_karen-dall_7c7f1e03bf.jpg","note":"Collaborator · Germany","desc":"Climate, resilience, humanitarian action, anticipatory action, learning and geospatial analysis"}];
+ collaborators.forEach((c,i)=>pieces.push(page('<div class="eyebrow">People and perspectives · '+String(i+1).padStart(2,'0')+'</div><h2>'+esc(c.name)+'</h2><div class="person-photo"><img src="'+link(c.img)+'" alt="Portrait of '+esc(c.name)+'" loading="lazy"></div><div class="copy person-copy"><p>'+esc(c.note.replace(/&amp;/g,'&'))+'</p><p>'+esc(c.desc)+'</p><p><a href="'+link(c.url)+'" target="_blank" rel="noopener noreferrer">Profile ↗</a></p></div>','personpage')));
  pieces.push(page('<div class="eyebrow">The end · For now</div><h2>Where might this idea lead?</h2><p>Every reflection is a different way of looking at the same discovery.</p><p><a href="archive.html">Explore the archive ↗</a></p><p>Return tomorrow for another discovery.</p>','endpage',true));
  return pieces;
 }
@@ -435,6 +468,7 @@ function render(x){
   flip.loadFromHTML(root.querySelectorAll('.page'));root.querySelectorAll('.copy').forEach(el=>{el.addEventListener('touchstart',e=>e.stopPropagation(),{passive:true});el.addEventListener('touchmove',e=>e.stopPropagation(),{passive:true});el.addEventListener('wheel',e=>e.stopPropagation(),{passive:true})});update();
  }catch(err){console.error(err);root.classList.add('fallback');label.textContent='Read the notebook pages below';prev.disabled=true;next.disabled=true}
 }
+document.querySelectorAll('.journal-tabs button').forEach(btn=>btn.addEventListener('click',()=>{if(!flip)return;const target=sectionPages[btn.dataset.section];if(target===undefined)return;const go=()=>{if(flip)flip.flip(target)};if(flip.getCurrentPageIndex()===0){flip.flipNext();setTimeout(go,850)}else go()}));
 prev.addEventListener('click',()=>flip&&flip.flipPrev());
 next.addEventListener('click',()=>flip&&flip.flipNext());
 document.addEventListener('keydown',e=>{if(!flip||e.target.matches('input,textarea,select,button'))return;if(e.key==='ArrowRight')flip.flipNext();if(e.key==='ArrowLeft')flip.flipPrev()});
