@@ -365,6 +365,21 @@ body{background-color:#c9a17d!important;background-image:url('assets/table.jpg')
  background:linear-gradient(118deg,transparent 12%,rgba(255,255,244,.29) 25%,rgba(255,255,238,.18) 39%,transparent 56%,rgba(76,48,28,.055) 72%,transparent 84%)!important;
  mix-blend-mode:normal!important;
 }
+
+/* Trim the light border of the journal artwork without changing its apparent size. */
+.stage.open-book:before{
+ background-size:100% 100%,calc(100% + 24px) calc(100% + 24px)!important;
+ background-position:center,center!important;
+ background-repeat:no-repeat!important;
+ overflow:hidden!important;
+}
+@media(max-width:700px){
+ .stage.open-book:before{
+  background-image:url('assets/journal.png')!important;
+  background-size:calc(100% + 22px) calc(100% + 22px)!important;
+  background-position:center!important;
+ }
+}
 </style>
 <script src="https://cdn.jsdelivr.net/npm/page-flip@2.0.7/dist/js/page-flip.browser.min.js" defer></script>
 </head>
@@ -405,7 +420,7 @@ function update(){
  current=flip.getCurrentPageIndex();const total=flip.getPageCount();
  label.textContent=current===0?'Cover · Open the notebook':(current===total-1?'Last page':('Page '+current+' of '+(total-2)));
  prev.disabled=current===0;next.disabled=current>=total-1;
- document.getElementById('journal-stage').classList.toggle('open-book',current>0&&current<total-1);
+ document.getElementById('journal-stage').classList.toggle('open-book',current>0);
  
 }
 function render(x){
