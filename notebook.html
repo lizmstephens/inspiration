@@ -291,6 +291,40 @@ body{background-color:#c9a17d!important;background-image:url('assets/table.jpg')
  .stage.open-book:after{display:block!important;left:8px;top:17px;bottom:17px;width:24px;position:absolute;z-index:0;content:"";border-radius:4px 0 0 4px;background:repeating-linear-gradient(90deg,#e4d1ae 0 2px,#fff0d5 3px 5px,#ddc8a5 6px 7px);box-shadow:inset 5px 0 8px #52321c55,3px 0 6px #37211555}
  #book .page:not(.coverpage) .page-inner{margin:7px 8px!important;width:calc(100% - 16px)!important;height:calc(100% - 14px)!important}
 }
+
+/* Fixed-size cover; open spread continues beyond the mobile viewport. */
+.stage{--sunbeam:linear-gradient(115deg,transparent 17%,rgba(255,244,213,.13) 31%,rgba(255,251,229,.22) 40%,rgba(255,248,224,.10) 48%,transparent 63%);position:relative}
+.stage.open-book:before{background-image:var(--sunbeam),url('assets/journal.png')!important;background-size:100% 100%,100% 100%!important}
+.stage.open-book .page-inner:not(.cover):after{
+ content:"";position:absolute;inset:0;pointer-events:none;z-index:5;
+ background:var(--sunbeam);mix-blend-mode:soft-light;border-radius:inherit;
+}
+@media(max-width:700px){
+ html,body{overflow-x:hidden}
+ .stage{padding:13px 13px 17px 22px!important}
+ .stage.open-book{padding:13px 13px 17px 22px!important}
+ .stage.open-book:before{
+  width:calc(100% - 12px)!important;
+  left:50%!important;
+  top:5px!important;bottom:6px!important;
+  background-size:100% 100%,100% 100%!important;
+ }
+ /* A second leather board and a cream left leaf run off the screen.
+    The right board retains exactly the closed cover's dimensions. */
+ .stage.open-book{isolation:isolate}
+ .stage.open-book .page-inner:not(.cover){position:relative}
+ .stage.open-book:after{
+  content:""!important;display:block!important;position:absolute!important;
+  left:calc(-100vw + 25px)!important;right:auto!important;
+  width:calc(100vw - 9px)!important;top:5px!important;bottom:6px!important;
+  z-index:-1!important;border:0!important;
+  border-radius:18px 3px 3px 18px!important;
+  background-image:var(--sunbeam),linear-gradient(90deg,rgba(80,49,26,.13),transparent 14%,transparent 88%,rgba(65,41,22,.24)),radial-gradient(circle,rgba(151,113,74,.14) .7px,transparent 1px),url('assets/journal.png')!important;
+  background-size:100% 100%,100% 100%,17px 17px,100% 100%!important;
+  background-color:#fff3db!important;
+  box-shadow:inset -12px 0 18px -11px rgba(47,28,16,.55),0 15px 21px rgba(35,20,11,.45)!important;
+ }
+}
 </style>
 <script src="https://cdn.jsdelivr.net/npm/page-flip@2.0.7/dist/js/page-flip.browser.min.js" defer></script>
 </head>
