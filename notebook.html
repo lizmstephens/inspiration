@@ -453,6 +453,42 @@ body{background-color:#c9a17d!important;background-image:url('assets/table.jpg')
  .stage.open-book:before{z-index:-2!important}
  .archive-entry{padding:5px 3px}
 }
+
+/* Stable open spread geometry: full-size matching left leather board with inset paper. */
+.stage .left-cover{display:none}
+.stage.open-book .left-cover{
+ display:block;position:absolute;pointer-events:none;
+ width:calc(100% - 12px);left:6px;top:46px;bottom:6px;
+ transform:translateX(-100%);z-index:0;
+ background:url('assets/journal.png') center/100% 100% no-repeat;
+ border-radius:20px;box-shadow:0 16px 22px rgba(35,20,11,.43);
+}
+.stage.open-book .left-cover:after{
+ content:"";position:absolute;inset:15px 13px 17px 13px;
+ border-radius:16px;
+ background-color:#fff2d9;
+ background-image:linear-gradient(90deg,rgba(255,255,255,.2),transparent 65%,rgba(74,46,26,.22)),radial-gradient(circle,rgba(151,113,74,.14) .7px,transparent 1px);
+ background-size:100% 100%,17px 17px;
+ box-shadow:inset -15px 0 20px -12px rgba(54,33,17,.55),0 3px 7px rgba(39,22,12,.2);
+}
+.stage.open-book:after{display:none!important}
+.stage{padding-top:64px!important}
+.stage.open-book:before{top:46px!important}
+.journal-tabs{top:10px!important;right:24px!important;z-index:3!important;align-items:flex-end}
+.journal-tabs button{min-height:57px;padding:9px 15px 23px!important;line-height:1.2!important;font-size:20px!important;white-space:nowrap}
+#book{z-index:4!important}
+@media(max-width:700px){
+ .stage{padding-top:64px!important}
+ .stage.open-book{padding-top:64px!important}
+ .stage.open-book .left-cover{
+  left:6px;top:46px;bottom:6px;width:calc(100% - 12px);
+  transform:translateX(-100%);
+ }
+ .stage.open-book .left-cover:after{inset:15px 12px 17px 12px;border-radius:16px}
+ .stage.open-book:before{top:46px!important}
+ .journal-tabs{top:9px!important;right:13px!important;gap:5px!important}
+ .journal-tabs button{font-size:18px!important;min-height:56px;padding:8px 12px 23px!important}
+}
 </style>
 <script src="https://cdn.jsdelivr.net/npm/page-flip@2.0.7/dist/js/page-flip.browser.min.js" defer></script>
 </head>
@@ -460,7 +496,7 @@ body{background-color:#c9a17d!important;background-image:url('assets/table.jpg')
 
 
 <main>
- <div class="stage" id="journal-stage"><div class="journal-tabs"><button type="button" data-section="archive">Archive</button><button type="button" data-section="about">About</button><button type="button" data-section="collaborators">Collaborators</button></div><div id="book" aria-label="Interactive discovery notebook"></div></div>
+ <div class="stage" id="journal-stage"><div class="left-cover" aria-hidden="true"></div><div class="journal-tabs"><button type="button" data-section="archive">Archive</button><button type="button" data-section="about">About</button><button type="button" data-section="collaborators">Collaborators</button></div><div id="book" aria-label="Interactive discovery notebook"></div></div>
  <div class="controls"><button id="prev" aria-label="Previous page" disabled>‹</button><div id="page-label" aria-live="polite">Opening notebook…</div><button id="next" aria-label="Next page" disabled>›</button></div>
 </main>
 <script>
