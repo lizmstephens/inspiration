@@ -268,6 +268,29 @@ body{background-color:#c9a17d!important;background-image:url('assets/table.jpg')
  #book .page-logo{width:34px;height:34px;right:15px;top:15px}
  #book .page:not(.coverpage) .page-inner{margin:5px 6px!important;width:calc(100% - 12px)!important;height:calc(100% - 10px)!important}
 }
+
+/* Use the actual uploaded leather journal artwork, not a CSS approximation. */
+.stage:before{
+ background:#6b4935 url('assets/journal.png') center center / 100% 100% no-repeat!important;
+ border:0!important;
+ border-radius:20px!important;
+ box-shadow:0 16px 22px rgba(35,20,11,.48),0 27px 32px rgba(35,20,11,.22)!important;
+}
+.stage:not(.open-book):before{display:none!important}
+.stage.open-book:before{display:block!important}
+.stage.open-book:after{display:none!important}
+#book .page:not(.coverpage){background:transparent!important;border:0!important;box-shadow:none!important}
+#book .page:not(.coverpage) .page-inner{
+ margin:10px 13px!important;width:calc(100% - 26px)!important;height:calc(100% - 20px)!important;
+ border:1px solid #d9c7a6!important;
+ box-shadow:inset 12px 0 16px -14px rgba(49,28,15,.7),0 2px 5px rgba(42,24,13,.27)!important;
+}
+@media(max-width:700px){
+ .stage.open-book{padding-left:31px!important;padding-right:13px!important}
+ .stage.open-book:before{left:50%;width:calc(100% - 8px);top:3px;bottom:4px}
+ .stage.open-book:after{display:block!important;left:8px;top:17px;bottom:17px;width:24px;position:absolute;z-index:0;content:"";border-radius:4px 0 0 4px;background:repeating-linear-gradient(90deg,#e4d1ae 0 2px,#fff0d5 3px 5px,#ddc8a5 6px 7px);box-shadow:inset 5px 0 8px #52321c55,3px 0 6px #37211555}
+ #book .page:not(.coverpage) .page-inner{margin:7px 8px!important;width:calc(100% - 16px)!important;height:calc(100% - 14px)!important}
+}
 </style>
 <script src="https://cdn.jsdelivr.net/npm/page-flip@2.0.7/dist/js/page-flip.browser.min.js" defer></script>
 </head>
