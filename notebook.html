@@ -325,6 +325,46 @@ body{background-color:#c9a17d!important;background-image:url('assets/table.jpg')
   box-shadow:inset -12px 0 18px -11px rgba(47,28,16,.55),0 15px 21px rgba(35,20,11,.45)!important;
  }
 }
+
+/* Correct the open spread: a genuine paper leaf to the left of the gutter. */
+@media(max-width:700px){
+ .stage.open-book{overflow:visible!important}
+ .stage.open-book:after{
+  content:""!important;display:block!important;
+  position:absolute!important;
+  left:calc(-100vw + 22px)!important;
+  width:calc(100vw + 5px)!important;
+  top:21px!important;bottom:23px!important;
+  z-index:0!important;
+  border:1px solid #d7c29f!important;
+  border-radius:17px 4px 4px 17px!important;
+  background-color:#fff2d9!important;
+  background-image:
+   linear-gradient(90deg,rgba(255,255,255,.12) 0%,transparent 65%,rgba(91,59,32,.19) 96%,rgba(61,39,24,.32) 100%),
+   radial-gradient(circle,rgba(151,113,74,.14) .7px,transparent 1px)!important;
+  background-size:100% 100%,17px 17px!important;
+  box-shadow:inset -13px 0 16px -11px rgba(60,37,18,.5),0 6px 10px rgba(36,22,11,.3)!important;
+  pointer-events:none;
+ }
+ .stage.open-book:before{
+  background-image:url('assets/journal.png')!important;
+  background-size:100% 100%!important;
+ }
+ .stage.open-book #book{z-index:1}
+}
+/* Light and page curvature: visible over the entire page, but never over text as an opaque layer. */
+#book .page:not(.coverpage) .page-inner{
+ background-image:
+  linear-gradient(105deg,rgba(85,57,31,.23) 0%,rgba(92,62,35,.09) 7%,transparent 19%,transparent 77%,rgba(101,65,32,.13) 96%,rgba(84,52,26,.2) 100%),
+  linear-gradient(128deg,transparent 10%,rgba(255,255,245,.62) 25%,rgba(255,250,225,.35) 39%,transparent 54%,rgba(110,77,45,.09) 74%,transparent 86%),
+  radial-gradient(circle,rgba(151,113,74,.14) .7px,transparent 1px)!important;
+ background-size:100% 100%,100% 100%,17px 17px!important;
+ box-shadow:inset 17px 0 19px -14px rgba(55,34,17,.52),inset -8px 0 12px -10px rgba(70,44,23,.36),0 2px 5px rgba(42,24,13,.27)!important;
+}
+#book .page-inner:not(.cover):after{
+ background:linear-gradient(118deg,transparent 12%,rgba(255,255,244,.29) 25%,rgba(255,255,238,.18) 39%,transparent 56%,rgba(76,48,28,.055) 72%,transparent 84%)!important;
+ mix-blend-mode:normal!important;
+}
 </style>
 <script src="https://cdn.jsdelivr.net/npm/page-flip@2.0.7/dist/js/page-flip.browser.min.js" defer></script>
 </head>
