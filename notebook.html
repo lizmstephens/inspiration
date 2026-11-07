@@ -406,6 +406,22 @@ body{background-color:#c9a17d!important;background-image:url('assets/table.jpg')
  .person-photo{max-width:185px}
  .person-photo img{height:145px}
 }
+
+/* Left-hand leaf: paper inset inside a visible leather board, matching right corners. */
+@media(max-width:700px){
+ .stage.open-book:after{
+  border:10px solid transparent!important;
+  border-radius:21px 17px 17px 21px!important;
+  background-image:
+   linear-gradient(100deg,rgba(102,67,37,.12),transparent 60%,rgba(75,47,27,.26)),
+   radial-gradient(circle,rgba(151,113,74,.14) .7px,transparent 1px),
+   url('assets/journal.png')!important;
+  background-origin:padding-box,padding-box,border-box!important;
+  background-clip:padding-box,padding-box,border-box!important;
+  background-size:100% 100%,17px 17px,100% 100%!important;
+  background-color:#fff2d9!important;
+ }
+}
 </style>
 <script src="https://cdn.jsdelivr.net/npm/page-flip@2.0.7/dist/js/page-flip.browser.min.js" defer></script>
 </head>
@@ -465,7 +481,7 @@ function render(x){
  try{
   flip=new St.PageFlip(root,{width:430,height:590,size:'stretch',minWidth:285,maxWidth:490,minHeight:405,maxHeight:680,maxShadowOpacity:.3,showCover:true,usePortrait:true,drawShadow:true,flippingTime:700,autoSize:true,mobileScrollSupport:true,clickEventForward:true});
   flip.on('flip',update);flip.on('changeOrientation',update);
-  flip.loadFromHTML(root.querySelectorAll('.page'));root.querySelectorAll('.copy').forEach(el=>{el.addEventListener('touchstart',e=>e.stopPropagation(),{passive:true});el.addEventListener('touchmove',e=>e.stopPropagation(),{passive:true});el.addEventListener('wheel',e=>e.stopPropagation(),{passive:true})});update();
+  flip.loadFromHTML(root.querySelectorAll('.page'));root.querySelectorAll('.copy').forEach(el=>{el.addEventListener('touchmove',e=>e.stopPropagation(),{passive:true});el.addEventListener('wheel',e=>e.stopPropagation(),{passive:true})});update();
  }catch(err){console.error(err);root.classList.add('fallback');label.textContent='Read the notebook pages below';prev.disabled=true;next.disabled=true}
 }
 document.querySelectorAll('.journal-tabs button').forEach(btn=>btn.addEventListener('click',()=>{if(!flip)return;const target=sectionPages[btn.dataset.section];if(target===undefined)return;const go=()=>{if(flip)flip.flip(target)};if(flip.getCurrentPageIndex()===0){flip.flipNext();setTimeout(go,850)}else go()}));
