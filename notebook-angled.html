@@ -1567,6 +1567,19 @@ body{
 #book .archivepage .archive-entry strong{font-size:21px!important;line-height:1.25!important}
 #book .archivepage .archive-entry span{font-size:16px!important;line-height:1.2!important}
 #book .archivepage h2{font-size:25px!important}
+
+/* A touch more seated perspective, with no sideways rotation. */
+@media(min-width:701px){
+ .stage,.stage.open-book,.stage:not(.open-book){
+  transform:perspective(2050px) rotateX(13deg) rotateZ(0deg)!important;
+ }
+}
+@media(max-width:700px){
+ .stage,.stage.open-book{
+  transform:perspective(1900px) rotateX(10deg) rotateZ(0deg)!important;
+ }
+ #book .static-left{display:none!important}
+}
 </style>
 <script src="https://cdn.jsdelivr.net/npm/page-flip@2.0.7/dist/js/page-flip.browser.min.js" defer></script>
 </head>
@@ -1653,11 +1666,12 @@ function showSheet(){
  stage.style.cursor=opened?'default':'pointer';
  root.innerHTML='';
  const right=sheets[sheetIndex];
- const left=opened&&sheetIndex>1?sheets[sheetIndex-1]:null;
+ const mobileSingle=window.matchMedia('(max-width:700px)').matches;
+ const left=!mobileSingle&&opened&&sheetIndex>1?sheets[sheetIndex-1]:null;
  if(left){const holder=document.createElement('div');holder.className='static-leaf static-left';holder.innerHTML=left;root.appendChild(holder)}
  if(opened&&right){const holder=document.createElement('div');holder.className='static-leaf static-right';holder.innerHTML=right;root.appendChild(holder);holder.addEventListener('click',e=>{if(e.target.closest('a,button,.archive-entry,.copy,.archive-list'))return;flip.flipNext()})}
  const total=sheets.length;
- label.textContent=sheetIndex===0?'Cover · Open the notebook':'Pages '+Math.max(1,sheetIndex-1)+'–'+sheetIndex+' of '+(total-1);
+ label.textContent=sheetIndex===0?'Cover · Open the notebook':(mobileSingle?'Page '+sheetIndex+' of '+(total-1):'Pages '+Math.max(1,sheetIndex-1)+'–'+sheetIndex+' of '+(total-1));
  prev.disabled=sheetIndex===0;next.disabled=sheetIndex>=total-1;
  root.querySelectorAll('[data-today]').forEach(el=>el.addEventListener('click',()=>turnTo(sectionPages.today,'next')));
  root.querySelectorAll('.archive-entry[data-entry-id]').forEach(el=>el.addEventListener('click',()=>{
@@ -1667,8 +1681,8 @@ function showSheet(){
 }
 flip={
  getCurrentPageIndex:()=>sheetIndex,getPageCount:()=>sheets.length,
- flipNext:()=>turnTo(sheetIndex===0?1:Math.min(sheets.length-1,sheetIndex+2),'next'),
- flipPrev:()=>turnTo(sheetIndex<=1?0:Math.max(1,sheetIndex-2),'prev'),
+ flipNext:()=>turnTo(sheetIndex===0?1:Math.min(sheets.length-1,sheetIndex+(window.matchMedia('(max-width:700px)').matches?1:2)),'next'),
+ flipPrev:()=>turnTo(sheetIndex<=1?0:Math.max(1,sheetIndex-(window.matchMedia('(max-width:700px)').matches?1:2)),'prev'),
  flip:(n)=>turnTo(Math.max(1,Math.min(sheets.length-1,n)),'next'),
  destroy:()=>{}
 };
