@@ -786,6 +786,24 @@ main{width:100%;max-width:none!important;overflow:hidden}
  background-size:17px 17px!important;
  background-color:#fff4e0!important;
 }
+
+/* Per-line highlighter: clone the painted background across wrapped
+   inline fragments instead of drawing one rectangle behind the whole h2. */
+#book .page h2{
+ display:inline!important;
+ align-self:auto!important;
+ width:auto!important;
+ max-width:100%!important;
+ background:linear-gradient(to bottom,
+  transparent 53%,rgba(247,189,158,.58) 53%,
+  rgba(247,189,158,.58) 88%,transparent 88%)!important;
+ box-decoration-break:clone!important;
+ -webkit-box-decoration-break:clone!important;
+ padding:0 7px 2px 3px!important;
+ position:relative!important;
+ isolation:auto!important;
+}
+#book .page h2::before,#book .page h2::after{content:none!important;display:none!important}
 </style>
 <script src="https://cdn.jsdelivr.net/npm/page-flip@2.0.7/dist/js/page-flip.browser.min.js" defer></script>
 </head>
