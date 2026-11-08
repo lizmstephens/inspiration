@@ -1192,6 +1192,27 @@ main{width:100%;max-width:none!important;overflow:hidden}
 }
 .stage .journal-tabs button::before{content:none!important;display:none!important}
 .stage .journal-tabs{filter:drop-shadow(2px 4px 3px rgba(45,28,18,.33))!important}
+
+/* Plain paper tabs: no scallops, outlines or drawn fold lines.
+   Only a soft occlusion shadow where the book overlaps the paper. */
+.stage .journal-tabs button,
+.stage.open-book .journal-tabs button{
+ clip-path:none!important;
+ border:none!important;
+ border-radius:9px 9px 0 0!important;
+ background-image:none!important;
+ box-shadow:none!important;
+ filter:none!important;
+}
+.stage .journal-tabs button::before,
+.stage .journal-tabs button::after{
+ content:none!important;
+ display:none!important;
+}
+.stage .journal-tabs{filter:none!important}
+.stage .journal-tabs button{
+ box-shadow:inset 0 -9px 9px -8px rgba(55,35,22,.36)!important;
+}
 </style>
 <script src="https://cdn.jsdelivr.net/npm/page-flip@2.0.7/dist/js/page-flip.browser.min.js" defer></script>
 </head>
