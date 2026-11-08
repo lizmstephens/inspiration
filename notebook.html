@@ -701,6 +701,21 @@ main{width:100%;max-width:none!important;overflow:hidden}
 #book .static-right .copy{cursor:auto}
 .controls{z-index:20!important;pointer-events:auto!important}
 .controls button{position:relative!important;z-index:21!important;pointer-events:auto!important}
+
+/* Both paper leaves share one exact central boundary of the open cover.
+   Open cover artwork bounds x=396..1304, midpoint x=850. */
+#book .static-leaf.static-left{
+ left:25.78125%!important;
+ width:29.5572916667%!important;
+ right:auto!important;
+}
+#book .static-leaf.static-right{
+ left:55.3385416667%!important;
+ width:29.5572916667%!important;
+ right:auto!important;
+}
+#book .static-leaf{box-sizing:border-box!important;padding:0!important;margin:0!important;transform:none!important}
+#book .static-leaf>.page{box-sizing:border-box!important;width:100%!important;height:100%!important}
 </style>
 <script src="https://cdn.jsdelivr.net/npm/page-flip@2.0.7/dist/js/page-flip.browser.min.js" defer></script>
 </head>
