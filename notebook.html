@@ -489,6 +489,45 @@ body{background-color:#c9a17d!important;background-image:url('assets/table.jpg')
  .journal-tabs{top:9px!important;right:13px!important;gap:5px!important}
  .journal-tabs button{font-size:18px!important;min-height:56px;padding:8px 12px 23px!important}
 }
+
+/* Layered journal rebuild: the table and illumination never move. */
+html,body{min-height:100%;overflow-x:hidden}
+body{background:#b88a5c url('assets/01_oak_table.png') center top / cover fixed no-repeat!important;color:#4a3025}
+main{position:relative;max-width:1536px;margin:0 auto}
+.stage,.stage.open-book{position:relative;isolation:isolate;max-width:1100px;width:100%;min-height:0!important;margin:18px auto 0;padding:54px 15px 8px!important;background:none!important;box-shadow:none!important;overflow:visible!important}
+.stage:before,.stage:after,.stage.open-book:before,.stage.open-book:after{content:none!important;display:none!important}
+.stage .left-cover{display:none!important}
+.open-leather{position:absolute;pointer-events:none;display:none;z-index:0;top:54px;left:50%;width:min(100%,1000px);height:calc(100% - 62px);transform:translateX(-50%);background:url('assets/03_open_book.png') center / 100% 100% no-repeat;filter:drop-shadow(0 14px 13px rgba(43,23,11,.32))}
+.stage.open-book .open-leather{display:block}
+.sunlight{position:fixed;pointer-events:none;z-index:30;inset:0;background:url('assets/04_lighting_overlay.png') center top / cover no-repeat;opacity:.26;mix-blend-mode:multiply}
+#book{position:relative;z-index:2!important;width:100%;max-width:1000px;margin:0 auto}
+#book .page{border-radius:16px!important;overflow:hidden;background:#fff2db!important;border:1px solid #dfc9a9!important}
+#book .page-inner:not(.cover){background-color:#fff4df!important;background-image:linear-gradient(90deg,rgba(74,45,22,.15),transparent 12%,transparent 86%,rgba(76,47,27,.11)),radial-gradient(circle,rgba(143,106,66,.14) .7px,transparent 1px)!important;background-size:100% 100%,17px 17px!important;box-shadow:inset 8px 0 16px -12px #42271470!important;border-radius:15px!important}
+#book .coverpage,#book .coverpage .page-inner{background:transparent!important;border:0!important;box-shadow:none!important;padding:0!important}
+#book .coverpage .journal-cover-art{width:100%!important;height:100%!important;object-fit:fill!important;transform:none!important;display:block}
+#book .page-inner:not(.cover):after{display:none!important}
+#book .page-inner:before{display:none!important}
+#book .page .copy{touch-action:pan-y;overscroll-behavior:contain}
+.journal-tabs{position:absolute!important;display:flex;visibility:hidden;pointer-events:none;z-index:1!important;top:7px!important;right:calc(50% - min(50%,500px) + 25px)!important;gap:6px!important;align-items:flex-start}
+.stage.open-book .journal-tabs{visibility:visible;pointer-events:auto}
+.journal-tabs button{background:#ead3ac!important;border:1px solid #aa7b54!important;border-radius:10px 10px 0 0!important;color:#513826!important;min-height:54px!important;padding:7px 15px 22px!important;font:600 20px 'Caveat',cursive!important;box-shadow:0 -2px 5px #40281930;white-space:nowrap}
+.journal-tabs button:nth-child(2){background:#e9bd9e!important}
+.journal-tabs button:nth-child(3){background:#d9cba6!important}
+.controls{position:relative;z-index:3;margin:7px auto 25px}
+.controls button{background:#583a2bbf!important;color:#fff4df!important;border:1px solid #ead0a9!important}
+#page-label{color:#fff8e9!important;text-shadow:0 1px 4px #321a0e}
+.reflection .copy{font-size:clamp(14px,1.4vw,16px)!important;line-height:1.55!important}
+.page h2{font-family:'Caveat',cursive!important;font-weight:700!important;background:linear-gradient(transparent 54%,#f8d0b7 54%,#f8d0b7 90%,transparent 90%);align-self:flex-start;padding:0 9px 0 3px}
+@media(max-width:700px){
+ .stage,.stage.open-book{padding:55px 0 0!important;margin:0 auto!important}
+ .open-leather{top:55px;width:calc(200% - 14px);left:calc(50% - 50% + 7px);transform:translateX(-50%);height:calc(100% - 55px);background-size:100% 100%}
+ #book{width:100%;max-width:none}
+ .journal-tabs{top:8px!important;right:10px!important;gap:4px!important}
+ .journal-tabs button{font-size:17px!important;min-height:53px!important;padding:7px 9px 22px!important}
+ .page .page-inner{padding:22px!important}
+ #book .coverpage .page-inner{padding:0!important}
+ .sunlight{opacity:.20}
+}
 </style>
 <script src="https://cdn.jsdelivr.net/npm/page-flip@2.0.7/dist/js/page-flip.browser.min.js" defer></script>
 </head>
@@ -496,7 +535,7 @@ body{background-color:#c9a17d!important;background-image:url('assets/table.jpg')
 
 
 <main>
- <div class="stage" id="journal-stage"><div class="left-cover" aria-hidden="true"></div><div class="journal-tabs"><button type="button" data-section="archive">Archive</button><button type="button" data-section="about">About</button><button type="button" data-section="collaborators">Collaborators</button></div><div id="book" aria-label="Interactive discovery notebook"></div></div>
+ <div class="stage" id="journal-stage"><div class="open-leather" aria-hidden="true"></div><div class="sunlight" aria-hidden="true"></div><div class="journal-tabs"><button type="button" data-section="archive">Archive</button><button type="button" data-section="about">About</button><button type="button" data-section="collaborators">Collaborators</button></div><div id="book" aria-label="Interactive discovery notebook"></div></div>
  <div class="controls"><button id="prev" aria-label="Previous page" disabled>‹</button><div id="page-label" aria-live="polite">Opening notebook…</div><button id="next" aria-label="Next page" disabled>›</button></div>
 </main>
 <script>
@@ -513,7 +552,7 @@ function foot(number,kind){return ''}
 function thoughtsTitle(name){let n=String(name||'Contributor').trim().split(/\s+/)[0];return esc(n)+(n.toLowerCase().endsWith('s')?'’':'’s')+' Thoughts'}
 function build(x){
  let pieces=[];sectionPages={};
- pieces.push(page('<img src="assets/journal.png" class="journal-cover-art" alt="Leather notebook cover embossed with a hummingbird" draggable="false">','coverpage',true));
+ pieces.push(page('<img src="assets/02_closed_book.png" class="journal-cover-art" alt="Leather notebook cover embossed with a hummingbird" draggable="false" onerror="this.src=\'assets/journal.png\'">','coverpage',true));
  const img=x.image?'<figure class="paper-photo"><img src="'+link(x.image)+'" alt="Image accompanying '+esc(x.title)+'" loading="lazy"><figcaption class="photo-credit">'+(x.image_credit_url?'<a href="'+link(x.image_credit_url)+'" target="_blank" rel="noopener noreferrer">'+esc(x.image_credit||'Image source')+'</a>':esc(x.image_credit||''))+(x.image_license_url?' · <a href="'+link(x.image_license_url)+'" target="_blank" rel="noopener noreferrer">Licence</a>':'')+'</figcaption></figure>':'';
  const tags=(x.tags||[]).map(t=>'<span class="tag">'+esc(t)+'</span>').join('');
  let sources=(x.sources&&x.sources.length?x.sources:[{url:x.source}]).filter(a=>a.url);
@@ -523,7 +562,7 @@ function build(x){
  reflections.filter(r=>r.text&&String(r.text).trim()).forEach((r,i)=>{pieces.push(page('<div class="eyebrow">A different perspective · '+String(i+1).padStart(2,'0')+'</div><h2 class="reflection-head">'+esc(r.name)+'</h2><div class="copy"><p>'+esc(r.text)+'</p></div>'+foot(String(i+2).padStart(2,'0'),r.name),'reflection'))});
 
  sectionPages.archive=pieces.length;
- const previous=all.filter(item=>item.id!==x.id);
+ const previous=all.slice();
  const perPage=11;
  for(let j=0;j<previous.length;j+=perPage){
   const group=previous.slice(j,j+perPage);
@@ -554,7 +593,7 @@ function render(x){
    root.classList.add('fallback');label.textContent='Notebook pages (animation unavailable)';prev.disabled=true;next.disabled=true;return;
  }
  try{
-  flip=new St.PageFlip(root,{width:430,height:590,size:'stretch',minWidth:285,maxWidth:490,minHeight:405,maxHeight:680,maxShadowOpacity:.3,showCover:true,usePortrait:true,drawShadow:true,flippingTime:700,autoSize:true,mobileScrollSupport:true,clickEventForward:true});
+  flip=new St.PageFlip(root,{width:430,height:590,size:'stretch',minWidth:285,maxWidth:490,minHeight:405,maxHeight:680,maxShadowOpacity:.28,showCover:true,usePortrait:true,drawShadow:true,flippingTime:700,autoSize:true,mobileScrollSupport:true,clickEventForward:true});
   flip.on('flip',update);flip.on('changeOrientation',update);
   flip.loadFromHTML(root.querySelectorAll('.page'));root.querySelectorAll('.archive-entry').forEach(el=>el.addEventListener('click',()=>{const item=all.find(y=>y.id===el.dataset.entryId);if(item){history.replaceState(null,'','?id='+encodeURIComponent(item.id));render(item);if(flip)flip.flipNext()}}));root.querySelectorAll('.copy').forEach(el=>{el.addEventListener('touchmove',e=>e.stopPropagation(),{passive:true});el.addEventListener('wheel',e=>e.stopPropagation(),{passive:true})});update();
  }catch(err){console.error(err);root.classList.add('fallback');label.textContent='Read the notebook pages below';prev.disabled=true;next.disabled=true}
