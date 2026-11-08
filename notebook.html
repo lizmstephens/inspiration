@@ -884,6 +884,27 @@ main{width:100%;max-width:none!important;overflow:hidden}
  background-position:0 -7px!important;
  background-size:auto 100%!important;
 }
+
+/* Loose single-pass marker scrawl, with uneven tapered ends and a
+   slight upward slant; cloned for wrapped heading fragments. */
+#book .page h2{
+ background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 500 100' preserveAspectRatio='none'%3E%3Cpath fill='%23efac8f' fill-opacity='.48' d='M1 60 Q13 47 31 45 L78 42 Q116 43 157 39 L206 35 Q247 38 290 31 L336 29 Q375 31 414 24 L466 19 Q487 19 499 12 L492 67 Q480 72 464 73 L421 75 Q379 76 337 79 L289 80 Q250 84 209 82 L159 85 Q114 86 75 88 L33 88 Q16 87 4 94 L10 80 Z'/%3E%3Cpath fill='%23f6bea6' fill-opacity='.26' d='M9 69 Q64 61 121 60 T244 53 T367 44 T491 32 L483 65 Q374 70 252 79 T11 89 Z'/%3E%3C/svg%3E")!important;
+ background-repeat:repeat-x!important;
+ background-size:auto 100%!important;
+ background-position:0 -7px!important;
+ -webkit-box-decoration-break:clone!important;
+ box-decoration-break:clone!important;
+}
+/* Use more of the mobile viewport without moving the page away from
+   the screen centre: the right leaf's midpoint is 70.117% of scene. */
+@media(max-width:700px){
+ .stage,.stage.open-book{
+  width:1320px!important;
+  height:880px!important;
+  margin-left:calc(50vw - 925.55px)!important;
+ }
+ .controls{margin-top:-110px!important}
+}
 </style>
 <script src="https://cdn.jsdelivr.net/npm/page-flip@2.0.7/dist/js/page-flip.browser.min.js" defer></script>
 </head>
