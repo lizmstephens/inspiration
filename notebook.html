@@ -747,6 +747,13 @@ main{width:100%;max-width:none!important;overflow:hidden}
 }
 /* No category chips beneath the story headline. */
 #book .story .tags{display:none!important}
+
+/* Move bookmark tabs another 65 physical pixels right on phone. */
+@media(max-width:700px){
+ .stage .journal-tabs,.stage.open-book .journal-tabs{
+  left:calc(54% + 65px)!important;
+ }
+}
 </style>
 <script src="https://cdn.jsdelivr.net/npm/page-flip@2.0.7/dist/js/page-flip.browser.min.js" defer></script>
 </head>
