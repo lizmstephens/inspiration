@@ -1300,6 +1300,19 @@ main{width:100%;max-width:none!important;overflow:hidden}
 #book .page-turn-sheet .turn-face::after{
  background:linear-gradient(90deg,rgba(54,37,25,.12),transparent 22%,transparent 80%,rgba(54,37,25,.08))!important;
 }
+
+/* The turn surface inherits the measured stationary paper size.
+   Avoid older min-height rules expanding the nested faces on desktop. */
+#book .page-turn-sheet,
+#book .page-turn-sheet .turn-face,
+#book .page-turn-sheet .turn-face>.page,
+#book .page-turn-sheet .turn-face>.page>.page-inner{
+ min-width:0!important;min-height:0!important;
+ max-width:100%!important;max-height:100%!important;
+}
+#book .page-turn-sheet .turn-face>.page>.page-inner{
+ overflow:hidden!important;
+}
 </style>
 <script src="https://cdn.jsdelivr.net/npm/page-flip@2.0.7/dist/js/page-flip.browser.min.js" defer></script>
 </head>
@@ -1416,6 +1429,15 @@ function turnTo(target,direction){
  const front=forward?oldHTML:newHTML;
  const back=forward?newHTML:oldHTML;
  leaf.innerHTML='<div class="turn-face turn-front">'+front+'</div><div class="turn-face turn-backface">'+back+'</div>';
+ // Match the actual rendered paper, not the nominal percentage-based geometry.
+ const reference=root.querySelector('.static-right:not(.page-turn-sheet)');
+ if(reference){
+  const r=reference.getBoundingClientRect(),base=root.getBoundingClientRect();
+  leaf.style.setProperty('left',(r.left-base.left)+'px','important');
+  leaf.style.setProperty('top',(r.top-base.top)+'px','important');
+  leaf.style.setProperty('width',r.width+'px','important');
+  leaf.style.setProperty('height',r.height+'px','important');
+ }
  root.appendChild(leaf);
  requestAnimationFrame(()=>requestAnimationFrame(()=>leaf.classList.add('turn-active')));
  setTimeout(()=>{leaf.remove();turning=false},760);
