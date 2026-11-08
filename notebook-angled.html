@@ -1466,6 +1466,29 @@ main{width:100%;max-width:none!important;overflow:hidden}
   transform:perspective(1700px) rotateX(9deg) rotateZ(-3deg)!important;
  }
 }
+
+/* Seated-at-a-coffee-table camera: a stronger foreshortening angle,
+   with warm timber extending beyond the book and directional window light. */
+html{background:#ad835d!important}
+body{
+ background:
+ linear-gradient(115deg,rgba(255,243,211,.26) 0%,rgba(255,243,211,.04) 35%,rgba(57,33,19,.23) 100%),
+ url('assets/01_oak_table.png') center center / cover fixed no-repeat!important;
+}
+@media(min-width:701px){
+ .stage,.stage.open-book,.stage:not(.open-book){
+  transform:perspective(1250px) rotateX(29deg) rotateZ(-7deg)!important;
+  transform-origin:55.33854% 55%!important;
+  margin-top:-120px!important;
+  filter:drop-shadow(20px 35px 20px rgba(37,23,12,.34))!important;
+ }
+}
+@media(max-width:700px){
+ .stage,.stage.open-book{
+  transform:perspective(1250px) rotateX(21deg) rotateZ(-5deg)!important;
+  transform-origin:55.33854% 55%!important;
+ }
+}
 </style>
 <script src="https://cdn.jsdelivr.net/npm/page-flip@2.0.7/dist/js/page-flip.browser.min.js" defer></script>
 </head>
