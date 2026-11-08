@@ -1092,6 +1092,26 @@ main{width:100%;max-width:none!important;overflow:hidden}
  -webkit-box-decoration-break:clone!important;
  box-decoration-break:clone!important;
 }
+
+/* Make the bird larger inside the same opaque circular sticker. */
+#book .page-logo{padding:2px!important}
+/* Close contact shadow: a glued photograph, not a floating card. */
+#book .story .story-intro .paper-photo{
+ box-shadow:1px 2px 3px rgba(45,30,19,.48),0 0 1px rgba(45,30,19,.5)!important;
+}
+/* Bookmark paper casts a small directional shadow onto the oak. */
+.stage .journal-tabs button{
+ box-shadow:2px 5px 5px rgba(48,29,17,.42),0 2px 2px rgba(48,29,17,.26)!important;
+}
+/* The bookmarks stay behind the closed leather cover but their tops show. */
+.stage:not(.open-book) .journal-tabs{
+ visibility:visible!important;
+ pointer-events:auto!important;
+ z-index:6!important;
+}
+.stage:not(.open-book) .journal-tabs button{
+ box-shadow:2px 5px 5px rgba(48,29,17,.42)!important;
+}
 </style>
 <script src="https://cdn.jsdelivr.net/npm/page-flip@2.0.7/dist/js/page-flip.browser.min.js" defer></script>
 </head>
