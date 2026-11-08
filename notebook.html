@@ -636,6 +636,23 @@ main{width:100%;max-width:none!important;overflow:hidden}
 }
 #book .inside-cover .page-inner:before,#book .inside-cover .page-inner:after{display:none!important}
 .stage.open-book .open-leather{z-index:0!important}
+
+/* Phone: single right-hand leaf; desktop: complete two-page spread. */
+@media(max-width:700px){
+ .stage,.stage.open-book{
+  width:1180px!important;height:786.667px!important;
+  margin-left:calc(50vw - 789px)!important;
+ }
+ /* PageFlip's portrait orientation displays one leaf. Anchor it to
+    the physical right cover (source x 851..1304), not the spread's left. */
+ #book{
+  left:calc(851 / 1536 * 100%)!important;
+  top:18.65234375%!important;
+  width:calc(453 / 1536 * 100%)!important;
+  height:62.6953125%!important;
+ }
+ .journal-tabs{right:15%!important}
+}
 </style>
 <script src="https://cdn.jsdelivr.net/npm/page-flip@2.0.7/dist/js/page-flip.browser.min.js" defer></script>
 </head>
