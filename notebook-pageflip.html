@@ -1213,6 +1213,39 @@ main{width:100%;max-width:none!important;overflow:hidden}
 .stage .journal-tabs button{
  box-shadow:inset 0 -9px 9px -8px rgba(55,35,22,.36)!important;
 }
+
+/* Isolated page-turn experiment: leaf keeps exactly the existing page coordinates. */
+#book{perspective:1700px!important;perspective-origin:55.33854167% 50%!important}
+#book .page-turn-sheet{
+ z-index:15!important;
+ overflow:visible!important;
+ transform-style:preserve-3d!important;
+ transform-origin:left center!important;
+ transition:transform 700ms cubic-bezier(.35,.05,.25,1)!important;
+ pointer-events:none!important;
+}
+#book .page-turn-sheet.turn-next{transform:rotateY(0deg)!important}
+#book .page-turn-sheet.turn-next.turn-active{transform:rotateY(-168deg)!important}
+#book .page-turn-sheet.turn-previous{transform:rotateY(-168deg)!important}
+#book .page-turn-sheet.turn-previous.turn-active{transform:rotateY(0deg)!important}
+#book .page-turn-sheet .turn-face{
+ position:absolute!important;inset:0!important;
+ backface-visibility:hidden!important;
+ -webkit-backface-visibility:hidden!important;
+ overflow:hidden!important;
+ background:#faf4e6!important;
+}
+#book .page-turn-sheet .turn-face>.page{height:100%!important;width:100%!important}
+#book .page-turn-sheet .turn-backface{transform:rotateY(180deg)!important}
+#book .page-turn-sheet .turn-face::after{
+ content:"";position:absolute;inset:0;pointer-events:none;
+ background:linear-gradient(90deg,rgba(54,37,25,.24),transparent 17%,transparent 70%,rgba(54,37,25,.13));
+ opacity:.55;
+}
+#book .page-turn-sheet.turn-active .turn-face::after{opacity:.8}
+@media(prefers-reduced-motion:reduce){
+ #book .page-turn-sheet{transition:none!important}
+}
 </style>
 <script src="https://cdn.jsdelivr.net/npm/page-flip@2.0.7/dist/js/page-flip.browser.min.js" defer></script>
 </head>
@@ -1315,19 +1348,23 @@ flip={
 };
 function turnTo(target,direction){
  if(turning||target<0||target>=sheets.length||target===sheetIndex)return;
- const stage=document.getElementById('journal-stage');
  const current=root.querySelector('.static-right');
- if(!current||sheetIndex===0){sheetIndex=target;showSheet();return}
+ if(!current||sheetIndex===0||window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+  sheetIndex=target;showSheet();return;
+ }
  turning=true;
- const ghost=current.cloneNode(true);
- ghost.classList.add('turning-leaf');
- ghost.style.pointerEvents='none';
- root.appendChild(ghost);
- sheetIndex=target;
- showSheet();
- root.appendChild(ghost);
- requestAnimationFrame(()=>requestAnimationFrame(()=>ghost.classList.add(direction==='prev'?'turn-back':'turn-forward')));
- setTimeout(()=>{ghost.remove();turning=false},560);
+ const forward=direction!=='prev';
+ const oldHTML=sheets[sheetIndex],newHTML=sheets[target];
+ sheetIndex=target;showSheet();
+ const leaf=document.createElement('div');
+ leaf.className='static-leaf static-right page-turn-sheet '+(forward?'turn-next':'turn-previous');
+ leaf.setAttribute('aria-hidden','true');
+ const front=forward?oldHTML:newHTML;
+ const back=forward?newHTML:oldHTML;
+ leaf.innerHTML='<div class="turn-face turn-front">'+front+'</div><div class="turn-face turn-backface">'+back+'</div>';
+ root.appendChild(leaf);
+ requestAnimationFrame(()=>requestAnimationFrame(()=>leaf.classList.add('turn-active')));
+ setTimeout(()=>{leaf.remove();turning=false},760);
 }
 function render(x){sheets=build(x);sheetIndex=0;turning=false;showSheet()}
 document.querySelectorAll('.journal-tabs button').forEach(btn=>btn.addEventListener('click',()=>{if(!flip)return;const target=sectionPages[btn.dataset.section];if(target===undefined)return;const go=()=>{if(flip)flip.flip(target)};if(flip.getCurrentPageIndex()===0){flip.flipNext();setTimeout(go,850)}else go()}));
