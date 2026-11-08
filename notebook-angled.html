@@ -1580,6 +1580,21 @@ body{
  }
  #book .static-left{display:none!important}
 }
+
+/* Two collaborators per notebook page, portraits beside their descriptions. */
+#book .contributor-pair{display:flex;flex-direction:column;gap:22px;margin-top:15px}
+#book .contributor-card{display:grid;grid-template-columns:95px minmax(0,1fr);align-items:start;gap:15px;min-width:0}
+#book .contributor-photo{width:95px;height:108px;border-radius:9px;overflow:hidden;background:#e8ddca;box-shadow:0 2px 5px rgba(44,30,17,.13)}
+#book .contributor-photo img{width:100%;height:100%;object-fit:cover;display:block}
+#book .contributor-details{min-width:0}
+#book .contributor-details h3{font-size:19px;line-height:1.14;margin:0 0 6px;color:#20384d}
+#book .contributor-details p{font-size:13px;line-height:1.3;margin:0 0 6px}
+#book .contributor-details .contributor-note{font-size:12px;font-style:italic;color:#796454}
+#book .contributor-details a{font-size:13px}
+@media(max-width:700px){
+ #book .contributor-card{grid-template-columns:90px minmax(0,1fr);gap:13px}
+ #book .contributor-photo{width:90px;height:104px}
+}
 </style>
 <script src="https://cdn.jsdelivr.net/npm/page-flip@2.0.7/dist/js/page-flip.browser.min.js" defer></script>
 </head>
@@ -1645,7 +1660,10 @@ function build(x){
  sectionPages.collaborators=pieces.length;
  pieces.push(page('<h2>Collaborators</h2><div class="copy"><p>Different people see different things in the same story. These are some of the people sharing their perspectives.</p></div>','people-intro'));
  const collaborators=[{"name":"Liz Stephens","url":"https://uk.linkedin.com/in/lizstephens","img":"https://www.climatecentre.org/wp-content/uploads/liz-01.png","note":"Curator &amp; Collaborator · UK","desc":"Science, climate, resilience, humanitarian action, anticipatory action and extreme weather"},{"name":"Dorothy Heinrich","url":"https://uk.linkedin.com/in/dorothy-heinrich","img":"https://www.climatecentre.org/wp-content/uploads/admin-ajax.png","note":"Collaborator · Canada, UK","desc":"Science, climate, humanitarian action, anticipatory action and unprecedented extremes"},{"name":"Macarena Cardenas","url":"https://uk.linkedin.com/in/macarena-l-c%C3%A1rdenas-phd-misep-cenv-45b8b712","img":"https://i1.rgstatic.net/ii/profile.image/11431281093535734-1667235254071_Q512/Macarena-Cardenas-2.jpg","note":"Collaborator · UK, Chile","desc":"Climate, resilience, nature and the built environment"},{"name":"Erin Coughlan de Perez","url":"https://www.linkedin.com/in/erin-coughlan-de-perez-0ab33b31","img":"https://fic.tufts.edu/wp-content/uploads/Erin-Coughlan-2022.png","note":"Collaborator · USA","desc":"Science, climate, humanitarian action and anticipatory action"},{"name":"Janot Mendler de Suarez","url":"https://www.linkedin.com/in/janot-mendler-de-suarez-4952374","img":"https://i0.wp.com/waylandlibrary.org/wp-content/uploads/2022/12/3-JANOT-MENDLER-DE-SUAREZ.jpg?w=1965&amp;ssl=1","note":"Collaborator · USA","desc":"Climate, resilience, humanitarian action, games, communication and collaboration"},{"name":"Karen Dall","url":"https://www.linkedin.com/in/karendall/","img":"https://www.anticipation-hub.org/Images/_processed_/9/2/csm_karen-dall_7c7f1e03bf.jpg","note":"Collaborator · Germany","desc":"Climate, resilience, humanitarian action, anticipatory action, learning and geospatial analysis"}];
- collaborators.forEach((c,i)=>pieces.push(page('<div class="eyebrow">People and perspectives · '+String(i+1).padStart(2,'0')+'</div><h2>'+esc(c.name)+'</h2><div class="person-photo"><img src="'+link(c.img)+'" alt="Portrait of '+esc(c.name)+'" loading="lazy"></div><div class="copy person-copy"><p>'+esc(c.note.replace(/&amp;/g,'&'))+'</p><p>'+esc(c.desc)+'</p><p><a href="'+link(c.url)+'" target="_blank" rel="noopener noreferrer">Profile ↗</a></p></div>','personpage')));
+ for(let i=0;i<collaborators.length;i+=2){
+  const cards=collaborators.slice(i,i+2).map(c=>'<div class="contributor-card"><div class="contributor-photo"><img src="'+link(c.img)+'" alt="Portrait of '+esc(c.name)+'" loading="lazy"></div><div class="contributor-details"><h3>'+esc(c.name)+'</h3><p class="contributor-note">'+esc(c.note.replace(/&amp;/g,'&'))+'</p><p>'+esc(c.desc)+'</p><a href="'+link(c.url)+'" target="_blank" rel="noopener noreferrer">Profile ↗</a></div></div>').join('');
+  pieces.push(page('<div class="eyebrow">People and perspectives · '+String(Math.floor(i/2)+1).padStart(2,'0')+'</div><h2>Collaborators</h2><div class="contributor-pair">'+cards+'</div>','personpage contributor-pair-page'));
+ }
  pieces.push(page('<div class="eyebrow">The end · For now</div><h2>Where might this idea lead?</h2><p>Every reflection is a different way of looking at the same discovery.</p><p><a href="archive.html">Explore the archive ↗</a></p><p>Return tomorrow for another discovery.</p>','endpage',true));
  return pieces;
 }
