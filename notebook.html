@@ -628,6 +628,14 @@ main{width:100%;max-width:none!important;overflow:hidden}
  .reflection .copy{font-size:14px!important;line-height:1.5!important}
  .controls{margin-top:-110px!important;position:relative!important}
 }
+
+/* Opening spread: blank leather inside cover on left; story on right. */
+#book .inside-cover,#book .inside-cover .page-inner{
+ background:transparent!important;background-image:none!important;
+ border:0!important;box-shadow:none!important;
+}
+#book .inside-cover .page-inner:before,#book .inside-cover .page-inner:after{display:none!important}
+.stage.open-book .open-leather{z-index:0!important}
 </style>
 <script src="https://cdn.jsdelivr.net/npm/page-flip@2.0.7/dist/js/page-flip.browser.min.js" defer></script>
 </head>
@@ -653,6 +661,8 @@ function thoughtsTitle(name){let n=String(name||'Contributor').trim().split(/\s+
 function build(x){
  let pieces=[];sectionPages={};
  pieces.push(page('<img src="assets/02_closed_book.png" class="journal-cover-art" alt="Leather notebook cover embossed with a hummingbird" draggable="false" onerror="this.src=\'assets/journal.png\'">','coverpage',true));
+ // The inside of the front cover is the left leaf of the first spread.
+ pieces.push(page('','inside-cover',true));
  const img=x.image?'<figure class="paper-photo"><img src="'+link(x.image)+'" alt="Image accompanying '+esc(x.title)+'" loading="lazy"><figcaption class="photo-credit">'+(x.image_credit_url?'<a href="'+link(x.image_credit_url)+'" target="_blank" rel="noopener noreferrer">'+esc(x.image_credit||'Image source')+'</a>':esc(x.image_credit||''))+(x.image_license_url?' · <a href="'+link(x.image_license_url)+'" target="_blank" rel="noopener noreferrer">Licence</a>':'')+'</figcaption></figure>':'';
  const tags=(x.tags||[]).map(t=>'<span class="tag">'+esc(t)+'</span>').join('');
  let sources=(x.sources&&x.sources.length?x.sources:[{url:x.source}]).filter(a=>a.url);
