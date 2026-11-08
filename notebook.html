@@ -755,6 +755,8 @@ function showSheet(){
  const stage=document.getElementById('journal-stage');
  const opened=sheetIndex>0;
  stage.classList.toggle('open-book',opened);
+ stage.onclick=opened?null:()=>flip.flipNext();
+ stage.style.cursor=opened?'default':'pointer';
  root.innerHTML='';
  const right=sheets[sheetIndex];
  const left=opened&&sheetIndex>1?sheets[sheetIndex-1]:null;
