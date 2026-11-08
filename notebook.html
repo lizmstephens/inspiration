@@ -716,6 +716,29 @@ main{width:100%;max-width:none!important;overflow:hidden}
 }
 #book .static-leaf{box-sizing:border-box!important;padding:0!important;margin:0!important;transform:none!important}
 #book .static-leaf>.page{box-sizing:border-box!important;width:100%!important;height:100%!important}
+
+/* Bookmarks emerge from behind paper, above the leather backing.
+   The right leaf starts at 55.3385%; tabs straddle its top edge. */
+.stage .journal-tabs,.stage.open-book .journal-tabs{
+ position:absolute!important;
+ top:13.9%!important;
+ right:auto!important;
+ left:48.5%!important;
+ z-index:2!important;
+ display:flex!important;
+ gap:8px!important;
+ transform:none!important;
+}
+.stage .open-leather{z-index:0!important}
+.stage.open-book .closed-leather{visibility:hidden!important}
+#book{z-index:3!important}
+.stage .sunlight{z-index:8!important;pointer-events:none!important}
+@media(max-width:700px){
+ .stage .journal-tabs,.stage.open-book .journal-tabs{
+  left:48.5%!important;right:auto!important;top:13.9%!important;
+  gap:6px!important;
+ }
+}
 </style>
 <script src="https://cdn.jsdelivr.net/npm/page-flip@2.0.7/dist/js/page-flip.browser.min.js" defer></script>
 </head>
