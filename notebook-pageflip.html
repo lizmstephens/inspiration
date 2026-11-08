@@ -1262,6 +1262,44 @@ main{width:100%;max-width:none!important;overflow:hidden}
 #book .page-turn-sheet .turn-face::after{
  border-radius:inherit!important;
 }
+
+/* Desktop correction: use exactly the same source-art rectangle as static paper.
+   No opaque backing panel behind the rounded paper. */
+@media(min-width:701px){
+ #book .static-leaf.page-turn-sheet{
+  left:55.3385416667%!important;
+  top:18.65234375%!important;
+  width:29.5572916667%!important;
+  height:62.6953125%!important;
+  min-width:0!important;min-height:0!important;
+  max-width:none!important;max-height:none!important;
+  box-sizing:border-box!important;
+ }
+ .stage .journal-tabs,.stage.open-book .journal-tabs{
+  left:56%!important;right:auto!important;
+  top:15.1%!important;
+  transform:none!important;
+ }
+}
+#book .page-turn-sheet .turn-face{
+ width:100%!important;height:100%!important;
+ box-sizing:border-box!important;
+ background:transparent!important;
+ border:0!important;
+}
+#book .page-turn-sheet .turn-face>.page{
+ position:absolute!important;inset:0!important;
+ width:100%!important;height:100%!important;
+ max-width:100%!important;max-height:100%!important;
+ box-sizing:border-box!important;
+}
+#book .page-turn-sheet .turn-face>.page>.page-inner{
+ width:100%!important;height:100%!important;
+ box-sizing:border-box!important;
+}
+#book .page-turn-sheet .turn-face::after{
+ background:linear-gradient(90deg,rgba(54,37,25,.12),transparent 22%,transparent 80%,rgba(54,37,25,.08))!important;
+}
 </style>
 <script src="https://cdn.jsdelivr.net/npm/page-flip@2.0.7/dist/js/page-flip.browser.min.js" defer></script>
 </head>
