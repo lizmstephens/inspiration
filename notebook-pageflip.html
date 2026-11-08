@@ -1400,6 +1400,28 @@ main{width:100%;max-width:none!important;overflow:hidden}
  font-size:21px!important;line-height:1.15!important;
  max-width:100%!important;
 }
+
+/* Keep closed and open artwork anchored to the identical desktop stage. */
+@media(min-width:701px){
+ .stage:not(.open-book){
+  width:1320px!important;
+  max-width:none!important;
+  height:880px!important;
+  min-height:0!important;
+  aspect-ratio:1536/1024!important;
+  padding:0!important;
+  margin-left:calc(50vw - 925.55px)!important;
+  margin-right:0!important;
+  margin-top:-85px!important;
+ }
+ .stage.open-book{
+  width:1320px!important;
+  height:880px!important;
+  margin-left:calc(50vw - 925.55px)!important;
+  margin-right:0!important;
+  margin-top:-85px!important;
+ }
+}
 </style>
 <script src="https://cdn.jsdelivr.net/npm/page-flip@2.0.7/dist/js/page-flip.browser.min.js" defer></script>
 </head>
