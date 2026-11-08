@@ -1021,6 +1021,32 @@ main{width:100%;max-width:none!important;overflow:hidden}
  #book .story .story-intro h2{font-size:24px!important}
  #book .story .story-intro .paper-photo{flex-basis:48%!important}
 }
+
+/* A quick physical page sweep, without a second independent layout engine. */
+#book .turning-leaf{
+ z-index:12!important;
+ transform-origin:left center!important;
+ backface-visibility:hidden!important;
+ will-change:transform,opacity!important;
+ transition:transform 520ms ease-in-out,opacity 520ms ease-in!important;
+}
+#book .turning-leaf.turn-forward{transform:perspective(1200px) rotateY(-82deg)!important;opacity:0!important}
+#book .turning-leaf.turn-back{transform:perspective(1200px) rotateY(82deg)!important;opacity:0!important}
+#book .story .copy,#book .reflection .copy{
+ overflow:hidden!important;max-height:none!important;flex:1 1 auto!important;
+}
+#book .turn-cue{
+ display:block!important;margin-top:auto!important;
+ align-self:flex-end!important;padding-top:8px!important;
+ font:italic 13px Georgia,serif!important;color:#96775e!important;
+}
+#book .story h2,#book .reflection h2{
+ background-image:linear-gradient(176deg,transparent 5%,rgba(241,174,147,.53) 6%,rgba(241,174,147,.53) 94%,transparent 95%)!important;
+ background-size:100% 100%!important;
+ background-position:0 0!important;
+ padding:3px 5px 4px!important;
+ box-decoration-break:clone!important;-webkit-box-decoration-break:clone!important;
+}
 </style>
 <script src="https://cdn.jsdelivr.net/npm/page-flip@2.0.7/dist/js/page-flip.browser.min.js" defer></script>
 </head>
@@ -1043,16 +1069,31 @@ let flip=null,pages=[],all=[],current=0,sectionPages={};
 function page(html,kind='',hard=false){return '<article class="page '+kind+'" '+(hard?'data-density="hard"':'')+'><div class="page-inner '+(kind==='coverpage'?'cover':'')+'">'+(kind==='coverpage'?'':'<img class="page-logo" src="assets/favicon.svg" alt="" aria-hidden="true">')+html+'</div></article>'}
 function foot(number,kind){return ''}
 function thoughtsTitle(name){let n=String(name||'Contributor').trim().split(/\s+/)[0];return esc(n)+(n.toLowerCase().endsWith('s')?'’':'’s')+' Thoughts'}
+function chunks(value,first=105,subsequent=155){
+ const words=String(value||'').trim().split(/\s+/).filter(Boolean),out=[];
+ let offset=0,limit=first;
+ while(offset<words.length){out.push(words.slice(offset,offset+limit).join(' '));offset+=limit;limit=subsequent}
+ return out.length?out:[''];
+}
 function build(x){
  let pieces=[];sectionPages={};
  pieces.push(page('<img src="assets/02_closed_book.png" class="journal-cover-art" alt="Leather notebook cover embossed with a hummingbird" draggable="false" onerror="this.src=\'assets/journal.png\'">','coverpage',true));
  const img=x.image?'<figure class="paper-photo"><img src="'+link(x.image)+'" alt="Image accompanying '+esc(x.title)+'" loading="lazy"><figcaption class="photo-credit">'+(x.image_credit_url?'<a href="'+link(x.image_credit_url)+'" target="_blank" rel="noopener noreferrer">'+esc(x.image_credit||'Image source')+'</a>':esc(x.image_credit||''))+(x.image_license_url?' · <a href="'+link(x.image_license_url)+'" target="_blank" rel="noopener noreferrer">Licence</a>':'')+'</figcaption></figure>':'';
  const tags=(x.tags||[]).map(t=>'<span class="tag">'+esc(t)+'</span>').join('');
  let sources=(x.sources&&x.sources.length?x.sources:[{url:x.source}]).filter(a=>a.url);
- pieces.push(page('<div class="story-intro"><div class="story-intro-text"><h2>'+esc(x.title)+'</h2><div class="eyebrow story-date">'+esc(date(x.date))+'</div></div>'+img+'</div><div class="copy"><p>'+esc(x.summary)+'</p></div><div class="story-links">'+sources.map(z=>'<a href="'+link(z.url)+'" target="_blank" rel="noopener noreferrer">Read original story ↗</a>').join(' · ')+'</div>'+foot('01','The discovery'),'story'));
+ const storyParts=chunks(x.summary,83,150);
+ storyParts.forEach((part,i)=>{
+  const heading=i===0?'<div class="story-intro"><div class="story-intro-text"><h2>'+esc(x.title)+'</h2><div class="eyebrow story-date">'+esc(date(x.date))+'</div></div>'+img+'</div>':'<div class="eyebrow">The discovery · continued</div>';
+  const links=i===storyParts.length-1?'<div class="story-links">'+sources.map(z=>'<a href="'+link(z.url)+'" target="_blank" rel="noopener noreferrer">Read original story ↗</a>').join(' · ')+'</div>':'';
+  pieces.push(page(heading+'<div class="copy"><p>'+esc(part)+'</p></div>'+links+'<span class="turn-cue" aria-hidden="true">Turn the page ›</span>','story'));
+ });
  const reflections=[{name:'AI Reflection',text:x.discovery||x.summary},{name:'Liz’s Thoughts',text:x.thoughts}];
  (x.reflections||[]).filter(c=>c&&c.approved===true&&c.name&&c.text).forEach(c=>reflections.push({name:thoughtsTitle(c.name),text:c.text}));
- reflections.filter(r=>r.text&&String(r.text).trim()).forEach((r,i)=>{pieces.push(page('<div class="eyebrow">A different perspective · '+String(i+1).padStart(2,'0')+'</div><h2 class="reflection-head">'+esc(r.name)+'</h2><div class="copy"><p>'+esc(r.text)+'</p></div>'+foot(String(i+2).padStart(2,'0'),r.name),'reflection'))});
+ reflections.filter(r=>r.text&&String(r.text).trim()).forEach((r,i)=>{
+  chunks(r.text,125,160).forEach((part,j)=>{
+   pieces.push(page('<div class="eyebrow">A different perspective · '+String(i+1).padStart(2,'0')+(j?' · continued':'')+'</div><h2 class="reflection-head">'+esc(r.name)+'</h2><div class="copy"><p>'+esc(part)+'</p></div><span class="turn-cue" aria-hidden="true">Turn the page ›</span>','reflection'));
+  });
+ });
 
  sectionPages.archive=pieces.length;
  const previous=all.slice();
@@ -1079,7 +1120,7 @@ function update(){
  document.getElementById('journal-stage').classList.toggle('open-book',current>0);
  
 }
-let sheets=[],sheetIndex=0;
+let sheets=[],sheetIndex=0,turning=false;
 function showSheet(){
  const stage=document.getElementById('journal-stage');
  const opened=sheetIndex>0;
@@ -1101,12 +1142,28 @@ function showSheet(){
 }
 flip={
  getCurrentPageIndex:()=>sheetIndex,getPageCount:()=>sheets.length,
- flipNext:()=>{if(sheetIndex<sheets.length-1){sheetIndex++;showSheet()}},
- flipPrev:()=>{if(sheetIndex>0){sheetIndex--;showSheet()}},
- flip:(n)=>{sheetIndex=Math.max(1,Math.min(sheets.length-1,n));showSheet()},
+ flipNext:()=>turnTo(sheetIndex+1,'next'),
+ flipPrev:()=>turnTo(sheetIndex-1,'prev'),
+ flip:(n)=>turnTo(Math.max(1,Math.min(sheets.length-1,n)),'next'),
  destroy:()=>{}
 };
-function render(x){sheets=build(x);sheetIndex=0;showSheet()}
+function turnTo(target,direction){
+ if(turning||target<0||target>=sheets.length||target===sheetIndex)return;
+ const stage=document.getElementById('journal-stage');
+ const current=root.querySelector('.static-right');
+ if(!current||sheetIndex===0){sheetIndex=target;showSheet();return}
+ turning=true;
+ const ghost=current.cloneNode(true);
+ ghost.classList.add('turning-leaf');
+ ghost.style.pointerEvents='none';
+ root.appendChild(ghost);
+ sheetIndex=target;
+ showSheet();
+ root.appendChild(ghost);
+ requestAnimationFrame(()=>requestAnimationFrame(()=>ghost.classList.add(direction==='prev'?'turn-back':'turn-forward')));
+ setTimeout(()=>{ghost.remove();turning=false},560);
+}
+function render(x){sheets=build(x);sheetIndex=0;turning=false;showSheet()}
 document.querySelectorAll('.journal-tabs button').forEach(btn=>btn.addEventListener('click',()=>{if(!flip)return;const target=sectionPages[btn.dataset.section];if(target===undefined)return;const go=()=>{if(flip)flip.flip(target)};if(flip.getCurrentPageIndex()===0){flip.flipNext();setTimeout(go,850)}else go()}));
 prev.addEventListener('click',e=>{e.stopPropagation();if(flip)flip.flipPrev()});
 next.addEventListener('click',e=>{e.stopPropagation();if(flip)flip.flipNext()});
