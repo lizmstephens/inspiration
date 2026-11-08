@@ -754,6 +754,12 @@ main{width:100%;max-width:none!important;overflow:hidden}
   left:calc(54% + 65px)!important;
  }
 }
+
+/* Mobile: retain the left leaf as a blank paper surface after the first
+   opening. Do not hide it; it remains part of the same physical spread. */
+@media(max-width:700px){
+ #book .static-left{display:block!important}
+}
 </style>
 <script src="https://cdn.jsdelivr.net/npm/page-flip@2.0.7/dist/js/page-flip.browser.min.js" defer></script>
 </head>
@@ -821,7 +827,7 @@ function showSheet(){
  stage.style.cursor=opened?'default':'pointer';
  root.innerHTML='';
  const right=sheets[sheetIndex];
- const left=opened&&sheetIndex>1?sheets[sheetIndex-1]:null;
+ const left=opened&&sheetIndex>1?'<article class="page blank-left-page"><div class="page-inner"></div></article>':null;
  if(left){const holder=document.createElement('div');holder.className='static-leaf static-left';holder.innerHTML=left;root.appendChild(holder)}
  if(opened&&right){const holder=document.createElement('div');holder.className='static-leaf static-right';holder.innerHTML=right;root.appendChild(holder);holder.addEventListener('click',e=>{if(e.target.closest('a,button,.archive-entry,.copy,.archive-list'))return;flip.flipNext()})}
  const total=sheets.length;
