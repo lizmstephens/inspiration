@@ -739,6 +739,14 @@ main{width:100%;max-width:none!important;overflow:hidden}
   gap:6px!important;
  }
 }
+
+/* Fine-tune bookmarks: move right relative to previous placement. */
+.stage .journal-tabs,.stage.open-book .journal-tabs{left:54%!important;right:auto!important}
+@media(max-width:700px){
+ .stage .journal-tabs,.stage.open-book .journal-tabs{left:54%!important;right:auto!important}
+}
+/* No category chips beneath the story headline. */
+#book .story .tags{display:none!important}
 </style>
 <script src="https://cdn.jsdelivr.net/npm/page-flip@2.0.7/dist/js/page-flip.browser.min.js" defer></script>
 </head>
