@@ -1170,6 +1170,28 @@ main{width:100%;max-width:none!important;overflow:hidden}
  content:none!important;
  display:none!important;
 }
+
+/* Folded index tabs inspired by real scalloped stationery. */
+.stage .journal-tabs button,
+.stage.open-book .journal-tabs button{
+ border:0!important;
+ border-radius:0!important;
+ clip-path:polygon(0 15%,3% 8%,8% 4%,17% 4%,24% 9%,30% 3%,39% 1%,47% 4%,53% 9%,61% 3%,70% 2%,78% 5%,84% 10%,91% 5%,97% 9%,100% 17%,100% 100%,0 100%)!important;
+ background-image:linear-gradient(to bottom,rgba(255,255,255,.09) 0%,transparent 62%,rgba(70,43,31,.16) 100%)!important;
+ background-blend-mode:normal!important;
+ box-shadow:none!important;
+ padding:12px 10px 19px!important;
+ min-height:53px!important;
+ font-size:18px!important;
+}
+.stage .journal-tabs button::after{
+ content:""!important;display:block!important;
+ position:absolute!important;left:3px!important;right:3px!important;bottom:6px!important;height:2px!important;
+ background:rgba(72,48,33,.13)!important;
+ transform:none!important;pointer-events:none!important;
+}
+.stage .journal-tabs button::before{content:none!important;display:none!important}
+.stage .journal-tabs{filter:drop-shadow(2px 4px 3px rgba(45,28,18,.33))!important}
 </style>
 <script src="https://cdn.jsdelivr.net/npm/page-flip@2.0.7/dist/js/page-flip.browser.min.js" defer></script>
 </head>
