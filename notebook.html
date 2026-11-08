@@ -602,6 +602,32 @@ main{width:100%;max-width:none!important;overflow:hidden}
  .stage .journal-tabs{top:12.5%!important;right:15%!important}
  .controls{margin:5px auto 25px!important}
 }
+
+/* Closed cover must render ABOVE the page-flip library's blank hard cover. */
+.stage:not(.open-book) .closed-leather{z-index:7!important;visibility:visible!important;pointer-events:none!important}
+.stage.open-book .closed-leather{visibility:hidden!important}
+.stage:not(.open-book) #book .coverpage{opacity:0!important}
+.stage.open-book #book .coverpage{opacity:1!important}
+#book .page .copy,#book .page .archive-list{
+ overflow-y:auto!important;-webkit-overflow-scrolling:touch!important;
+ overscroll-behavior:contain!important;touch-action:pan-y!important;
+ flex:1 1 auto!important;min-height:0!important;
+}
+#book .page-inner{min-height:0!important;height:100%!important;overflow:hidden!important}
+#book .story .copy{max-height:none!important}
+@media(max-width:700px){
+ .stage,.stage.open-book{
+  --scene-width:1180px!important;
+  width:1180px!important;height:786.667px!important;
+  margin-left:calc(100vw - 1018px)!important;
+  margin-right:0!important;
+ }
+ #book{left:25.78125%!important;top:18.65234375%!important;width:59.1145833%!important;height:62.6953125%!important}
+ .page .page-inner{padding:18px!important}
+ .page .copy{font-size:14px!important;line-height:1.45!important}
+ .reflection .copy{font-size:14px!important;line-height:1.5!important}
+ .controls{margin-top:-110px!important;position:relative!important}
+}
 </style>
 <script src="https://cdn.jsdelivr.net/npm/page-flip@2.0.7/dist/js/page-flip.browser.min.js" defer></script>
 </head>
@@ -669,7 +695,7 @@ function render(x){
  try{
   flip=new St.PageFlip(root,{width:454,height:642,size:'stretch',minWidth:250,maxWidth:454,minHeight:353,maxHeight:642,maxShadowOpacity:.28,showCover:true,usePortrait:true,drawShadow:true,flippingTime:700,autoSize:true,mobileScrollSupport:true,clickEventForward:true});
   flip.on('flip',update);flip.on('changeOrientation',update);
-  flip.loadFromHTML(root.querySelectorAll('.page'));root.querySelectorAll('.archive-entry').forEach(el=>el.addEventListener('click',()=>{const item=all.find(y=>y.id===el.dataset.entryId);if(item){history.replaceState(null,'','?id='+encodeURIComponent(item.id));render(item);if(flip)flip.flipNext()}}));root.querySelectorAll('.copy').forEach(el=>{el.addEventListener('touchmove',e=>e.stopPropagation(),{passive:true});el.addEventListener('wheel',e=>e.stopPropagation(),{passive:true})});update();
+  flip.loadFromHTML(root.querySelectorAll('.page'));root.querySelectorAll('.archive-entry').forEach(el=>el.addEventListener('click',()=>{const item=all.find(y=>y.id===el.dataset.entryId);if(item){history.replaceState(null,'','?id='+encodeURIComponent(item.id));render(item);if(flip)flip.flipNext()}}));root.querySelectorAll('.copy, .archive-list').forEach(el=>{['touchstart','touchmove','pointerdown','pointermove','wheel'].forEach(type=>el.addEventListener(type,e=>e.stopPropagation(),{passive:true}));});update();
  }catch(err){console.error(err);root.classList.add('fallback');label.textContent='Read the notebook pages below';prev.disabled=true;next.disabled=true}
 }
 document.querySelectorAll('.journal-tabs button').forEach(btn=>btn.addEventListener('click',()=>{if(!flip)return;const target=sectionPages[btn.dataset.section];if(target===undefined)return;const go=()=>{if(flip)flip.flip(target)};if(flip.getCurrentPageIndex()===0){flip.flipNext();setTimeout(go,850)}else go()}));
