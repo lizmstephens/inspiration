@@ -930,6 +930,44 @@ main{width:100%;max-width:none!important;overflow:hidden}
  .controls button{min-width:46px!important;min-height:46px!important}
  body{padding-bottom:90px!important}
 }
+
+/* Notebook editorial proportions: title closer to handwriting size,
+   photograph a small pasted-in keepsake rather than a hero banner. */
+#book .story h2{
+ font-size:30px!important;
+ line-height:1.16!important;
+ font-weight:600!important;
+ margin:2px 0 13px!important;
+ letter-spacing:0!important;
+}
+#book .story .paper-photo{
+ width:77%!important;
+ max-width:330px!important;
+ align-self:center!important;
+ margin:4px auto 15px!important;
+ padding:5px 5px 3px!important;
+ background:#fffdf7!important;
+ transform:rotate(-1.2deg)!important;
+ box-shadow:1px 4px 8px rgba(49,31,18,.19)!important;
+}
+#book .story .paper-photo img{
+ width:100%!important;
+ height:112px!important;
+ object-fit:cover!important;
+}
+#book .story .photo-credit,
+#book .story .photo-credit a{
+ font-size:9px!important;
+ line-height:1.25!important;
+ color:#77716b!important;
+ font-weight:400!important;
+}
+#book .story .copy{margin-top:3px!important}
+@media(max-width:700px){
+ #book .story h2{font-size:29px!important;margin-bottom:12px!important}
+ #book .story .paper-photo{width:78%!important;max-width:330px!important}
+ #book .story .paper-photo img{height:112px!important}
+}
 </style>
 <script src="https://cdn.jsdelivr.net/npm/page-flip@2.0.7/dist/js/page-flip.browser.min.js" defer></script>
 </head>
