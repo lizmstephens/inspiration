@@ -1313,6 +1313,45 @@ main{width:100%;max-width:none!important;overflow:hidden}
 #book .page-turn-sheet .turn-face>.page>.page-inner{
  overflow:hidden!important;
 }
+
+/* Experimental paper curl: a bending edge and moving fold shadow.
+   This affects only the animated leaf, never the static page geometry. */
+#book .page-turn-sheet{
+ transform-origin:left center!important;
+}
+#book .page-turn-sheet .turn-front::before{
+ content:"";position:absolute;z-index:6;pointer-events:none;
+ right:0;top:0;bottom:0;width:24%;
+ background:linear-gradient(90deg,transparent 0%,rgba(87,62,41,.06) 32%,rgba(65,44,29,.21) 73%,rgba(255,255,255,.58) 94%,rgba(255,255,255,.14) 100%);
+ transform-origin:right center;
+ opacity:0;
+}
+#book .page-turn-sheet.turn-active .turn-front::before{
+ animation:journal-fold-shade 700ms ease-in-out forwards;
+}
+#book .page-turn-sheet .turn-backface::before{
+ content:"";position:absolute;z-index:6;pointer-events:none;
+ left:0;top:0;bottom:0;width:26%;
+ background:linear-gradient(90deg,rgba(79,50,31,.24),rgba(255,255,255,.33) 25%,transparent 100%);
+}
+#book .page-turn-sheet.turn-active{
+ animation:journal-curl-edge 700ms cubic-bezier(.35,.05,.25,1) both;
+}
+@keyframes journal-fold-shade{
+ 0%{opacity:0;transform:scaleX(.35)}
+ 38%{opacity:1;transform:scaleX(1)}
+ 72%{opacity:.8;transform:scaleX(.6)}
+ 100%{opacity:0;transform:scaleX(.1)}
+}
+@keyframes journal-curl-edge{
+ 0%{border-top-right-radius:15px;border-bottom-right-radius:15px}
+ 45%{border-top-right-radius:42px 22px;border-bottom-right-radius:45px 27px}
+ 100%{border-top-right-radius:15px;border-bottom-right-radius:15px}
+}
+@media(prefers-reduced-motion:reduce){
+ #book .page-turn-sheet.turn-active,
+ #book .page-turn-sheet.turn-active .turn-front::before{animation:none!important}
+}
 </style>
 <script src="https://cdn.jsdelivr.net/npm/page-flip@2.0.7/dist/js/page-flip.browser.min.js" defer></script>
 </head>
