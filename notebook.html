@@ -1047,6 +1047,32 @@ main{width:100%;max-width:none!important;overflow:hidden}
  padding:3px 5px 4px!important;
  box-decoration-break:clone!important;-webkit-box-decoration-break:clone!important;
 }
+
+/* Opaque paper sticker: no dots or photo show through the emblem. */
+#book .page-logo{
+ opacity:1!important;
+ background:#f7df9b!important;
+ border-radius:50%!important;
+ padding:5px!important;
+ box-sizing:border-box!important;
+ box-shadow:0 2px 3px rgba(83,58,31,.13)!important;
+}
+/* Marker follows only the actual glyph fragments, not the title box.
+   Each wrapped line is independently painted by inline decoration cloning. */
+#book .page h2{
+ display:inline!important;
+ width:auto!important;
+ max-width:100%!important;
+ align-self:flex-start!important;
+ background-image:linear-gradient(178deg,transparent 4%,rgba(239,172,143,.46) 7%,rgba(239,172,143,.46) 92%,transparent 96%)!important;
+ background-repeat:no-repeat!important;
+ background-size:100% 100%!important;
+ background-position:0 0!important;
+ padding:2px 1px 3px!important;
+ -webkit-box-decoration-break:clone!important;
+ box-decoration-break:clone!important;
+}
+#book .story .story-intro-text h2{align-self:flex-start!important}
 </style>
 <script src="https://cdn.jsdelivr.net/npm/page-flip@2.0.7/dist/js/page-flip.browser.min.js" defer></script>
 </head>
