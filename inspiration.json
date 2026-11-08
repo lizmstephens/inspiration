@@ -1,5 +1,49 @@
 [
   {
+    "id": "pigeonblog",
+    "date": "2026-11-08",
+    "title": "The pigeons that became environmental reporters",
+    "summary": "In 2006, artist and engineer Beatriz da Costa recruited an unlikely team of environmental investigators: homing pigeons. Working with students, engineers and pigeon enthusiasts in California, she developed PigeonBlog, equipping birds with miniature backpacks containing air-pollution sensors, GPS receivers and mobile-phone technology. As the pigeons flew, their equipment transmitted measurements of pollutants, including carbon monoxide and nitrogen oxides, to an online map. The project combined experimental environmental monitoring with public art, making otherwise invisible pollution visible through an unexpected form of citizen science. Nearly two decades later, in October 2024, PigeonBlog was revived as part of an exhibition celebrating da Costa's work in Los Angeles.",
+    "thoughts": "I really like this merging of art and science, as a scientist I'm wondering what the data was used for, but I bet someone with an art background would have a completely different take on it. This also seems similar to the fish doorbell; a way to capture the public's imagination to get people thinking about an environmental problem. I could see a classroom of kids being interested in where pigeons experienced the highest pollution levels!",
+    "tags": [
+      "science",
+      "communication",
+      "technology",
+      "community",
+      "design"
+    ],
+    "source": "https://www.pigeonblog.mapyourcity.net/",
+    "image": "",
+    "image_credit": "",
+    "image_credit_url": "",
+    "image_license_url": "",
+    "image_status": "placeholder",
+    "discovery": "PigeonBlog is a wonderful example of how art can change the relationship between science and the public. The pigeons were not necessarily the most accurate or efficient way to measure air pollution, but they made something invisible both visible and interesting. A conventional monitoring station produces data; a pigeon wearing a sensor backpack produces curiosity, conversation and perhaps a different kind of engagement with that data. There is an important tension here: scientific credibility depends on measurement quality, but public engagement often depends on imagination. Could an unconventional approach sometimes achieve more than a technically superior one, simply because people want to pay attention?",
+    "sources": [
+      {
+        "label": "Original source",
+        "url": "https://www.pigeonblog.mapyourcity.net/"
+      }
+    ],
+    "reflections": [
+      {
+        "name": "Sayanti",
+        "text": "In Germany, pigeons are called as the dirty flying rats of the sky. I guess\nevery animal is playing a role in the ecosystem, and we forget that too\noften. And this experiment showed that these pigeons can help us too, going\nbeyond what they were meant to be doing. I wish this story was better known.",
+        "approved": true
+      },
+      {
+        "name": "Janot",
+        "text": "In Spanish, paloma still means both pigeon & dove, is lovely as a girl’s name, and still carries religious meaning. For thousands of years we humans domesticated the pigeon, built beautiful dovecotes to encourage their cohabitation, described their delicate flavour as squab, and trained them to serve us as a sort of avian internet, carrying messages to their intended recipients at astonishing distance. How did the pigeons who still co-inhabit our urban settlements become so maligned - rats with wings? Although the English-speaking world betrayed our once closely-allied & admired pigeons, clearly they continue to be willing collaborators, carrying little backpacks full of GHG pollution sensors. Perhaps the PigeonBlog is reviving a bit of inter-species reverence?",
+        "approved": true
+      },
+      {
+        "name": "Macarena",
+        "text": "We have the tools, the knowledge and funds to defeat environmental\nchallenges.  We just have to care enough to put it all together and\ncollaborate to make it work.",
+        "approved": true
+      }
+    ]
+  },
+  {
     "id": "vision-zero",
     "date": "2026-11-07",
     "title": "Vision Zero",
