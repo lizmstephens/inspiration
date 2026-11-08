@@ -852,6 +852,25 @@ main{width:100%;max-width:none!important;overflow:hidden}
 @media(max-width:700px){
  .stage .journal-tabs button{padding:5px 9px 7px!important;min-height:0!important;height:auto!important}
 }
+
+/* Shorter exposed bookmark tops, but the lower part stays tucked
+   behind the page rather than ending above it. */
+.stage .journal-tabs,.stage.open-book .journal-tabs{
+ top:16.4%!important;
+}
+.stage .journal-tabs button,.stage.open-book .journal-tabs button{
+ padding:10px 13px 20px!important;
+ min-height:55px!important;
+ height:auto!important;
+}
+@media(max-width:700px){
+ .stage .journal-tabs,.stage.open-book .journal-tabs{top:16.4%!important}
+ .stage .journal-tabs button,.stage.open-book .journal-tabs button{
+  padding:10px 9px 20px!important;
+  min-height:55px!important;
+  height:auto!important;
+ }
+}
 </style>
 <script src="https://cdn.jsdelivr.net/npm/page-flip@2.0.7/dist/js/page-flip.browser.min.js" defer></script>
 </head>
