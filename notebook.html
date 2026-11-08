@@ -547,6 +547,61 @@ main{position:relative;max-width:1536px;margin:0 auto}
 @media(max-width:700px){
  #book .coverpage .journal-cover-art{width:350%!important;height:135%!important;left:-212.5%!important;top:-17.5%!important}
 }
+
+/* Precise geometry measured from 1536x1024 source alpha bounds:
+   open x=396..1304, closed x=851..1304, both y=191..833.
+   Book midpoint x=850; paper width=454 and height=642. */
+body{background:#b88a5c url('assets/01_oak_table.png') center top / cover fixed no-repeat!important}
+main{width:100%;max-width:none!important;overflow:hidden}
+.stage,.stage.open-book{
+ --scene-width:min(100vw,1536px);
+ position:relative!important;display:block!important;isolation:isolate;
+ width:var(--scene-width)!important;max-width:none!important;
+ aspect-ratio:1536/1024!important;height:auto!important;min-height:0!important;
+ padding:0!important;margin:0 auto!important;overflow:visible!important;
+ background:transparent!important;
+}
+.stage:before,.stage:after,.stage.open-book:before,.stage.open-book:after{display:none!important;content:none!important}
+.stage .open-leather,.stage .closed-leather{
+ position:absolute!important;display:block!important;pointer-events:none!important;
+ inset:0!important;width:100%!important;height:100%!important;
+ transform:none!important;filter:none!important;
+ background-position:center!important;background-size:100% 100%!important;
+ background-repeat:no-repeat!important;z-index:0!important;
+}
+.stage .open-leather{background-image:url('assets/03_open_book.png')!important;visibility:hidden}
+.stage .closed-leather{background-image:url('assets/02_closed_book.png')!important;visibility:visible}
+.stage.open-book .open-leather{visibility:visible}
+.stage.open-book .closed-leather{visibility:hidden}
+#book{
+ position:absolute!important;left:25.78125%!important;top:18.65234375%!important;
+ width:59.1145833%!important;height:62.6953125%!important;
+ max-width:none!important;margin:0!important;z-index:3!important;
+}
+#book .coverpage,#book .coverpage .page-inner{background:transparent!important;border:0!important;box-shadow:none!important}
+#book .coverpage .journal-cover-art{display:none!important}
+#book .page{background:#fff3dc!important;border-radius:15px!important}
+#book .page-inner:not(.cover){background-color:#fff4e0!important}
+.stage .sunlight{
+ position:absolute!important;inset:0!important;width:100%!important;height:100%!important;
+ background:url('assets/04_lighting_overlay.png') center / 100% 100% no-repeat!important;
+ opacity:1!important;mix-blend-mode:multiply!important;pointer-events:none!important;z-index:8!important;
+}
+.stage .journal-tabs{position:absolute!important;top:13.2%!important;right:15.2%!important;z-index:2!important}
+.stage:not(.open-book) .journal-tabs{visibility:hidden!important;pointer-events:none!important}
+.stage.open-book .journal-tabs{visibility:visible!important;pointer-events:auto!important}
+.controls{margin:-1.5% auto 25px!important}
+@media(max-width:700px){
+ .stage,.stage.open-book{
+  --scene-width:1000px;
+  width:1000px!important;
+  margin-left:calc(50vw - 720px)!important;
+  margin-right:0!important;
+ }
+ #book{left:25.78125%!important;top:18.65234375%!important;width:59.1145833%!important;height:62.6953125%!important}
+ .stage .journal-tabs{top:12.5%!important;right:15%!important}
+ .controls{margin:5px auto 25px!important}
+}
 </style>
 <script src="https://cdn.jsdelivr.net/npm/page-flip@2.0.7/dist/js/page-flip.browser.min.js" defer></script>
 </head>
@@ -554,7 +609,7 @@ main{position:relative;max-width:1536px;margin:0 auto}
 
 
 <main>
- <div class="stage" id="journal-stage"><div class="open-leather" aria-hidden="true"></div><div class="sunlight" aria-hidden="true"></div><div class="journal-tabs"><button type="button" data-section="archive">Archive</button><button type="button" data-section="about">About</button><button type="button" data-section="collaborators">Collaborators</button></div><div id="book" aria-label="Interactive discovery notebook"></div></div>
+ <div class="stage" id="journal-stage"><div class="open-leather" aria-hidden="true"></div><div class="closed-leather" aria-hidden="true"></div><div class="sunlight" aria-hidden="true"></div><div class="journal-tabs"><button type="button" data-section="archive">Archive</button><button type="button" data-section="about">About</button><button type="button" data-section="collaborators">Collaborators</button></div><div id="book" aria-label="Interactive discovery notebook"></div></div>
  <div class="controls"><button id="prev" aria-label="Previous page" disabled>‹</button><div id="page-label" aria-live="polite">Opening notebook…</div><button id="next" aria-label="Next page" disabled>›</button></div>
 </main>
 <script>
@@ -612,7 +667,7 @@ function render(x){
    root.classList.add('fallback');label.textContent='Notebook pages (animation unavailable)';prev.disabled=true;next.disabled=true;return;
  }
  try{
-  flip=new St.PageFlip(root,{width:430,height:590,size:'stretch',minWidth:285,maxWidth:490,minHeight:405,maxHeight:680,maxShadowOpacity:.28,showCover:true,usePortrait:true,drawShadow:true,flippingTime:700,autoSize:true,mobileScrollSupport:true,clickEventForward:true});
+  flip=new St.PageFlip(root,{width:454,height:642,size:'stretch',minWidth:250,maxWidth:454,minHeight:353,maxHeight:642,maxShadowOpacity:.28,showCover:true,usePortrait:true,drawShadow:true,flippingTime:700,autoSize:true,mobileScrollSupport:true,clickEventForward:true});
   flip.on('flip',update);flip.on('changeOrientation',update);
   flip.loadFromHTML(root.querySelectorAll('.page'));root.querySelectorAll('.archive-entry').forEach(el=>el.addEventListener('click',()=>{const item=all.find(y=>y.id===el.dataset.entryId);if(item){history.replaceState(null,'','?id='+encodeURIComponent(item.id));render(item);if(flip)flip.flipNext()}}));root.querySelectorAll('.copy').forEach(el=>{el.addEventListener('touchmove',e=>e.stopPropagation(),{passive:true});el.addEventListener('wheel',e=>e.stopPropagation(),{passive:true})});update();
  }catch(err){console.error(err);root.classList.add('fallback');label.textContent='Read the notebook pages below';prev.disabled=true;next.disabled=true}
