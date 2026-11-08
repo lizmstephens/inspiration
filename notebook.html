@@ -1137,6 +1137,39 @@ main{width:100%;max-width:none!important;overflow:hidden}
  transform:rotate(-.7deg)!important;pointer-events:none!important;
 }
 .stage .journal-tabs button:focus-visible{outline:3px solid #10243d!important;outline-offset:3px!important}
+
+/* Plain, hand-cut cardstock tabs: no printed borders, rules or stripes. */
+.stage .journal-tabs button,
+.stage.open-book .journal-tabs button{
+ border:0!important;
+ border-bottom:0!important;
+ background-image:none!important;
+ background-blend-mode:normal!important;
+ text-shadow:none!important;
+ filter:none!important;
+ border-radius:7px 9px 0 0!important;
+ box-shadow:2px 4px 5px rgba(49,30,19,.30)!important;
+}
+.stage .journal-tabs button:nth-child(1),
+.stage.open-book .journal-tabs button:nth-child(1){
+ background-color:#dfc8a5!important;
+ transform:rotate(-1deg)!important;
+}
+.stage .journal-tabs button:nth-child(2),
+.stage.open-book .journal-tabs button:nth-child(2){
+ background-color:#e9d3b7!important;
+ transform:rotate(.6deg)!important;
+}
+.stage .journal-tabs button:nth-child(3),
+.stage.open-book .journal-tabs button:nth-child(3){
+ background-color:#d8b4a7!important;
+ transform:rotate(-.7deg)!important;
+}
+.stage .journal-tabs button::before,
+.stage .journal-tabs button::after{
+ content:none!important;
+ display:none!important;
+}
 </style>
 <script src="https://cdn.jsdelivr.net/npm/page-flip@2.0.7/dist/js/page-flip.browser.min.js" defer></script>
 </head>
