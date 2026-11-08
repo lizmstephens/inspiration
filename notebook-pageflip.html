@@ -1246,6 +1246,22 @@ main{width:100%;max-width:none!important;overflow:hidden}
 @media(prefers-reduced-motion:reduce){
  #book .page-turn-sheet{transition:none!important}
 }
+
+/* Keep the physical paper silhouette rounded throughout the 3D turn. */
+#book .page-turn-sheet{
+ border-radius:13px 15px 15px 11px!important;
+}
+#book .page-turn-sheet .turn-face,
+#book .page-turn-sheet .turn-face>.page,
+#book .page-turn-sheet .turn-face>.page>.page-inner{
+ border-radius:13px 15px 15px 11px!important;
+}
+#book .page-turn-sheet .turn-face{
+ clip-path:inset(0 round 13px 15px 15px 11px)!important;
+}
+#book .page-turn-sheet .turn-face::after{
+ border-radius:inherit!important;
+}
 </style>
 <script src="https://cdn.jsdelivr.net/npm/page-flip@2.0.7/dist/js/page-flip.browser.min.js" defer></script>
 </head>
