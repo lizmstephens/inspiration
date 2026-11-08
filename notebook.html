@@ -905,6 +905,31 @@ main{width:100%;max-width:none!important;overflow:hidden}
  }
  .controls{margin-top:-110px!important}
 }
+
+/* Mobile reading view: modest enlargement, raised journal, persistent
+   navigation independent of the tall illustrated scene. */
+@media(max-width:700px){
+ .stage,.stage.open-book{
+  width:1360px!important;
+  height:906.667px!important;
+  margin-left:calc(50vw - 953.7px)!important;
+  margin-top:-55px!important;
+ }
+ .controls{
+  position:fixed!important;
+  left:12px!important;right:12px!important;
+  bottom:calc(12px + env(safe-area-inset-bottom,0px))!important;
+  margin:0!important;
+  z-index:30!important;
+  padding:7px 12px!important;
+  border-radius:28px!important;
+  background:rgba(79,48,30,.77)!important;
+  backdrop-filter:blur(8px);
+  -webkit-backdrop-filter:blur(8px);
+ }
+ .controls button{min-width:46px!important;min-height:46px!important}
+ body{padding-bottom:90px!important}
+}
 </style>
 <script src="https://cdn.jsdelivr.net/npm/page-flip@2.0.7/dist/js/page-flip.browser.min.js" defer></script>
 </head>
