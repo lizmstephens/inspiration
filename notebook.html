@@ -528,6 +528,25 @@ main{position:relative;max-width:1536px;margin:0 auto}
  #book .coverpage .page-inner{padding:0!important}
  .sunlight{opacity:.20}
 }
+
+/* Asset crop calibration: closed-book source is a full scene, not a page-sized crop. */
+#book .coverpage .page-inner{position:relative;overflow:hidden!important}
+#book .coverpage .journal-cover-art{
+ position:absolute!important;
+ width:350%!important;height:135%!important;
+ max-width:none!important;max-height:none!important;
+ left:-212.5%!important;top:-17.5%!important;
+ object-fit:fill!important;transform:none!important;
+ pointer-events:none;
+}
+.stage:not(.open-book) .open-leather{display:none!important}
+@media(min-width:701px){
+ .stage{max-width:1060px!important}
+ #book{max-width:980px!important}
+}
+@media(max-width:700px){
+ #book .coverpage .journal-cover-art{width:350%!important;height:135%!important;left:-212.5%!important;top:-17.5%!important}
+}
 </style>
 <script src="https://cdn.jsdelivr.net/npm/page-flip@2.0.7/dist/js/page-flip.browser.min.js" defer></script>
 </head>
