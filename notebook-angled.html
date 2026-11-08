@@ -1489,6 +1489,34 @@ body{
   transform-origin:55.33854% 55%!important;
  }
 }
+
+/* Muted fine-grained coffee table, without the orange oversized oak photograph. */
+html{background:#a99b89!important}
+body{
+ background-color:#a99b89!important;
+ background-image:
+  linear-gradient(112deg,rgba(255,255,255,.16),transparent 42%,rgba(48,43,37,.13)),
+  repeating-linear-gradient(91deg,
+    rgba(71,64,55,.028) 0px,rgba(71,64,55,.028) 1px,
+    transparent 2px,transparent 9px,
+    rgba(250,244,230,.045) 10px,transparent 12px,transparent 25px),
+  linear-gradient(90deg,#a69a88,#b6aa98 48%,#a69a87)!important;
+ background-size:cover,100% 100%,cover!important;
+ background-attachment:fixed!important;
+}
+@media(min-width:701px){
+ .stage,.stage.open-book,.stage:not(.open-book){
+  transform:perspective(1650px) rotateX(19deg) rotateZ(-5deg)!important;
+  transform-origin:55.33854% 55%!important;
+  margin-top:-18px!important;
+ }
+}
+@media(max-width:700px){
+ .stage,.stage.open-book{
+  transform:perspective(1550px) rotateX(15deg) rotateZ(-4deg)!important;
+  margin-top:-12px!important;
+ }
+}
 </style>
 <script src="https://cdn.jsdelivr.net/npm/page-flip@2.0.7/dist/js/page-flip.browser.min.js" defer></script>
 </head>
