@@ -1073,6 +1073,25 @@ main{width:100%;max-width:none!important;overflow:hidden}
  box-decoration-break:clone!important;
 }
 #book .story .story-intro-text h2{align-self:flex-start!important}
+
+/* The h2 is a flex item, so its background spans its rectangular box.
+   Put the paint on a true inline span instead: cloned line fragments
+   end exactly where the text ends, including wrapped final lines. */
+#book .story .story-intro h2{
+ background:none!important;
+ padding:0!important;
+ display:block!important;
+ width:100%!important;
+}
+#book .story .story-intro h2 .ink-highlight{
+ display:inline!important;
+ background:linear-gradient(177deg,transparent 5%,rgba(239,172,143,.48) 8%,rgba(239,172,143,.48) 92%,transparent 96%)!important;
+ background-repeat:no-repeat!important;
+ background-size:100% 100%!important;
+ padding:2px 1px 3px!important;
+ -webkit-box-decoration-break:clone!important;
+ box-decoration-break:clone!important;
+}
 </style>
 <script src="https://cdn.jsdelivr.net/npm/page-flip@2.0.7/dist/js/page-flip.browser.min.js" defer></script>
 </head>
@@ -1109,7 +1128,7 @@ function build(x){
  let sources=(x.sources&&x.sources.length?x.sources:[{url:x.source}]).filter(a=>a.url);
  const storyParts=chunks(x.summary,83,150);
  storyParts.forEach((part,i)=>{
-  const heading=i===0?'<div class="story-intro"><div class="story-intro-text"><h2>'+esc(x.title)+'</h2><div class="eyebrow story-date">'+esc(date(x.date))+'</div></div>'+img+'</div>':'<div class="eyebrow">The discovery · continued</div>';
+  const heading=i===0?'<div class="story-intro"><div class="story-intro-text"><h2><span class="ink-highlight">'+esc(x.title)+'</span></h2><div class="eyebrow story-date">'+esc(date(x.date))+'</div></div>'+img+'</div>':'<div class="eyebrow">The discovery · continued</div>';
   const links=i===storyParts.length-1?'<div class="story-links">'+sources.map(z=>'<a href="'+link(z.url)+'" target="_blank" rel="noopener noreferrer">Read original story ↗</a>').join(' · ')+'</div>':'';
   pieces.push(page(heading+'<div class="copy"><p>'+esc(part)+'</p></div>'+links+'<span class="turn-cue" aria-hidden="true">Turn the page ›</span>','story'));
  });
