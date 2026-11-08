@@ -1112,6 +1112,31 @@ main{width:100%;max-width:none!important;overflow:hidden}
 .stage:not(.open-book) .journal-tabs button{
  box-shadow:2px 5px 5px rgba(48,29,17,.42)!important;
 }
+
+/* Gently worn, hand-cut cardstock bookmarks. Keep their hit areas and labels. */
+.stage .journal-tabs button{
+ position:relative!important;
+ overflow:visible!important;
+ border-radius:7px 10px 2px 1px!important;
+ border-color:rgba(117,85,61,.65)!important;
+ background-image:
+  radial-gradient(ellipse at 18% 12%,rgba(255,255,255,.29),transparent 58%),
+  repeating-linear-gradient(103deg,rgba(110,82,56,.045) 0px,rgba(110,82,56,.045) 1px,transparent 1px,transparent 5px),
+  linear-gradient(90deg,rgba(91,60,39,.12),transparent 13%,transparent 84%,rgba(91,60,39,.11))!important;
+ background-blend-mode:screen,multiply,multiply!important;
+ text-shadow:0 1px 0 rgba(255,248,222,.35)!important;
+ transform-origin:center bottom!important;
+ filter:saturate(.84)!important;
+}
+.stage .journal-tabs button:nth-child(1){transform:rotate(-1.8deg)!important;border-top-right-radius:5px!important}
+.stage .journal-tabs button:nth-child(2){transform:rotate(.9deg)!important;border-top-left-radius:4px!important}
+.stage .journal-tabs button:nth-child(3){transform:rotate(-1.1deg)!important;border-top-right-radius:6px!important}
+.stage .journal-tabs button::after{
+ content:""!important;position:absolute!important;left:7px!important;right:7px!important;top:5px!important;
+ height:1px!important;background:rgba(106,71,49,.13)!important;
+ transform:rotate(-.7deg)!important;pointer-events:none!important;
+}
+.stage .journal-tabs button:focus-visible{outline:3px solid #10243d!important;outline-offset:3px!important}
 </style>
 <script src="https://cdn.jsdelivr.net/npm/page-flip@2.0.7/dist/js/page-flip.browser.min.js" defer></script>
 </head>
