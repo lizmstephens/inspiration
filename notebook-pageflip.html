@@ -1422,6 +1422,25 @@ main{width:100%;max-width:none!important;overflow:hidden}
   margin-top:-85px!important;
  }
 }
+
+/* Desktop: one responsive stage for both cover and spread.
+   The photographed book is right of the image centre, so offset the
+   scene by the book's actual artwork centre (x ~850/1536). */
+@media(min-width:701px){
+ .stage,.stage.open-book,.stage:not(.open-book){
+  --desktop-scene-width:min(1500px, 100vw)!important;
+  --scene-width:var(--desktop-scene-width)!important;
+  width:var(--desktop-scene-width)!important;
+  max-width:none!important;
+  height:auto!important;
+  min-height:0!important;
+  aspect-ratio:1536 / 1024!important;
+  padding:0!important;
+  margin-left:calc(50vw - var(--desktop-scene-width) * 0.5533854)!important;
+  margin-right:0!important;
+  margin-top:-95px!important;
+ }
+}
 </style>
 <script src="https://cdn.jsdelivr.net/npm/page-flip@2.0.7/dist/js/page-flip.browser.min.js" defer></script>
 </head>
