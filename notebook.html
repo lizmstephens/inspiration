@@ -804,6 +804,17 @@ main{width:100%;max-width:none!important;overflow:hidden}
  isolation:auto!important;
 }
 #book .page h2::before,#book .page h2::after{content:none!important;display:none!important}
+
+/* Hand-painted irregular marker stroke, repeated separately for each
+   wrapped line via box-decoration-break: clone. */
+#book .page h2{
+ background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 500 100' preserveAspectRatio='none'%3E%3Cpath fill='%23f7bd9e' fill-opacity='.62' d='M0 43 L16 37 L41 42 L78 35 L117 39 L158 32 L198 38 L242 34 L285 40 L332 33 L370 39 L412 35 L455 42 L485 34 L500 43 L495 83 L463 89 L420 84 L371 92 L319 86 L271 94 L222 87 L171 92 L125 85 L83 91 L39 86 L7 91 Z'/%3E%3C/svg%3E")!important;
+ background-repeat:no-repeat!important;
+ background-position:left bottom!important;
+ background-size:100% 80%!important;
+ box-decoration-break:clone!important;
+ -webkit-box-decoration-break:clone!important;
+}
 </style>
 <script src="https://cdn.jsdelivr.net/npm/page-flip@2.0.7/dist/js/page-flip.browser.min.js" defer></script>
 </head>
