@@ -674,6 +674,24 @@ main{width:100%;max-width:none!important;overflow:hidden}
   height:62.6953125%!important;
  }
 }
+
+/* Single coordinate system: 1536x1024 artwork; physical spread 396..1304.
+   Each page occupies exactly 454 source pixels, meeting at x=850. */
+#book{position:absolute!important;inset:0!important;width:100%!important;height:100%!important;z-index:3!important;overflow:visible!important;pointer-events:none!important}
+#book .static-leaf{position:absolute!important;top:18.65234375%!important;width:29.55729167%!important;height:62.6953125%!important;overflow:hidden!important;pointer-events:auto!important;box-sizing:border-box!important}
+#book .static-left{left:25.78125%!important}
+#book .static-right{left:55.33854167%!important}
+#book .static-leaf>.page{width:100%!important;height:100%!important;position:relative!important;inset:auto!important;transform:none!important;display:block!important}
+#book .static-leaf .page-inner{height:100%!important;box-sizing:border-box!important}
+#book .static-leaf .copy,#book .static-leaf .archive-list{overflow-y:auto!important;touch-action:pan-y!important;-webkit-overflow-scrolling:touch!important;overscroll-behavior:contain!important}
+.stage:not(.open-book) .closed-leather{z-index:7!important}
+.stage.open-book .closed-leather{visibility:hidden!important}
+.stage .sunlight{pointer-events:none!important}
+@media(max-width:700px){
+ .stage,.stage.open-book{width:1180px!important;height:786.667px!important;margin-left:calc(50vw - 827px)!important}
+ #book .static-left{display:none!important}
+ #book .static-right{left:55.33854167%!important}
+}
 </style>
 <script src="https://cdn.jsdelivr.net/npm/page-flip@2.0.7/dist/js/page-flip.browser.min.js" defer></script>
 </head>
@@ -732,18 +750,32 @@ function update(){
  document.getElementById('journal-stage').classList.toggle('open-book',current>0);
  
 }
-function render(x){
- if(flip){flip.destroy();flip=null}
- root.classList.remove('fallback');document.getElementById('journal-stage').classList.remove('open-book');root.innerHTML=build(x).join('');
- if(!window.St||!window.St.PageFlip){
-   root.classList.add('fallback');label.textContent='Notebook pages (animation unavailable)';prev.disabled=true;next.disabled=true;return;
- }
- try{
-  flip=new St.PageFlip(root,{width:454,height:642,size:'fixed',maxShadowOpacity:.28,showCover:true,usePortrait:true,drawShadow:true,flippingTime:700,autoSize:true,mobileScrollSupport:true,clickEventForward:true});
-  flip.on('flip',update);flip.on('changeOrientation',update);
-  flip.loadFromHTML(root.querySelectorAll('.page'));root.querySelectorAll('.archive-entry').forEach(el=>el.addEventListener('click',()=>{const item=all.find(y=>y.id===el.dataset.entryId);if(item){history.replaceState(null,'','?id='+encodeURIComponent(item.id));render(item);if(flip)flip.flipNext()}}));root.querySelectorAll('.copy, .archive-list').forEach(el=>{['touchstart','touchmove','pointerdown','pointermove','wheel'].forEach(type=>el.addEventListener(type,e=>e.stopPropagation(),{passive:true}));});update();
- }catch(err){console.error(err);root.classList.add('fallback');label.textContent='Read the notebook pages below';prev.disabled=true;next.disabled=true}
+let sheets=[],sheetIndex=0;
+function showSheet(){
+ const stage=document.getElementById('journal-stage');
+ const opened=sheetIndex>0;
+ stage.classList.toggle('open-book',opened);
+ root.innerHTML='';
+ const right=sheets[sheetIndex];
+ const left=opened&&sheetIndex>1?sheets[sheetIndex-1]:null;
+ if(left){const holder=document.createElement('div');holder.className='static-leaf static-left';holder.innerHTML=left;root.appendChild(holder)}
+ if(opened&&right){const holder=document.createElement('div');holder.className='static-leaf static-right';holder.innerHTML=right;root.appendChild(holder)}
+ const total=sheets.length;
+ label.textContent=sheetIndex===0?'Cover · Open the notebook':'Page '+sheetIndex+' of '+(total-1);
+ prev.disabled=sheetIndex===0;next.disabled=sheetIndex>=total-1;
+ root.querySelectorAll('.archive-entry').forEach(el=>el.addEventListener('click',()=>{
+  const item=all.find(y=>y.id===el.dataset.entryId);
+  if(item){history.replaceState(null,'','?id='+encodeURIComponent(item.id));render(item);flip.flipNext()}
+ }));
 }
+flip={
+ getCurrentPageIndex:()=>sheetIndex,getPageCount:()=>sheets.length,
+ flipNext:()=>{if(sheetIndex<sheets.length-1){sheetIndex++;showSheet()}},
+ flipPrev:()=>{if(sheetIndex>0){sheetIndex--;showSheet()}},
+ flip:(n)=>{sheetIndex=Math.max(1,Math.min(sheets.length-1,n));showSheet()},
+ destroy:()=>{}
+};
+function render(x){sheets=build(x);sheetIndex=0;showSheet()}
 document.querySelectorAll('.journal-tabs button').forEach(btn=>btn.addEventListener('click',()=>{if(!flip)return;const target=sectionPages[btn.dataset.section];if(target===undefined)return;const go=()=>{if(flip)flip.flip(target)};if(flip.getCurrentPageIndex()===0){flip.flipNext();setTimeout(go,850)}else go()}));
 prev.addEventListener('click',()=>flip&&flip.flipPrev());
 next.addEventListener('click',()=>flip&&flip.flipNext());
