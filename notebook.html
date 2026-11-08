@@ -692,6 +692,15 @@ main{width:100%;max-width:none!important;overflow:hidden}
  #book .static-left{display:none!important}
  #book .static-right{left:55.33854167%!important}
 }
+
+/* Explicitly anchor paper edges to the source artwork's spine at x=850. */
+#book .static-leaf.static-right{left:55.3385416667%!important;right:auto!important;transform:none!important;margin:0!important}
+#book .static-leaf.static-left{left:25.78125%!important;right:auto!important;transform:none!important;margin:0!important}
+#book .static-leaf>.page{margin:0!important;max-width:none!important;min-width:0!important;left:0!important;top:0!important}
+#book .static-right{cursor:pointer}
+#book .static-right .copy{cursor:auto}
+.controls{z-index:20!important;pointer-events:auto!important}
+.controls button{position:relative!important;z-index:21!important;pointer-events:auto!important}
 </style>
 <script src="https://cdn.jsdelivr.net/npm/page-flip@2.0.7/dist/js/page-flip.browser.min.js" defer></script>
 </head>
@@ -761,7 +770,7 @@ function showSheet(){
  const right=sheets[sheetIndex];
  const left=opened&&sheetIndex>1?sheets[sheetIndex-1]:null;
  if(left){const holder=document.createElement('div');holder.className='static-leaf static-left';holder.innerHTML=left;root.appendChild(holder)}
- if(opened&&right){const holder=document.createElement('div');holder.className='static-leaf static-right';holder.innerHTML=right;root.appendChild(holder)}
+ if(opened&&right){const holder=document.createElement('div');holder.className='static-leaf static-right';holder.innerHTML=right;root.appendChild(holder);holder.addEventListener('click',e=>{if(e.target.closest('a,button,.archive-entry,.copy,.archive-list'))return;flip.flipNext()})}
  const total=sheets.length;
  label.textContent=sheetIndex===0?'Cover · Open the notebook':'Page '+sheetIndex+' of '+(total-1);
  prev.disabled=sheetIndex===0;next.disabled=sheetIndex>=total-1;
@@ -779,8 +788,8 @@ flip={
 };
 function render(x){sheets=build(x);sheetIndex=0;showSheet()}
 document.querySelectorAll('.journal-tabs button').forEach(btn=>btn.addEventListener('click',()=>{if(!flip)return;const target=sectionPages[btn.dataset.section];if(target===undefined)return;const go=()=>{if(flip)flip.flip(target)};if(flip.getCurrentPageIndex()===0){flip.flipNext();setTimeout(go,850)}else go()}));
-prev.addEventListener('click',()=>flip&&flip.flipPrev());
-next.addEventListener('click',()=>flip&&flip.flipNext());
+prev.addEventListener('click',e=>{e.stopPropagation();if(flip)flip.flipPrev()});
+next.addEventListener('click',e=>{e.stopPropagation();if(flip)flip.flipNext()});
 document.addEventListener('keydown',e=>{if(!flip||e.target.matches('input,textarea,select,button'))return;if(e.key==='ArrowRight')flip.flipNext();if(e.key==='ArrowLeft')flip.flipPrev()});
 
 fetch('inspiration.json').then(r=>{if(!r.ok)throw Error('Could not load discoveries');return r.json()}).then(data=>{
