@@ -1539,6 +1539,24 @@ body{
   margin-left:calc(50vw - var(--desktop-scene-width)*.5533854)!important;
  }
 }
+
+/* Camera looks squarely at the notebook: slight foreshortening only, no desk rotation. */
+@media(min-width:701px){
+ .stage,.stage.open-book,.stage:not(.open-book){
+  transform:perspective(2400px) rotateX(9deg) rotateZ(0deg)!important;
+  transform-origin:55.33854% 55%!important;
+ }
+}
+@media(max-width:700px){
+ body{
+  background:#d9bd9a url('assets/hummingbird-table-mobile.png') center top / 100% auto no-repeat!important;
+  background-attachment:fixed!important;
+ }
+ .stage,.stage.open-book{
+  transform:perspective(2200px) rotateX(7deg) rotateZ(0deg)!important;
+  transform-origin:55.33854% 55%!important;
+ }
+}
 </style>
 <script src="https://cdn.jsdelivr.net/npm/page-flip@2.0.7/dist/js/page-flip.browser.min.js" defer></script>
 </head>
