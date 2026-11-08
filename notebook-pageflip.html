@@ -1434,11 +1434,11 @@ function showSheet(){
  stage.style.cursor=opened?'default':'pointer';
  root.innerHTML='';
  const right=sheets[sheetIndex];
- const left=opened&&sheetIndex>1?'<article class="page blank-left-page"><div class="page-inner"></div></article>':null;
+ const left=opened&&sheetIndex>1?sheets[sheetIndex-1]:null;
  if(left){const holder=document.createElement('div');holder.className='static-leaf static-left';holder.innerHTML=left;root.appendChild(holder)}
  if(opened&&right){const holder=document.createElement('div');holder.className='static-leaf static-right';holder.innerHTML=right;root.appendChild(holder);holder.addEventListener('click',e=>{if(e.target.closest('a,button,.archive-entry,.copy,.archive-list'))return;flip.flipNext()})}
  const total=sheets.length;
- label.textContent=sheetIndex===0?'Cover · Open the notebook':'Page '+sheetIndex+' of '+(total-1);
+ label.textContent=sheetIndex===0?'Cover · Open the notebook':'Pages '+Math.max(1,sheetIndex-1)+'–'+sheetIndex+' of '+(total-1);
  prev.disabled=sheetIndex===0;next.disabled=sheetIndex>=total-1;
  root.querySelectorAll('.archive-entry').forEach(el=>el.addEventListener('click',()=>{
   const item=all.find(y=>y.id===el.dataset.entryId);
@@ -1447,14 +1447,17 @@ function showSheet(){
 }
 flip={
  getCurrentPageIndex:()=>sheetIndex,getPageCount:()=>sheets.length,
- flipNext:()=>turnTo(sheetIndex+1,'next'),
- flipPrev:()=>turnTo(sheetIndex-1,'prev'),
+ flipNext:()=>turnTo(sheetIndex===0?1:Math.min(sheets.length-1,sheetIndex+2),'next'),
+ flipPrev:()=>turnTo(sheetIndex<=1?0:Math.max(1,sheetIndex-2),'prev'),
  flip:(n)=>turnTo(Math.max(1,Math.min(sheets.length-1,n)),'next'),
  destroy:()=>{}
 };
 function turnTo(target,direction){
  if(turning||target<0||target>=sheets.length||target===sheetIndex)return;
  const current=root.querySelector('.static-right');
+ // Temporarily avoid the rigid, oversized 3D overlay until spread geometry is stable.
+ sheetIndex=target;showSheet();return;
+
  if(!current||sheetIndex===0||window.matchMedia('(prefers-reduced-motion: reduce)').matches){
   sheetIndex=target;showSheet();return;
  }
