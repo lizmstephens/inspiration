@@ -13,11 +13,11 @@
       "behaviour"
     ],
     "source": "https://www.bmj.com/content/363/bmj.k5094",
-    "image": "",
-    "image_credit": "",
-    "image_credit_url": "",
-    "image_license_url": "",
-    "image_status": "permission required",
+    "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Parachute%20Descent.jpg?width=1400",
+    "image_credit": "Photograph: SkydivePhoto · CC0 1.0 · Wikimedia Commons",
+    "image_credit_url": "https://commons.wikimedia.org/wiki/File:Parachute_Descent.jpg",
+    "image_license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "image_status": "licensed",
     "discovery": "The parachute trial is funny precisely because the science is technically sound. The researchers followed the principles of a randomised controlled trial, but the circumstances were so different from those in which parachutes are actually needed that the results were meaningless for the real-world question. It illustrates a fundamental distinction between internal validity and external validity: an experiment can reliably tell us what happened under the conditions studied, without telling us whether the findings apply elsewhere. This is particularly important when evidence is used to inform decisions in unfamiliar or extreme circumstances. We often ask whether research is rigorous, but perhaps we should spend just as much time asking whether it is relevant. The most statistically robust answer to the wrong question may be less useful than an imperfect answer to the right one.",
     "sources": [
       {
