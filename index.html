@@ -1,106 +1,2360 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="theme-color" content="#10243d">
-    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
-    <link rel="stylesheet" href="styles.css?v=20261031-mastwidth">
-    <title>
-      Daily Hummingbird · Liz Stephens
-    </title>
-    <meta name="description" content="An interesting discovery each day, with thoughts from Liz Stephens.">
-  </head>
-  <body data-page="home">
-    <header>
-      <nav class="topnav wrap" aria-label="Main navigation">
-        <a href="index.html" data-nav="home">
-          Home
-        </a>
-        <a href="about.html" data-nav="about">
-          About
-        </a>
-        <a href="archive.html" data-nav="archive">
-          Archive
-        </a>
-        <a href="collaborators.html" data-nav="collaborators">
-          Collaborators
-        </a>
-        <a href="index.html#coming-soon">
-          Contribute
-        </a>
-      </nav>
-      <p class="header-tagline wrap">Daily inspiration through the cross-pollination of ideas and perspectives. An experiment in human collaboration, facilitated by AI.</p>
-      <section class="masthead">
-        <div class="responsive-masthead">
-          <picture class="responsive-masthead-picture">
-            <source media="(max-width: 650px)" srcset="assets/hummingbird-mobile-transparent.png">
-            <img src="assets/hummingbird-desktop-transparent.png" alt="Daily Hummingbird" style="display:block;width:100%;max-width:100%;height:auto;">
-          </picture>
-          
-        </div>
-      </section>
-    </header>
-    <main class="wrap">
-      <section class="feature" id="today">
-        <p id="status">
-          Loading today's inspiration…
-        </p>
-      </section>
-      <section class="below">
-        <article class="small-card">
-          <h3>
-            From the archive
-          </h3>
-          <div class="archive-preview" id="archive-preview">
-          </div>
-        </article>
-        <article class="small-card" id="coming-soon">
-          <h3 class="purple">
-            Coming soon
-          </h3>
-          <div class="coming">
-            <div class="seed" aria-hidden="true">
-              ✳
-            </div>
-            <div>
-              <h4>
-                Share your inspiration
-              </h4>
-              <p>
-                Soon you'll be able to suggest articles, ideas and projects that have caught your attention.
-              </p>
-            </div>
-          </div>
-        </article>
-      </section>
-      <nav class="archive-tags" id="tags" aria-label="Browse by theme">
-      </nav>
-    </main>
-    <footer>
-      <div class="wrap">
-        Daily Hummingbird · Curated by Liz Stephens
-        <br>
-        <a href="about.html">
-          About
-        </a>
-        <a href="archive.html">
-          Archive
-        </a>
-        <a href="collaborators.html">
-          Collaborators
-        </a>
-        <a href="contact.html">
-          Request a correction or removal
-        </a>
-        <br>
-        All linked articles and photographs remain the work of their respective creators.
-      </div>
-    </footer>
-    <script src="site.js?v=20261102-thoughts" defer>
-    </script>
-    <script>
-      document.querySelector('[data-nav="home"]').setAttribute('aria-current','page')
-    </script>
-  </body>
-</html>
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#10243d"><link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<title>Notebook experiment · Daily Hummingbird — Page-turn experiment</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,450;9..144,600;9..144,700&family=Caveat:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#10243d;--ink:#172942;--cream:#fff8e9;--gold:#ffe0a0}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 50% 10%,#223b58,var(--navy) 75%);color:white;font-family:'DM Sans',Arial,sans-serif;min-height:100vh}
+a{color:inherit}button,select{font:inherit}button{cursor:pointer}
+.top{max-width:1120px;margin:0 auto;padding:23px 24px 8px;display:flex;justify-content:space-between;align-items:center;gap:24px}
+.brand{font-size:clamp(23px,3.3vw,37px);font-weight:700;text-decoration:none;letter-spacing:-.045em}.brand em{color:#ffe18f;font-style:normal}
+.top nav{display:flex;gap:19px;font-size:14px}.top nav a{text-decoration:none;opacity:.85}.top nav a:hover{text-decoration:underline}
+.intro{text-align:center;max-width:790px;margin:0 auto;padding:6px 24px 10px}.intro p{color:#e4dfd4;font-size:15px;line-height:1.6;margin:3px 0}
+.chapters{display:flex;gap:10px;justify-content:center;align-items:center;margin:12px auto 0;flex-wrap:wrap}
+.chapters label{font-size:13px;color:#e6dbb9}select{max-width:min(80vw,390px);border:1px solid #9a9fa5;color:white;border-radius:18px;padding:9px 32px 9px 13px;background:#203b57}
+.stage{position:relative;max-width:700px;margin:8px auto 0;min-height:610px;display:flex;align-items:center;justify-content:center;padding:15px}
+#book{width:100%;max-width:1000px;margin:auto}#book .page{background:#faf2df;color:var(--ink);border:1px solid #d9c9ae;overflow:hidden}
+.page-inner{height:100%;padding:clamp(23px,3vw,39px);position:relative;display:flex;flex-direction:column;overflow:hidden;background:radial-gradient(circle at 30% 25%,#fffdf2,#faf1db 80%);}
+.page-inner:before{content:"";position:absolute;pointer-events:none;inset:11px;border:1px solid rgba(165,125,60,.11)}
+.page .eyebrow{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#78674d;font-weight:700;margin-bottom:13px}
+.page h2{font-family:Fraunces,Georgia,serif;font-size:clamp(25px,3vw,38px);line-height:1.12;letter-spacing:-.025em;margin:0 0 14px}
+.page .scribble{font-size:14px;font-style:italic;color:#675b4d;background:linear-gradient(transparent 55%,#ffe3a2 55%);align-self:flex-start;margin-bottom:14px}
+.page .copy{font:400 clamp(15px,1.5vw,17px)/1.62 Georgia,serif;overflow-y:auto;min-height:0;scrollbar-width:thin;padding-right:4px}
+.page .copy p{margin:0 0 14px}.page .copy p:first-child{font-weight:600}
+.page .page-foot{font-size:11px;color:#7e705d;border-top:1px solid #e0d4c0;padding-top:9px;margin-top:auto;display:flex;justify-content:space-between;gap:10px}
+.page .cover{background:linear-gradient(145deg,#294766,#132840 75%);color:#fff1c5;justify-content:center;align-items:center;text-align:center;border:13px solid #273f56;box-shadow:inset 0 0 0 2px #a78a56,inset 0 0 0 18px #182f4b}
+.page .cover:before{inset:27px;border:1px solid #907951}.cover .bigbrand{font:600 clamp(38px,4vw,56px)/1.13 Fraunces,Georgia,serif;letter-spacing:-.035em;max-width:90%}.cover .cover-small{font-size:12px;letter-spacing:.23em;text-transform:uppercase;margin-bottom:24px}.cover .cover-ornament{font-size:60px;margin:14px 0;color:#f6cf79}.cover .cover-tail{font-size:14px;max-width:260px;line-height:1.5}
+.paper-photo{margin:2px 0 13px;padding:7px;background:#fff;box-shadow:0 3px 10px #49371c25;transform:rotate(-1deg)}
+.paper-photo img{width:100%;height:clamp(95px,17vw,165px);object-fit:cover;display:block}.photo-credit{font-size:10px;color:#746b5c;line-height:1.3;margin-top:5px}.photo-credit a{color:#314767}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px}.tag{font-size:11px;color:#344555;background:#e7eddb;border-radius:15px;padding:4px 8px}
+.story-links{font-size:13px;margin-top:12px}.story-links a{color:#243e60;font-weight:700}
+.reflection-head{border-bottom:4px solid #f3dda7;padding-bottom:7px;align-self:flex-start}
+.reflection .copy{margin-top:24px;font-size:clamp(17px,1.6vw,20px);line-height:1.68}
+.doodle{position:absolute;bottom:53px;right:26px;color:#aa8650;font-size:27px;opacity:.85;pointer-events:none}
+.endpage{text-align:center;justify-content:center;align-items:center;gap:15px}.endpage h2{font-size:35px}.endpage p{line-height:1.6;font-family:Georgia,serif}.endpage a{color:#183a5d}
+.controls{max-width:880px;margin:5px auto 25px;padding:0 25px;display:flex;gap:15px;align-items:center;justify-content:center}
+.controls button{height:45px;width:45px;background:transparent;color:#ffe4a1;border:1px solid #d6ba79;border-radius:50%;font-size:24px}
+.controls button:hover{background:#ffffff1e}.controls button:disabled{opacity:.3;cursor:not-allowed}
+#page-label{min-width:205px;text-align:center;color:#f5e8c4;font-size:14px}
+.bird{position:absolute;top:0;left:calc(50% + 340px);width:63px;height:45px;pointer-events:none;transition:transform .5s,opacity .5s;z-index:10}
+.bird svg{width:100%;height:100%}.bird.jump{transform:translateY(-17px) rotate(-8deg)}
+.fallback{max-width:650px;margin:15px auto;padding:0 20px}.fallback .page{display:block;margin:0 0 20px;min-height:460px;border-radius:8px}.fallback .page-inner{min-height:460px}.fallback-message{color:#eee;max-width:600px;margin:0 auto 15px}
+@media(max-width:700px){.top{padding:16px 20px;display:block;text-align:center}.top nav{justify-content:center;margin-top:12px;flex-wrap:wrap}.intro p{font-size:13px}.stage{min-height:480px;padding:12px 4px}.bird{left:auto;right:15px;top:4px;width:44px}.controls{margin-top:10px}.page .page-inner{padding:23px}.page .copy{font-size:15px}.reflection .copy{font-size:17px}.paper-photo img{height:120px}}
+@media(prefers-reduced-motion:reduce){.bird{transition:none}}
+
+/* Notebook experiment: everyday worn leather on a warm coffee-shop table.
+   Entirely CSS-based, with no generated or remotely loaded background image. */
+body{
+ background-color:#805336;
+ background-image:
+   linear-gradient(90deg,rgba(41,24,13,.28) 0 1px,transparent 2px 100%),
+   repeating-linear-gradient(94deg,transparent 0 18px,rgba(54,29,15,.09) 19px 21px,transparent 24px 47px,rgba(245,200,136,.07) 50px 52px),
+   repeating-linear-gradient(0deg,rgba(48,27,15,.12) 0 2px,transparent 3px 170px,rgba(35,21,12,.23) 171px 175px,rgba(225,175,111,.12) 177px 179px,transparent 180px 355px),
+   radial-gradient(ellipse at 50% 6%,rgba(249,202,137,.48),transparent 70%),
+   linear-gradient(95deg,#623c26,#996742 25%,#805031 52%,#a67349 78%,#68432c);
+ background-size:100% 100%,100% 100%,100% 100%,100% 100%,100% 100%;
+}
+body:before{content:"";pointer-events:none;position:fixed;inset:0;background:radial-gradient(ellipse at center,transparent 35%,rgba(33,20,12,.22));z-index:0}
+body>header,body>.intro,body>.chapters,body>main{position:relative;z-index:1}
+.top{background:rgba(31,27,26,.13);border-radius:0 0 12px 12px}
+.intro p,.chapters label{color:#fff4e7;text-shadow:0 1px 3px #301b13}
+.chapters select{background:#59402f;border-color:#c5a788}
+.stage{filter:drop-shadow(0 22px 20px rgba(26,13,8,.43))}
+#book .page{background:#f8f7f0;border-color:#ddd9cb}
+.page-inner{
+ background-color:#f9f8f2;
+ background-image:
+   repeating-linear-gradient(to bottom,transparent 0,transparent 30px,rgba(111,143,158,.15) 31px,transparent 32px),
+   linear-gradient(115deg,rgba(255,255,255,.86),rgba(246,243,232,.65));
+ background-size:100% 32px,100% 100%;
+}
+.page-inner:before{border-color:rgba(107,124,125,.07)}
+.page .cover{
+ background-color:#70513f;
+ background-image:
+   repeating-linear-gradient(92deg,rgba(35,22,17,.035) 0 1px,transparent 2px 5px),
+   radial-gradient(circle at 80% 12%,rgba(242,205,160,.12),transparent 50%),
+   radial-gradient(circle at 20% 90%,rgba(40,25,19,.21),transparent 52%),
+   linear-gradient(118deg,#604433,#81624a 42%,#634a3a 85%);
+ color:#c7ad87;
+ border:9px solid #674b38;
+ border-radius:19px;
+ box-shadow:
+   inset 0 0 0 1px rgba(255,226,179,.21),
+   inset 11px 0 15px rgba(45,28,20,.28),
+   inset -3px 1px 9px rgba(41,24,17,.2);
+}
+#book .coverpage{border-radius:20px;overflow:hidden;border:1px solid #483125}
+.page .cover:before{inset:12px;border:1px dashed rgba(218,184,139,.37);border-radius:12px}
+.cover .bigbrand{
+ color:#b89a73;
+ font:600 clamp(34px,4vw,51px)/1.2 Fraunces,Georgia,serif;
+ letter-spacing:-.045em;
+ text-shadow:0 1px 1px rgba(241,205,156,.25),0 -1px 1px rgba(34,21,15,.7);
+ transform:rotate(-2deg);
+}
+.controls button{background:#684730b0;border-color:#efd4a8;color:#fff0d3}
+.controls button:hover{background:#4b3025}
+#page-label{color:#fff6e6;text-shadow:0 1px 3px #3b2113}
+@media(max-width:700px){.stage{filter:drop-shadow(0 12px 12px rgba(26,13,8,.4))}}
+
+/* Photo-backed journal experiment: keep the working StPageFlip mechanism. */
+body{
+ background-color:#a77955;
+ background-image:linear-gradient(rgba(79,53,33,.12),rgba(79,53,33,.14)),url('https://unsplash.com/photos/XnpWqPZNfXE/download?force=true&w=1800');
+ background-position:center center;
+ background-size:cover;
+ background-repeat:no-repeat;
+ background-attachment:fixed;
+}
+body:before{background:radial-gradient(ellipse at 50% 50%,transparent 40%,rgba(45,26,15,.16));}
+.top{background:rgba(42,32,24,.25);backdrop-filter:blur(2px)}
+.stage{filter:drop-shadow(0 20px 22px rgba(36,19,11,.4))}
+#book .coverpage{border:0!important;border-radius:22px 15px 15px 22px!important;background:#664532;overflow:hidden;box-shadow:3px 6px 0 #4c3225,8px 14px 15px #28180c77}
+.page .cover{background:none!important;border:0!important;border-radius:inherit!important;box-shadow:none!important;padding:0!important}
+.page .cover:before{content:none!important}
+.journal-cover-art{display:block;width:100%;height:100%;object-fit:cover;object-position:center;user-select:none}
+#book .page:not(.coverpage){background:#f9f8f2;border-color:#e0dacd}
+.page-inner:not(.cover){
+ background-color:#faf9f3;
+ background-image:repeating-linear-gradient(to bottom,transparent 0 29px,rgba(114,145,166,.17) 30px,transparent 31px),linear-gradient(105deg,#fffdf8,#f7f5ee);
+ background-size:100% 31px,100% 100%;
+}
+.page-inner:not(.cover):before{border-color:rgba(113,111,105,.06)}
+.controls button{background:rgba(74,48,32,.7);border-color:#eee0c6;color:#fff2df}
+#page-label{color:#fff8ea;text-shadow:0 1px 3px #3e2418}
+@media(max-width:700px){body{background-attachment:scroll}}
+/* Reliable locally served tabletop; no external hotlink redirects. */
+body{background-color:#c9a17d!important;background-image:url('assets/table.jpg')!important;background-position:center!important;background-size:cover!important;background-repeat:no-repeat!important;background-attachment:fixed!important}
+@media(max-width:700px){body{background-attachment:scroll!important}}
+
+/* Journal refinement — softly rounded, unruled paper and quieter typography. */
+#book .page:not(.coverpage){border-radius:15px!important;overflow:hidden!important}
+#book .page:not(.coverpage) .page-inner{
+  border-radius:14px;
+  background:#fbf9f2!important;
+  background-image:linear-gradient(110deg,rgba(255,255,255,.8),rgba(244,239,226,.35))!important;
+  background-size:100% 100%!important;
+}
+#book .page:not(.coverpage) .page-inner:before{border-radius:10px}
+#book .reflection .copy{font-size:clamp(14px,1.35vw,16px);line-height:1.58;margin-top:17px}
+#book .reflection .copy p{font-weight:400}
+#book .page .page-foot{position:relative;z-index:1}
+#book .page .doodle{width:58px;height:54px;right:26px;bottom:55px;opacity:.4}
+#book .page .doodle svg{width:100%;height:100%;fill:none;stroke:#9b7952;stroke-width:1.65;stroke-linecap:round;stroke-linejoin:round}
+@media(max-width:700px){
+ #book .reflection .copy{font-size:14px;line-height:1.53;margin-top:14px}
+ #book .page .doodle{width:43px;height:40px;right:17px;bottom:46px}
+}
+
+/* Mobile-first journal refinements, November 2026 */
+.top{justify-content:center;padding:11px 16px 6px;background:transparent}
+.top nav{justify-content:center;gap:clamp(22px,7vw,52px);font-size:14px}
+.chapters{margin:8px auto 0;padding:0 14px;gap:8px}
+.chapters label{font-size:12px}
+.chapters select{max-width:min(78vw,430px);font-size:13px;padding:8px 28px 8px 12px}
+.stage{margin-top:0;padding-top:8px}
+#book .page:not(.coverpage){background:#fff4df!important;border-color:#eadcc4!important;border-radius:15px!important}
+#book .page:not(.coverpage) .page-inner{
+ background-color:#fff4df!important;
+ background-image:radial-gradient(circle,rgba(163,130,94,.17) .75px,transparent 1px)!important;
+ background-size:17px 17px!important;
+ border-radius:14px!important;
+}
+#book .page:not(.coverpage) .page-inner:before{border-radius:10px}
+.page-logo{position:absolute;right:22px;top:18px;width:31px;height:31px;object-fit:contain;opacity:.75;z-index:2;pointer-events:none}
+#book .page .eyebrow{padding-right:37px}
+#book .page h2{align-self:flex-start;max-width:100%;background:linear-gradient(to bottom,transparent 56%,rgba(255,190,158,.52) 56%,rgba(255,190,158,.52) 89%,transparent 89%);box-decoration-break:clone;-webkit-box-decoration-break:clone;padding:0 3px}
+#book .reflection-head{border-bottom:0}
+#book .page .copy{overflow-y:auto!important;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;touch-action:pan-y;user-select:text}
+#book .story .copy p:first-child{font-weight:400}
+#book .reflection .copy{font-size:clamp(14px,1.35vw,16px);line-height:1.58}
+@media(max-width:700px){
+ .top{padding:9px 12px 3px}
+ .top nav{margin:0;gap:28px;font-size:14px}
+ .chapters{margin:7px auto 0}
+ .chapters label{display:none}
+ .chapters select{max-width:calc(100vw - 30px);width:100%;font-size:13px}
+ .stage{padding:5px 4px;min-height:440px}
+ #book .page .page-inner{padding:19px}
+ #book .page .eyebrow{font-size:10px;letter-spacing:.09em}
+ #book .page h2{font-size:clamp(23px,6vw,30px)}
+ #book .page .copy{font-size:14px;line-height:1.52}
+ #book .reflection .copy{font-size:14px;line-height:1.55}
+ .page-logo{width:25px;height:25px;right:15px;top:14px}
+}
+
+/* Tactile book paper, handwritten headings and a loose peach marker stroke. */
+.stage{filter:drop-shadow(0 24px 20px rgba(45,25,13,.52)) drop-shadow(0 7px 5px rgba(35,19,10,.24))!important}
+#book{filter:drop-shadow(0 7px 9px rgba(37,20,12,.22))}
+#book .page:not(.coverpage){border:1px solid #e2cfac!important;box-shadow:inset 0 0 14px rgba(112,81,45,.1),0 3px 7px rgba(53,30,15,.24)!important}
+#book .page:not(.coverpage) .page-inner{
+ background-color:#fff3db!important;
+ background-image:
+  linear-gradient(90deg,rgba(85,58,33,.13),transparent 10%,transparent 87%,rgba(109,73,35,.12)),
+  radial-gradient(circle,rgba(151,113,74,.14) .7px,transparent 1px)!important;
+ background-size:100% 100%,17px 17px!important;
+ box-shadow:inset 8px 0 18px -13px rgba(74,47,27,.5),inset -7px 0 17px -13px rgba(74,47,27,.4)!important;
+}
+#book .page .eyebrow{
+ font-family:'Caveat','Segoe Print',cursive;
+ font-size:clamp(19px,2.5vw,25px);
+ font-weight:600;letter-spacing:0;text-transform:none;
+ color:#866443;margin-bottom:9px;line-height:1.1
+}
+#book .page h2{
+ font-family:'Caveat','Segoe Print',cursive!important;
+ font-size:clamp(34px,4vw,49px);font-weight:700;
+ line-height:1.12;letter-spacing:0;
+ background:none!important;position:relative;isolation:isolate;
+ padding:0 6px 4px 2px;margin-bottom:16px
+}
+#book .page h2:before{
+ content:"";position:absolute;left:-6px;right:-12px;top:45%;height:54%;
+ background:#f7bd9e;opacity:.55;z-index:-1;
+ border-radius:48% 12% 35% 16% / 30% 45% 35% 35%;
+ transform:rotate(-1.8deg) skewX(-8deg);
+ clip-path:polygon(0 24%,4% 9%,36% 3%,73% 8%,97% 0,100% 34%,98% 83%,67% 92%,28% 100%,2% 83%);
+}
+#book .page .page-foot{display:none!important}
+#book .page .story-links{margin-top:auto;padding-top:12px}
+#book .reflection .copy{margin-top:10px}
+@media(max-width:700px){
+ #book .page .eyebrow{font-size:19px;letter-spacing:0}
+ #book .page h2{font-size:clamp(32px,8vw,41px);margin-bottom:12px}
+ .stage{filter:drop-shadow(0 14px 13px rgba(45,25,13,.5))!important}
+}
+
+/* Leather boards visible beneath the smaller paper block. */
+.stage{isolation:isolate;filter:none!important;position:relative}
+.stage:before{
+ content:"";position:absolute;z-index:-2;
+ width:calc(100% - 18px);max-width:1020px;
+ top:4px;bottom:4px;left:50%;transform:translateX(-50%);
+ border-radius:22px 16px 19px 22px;
+ background:
+ linear-gradient(90deg,rgba(36,21,14,.28),transparent 9%,transparent 91%,rgba(30,18,12,.32)),
+ repeating-linear-gradient(92deg,rgba(30,20,15,.06) 0 1px,transparent 1px 5px),
+ linear-gradient(135deg,#6b4935,#856048 43%,#5e402f);
+ border:2px solid #4e3326;
+ box-shadow:0 17px 19px rgba(34,19,10,.47),0 28px 30px rgba(34,19,10,.25),inset 0 0 0 2px rgba(224,178,120,.17);
+ pointer-events:none;
+}
+#book{filter:none!important;position:relative;z-index:1}
+#book .page:not(.coverpage) .page-inner{
+ height:calc(100% - 12px)!important;
+ margin:6px 7px!important;
+ width:calc(100% - 14px)!important;
+ border:1px solid rgba(199,172,129,.5);
+ border-radius:10px 15px 15px 10px!important;
+ box-shadow:inset 11px 0 15px -14px rgba(59,36,18,.75),inset -6px 0 11px -10px rgba(67,42,23,.5),0 2px 4px rgba(45,29,15,.2)!important;
+}
+#book .page:not(.coverpage){background:#e8d9bc!important;border-color:#d2b994!important}
+#book .page-logo{width:39px;height:39px;right:22px;top:19px}
+.stage.open-book:after{content:"";pointer-events:none;position:absolute;z-index:-1;top:15px;bottom:15px;left:50%;width:2px;background:linear-gradient(90deg,#493121,#bca88b);box-shadow:0 0 9px 4px rgba(56,33,16,.23)}
+@media(max-width:700px){
+ .stage{padding:13px 13px 17px 22px!important}
+ .stage:before{width:calc(100% - 12px);top:5px;bottom:6px;border-radius:20px 13px 13px 20px}
+ .stage.open-book:after{
+  left:8px;top:13px;bottom:14px;width:24px;
+  border-radius:10px 2px 2px 10px;
+  background:repeating-linear-gradient(90deg,#e4d1ae 0 2px,#fbefd7 3px 6px,#ead9bb 7px 8px);
+  border-right:3px solid #75543b;
+  box-shadow:inset 6px 0 8px rgba(63,38,22,.23),4px 0 9px rgba(51,30,16,.3);
+ }
+ #book .page-logo{width:34px;height:34px;right:15px;top:15px}
+ #book .page:not(.coverpage) .page-inner{margin:5px 6px!important;width:calc(100% - 12px)!important;height:calc(100% - 10px)!important}
+}
+
+/* Use the actual uploaded leather journal artwork, not a CSS approximation. */
+.stage:before{
+ background:#6b4935 url('assets/journal.png') center center / 100% 100% no-repeat!important;
+ border:0!important;
+ border-radius:20px!important;
+ box-shadow:0 16px 22px rgba(35,20,11,.48),0 27px 32px rgba(35,20,11,.22)!important;
+}
+.stage:not(.open-book):before{display:none!important}
+.stage.open-book:before{display:block!important}
+.stage.open-book:after{display:none!important}
+#book .page:not(.coverpage){background:transparent!important;border:0!important;box-shadow:none!important}
+#book .page:not(.coverpage) .page-inner{
+ margin:10px 13px!important;width:calc(100% - 26px)!important;height:calc(100% - 20px)!important;
+ border:1px solid #d9c7a6!important;
+ box-shadow:inset 12px 0 16px -14px rgba(49,28,15,.7),0 2px 5px rgba(42,24,13,.27)!important;
+}
+@media(max-width:700px){
+ .stage.open-book{padding-left:31px!important;padding-right:13px!important}
+ .stage.open-book:before{left:50%;width:calc(100% - 8px);top:3px;bottom:4px}
+ .stage.open-book:after{display:block!important;left:8px;top:17px;bottom:17px;width:24px;position:absolute;z-index:0;content:"";border-radius:4px 0 0 4px;background:repeating-linear-gradient(90deg,#e4d1ae 0 2px,#fff0d5 3px 5px,#ddc8a5 6px 7px);box-shadow:inset 5px 0 8px #52321c55,3px 0 6px #37211555}
+ #book .page:not(.coverpage) .page-inner{margin:7px 8px!important;width:calc(100% - 16px)!important;height:calc(100% - 14px)!important}
+}
+
+/* Fixed-size cover; open spread continues beyond the mobile viewport. */
+.stage{--sunbeam:linear-gradient(115deg,transparent 17%,rgba(255,244,213,.13) 31%,rgba(255,251,229,.22) 40%,rgba(255,248,224,.10) 48%,transparent 63%);position:relative}
+.stage.open-book:before{background-image:var(--sunbeam),url('assets/journal.png')!important;background-size:100% 100%,100% 100%!important}
+.stage.open-book .page-inner:not(.cover):after{
+ content:"";position:absolute;inset:0;pointer-events:none;z-index:5;
+ background:var(--sunbeam);mix-blend-mode:soft-light;border-radius:inherit;
+}
+@media(max-width:700px){
+ html,body{overflow-x:hidden}
+ .stage{padding:13px 13px 17px 22px!important}
+ .stage.open-book{padding:13px 13px 17px 22px!important}
+ .stage.open-book:before{
+  width:calc(100% - 12px)!important;
+  left:50%!important;
+  top:5px!important;bottom:6px!important;
+  background-size:100% 100%,100% 100%!important;
+ }
+ /* A second leather board and a cream left leaf run off the screen.
+    The right board retains exactly the closed cover's dimensions. */
+ .stage.open-book{isolation:isolate}
+ .stage.open-book .page-inner:not(.cover){position:relative}
+ .stage.open-book:after{
+  content:""!important;display:block!important;position:absolute!important;
+  left:calc(-100vw + 25px)!important;right:auto!important;
+  width:calc(100vw - 9px)!important;top:5px!important;bottom:6px!important;
+  z-index:-1!important;border:0!important;
+  border-radius:18px 3px 3px 18px!important;
+  background-image:var(--sunbeam),linear-gradient(90deg,rgba(80,49,26,.13),transparent 14%,transparent 88%,rgba(65,41,22,.24)),radial-gradient(circle,rgba(151,113,74,.14) .7px,transparent 1px),url('assets/journal.png')!important;
+  background-size:100% 100%,100% 100%,17px 17px,100% 100%!important;
+  background-color:#fff3db!important;
+  box-shadow:inset -12px 0 18px -11px rgba(47,28,16,.55),0 15px 21px rgba(35,20,11,.45)!important;
+ }
+}
+
+/* Correct the open spread: a genuine paper leaf to the left of the gutter. */
+@media(max-width:700px){
+ .stage.open-book{overflow:visible!important}
+ .stage.open-book:after{
+  content:""!important;display:block!important;
+  position:absolute!important;
+  left:calc(-100vw + 22px)!important;
+  width:calc(100vw + 5px)!important;
+  top:21px!important;bottom:23px!important;
+  z-index:0!important;
+  border:1px solid #d7c29f!important;
+  border-radius:17px 4px 4px 17px!important;
+  background-color:#fff2d9!important;
+  background-image:
+   linear-gradient(90deg,rgba(255,255,255,.12) 0%,transparent 65%,rgba(91,59,32,.19) 96%,rgba(61,39,24,.32) 100%),
+   radial-gradient(circle,rgba(151,113,74,.14) .7px,transparent 1px)!important;
+  background-size:100% 100%,17px 17px!important;
+  box-shadow:inset -13px 0 16px -11px rgba(60,37,18,.5),0 6px 10px rgba(36,22,11,.3)!important;
+  pointer-events:none;
+ }
+ .stage.open-book:before{
+  background-image:url('assets/journal.png')!important;
+  background-size:100% 100%!important;
+ }
+ .stage.open-book #book{z-index:1}
+}
+/* Light and page curvature: visible over the entire page, but never over text as an opaque layer. */
+#book .page:not(.coverpage) .page-inner{
+ background-image:
+  linear-gradient(105deg,rgba(85,57,31,.23) 0%,rgba(92,62,35,.09) 7%,transparent 19%,transparent 77%,rgba(101,65,32,.13) 96%,rgba(84,52,26,.2) 100%),
+  linear-gradient(128deg,transparent 10%,rgba(255,255,245,.62) 25%,rgba(255,250,225,.35) 39%,transparent 54%,rgba(110,77,45,.09) 74%,transparent 86%),
+  radial-gradient(circle,rgba(151,113,74,.14) .7px,transparent 1px)!important;
+ background-size:100% 100%,100% 100%,17px 17px!important;
+ box-shadow:inset 17px 0 19px -14px rgba(55,34,17,.52),inset -8px 0 12px -10px rgba(70,44,23,.36),0 2px 5px rgba(42,24,13,.27)!important;
+}
+#book .page-inner:not(.cover):after{
+ background:linear-gradient(118deg,transparent 12%,rgba(255,255,244,.29) 25%,rgba(255,255,238,.18) 39%,transparent 56%,rgba(76,48,28,.055) 72%,transparent 84%)!important;
+ mix-blend-mode:normal!important;
+}
+
+/* Trim the light border of the journal artwork without changing its apparent size. */
+.stage.open-book:before{
+ background-size:100% 100%,calc(100% + 24px) calc(100% + 24px)!important;
+ background-position:center,center!important;
+ background-repeat:no-repeat!important;
+ overflow:hidden!important;
+}
+@media(max-width:700px){
+ .stage.open-book:before{
+  background-image:url('assets/journal.png')!important;
+  background-size:calc(100% + 22px) calc(100% + 22px)!important;
+  background-position:center!important;
+ }
+}
+
+/* Tabs are attached to the notebook, not a separate navigation bar. */
+.stage{padding-top:32px!important}
+.journal-tabs{position:absolute;z-index:20;top:0;right:30px;display:flex;gap:8px}
+.journal-tabs button{border:1px solid #aa795c;border-bottom:0;background:#e7bc94;color:#4c3227;border-radius:10px 10px 0 0;padding:10px 18px 13px;font:600 19px 'Caveat',cursive;box-shadow:0 -2px 7px #3e241b40}
+.journal-tabs button:nth-child(2){background:#f0d8ac}
+.journal-tabs button:focus-visible{outline:3px solid #10243d}
+.stage:not(.open-book):before{display:none!important}
+#book .coverpage .journal-cover-art{object-fit:cover;transform:scale(1.055);transform-origin:center}
+#book .coverpage{overflow:hidden!important}
+.stage.open-book:after{pointer-events:none!important}
+.stage.open-book:before{pointer-events:none!important}
+#book .page{touch-action:pan-y}
+.person-photo{margin:5px auto 15px;max-width:230px;width:75%;padding:7px 7px 17px;background:#fff9ec;box-shadow:0 3px 12px #4b2c1930;transform:rotate(-1.5deg)}
+.person-photo img{display:block;width:100%;height:190px;object-fit:cover}
+.person-copy{font-size:15px!important;line-height:1.5!important}
+.about-copy{font-size:14px!important;line-height:1.5!important}
+.about-copy p{margin-bottom:12px}
+@media(max-width:700px){
+ .stage{padding-top:32px!important}
+ .journal-tabs{top:0;right:20px;gap:6px}
+ .journal-tabs button{font-size:17px;padding:7px 12px 10px}
+ .stage.open-book:after{border-radius:18px 15px 15px 18px!important}
+ .person-photo{max-width:185px}
+ .person-photo img{height:145px}
+}
+
+/* Left-hand leaf: paper inset inside a visible leather board, matching right corners. */
+@media(max-width:700px){
+ .stage.open-book:after{
+  border:10px solid transparent!important;
+  border-radius:21px 17px 17px 21px!important;
+  background-image:
+   linear-gradient(100deg,rgba(102,67,37,.12),transparent 60%,rgba(75,47,27,.26)),
+   radial-gradient(circle,rgba(151,113,74,.14) .7px,transparent 1px),
+   url('assets/journal.png')!important;
+  background-origin:padding-box,padding-box,border-box!important;
+  background-clip:padding-box,padding-box,border-box!important;
+  background-size:100% 100%,17px 17px,100% 100%!important;
+  background-color:#fff2d9!important;
+ }
+}
+
+/* The section tabs belong behind the open paper, not over the book. */
+.journal-tabs{z-index:0!important;top:3px!important;right:24px!important;visibility:hidden;pointer-events:none}
+.stage.open-book .journal-tabs{visibility:visible;pointer-events:auto}
+#book{z-index:2!important}
+.stage.open-book:before{z-index:-2!important}
+.stage.open-book:after{z-index:1!important}
+.journal-tabs button{padding-bottom:16px!important}
+.archive-list{overflow-y:auto;min-height:0;flex:1;display:flex;flex-direction:column;gap:2px;touch-action:pan-y}
+.archive-entry{border:0;border-bottom:1px dashed #c8ac89;background:transparent;text-align:left;padding:6px 4px;color:#24364a;display:flex;flex-direction:column;gap:1px;cursor:pointer}
+.archive-entry span{font:500 13px 'Caveat',cursive;color:#85684c}
+.archive-entry strong{font:600 17px 'Caveat',cursive}
+.archive-entry:hover strong{text-decoration:underline}
+@media(max-width:700px){
+ .journal-tabs{top:1px!important;right:12px!important;gap:4px!important}
+ .journal-tabs button{padding:6px 9px 15px!important;font-size:16px!important}
+ .stage.open-book:after{
+  z-index:1!important;
+  left:calc(-100vw + 13px)!important;
+  width:calc(100vw + 14px)!important;
+  top:20px!important;bottom:22px!important;
+  border:0!important;
+  border-radius:19px 17px 17px 19px!important;
+  background:#fff2d9!important;
+  background-image:linear-gradient(90deg,transparent 65%,rgba(75,47,27,.22) 98%),radial-gradient(circle,rgba(151,113,74,.14) .7px,transparent 1px)!important;
+  background-size:100% 100%,17px 17px!important;
+  box-shadow:inset -11px 0 16px -10px rgba(60,37,18,.5),0 5px 8px rgba(36,22,11,.2)!important;
+ }
+ .stage.open-book:before{z-index:-2!important}
+ .archive-entry{padding:5px 3px}
+}
+
+/* Stable open spread geometry: full-size matching left leather board with inset paper. */
+.stage .left-cover{display:none}
+.stage.open-book .left-cover{
+ display:block;position:absolute;pointer-events:none;
+ width:calc(100% - 12px);left:6px;top:46px;bottom:6px;
+ transform:translateX(-100%);z-index:0;
+ background:url('assets/journal.png') center/100% 100% no-repeat;
+ border-radius:20px;box-shadow:0 16px 22px rgba(35,20,11,.43);
+}
+.stage.open-book .left-cover:after{
+ content:"";position:absolute;inset:15px 13px 17px 13px;
+ border-radius:16px;
+ background-color:#fff2d9;
+ background-image:linear-gradient(90deg,rgba(255,255,255,.2),transparent 65%,rgba(74,46,26,.22)),radial-gradient(circle,rgba(151,113,74,.14) .7px,transparent 1px);
+ background-size:100% 100%,17px 17px;
+ box-shadow:inset -15px 0 20px -12px rgba(54,33,17,.55),0 3px 7px rgba(39,22,12,.2);
+}
+.stage.open-book:after{display:none!important}
+.stage{padding-top:64px!important}
+.stage.open-book:before{top:46px!important}
+.journal-tabs{top:10px!important;right:24px!important;z-index:3!important;align-items:flex-end}
+.journal-tabs button{min-height:57px;padding:9px 15px 23px!important;line-height:1.2!important;font-size:20px!important;white-space:nowrap}
+#book{z-index:4!important}
+@media(max-width:700px){
+ .stage{padding-top:64px!important}
+ .stage.open-book{padding-top:64px!important}
+ .stage.open-book .left-cover{
+  left:6px;top:46px;bottom:6px;width:calc(100% - 12px);
+  transform:translateX(-100%);
+ }
+ .stage.open-book .left-cover:after{inset:15px 12px 17px 12px;border-radius:16px}
+ .stage.open-book:before{top:46px!important}
+ .journal-tabs{top:9px!important;right:13px!important;gap:5px!important}
+ .journal-tabs button{font-size:18px!important;min-height:56px;padding:8px 12px 23px!important}
+}
+
+/* Layered journal rebuild: the table and illumination never move. */
+html,body{min-height:100%;overflow-x:hidden}
+body{background:#b88a5c url('assets/01_oak_table.png') center top / cover fixed no-repeat!important;color:#4a3025}
+main{position:relative;max-width:1536px;margin:0 auto}
+.stage,.stage.open-book{position:relative;isolation:isolate;max-width:700px;width:100%;min-height:0!important;margin:18px auto 0;padding:54px 15px 8px!important;background:none!important;box-shadow:none!important;overflow:visible!important}
+.stage:before,.stage:after,.stage.open-book:before,.stage.open-book:after{content:none!important;display:none!important}
+.stage .left-cover{display:none!important}
+.open-leather{position:absolute;pointer-events:none;display:none;z-index:0;top:54px;left:50%;width:min(100%,1000px);height:calc(100% - 62px);transform:translateX(-50%);background:url('assets/03_open_book.png') center / 100% 100% no-repeat;filter:drop-shadow(0 14px 13px rgba(43,23,11,.32))}
+.stage.open-book .open-leather{display:block}
+.sunlight{position:fixed;pointer-events:none;z-index:30;inset:0;background:url('assets/04_lighting_overlay.png') center top / cover no-repeat;opacity:.26;mix-blend-mode:multiply}
+#book{position:relative;z-index:2!important;width:100%;max-width:1000px;margin:0 auto}
+#book .page{border-radius:16px!important;overflow:hidden;background:#fff2db!important;border:1px solid #dfc9a9!important}
+#book .page-inner:not(.cover){background-color:#fff4df!important;background-image:linear-gradient(90deg,rgba(74,45,22,.15),transparent 12%,transparent 86%,rgba(76,47,27,.11)),radial-gradient(circle,rgba(143,106,66,.14) .7px,transparent 1px)!important;background-size:100% 100%,17px 17px!important;box-shadow:inset 8px 0 16px -12px #42271470!important;border-radius:15px!important}
+#book .coverpage,#book .coverpage .page-inner{background:transparent!important;border:0!important;box-shadow:none!important;padding:0!important}
+#book .coverpage .journal-cover-art{width:100%!important;height:100%!important;object-fit:fill!important;transform:none!important;display:block}
+#book .page-inner:not(.cover):after{display:none!important}
+#book .page-inner:before{display:none!important}
+#book .page .copy{touch-action:pan-y;overscroll-behavior:contain}
+.journal-tabs{position:absolute!important;display:flex;visibility:hidden;pointer-events:none;z-index:1!important;top:7px!important;right:calc(50% - min(50%,500px) + 25px)!important;gap:6px!important;align-items:flex-start}
+.stage.open-book .journal-tabs{visibility:visible;pointer-events:auto}
+.journal-tabs button{background:#ead3ac!important;border:1px solid #aa7b54!important;border-radius:10px 10px 0 0!important;color:#513826!important;min-height:54px!important;padding:7px 15px 22px!important;font:600 20px 'Caveat',cursive!important;box-shadow:0 -2px 5px #40281930;white-space:nowrap}
+.journal-tabs button:nth-child(2){background:#e9bd9e!important}
+.journal-tabs button:nth-child(3){background:#d9cba6!important}
+.controls{position:relative;z-index:3;margin:7px auto 25px}
+.controls button{background:#583a2bbf!important;color:#fff4df!important;border:1px solid #ead0a9!important}
+#page-label{color:#fff8e9!important;text-shadow:0 1px 4px #321a0e}
+.reflection .copy{font-size:clamp(14px,1.4vw,16px)!important;line-height:1.55!important}
+.page h2{font-family:'Caveat',cursive!important;font-weight:700!important;background:linear-gradient(transparent 54%,#f8d0b7 54%,#f8d0b7 90%,transparent 90%);align-self:flex-start;padding:0 9px 0 3px}
+@media(max-width:700px){
+ .stage,.stage.open-book{padding:55px 0 0!important;margin:0 auto!important}
+ .open-leather{top:55px;width:calc(200% - 14px);left:calc(50% - 50% + 7px);transform:translateX(-50%);height:calc(100% - 55px);background-size:100% 100%}
+ #book{width:100%;max-width:none}
+ .journal-tabs{top:8px!important;right:10px!important;gap:4px!important}
+ .journal-tabs button{font-size:17px!important;min-height:53px!important;padding:7px 9px 22px!important}
+ .page .page-inner{padding:22px!important}
+ #book .coverpage .page-inner{padding:0!important}
+ .sunlight{opacity:.20}
+}
+
+/* Asset crop calibration: closed-book source is a full scene, not a page-sized crop. */
+#book .coverpage .page-inner{position:relative;overflow:hidden!important}
+#book .coverpage .journal-cover-art{
+ position:absolute!important;
+ width:350%!important;height:135%!important;
+ max-width:none!important;max-height:none!important;
+ left:-212.5%!important;top:-17.5%!important;
+ object-fit:fill!important;transform:none!important;
+ pointer-events:none;
+}
+.stage:not(.open-book) .open-leather{display:none!important}
+@media(min-width:701px){
+ .stage{max-width:1060px!important}
+ #book{max-width:980px!important}
+}
+@media(max-width:700px){
+ #book .coverpage .journal-cover-art{width:350%!important;height:135%!important;left:-212.5%!important;top:-17.5%!important}
+}
+
+/* Precise geometry measured from 1536x1024 source alpha bounds:
+   open x=396..1304, closed x=851..1304, both y=191..833.
+   Book midpoint x=850; paper width=454 and height=642. */
+body{background:#b88a5c url('assets/01_oak_table.png') center top / cover fixed no-repeat!important}
+main{width:100%;max-width:none!important;overflow:hidden}
+.stage,.stage.open-book{
+ --scene-width:min(100vw,1536px);
+ position:relative!important;display:block!important;isolation:isolate;
+ width:var(--scene-width)!important;max-width:none!important;
+ aspect-ratio:1536/1024!important;height:auto!important;min-height:0!important;
+ padding:0!important;margin:0 auto!important;overflow:visible!important;
+ background:transparent!important;
+}
+.stage:before,.stage:after,.stage.open-book:before,.stage.open-book:after{display:none!important;content:none!important}
+.stage .open-leather,.stage .closed-leather{
+ position:absolute!important;display:block!important;pointer-events:none!important;
+ inset:0!important;width:100%!important;height:100%!important;
+ transform:none!important;filter:none!important;
+ background-position:center!important;background-size:100% 100%!important;
+ background-repeat:no-repeat!important;z-index:0!important;
+}
+.stage .open-leather{background-image:url('assets/03_open_book.png')!important;visibility:hidden}
+.stage .closed-leather{background-image:url('assets/02_closed_book.png')!important;visibility:visible}
+.stage.open-book .open-leather{visibility:visible}
+.stage.open-book .closed-leather{visibility:hidden}
+#book{
+ position:absolute!important;left:25.78125%!important;top:18.65234375%!important;
+ width:59.1145833%!important;height:62.6953125%!important;
+ max-width:none!important;margin:0!important;z-index:3!important;
+}
+#book .coverpage,#book .coverpage .page-inner{background:transparent!important;border:0!important;box-shadow:none!important}
+#book .coverpage .journal-cover-art{display:none!important}
+#book .page{background:#fff3dc!important;border-radius:15px!important}
+#book .page-inner:not(.cover){background-color:#fff4e0!important}
+.stage .sunlight{
+ position:absolute!important;inset:0!important;width:100%!important;height:100%!important;
+ background:url('assets/04_lighting_overlay.png') center / 100% 100% no-repeat!important;
+ opacity:1!important;mix-blend-mode:multiply!important;pointer-events:none!important;z-index:8!important;
+}
+.stage .journal-tabs{position:absolute!important;top:13.2%!important;right:15.2%!important;z-index:2!important}
+.stage:not(.open-book) .journal-tabs{visibility:hidden!important;pointer-events:none!important}
+.stage.open-book .journal-tabs{visibility:visible!important;pointer-events:auto!important}
+.controls{margin:-1.5% auto 25px!important}
+@media(max-width:700px){
+ .stage,.stage.open-book{
+  --scene-width:1000px;
+  width:1000px!important;
+  margin-left:calc(50vw - 720px)!important;
+  margin-right:0!important;
+ }
+ #book{left:25.78125%!important;top:18.65234375%!important;width:59.1145833%!important;height:62.6953125%!important}
+ .stage .journal-tabs{top:12.5%!important;right:15%!important}
+ .controls{margin:5px auto 25px!important}
+}
+
+/* Closed cover must render ABOVE the page-flip library's blank hard cover. */
+.stage:not(.open-book) .closed-leather{z-index:7!important;visibility:visible!important;pointer-events:none!important}
+.stage.open-book .closed-leather{visibility:hidden!important}
+.stage:not(.open-book) #book .coverpage{opacity:0!important}
+.stage.open-book #book .coverpage{opacity:1!important}
+#book .page .copy,#book .page .archive-list{
+ overflow-y:auto!important;-webkit-overflow-scrolling:touch!important;
+ overscroll-behavior:contain!important;touch-action:pan-y!important;
+ flex:1 1 auto!important;min-height:0!important;
+}
+#book .page-inner{min-height:0!important;height:100%!important;overflow:hidden!important}
+#book .story .copy{max-height:none!important}
+@media(max-width:700px){
+ .stage,.stage.open-book{
+  --scene-width:1180px!important;
+  width:1180px!important;height:786.667px!important;
+  margin-left:calc(100vw - 1018px)!important;
+  margin-right:0!important;
+ }
+ #book{left:25.78125%!important;top:18.65234375%!important;width:59.1145833%!important;height:62.6953125%!important}
+ .page .page-inner{padding:18px!important}
+ .page .copy{font-size:14px!important;line-height:1.45!important}
+ .reflection .copy{font-size:14px!important;line-height:1.5!important}
+ .controls{margin-top:-110px!important;position:relative!important}
+}
+
+/* Opening spread: blank leather inside cover on left; story on right. */
+#book .inside-cover,#book .inside-cover .page-inner{
+ background:transparent!important;background-image:none!important;
+ border:0!important;box-shadow:none!important;
+}
+#book .inside-cover .page-inner:before,#book .inside-cover .page-inner:after{display:none!important}
+.stage.open-book .open-leather{z-index:0!important}
+
+/* Phone: single right-hand leaf; desktop: complete two-page spread. */
+@media(max-width:700px){
+ .stage,.stage.open-book{
+  width:1180px!important;height:786.667px!important;
+  margin-left:calc(50vw - 789px)!important;
+ }
+ /* PageFlip's portrait orientation displays one leaf. Anchor it to
+    the physical right cover (source x 851..1304), not the spread's left. */
+ #book{
+  left:calc(851 / 1536 * 100%)!important;
+  top:18.65234375%!important;
+  width:calc(453 / 1536 * 100%)!important;
+  height:62.6953125%!important;
+ }
+ .journal-tabs{right:15%!important}
+}
+
+/* Geometry/stability correction: PageFlip requires a two-leaf container
+   even when its portrait mode displays only the right leaf. */
+#book{
+ left:25.78125%!important;
+ top:18.65234375%!important;
+ width:59.1145833%!important;
+ height:62.6953125%!important;
+}
+#book .stf__parent,#book .stf__wrapper{overflow:visible!important}
+@media(max-width:700px){
+ .stage,.stage.open-book{
+  width:1180px!important;height:786.667px!important;
+  margin-left:calc(50vw - 820px)!important;
+ }
+ #book{
+  left:25.78125%!important;
+  width:59.1145833%!important;
+  height:62.6953125%!important;
+ }
+}
+
+/* Single coordinate system: 1536x1024 artwork; physical spread 396..1304.
+   Each page occupies exactly 454 source pixels, meeting at x=850. */
+#book{position:absolute!important;inset:0!important;width:100%!important;height:100%!important;z-index:3!important;overflow:visible!important;pointer-events:none!important}
+#book .static-leaf{position:absolute!important;top:18.65234375%!important;width:29.55729167%!important;height:62.6953125%!important;overflow:hidden!important;pointer-events:auto!important;box-sizing:border-box!important}
+#book .static-left{left:25.78125%!important}
+#book .static-right{left:55.33854167%!important}
+#book .static-leaf>.page{width:100%!important;height:100%!important;position:relative!important;inset:auto!important;transform:none!important;display:block!important}
+#book .static-leaf .page-inner{height:100%!important;box-sizing:border-box!important}
+#book .static-leaf .copy,#book .static-leaf .archive-list{overflow-y:auto!important;touch-action:pan-y!important;-webkit-overflow-scrolling:touch!important;overscroll-behavior:contain!important}
+.stage:not(.open-book) .closed-leather{z-index:7!important}
+.stage.open-book .closed-leather{visibility:hidden!important}
+.stage .sunlight{pointer-events:none!important}
+@media(max-width:700px){
+ .stage,.stage.open-book{width:1180px!important;height:786.667px!important;margin-left:calc(50vw - 827px)!important}
+ #book .static-left{display:none!important}
+ #book .static-right{left:55.33854167%!important}
+}
+
+/* Explicitly anchor paper edges to the source artwork's spine at x=850. */
+#book .static-leaf.static-right{left:55.3385416667%!important;right:auto!important;transform:none!important;margin:0!important}
+#book .static-leaf.static-left{left:25.78125%!important;right:auto!important;transform:none!important;margin:0!important}
+#book .static-leaf>.page{margin:0!important;max-width:none!important;min-width:0!important;left:0!important;top:0!important}
+#book .static-right{cursor:pointer}
+#book .static-right .copy{cursor:auto}
+.controls{z-index:20!important;pointer-events:auto!important}
+.controls button{position:relative!important;z-index:21!important;pointer-events:auto!important}
+
+/* Both paper leaves share one exact central boundary of the open cover.
+   Open cover artwork bounds x=396..1304, midpoint x=850. */
+#book .static-leaf.static-left{
+ left:25.78125%!important;
+ width:29.5572916667%!important;
+ right:auto!important;
+}
+#book .static-leaf.static-right{
+ left:55.3385416667%!important;
+ width:29.5572916667%!important;
+ right:auto!important;
+}
+#book .static-leaf{box-sizing:border-box!important;padding:0!important;margin:0!important;transform:none!important}
+#book .static-leaf>.page{box-sizing:border-box!important;width:100%!important;height:100%!important}
+
+/* Bookmarks emerge from behind paper, above the leather backing.
+   The right leaf starts at 55.3385%; tabs straddle its top edge. */
+.stage .journal-tabs,.stage.open-book .journal-tabs{
+ position:absolute!important;
+ top:13.9%!important;
+ right:auto!important;
+ left:48.5%!important;
+ z-index:2!important;
+ display:flex!important;
+ gap:8px!important;
+ transform:none!important;
+}
+.stage .open-leather{z-index:0!important}
+.stage.open-book .closed-leather{visibility:hidden!important}
+#book{z-index:3!important}
+.stage .sunlight{z-index:8!important;pointer-events:none!important}
+@media(max-width:700px){
+ .stage .journal-tabs,.stage.open-book .journal-tabs{
+  left:48.5%!important;right:auto!important;top:13.9%!important;
+  gap:6px!important;
+ }
+}
+
+/* Fine-tune bookmarks: move right relative to previous placement. */
+.stage .journal-tabs,.stage.open-book .journal-tabs{left:54%!important;right:auto!important}
+@media(max-width:700px){
+ .stage .journal-tabs,.stage.open-book .journal-tabs{left:54%!important;right:auto!important}
+}
+/* No category chips beneath the story headline. */
+#book .story .tags{display:none!important}
+
+/* Move bookmark tabs another 65 physical pixels right on phone. */
+@media(max-width:700px){
+ .stage .journal-tabs,.stage.open-book .journal-tabs{
+  left:calc(54% + 65px)!important;
+ }
+}
+
+/* Mobile: retain the left leaf as a blank paper surface after the first
+   opening. Do not hide it; it remains part of the same physical spread. */
+@media(max-width:700px){
+ #book .static-left{display:block!important}
+}
+
+/* Paper edges: both meet at the binding; subtle gutter depth. */
+#book .static-leaf.static-left{
+ width:calc(29.5572916667% + 27px)!important;
+ z-index:1!important;
+}
+#book .static-leaf.static-right{z-index:2!important}
+#book .static-left>.page,#book .static-left .page-inner{
+ border-radius:14px 0 0 14px!important;
+}
+#book .static-right>.page,#book .static-right .page-inner{
+ border-radius:0 14px 14px 0!important;
+}
+#book .static-left .page-inner{
+ box-shadow:inset -16px 0 22px -16px rgba(70,45,25,.42)!important;
+}
+#book .static-right .page-inner{
+ box-shadow:inset 13px 0 20px -14px rgba(70,45,25,.48)!important;
+}
+/* Slightly more legible bullet-journal dots, preserving paper texture. */
+#book .page:not(.coverpage) .page-inner{
+ background-image:
+ radial-gradient(circle,rgba(132,99,65,.27) .9px,transparent 1.2px)!important;
+ background-size:17px 17px!important;
+ background-color:#fff4e0!important;
+}
+
+/* Per-line highlighter: clone the painted background across wrapped
+   inline fragments instead of drawing one rectangle behind the whole h2. */
+#book .page h2{
+ display:inline!important;
+ align-self:auto!important;
+ width:auto!important;
+ max-width:100%!important;
+ background:linear-gradient(to bottom,
+  transparent 53%,rgba(247,189,158,.58) 53%,
+  rgba(247,189,158,.58) 88%,transparent 88%)!important;
+ box-decoration-break:clone!important;
+ -webkit-box-decoration-break:clone!important;
+ padding:0 7px 2px 3px!important;
+ position:relative!important;
+ isolation:auto!important;
+}
+#book .page h2::before,#book .page h2::after{content:none!important;display:none!important}
+
+/* Hand-painted irregular marker stroke, repeated separately for each
+   wrapped line via box-decoration-break: clone. */
+#book .page h2{
+ background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 500 100' preserveAspectRatio='none'%3E%3Cpath fill='%23f7bd9e' fill-opacity='.62' d='M0 43 L16 37 L41 42 L78 35 L117 39 L158 32 L198 38 L242 34 L285 40 L332 33 L370 39 L412 35 L455 42 L485 34 L500 43 L495 83 L463 89 L420 84 L371 92 L319 86 L271 94 L222 87 L171 92 L125 85 L83 91 L39 86 L7 91 Z'/%3E%3C/svg%3E")!important;
+ background-repeat:no-repeat!important;
+ background-position:left bottom!important;
+ background-size:100% 80%!important;
+ box-decoration-break:clone!important;
+ -webkit-box-decoration-break:clone!important;
+}
+
+/* Paint the same irregular marker stroke on every wrapped text fragment.
+   Avoid background-size:100% 80%, which can position a single stroke
+   against the entire multi-line heading instead of each line. */
+#book .page h2{
+ display:inline!important;
+ background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 500 100' preserveAspectRatio='none'%3E%3Cpath fill='%23f7bd9e' fill-opacity='.62' d='M0 43 L16 37 L41 42 L78 35 L117 39 L158 32 L198 38 L242 34 L285 40 L332 33 L370 39 L412 35 L455 42 L485 34 L500 43 L495 83 L463 89 L420 84 L371 92 L319 86 L271 94 L222 87 L171 92 L125 85 L83 91 L39 86 L7 91 Z'/%3E%3C/svg%3E")!important;
+ background-repeat:repeat-x!important;
+ background-size:auto 100%!important;
+ background-position:0 0!important;
+ -webkit-box-decoration-break:clone!important;
+ box-decoration-break:clone!important;
+ padding:0 6px 2px 3px!important;
+}
+
+/* Subtler, slightly higher handwritten marker stroke. */
+#book .page h2{
+ background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 500 100'%3E%3Cpath fill='%23f7bd9e' fill-opacity='.62' d='M0 35 L45 33 L95 35 L145 32 L195 34 L245 33 L295 35 L345 32 L395 34 L445 33 L500 35 L500 85 L450 87 L400 85 L350 88 L300 86 L250 87 L200 85 L150 88 L100 86 L50 87 L0 85 Z'/%3E%3C/svg%3E")!important;
+ background-size:auto 100%!important;
+ background-position:0 -4px!important;
+}
+
+/* A loose, hand-drawn peach marker, beginning higher on each text line. */
+#book .page h2{
+ background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 500 100'%3E%3Cpath fill='%23f7bd9e' fill-opacity='.56' d='M2 26 Q16 22 35 26 L88 23 Q113 27 144 22 L193 25 Q222 21 252 24 L301 22 Q338 27 371 23 L427 25 Q467 20 498 26 L496 83 Q473 88 449 84 L392 87 Q359 83 333 88 L274 85 Q245 89 212 85 L159 88 Q128 84 100 87 L42 85 Q20 89 3 84 Z'/%3E%3C/svg%3E")!important;
+ background-position:0 -7px!important;
+ background-size:auto 100%!important;
+}
+.stage .journal-tabs button{
+ padding-top:5px!important;
+ padding-bottom:7px!important;
+ min-height:0!important;
+ height:auto!important;
+}
+@media(max-width:700px){
+ .stage .journal-tabs button{padding:5px 9px 7px!important;min-height:0!important;height:auto!important}
+}
+
+/* Shorter exposed bookmark tops, but the lower part stays tucked
+   behind the page rather than ending above it. */
+.stage .journal-tabs,.stage.open-book .journal-tabs{
+ top:16.4%!important;
+}
+.stage .journal-tabs button,.stage.open-book .journal-tabs button{
+ padding:10px 13px 20px!important;
+ min-height:55px!important;
+ height:auto!important;
+}
+@media(max-width:700px){
+ .stage .journal-tabs,.stage.open-book .journal-tabs{top:16.4%!important}
+ .stage .journal-tabs button,.stage.open-book .journal-tabs button{
+  padding:10px 9px 20px!important;
+  min-height:55px!important;
+  height:auto!important;
+ }
+}
+
+/* Reveal a little more of each bookmark, while retaining its tucked base. */
+.stage .journal-tabs,.stage.open-book .journal-tabs{top:15.1%!important}
+@media(max-width:700px){
+ .stage .journal-tabs,.stage.open-book .journal-tabs{top:15.1%!important}
+}
+/* Soft, hand-torn tapered ends on each independently wrapped brushstroke. */
+#book .page h2{
+ background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 500 100'%3E%3Cpath fill='%23f7bd9e' fill-opacity='.58' d='M0 43 L7 37 L15 32 L24 30 L33 26 Q48 22 67 25 L105 23 Q129 28 157 22 L198 25 Q220 20 252 24 L299 22 Q330 27 365 23 L413 25 Q444 21 466 28 L480 31 L488 37 L496 44 L491 52 L499 61 L492 72 L486 80 L476 84 L456 87 L415 85 Q389 89 359 84 L310 87 Q282 84 254 89 L205 85 Q172 89 145 85 L96 88 Q66 84 47 87 L32 85 L21 81 L12 75 L8 65 L2 58 L6 51 Z'/%3E%3C/svg%3E")!important;
+ background-repeat:repeat-x!important;
+ background-position:0 -7px!important;
+ background-size:auto 100%!important;
+}
+
+/* Loose single-pass marker scrawl, with uneven tapered ends and a
+   slight upward slant; cloned for wrapped heading fragments. */
+#book .page h2{
+ background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 500 100' preserveAspectRatio='none'%3E%3Cpath fill='%23efac8f' fill-opacity='.48' d='M1 60 Q13 47 31 45 L78 42 Q116 43 157 39 L206 35 Q247 38 290 31 L336 29 Q375 31 414 24 L466 19 Q487 19 499 12 L492 67 Q480 72 464 73 L421 75 Q379 76 337 79 L289 80 Q250 84 209 82 L159 85 Q114 86 75 88 L33 88 Q16 87 4 94 L10 80 Z'/%3E%3Cpath fill='%23f6bea6' fill-opacity='.26' d='M9 69 Q64 61 121 60 T244 53 T367 44 T491 32 L483 65 Q374 70 252 79 T11 89 Z'/%3E%3C/svg%3E")!important;
+ background-repeat:repeat-x!important;
+ background-size:auto 100%!important;
+ background-position:0 -7px!important;
+ -webkit-box-decoration-break:clone!important;
+ box-decoration-break:clone!important;
+}
+/* Use more of the mobile viewport without moving the page away from
+   the screen centre: the right leaf's midpoint is 70.117% of scene. */
+@media(max-width:700px){
+ .stage,.stage.open-book{
+  width:1320px!important;
+  height:880px!important;
+  margin-left:calc(50vw - 925.55px)!important;
+ }
+ .controls{margin-top:-110px!important}
+}
+
+/* Mobile reading view: modest enlargement, raised journal, persistent
+   navigation independent of the tall illustrated scene. */
+@media(max-width:700px){
+ .stage,.stage.open-book{
+  width:1360px!important;
+  height:906.667px!important;
+  margin-left:calc(50vw - 953.7px)!important;
+  margin-top:-55px!important;
+ }
+ .controls{
+  position:fixed!important;
+  left:12px!important;right:12px!important;
+  bottom:calc(12px + env(safe-area-inset-bottom,0px))!important;
+  margin:0!important;
+  z-index:30!important;
+  padding:7px 12px!important;
+  border-radius:28px!important;
+  background:rgba(79,48,30,.77)!important;
+  backdrop-filter:blur(8px);
+  -webkit-backdrop-filter:blur(8px);
+ }
+ .controls button{min-width:46px!important;min-height:46px!important}
+ body{padding-bottom:90px!important}
+}
+
+/* Notebook editorial proportions: title closer to handwriting size,
+   photograph a small pasted-in keepsake rather than a hero banner. */
+#book .story h2{
+ font-size:30px!important;
+ line-height:1.16!important;
+ font-weight:600!important;
+ margin:2px 0 13px!important;
+ letter-spacing:0!important;
+}
+#book .story .paper-photo{
+ width:77%!important;
+ max-width:330px!important;
+ align-self:center!important;
+ margin:4px auto 15px!important;
+ padding:5px 5px 3px!important;
+ background:#fffdf7!important;
+ transform:rotate(-1.2deg)!important;
+ box-shadow:1px 4px 8px rgba(49,31,18,.19)!important;
+}
+#book .story .paper-photo img{
+ width:100%!important;
+ height:112px!important;
+ object-fit:cover!important;
+}
+#book .story .photo-credit,
+#book .story .photo-credit a{
+ font-size:9px!important;
+ line-height:1.25!important;
+ color:#77716b!important;
+ font-weight:400!important;
+}
+#book .story .copy{margin-top:3px!important}
+@media(max-width:700px){
+ #book .story h2{font-size:29px!important;margin-bottom:12px!important}
+ #book .story .paper-photo{width:78%!important;max-width:330px!important}
+ #book .story .paper-photo img{height:112px!important}
+}
+
+/* Journal story header: handwritten title and date beside a small photo. */
+#book .story .story-intro{
+ display:flex!important;
+ flex-direction:row!important;
+ align-items:flex-start!important;
+ gap:15px!important;
+ margin:3px 0 18px!important;
+ width:100%!important;
+}
+#book .story .story-intro-text{
+ flex:1 1 0!important;
+ min-width:0!important;
+ display:flex!important;
+ flex-direction:column!important;
+ align-items:flex-start!important;
+ gap:12px!important;
+}
+#book .story .story-intro h2{
+ font-size:25px!important;
+ line-height:1.24!important;
+ margin:0!important;
+ font-weight:600!important;
+}
+#book .story .story-date{
+ font-size:16px!important;
+ line-height:1.3!important;
+ margin:0!important;
+}
+#book .story .story-intro .paper-photo{
+ flex:0 0 48%!important;
+ width:48%!important;
+ max-width:48%!important;
+ min-width:0!important;
+ margin:3px 2px 0 0!important;
+ transform:rotate(1.3deg)!important;
+ box-sizing:border-box!important;
+}
+#book .story .story-intro .paper-photo img{
+ height:115px!important;
+ width:100%!important;
+ object-fit:cover!important;
+}
+#book .story .story-intro .photo-credit{
+ font-size:8px!important;
+ line-height:1.2!important;
+ overflow-wrap:anywhere!important;
+}
+@media(max-width:700px){
+ #book .story .story-intro{gap:12px!important}
+ #book .story .story-intro h2{font-size:24px!important}
+ #book .story .story-intro .paper-photo{flex-basis:48%!important}
+}
+
+/* A quick physical page sweep, without a second independent layout engine. */
+#book .turning-leaf{
+ z-index:12!important;
+ transform-origin:left center!important;
+ backface-visibility:hidden!important;
+ will-change:transform,opacity!important;
+ transition:transform 520ms ease-in-out,opacity 520ms ease-in!important;
+}
+#book .turning-leaf.turn-forward{transform:perspective(1200px) rotateY(-82deg)!important;opacity:0!important}
+#book .turning-leaf.turn-back{transform:perspective(1200px) rotateY(82deg)!important;opacity:0!important}
+#book .story .copy,#book .reflection .copy{
+ overflow:hidden!important;max-height:none!important;flex:1 1 auto!important;
+}
+#book .turn-cue{
+ display:block!important;margin-top:auto!important;
+ align-self:flex-end!important;padding-top:8px!important;
+ font:italic 13px Georgia,serif!important;color:#96775e!important;
+}
+#book .story h2,#book .reflection h2{
+ background-image:linear-gradient(176deg,transparent 5%,rgba(241,174,147,.53) 6%,rgba(241,174,147,.53) 94%,transparent 95%)!important;
+ background-size:100% 100%!important;
+ background-position:0 0!important;
+ padding:3px 5px 4px!important;
+ box-decoration-break:clone!important;-webkit-box-decoration-break:clone!important;
+}
+
+/* Opaque paper sticker: no dots or photo show through the emblem. */
+#book .page-logo{
+ opacity:1!important;
+ background:#f7df9b!important;
+ border-radius:50%!important;
+ padding:5px!important;
+ box-sizing:border-box!important;
+ box-shadow:0 2px 3px rgba(83,58,31,.13)!important;
+}
+/* Marker follows only the actual glyph fragments, not the title box.
+   Each wrapped line is independently painted by inline decoration cloning. */
+#book .page h2{
+ display:inline!important;
+ width:auto!important;
+ max-width:100%!important;
+ align-self:flex-start!important;
+ background-image:linear-gradient(178deg,transparent 4%,rgba(239,172,143,.46) 7%,rgba(239,172,143,.46) 92%,transparent 96%)!important;
+ background-repeat:no-repeat!important;
+ background-size:100% 100%!important;
+ background-position:0 0!important;
+ padding:2px 1px 3px!important;
+ -webkit-box-decoration-break:clone!important;
+ box-decoration-break:clone!important;
+}
+#book .story .story-intro-text h2{align-self:flex-start!important}
+
+/* The h2 is a flex item, so its background spans its rectangular box.
+   Put the paint on a true inline span instead: cloned line fragments
+   end exactly where the text ends, including wrapped final lines. */
+#book .story .story-intro h2{
+ background:none!important;
+ padding:0!important;
+ display:block!important;
+ width:100%!important;
+}
+#book .story .story-intro h2 .ink-highlight{
+ display:inline!important;
+ background:linear-gradient(177deg,transparent 5%,rgba(239,172,143,.48) 8%,rgba(239,172,143,.48) 92%,transparent 96%)!important;
+ background-repeat:no-repeat!important;
+ background-size:100% 100%!important;
+ padding:2px 1px 3px!important;
+ -webkit-box-decoration-break:clone!important;
+ box-decoration-break:clone!important;
+}
+
+/* Make the bird larger inside the same opaque circular sticker. */
+#book .page-logo{padding:2px!important}
+/* Close contact shadow: a glued photograph, not a floating card. */
+#book .story .story-intro .paper-photo{
+ box-shadow:1px 2px 3px rgba(45,30,19,.48),0 0 1px rgba(45,30,19,.5)!important;
+}
+/* Bookmark paper casts a small directional shadow onto the oak. */
+.stage .journal-tabs button{
+ box-shadow:2px 5px 5px rgba(48,29,17,.42),0 2px 2px rgba(48,29,17,.26)!important;
+}
+/* The bookmarks stay behind the closed leather cover but their tops show. */
+.stage:not(.open-book) .journal-tabs{
+ visibility:visible!important;
+ pointer-events:auto!important;
+ z-index:6!important;
+}
+.stage:not(.open-book) .journal-tabs button{
+ box-shadow:2px 5px 5px rgba(48,29,17,.42)!important;
+}
+
+/* Gently worn, hand-cut cardstock bookmarks. Keep their hit areas and labels. */
+.stage .journal-tabs button{
+ position:relative!important;
+ overflow:visible!important;
+ border-radius:7px 10px 2px 1px!important;
+ border-color:rgba(117,85,61,.65)!important;
+ background-image:
+  radial-gradient(ellipse at 18% 12%,rgba(255,255,255,.29),transparent 58%),
+  repeating-linear-gradient(103deg,rgba(110,82,56,.045) 0px,rgba(110,82,56,.045) 1px,transparent 1px,transparent 5px),
+  linear-gradient(90deg,rgba(91,60,39,.12),transparent 13%,transparent 84%,rgba(91,60,39,.11))!important;
+ background-blend-mode:screen,multiply,multiply!important;
+ text-shadow:0 1px 0 rgba(255,248,222,.35)!important;
+ transform-origin:center bottom!important;
+ filter:saturate(.84)!important;
+}
+.stage .journal-tabs button:nth-child(1){transform:rotate(-1.8deg)!important;border-top-right-radius:5px!important}
+.stage .journal-tabs button:nth-child(2){transform:rotate(.9deg)!important;border-top-left-radius:4px!important}
+.stage .journal-tabs button:nth-child(3){transform:rotate(-1.1deg)!important;border-top-right-radius:6px!important}
+.stage .journal-tabs button::after{
+ content:""!important;position:absolute!important;left:7px!important;right:7px!important;top:5px!important;
+ height:1px!important;background:rgba(106,71,49,.13)!important;
+ transform:rotate(-.7deg)!important;pointer-events:none!important;
+}
+.stage .journal-tabs button:focus-visible{outline:3px solid #10243d!important;outline-offset:3px!important}
+
+/* Plain, hand-cut cardstock tabs: no printed borders, rules or stripes. */
+.stage .journal-tabs button,
+.stage.open-book .journal-tabs button{
+ border:0!important;
+ border-bottom:0!important;
+ background-image:none!important;
+ background-blend-mode:normal!important;
+ text-shadow:none!important;
+ filter:none!important;
+ border-radius:7px 9px 0 0!important;
+ box-shadow:2px 4px 5px rgba(49,30,19,.30)!important;
+}
+.stage .journal-tabs button:nth-child(1),
+.stage.open-book .journal-tabs button:nth-child(1){
+ background-color:#dfc8a5!important;
+ transform:rotate(-1deg)!important;
+}
+.stage .journal-tabs button:nth-child(2),
+.stage.open-book .journal-tabs button:nth-child(2){
+ background-color:#e9d3b7!important;
+ transform:rotate(.6deg)!important;
+}
+.stage .journal-tabs button:nth-child(3),
+.stage.open-book .journal-tabs button:nth-child(3){
+ background-color:#d8b4a7!important;
+ transform:rotate(-.7deg)!important;
+}
+.stage .journal-tabs button::before,
+.stage .journal-tabs button::after{
+ content:none!important;
+ display:none!important;
+}
+
+/* Folded index tabs inspired by real scalloped stationery. */
+.stage .journal-tabs button,
+.stage.open-book .journal-tabs button{
+ border:0!important;
+ border-radius:0!important;
+ clip-path:polygon(0 15%,3% 8%,8% 4%,17% 4%,24% 9%,30% 3%,39% 1%,47% 4%,53% 9%,61% 3%,70% 2%,78% 5%,84% 10%,91% 5%,97% 9%,100% 17%,100% 100%,0 100%)!important;
+ background-image:linear-gradient(to bottom,rgba(255,255,255,.09) 0%,transparent 62%,rgba(70,43,31,.16) 100%)!important;
+ background-blend-mode:normal!important;
+ box-shadow:none!important;
+ padding:12px 10px 19px!important;
+ min-height:53px!important;
+ font-size:18px!important;
+}
+.stage .journal-tabs button::after{
+ content:""!important;display:block!important;
+ position:absolute!important;left:3px!important;right:3px!important;bottom:6px!important;height:2px!important;
+ background:rgba(72,48,33,.13)!important;
+ transform:none!important;pointer-events:none!important;
+}
+.stage .journal-tabs button::before{content:none!important;display:none!important}
+.stage .journal-tabs{filter:drop-shadow(2px 4px 3px rgba(45,28,18,.33))!important}
+
+/* Plain paper tabs: no scallops, outlines or drawn fold lines.
+   Only a soft occlusion shadow where the book overlaps the paper. */
+.stage .journal-tabs button,
+.stage.open-book .journal-tabs button{
+ clip-path:none!important;
+ border:none!important;
+ border-radius:9px 9px 0 0!important;
+ background-image:none!important;
+ box-shadow:none!important;
+ filter:none!important;
+}
+.stage .journal-tabs button::before,
+.stage .journal-tabs button::after{
+ content:none!important;
+ display:none!important;
+}
+.stage .journal-tabs{filter:none!important}
+.stage .journal-tabs button{
+ box-shadow:inset 0 -9px 9px -8px rgba(55,35,22,.36)!important;
+}
+
+/* Isolated page-turn experiment: leaf keeps exactly the existing page coordinates. */
+#book{perspective:1700px!important;perspective-origin:55.33854167% 50%!important}
+#book .page-turn-sheet{
+ z-index:15!important;
+ overflow:visible!important;
+ transform-style:preserve-3d!important;
+ transform-origin:left center!important;
+ transition:transform 700ms cubic-bezier(.35,.05,.25,1)!important;
+ pointer-events:none!important;
+}
+#book .page-turn-sheet.turn-next{transform:rotateY(0deg)!important}
+#book .page-turn-sheet.turn-next.turn-active{transform:rotateY(-168deg)!important}
+#book .page-turn-sheet.turn-previous{transform:rotateY(-168deg)!important}
+#book .page-turn-sheet.turn-previous.turn-active{transform:rotateY(0deg)!important}
+#book .page-turn-sheet .turn-face{
+ position:absolute!important;inset:0!important;
+ backface-visibility:hidden!important;
+ -webkit-backface-visibility:hidden!important;
+ overflow:hidden!important;
+ background:#faf4e6!important;
+}
+#book .page-turn-sheet .turn-face>.page{height:100%!important;width:100%!important}
+#book .page-turn-sheet .turn-backface{transform:rotateY(180deg)!important}
+#book .page-turn-sheet .turn-face::after{
+ content:"";position:absolute;inset:0;pointer-events:none;
+ background:linear-gradient(90deg,rgba(54,37,25,.24),transparent 17%,transparent 70%,rgba(54,37,25,.13));
+ opacity:.55;
+}
+#book .page-turn-sheet.turn-active .turn-face::after{opacity:.8}
+@media(prefers-reduced-motion:reduce){
+ #book .page-turn-sheet{transition:none!important}
+}
+
+/* Keep the physical paper silhouette rounded throughout the 3D turn. */
+#book .page-turn-sheet{
+ border-radius:13px 15px 15px 11px!important;
+}
+#book .page-turn-sheet .turn-face,
+#book .page-turn-sheet .turn-face>.page,
+#book .page-turn-sheet .turn-face>.page>.page-inner{
+ border-radius:13px 15px 15px 11px!important;
+}
+#book .page-turn-sheet .turn-face{
+ clip-path:inset(0 round 13px 15px 15px 11px)!important;
+}
+#book .page-turn-sheet .turn-face::after{
+ border-radius:inherit!important;
+}
+
+/* Desktop correction: use exactly the same source-art rectangle as static paper.
+   No opaque backing panel behind the rounded paper. */
+@media(min-width:701px){
+ #book .static-leaf.page-turn-sheet{
+  left:55.3385416667%!important;
+  top:18.65234375%!important;
+  width:29.5572916667%!important;
+  height:62.6953125%!important;
+  min-width:0!important;min-height:0!important;
+  max-width:none!important;max-height:none!important;
+  box-sizing:border-box!important;
+ }
+ .stage .journal-tabs,.stage.open-book .journal-tabs{
+  left:56%!important;right:auto!important;
+  top:15.1%!important;
+  transform:none!important;
+ }
+}
+#book .page-turn-sheet .turn-face{
+ width:100%!important;height:100%!important;
+ box-sizing:border-box!important;
+ background:transparent!important;
+ border:0!important;
+}
+#book .page-turn-sheet .turn-face>.page{
+ position:absolute!important;inset:0!important;
+ width:100%!important;height:100%!important;
+ max-width:100%!important;max-height:100%!important;
+ box-sizing:border-box!important;
+}
+#book .page-turn-sheet .turn-face>.page>.page-inner{
+ width:100%!important;height:100%!important;
+ box-sizing:border-box!important;
+}
+#book .page-turn-sheet .turn-face::after{
+ background:linear-gradient(90deg,rgba(54,37,25,.12),transparent 22%,transparent 80%,rgba(54,37,25,.08))!important;
+}
+
+/* The turn surface inherits the measured stationary paper size.
+   Avoid older min-height rules expanding the nested faces on desktop. */
+#book .page-turn-sheet,
+#book .page-turn-sheet .turn-face,
+#book .page-turn-sheet .turn-face>.page,
+#book .page-turn-sheet .turn-face>.page>.page-inner{
+ min-width:0!important;min-height:0!important;
+ max-width:100%!important;max-height:100%!important;
+}
+#book .page-turn-sheet .turn-face>.page>.page-inner{
+ overflow:hidden!important;
+}
+
+/* Experimental paper curl: a bending edge and moving fold shadow.
+   This affects only the animated leaf, never the static page geometry. */
+#book .page-turn-sheet{
+ transform-origin:left center!important;
+}
+#book .page-turn-sheet .turn-front::before{
+ content:"";position:absolute;z-index:6;pointer-events:none;
+ right:0;top:0;bottom:0;width:24%;
+ background:linear-gradient(90deg,transparent 0%,rgba(87,62,41,.06) 32%,rgba(65,44,29,.21) 73%,rgba(255,255,255,.58) 94%,rgba(255,255,255,.14) 100%);
+ transform-origin:right center;
+ opacity:0;
+}
+#book .page-turn-sheet.turn-active .turn-front::before{
+ animation:journal-fold-shade 700ms ease-in-out forwards;
+}
+#book .page-turn-sheet .turn-backface::before{
+ content:"";position:absolute;z-index:6;pointer-events:none;
+ left:0;top:0;bottom:0;width:26%;
+ background:linear-gradient(90deg,rgba(79,50,31,.24),rgba(255,255,255,.33) 25%,transparent 100%);
+}
+#book .page-turn-sheet.turn-active{
+ animation:journal-curl-edge 700ms cubic-bezier(.35,.05,.25,1) both;
+}
+@keyframes journal-fold-shade{
+ 0%{opacity:0;transform:scaleX(.35)}
+ 38%{opacity:1;transform:scaleX(1)}
+ 72%{opacity:.8;transform:scaleX(.6)}
+ 100%{opacity:0;transform:scaleX(.1)}
+}
+@keyframes journal-curl-edge{
+ 0%{border-top-right-radius:15px;border-bottom-right-radius:15px}
+ 45%{border-top-right-radius:42px 22px;border-bottom-right-radius:45px 27px}
+ 100%{border-top-right-radius:15px;border-bottom-right-radius:15px}
+}
+@media(prefers-reduced-motion:reduce){
+ #book .page-turn-sheet.turn-active,
+ #book .page-turn-sheet.turn-active .turn-front::before{animation:none!important}
+}
+
+/* Notebook section typography: smaller headings and no internal scrollbars. */
+#book .archivepage h2,#book .aboutpage h2,
+#book .people-intro h2,#book .personpage h2{
+ font-size:24px!important;line-height:1.12!important;
+ margin:0 0 10px!important;
+}
+#book .archivepage .archive-list{
+ overflow:visible!important;max-height:none!important;
+ display:flex!important;flex-direction:column!important;gap:4px!important;
+}
+#book .archivepage .archive-entry{
+ padding:3px 2px!important;line-height:1.15!important;
+}
+#book .archivepage .archive-entry strong{
+ font-size:15px!important;line-height:1.15!important;
+}
+#book .archivepage .archive-entry span{font-size:12px!important}
+#book .aboutpage .copy,#book .people-intro .copy,
+#book .personpage .copy{
+ overflow:hidden!important;max-height:none!important;
+ font-size:13px!important;line-height:1.32!important;
+}
+#book .aboutpage .copy p{margin:0 0 9px!important}
+#book .index-today strong{font-weight:800!important}
+
+/* Desktop reading position and reachable navigation. */
+@media(min-width:701px){
+ .stage.open-book{margin-top:-85px!important}
+ .controls{
+  position:fixed!important;bottom:14px!important;
+  left:50%!important;transform:translateX(-50%)!important;
+  margin:0!important;z-index:35!important;
+  padding:5px 16px!important;border-radius:30px!important;
+  background:rgba(77,49,33,.82)!important;
+  width:max-content!important;max-width:calc(100vw - 24px)!important;
+ }
+ .stage .journal-tabs,.stage.open-book .journal-tabs{
+  left:61%!important;right:auto!important;
+ }
+}
+/* Section titles use the compact inspiration heading scale on all screens. */
+#book .reflection h2.reflection-head,
+#book .archivepage h2,#book .aboutpage h2,
+#book .people-intro h2,#book .personpage h2{
+ font-size:21px!important;line-height:1.15!important;
+ max-width:100%!important;
+}
+
+/* Keep closed and open artwork anchored to the identical desktop stage. */
+@media(min-width:701px){
+ .stage:not(.open-book){
+  width:1320px!important;
+  max-width:none!important;
+  height:880px!important;
+  min-height:0!important;
+  aspect-ratio:1536/1024!important;
+  padding:0!important;
+  margin-left:calc(50vw - 925.55px)!important;
+  margin-right:0!important;
+  margin-top:-85px!important;
+ }
+ .stage.open-book{
+  width:1320px!important;
+  height:880px!important;
+  margin-left:calc(50vw - 925.55px)!important;
+  margin-right:0!important;
+  margin-top:-85px!important;
+ }
+}
+
+/* Desktop: one responsive stage for both cover and spread.
+   The photographed book is right of the image centre, so offset the
+   scene by the book's actual artwork centre (x ~850/1536). */
+@media(min-width:701px){
+ .stage,.stage.open-book,.stage:not(.open-book){
+  --desktop-scene-width:min(1500px, 100vw)!important;
+  --scene-width:var(--desktop-scene-width)!important;
+  width:var(--desktop-scene-width)!important;
+  max-width:none!important;
+  height:auto!important;
+  min-height:0!important;
+  aspect-ratio:1536 / 1024!important;
+  padding:0!important;
+  margin-left:calc(50vw - var(--desktop-scene-width) * 0.5533854)!important;
+  margin-right:0!important;
+  margin-top:-95px!important;
+ }
+}
+
+/* Angled desk experiment: tilt the complete photographed scene together.
+   Tabs, leather, writing and shadows share a single perspective. */
+@media(min-width:701px){
+ body{overflow-x:hidden!important}
+ .stage,.stage.open-book,.stage:not(.open-book){
+  --desktop-scene-width:min(1450px,100vw)!important;
+  --scene-width:var(--desktop-scene-width)!important;
+  width:var(--desktop-scene-width)!important;
+  height:auto!important;
+  aspect-ratio:1536/1024!important;
+  margin-left:calc(50vw - var(--desktop-scene-width)*.5533854)!important;
+  margin-top:-85px!important;
+  transform-origin:55.33854% 52%!important;
+  transform:perspective(1900px) rotateX(13deg) rotateZ(-5deg)!important;
+  filter:drop-shadow(12px 24px 18px rgba(29,18,11,.28))!important;
+ }
+ .controls{bottom:14px!important}
+}
+@media(max-width:700px){
+ .stage,.stage.open-book{
+  transform-origin:55.33854% 52%!important;
+  transform:perspective(1700px) rotateX(9deg) rotateZ(-3deg)!important;
+ }
+}
+
+/* Seated-at-a-coffee-table camera: a stronger foreshortening angle,
+   with warm timber extending beyond the book and directional window light. */
+html{background:#ad835d!important}
+body{
+ background:
+ linear-gradient(115deg,rgba(255,243,211,.26) 0%,rgba(255,243,211,.04) 35%,rgba(57,33,19,.23) 100%),
+ url('assets/01_oak_table.png') center center / cover fixed no-repeat!important;
+}
+@media(min-width:701px){
+ .stage,.stage.open-book,.stage:not(.open-book){
+  transform:perspective(1250px) rotateX(29deg) rotateZ(-7deg)!important;
+  transform-origin:55.33854% 55%!important;
+  margin-top:-120px!important;
+  filter:drop-shadow(20px 35px 20px rgba(37,23,12,.34))!important;
+ }
+}
+@media(max-width:700px){
+ .stage,.stage.open-book{
+  transform:perspective(1250px) rotateX(21deg) rotateZ(-5deg)!important;
+  transform-origin:55.33854% 55%!important;
+ }
+}
+
+/* Muted fine-grained coffee table, without the orange oversized oak photograph. */
+html{background:#a99b89!important}
+body{
+ background-color:#a99b89!important;
+ background-image:
+  linear-gradient(112deg,rgba(255,255,255,.16),transparent 42%,rgba(48,43,37,.13)),
+  repeating-linear-gradient(91deg,
+    rgba(71,64,55,.028) 0px,rgba(71,64,55,.028) 1px,
+    transparent 2px,transparent 9px,
+    rgba(250,244,230,.045) 10px,transparent 12px,transparent 25px),
+  linear-gradient(90deg,#a69a88,#b6aa98 48%,#a69a87)!important;
+ background-size:cover,100% 100%,cover!important;
+ background-attachment:fixed!important;
+}
+@media(min-width:701px){
+ .stage,.stage.open-book,.stage:not(.open-book){
+  transform:perspective(1650px) rotateX(19deg) rotateZ(-5deg)!important;
+  transform-origin:55.33854% 55%!important;
+  margin-top:-18px!important;
+ }
+}
+@media(max-width:700px){
+ .stage,.stage.open-book{
+  transform:perspective(1550px) rotateX(15deg) rotateZ(-4deg)!important;
+  margin-top:-12px!important;
+ }
+}
+
+/* Final photographed tabletop, supplied as a separate GitHub asset. */
+html{background:#d9bd9a!important}
+body{
+ background:#d9bd9a url('assets/hummingbird-table.png') center center / cover fixed no-repeat!important;
+}
+@media(max-width:700px){
+ body{background-position:40% center!important;background-attachment:scroll!important}
+}
+
+/* New background already contains its own sunlight and shadows. */
+.stage .sunlight{display:none!important;background:none!important;opacity:0!important}
+
+/* Slightly larger desktop journal while preserving the same book centre. */
+@media(min-width:701px){
+ .stage,.stage.open-book,.stage:not(.open-book){
+  --desktop-scene-width:min(1580px,108vw)!important;
+  --scene-width:var(--desktop-scene-width)!important;
+  width:var(--desktop-scene-width)!important;
+  margin-left:calc(50vw - var(--desktop-scene-width)*.5533854)!important;
+ }
+}
+
+/* Camera looks squarely at the notebook: slight foreshortening only, no desk rotation. */
+@media(min-width:701px){
+ .stage,.stage.open-book,.stage:not(.open-book){
+  transform:perspective(2400px) rotateX(9deg) rotateZ(0deg)!important;
+  transform-origin:55.33854% 55%!important;
+ }
+}
+@media(max-width:700px){
+ body{
+  background:#d9bd9a url('assets/hummingbird-table-mobile.png') center top / 100% auto no-repeat!important;
+  background-attachment:fixed!important;
+ }
+ .stage,.stage.open-book{
+  transform:perspective(2200px) rotateX(7deg) rotateZ(0deg)!important;
+  transform-origin:55.33854% 55%!important;
+ }
+}
+
+/* Larger, legible index entries; slightly raise desktop notebook. */
+@media(min-width:701px){
+ .stage,.stage.open-book,.stage:not(.open-book){margin-top:-65px!important}
+}
+#book .archivepage .archive-list{gap:10px!important}
+#book .archivepage .archive-entry{padding:7px 3px!important;line-height:1.28!important}
+#book .archivepage .archive-entry strong{font-size:21px!important;line-height:1.25!important}
+#book .archivepage .archive-entry span{font-size:16px!important;line-height:1.2!important}
+#book .archivepage h2{font-size:25px!important}
+
+/* A touch more seated perspective, with no sideways rotation. */
+@media(min-width:701px){
+ .stage,.stage.open-book,.stage:not(.open-book){
+  transform:perspective(2050px) rotateX(13deg) rotateZ(0deg)!important;
+ }
+}
+@media(max-width:700px){
+ .stage,.stage.open-book{
+  transform:perspective(1900px) rotateX(10deg) rotateZ(0deg)!important;
+ }
+ #book .static-left{display:none!important}
+}
+
+/* Two collaborators per notebook page, portraits beside their descriptions. */
+#book .contributor-pair{display:flex;flex-direction:column;gap:22px;margin-top:15px}
+#book .contributor-card{display:grid;grid-template-columns:95px minmax(0,1fr);align-items:start;gap:15px;min-width:0}
+#book .contributor-photo{width:95px;height:108px;border-radius:9px;overflow:hidden;background:#e8ddca;box-shadow:0 2px 5px rgba(44,30,17,.13)}
+#book .contributor-photo img{width:100%;height:100%;object-fit:cover;display:block}
+#book .contributor-details{min-width:0}
+#book .contributor-details h3{font-size:19px;line-height:1.14;margin:0 0 6px;color:#20384d}
+#book .contributor-details p{font-size:13px;line-height:1.3;margin:0 0 6px}
+#book .contributor-details .contributor-note{font-size:12px;font-style:italic;color:#796454}
+#book .contributor-details a{font-size:13px}
+@media(max-width:700px){
+ #book .contributor-card{grid-template-columns:90px minmax(0,1fr);gap:13px}
+ #book .contributor-photo{width:90px;height:104px}
+}
+
+/* Consistent editorial body type on About pages, desktop and phone. */
+#book .aboutpage .copy,
+#book .aboutpage .copy.about-copy,
+#book .aboutpage .copy p{
+ font-size:14px!important;
+ line-height:1.52!important;
+ font-weight:400!important;
+ letter-spacing:normal!important;
+}
+#book .aboutpage .copy p{
+ margin:0 0 14px!important;
+}
+#book .aboutpage .copy a{font-weight:400!important}
+@media(max-width:700px){
+ /* The portrait photograph must cover the whole phone viewport,
+    including the area beneath the controls. */
+ html,body{min-height:100vh!important;min-height:100dvh!important}
+ body{
+  background-image:url('assets/hummingbird-table-mobile.png')!important;
+  background-color:#d9bd9a!important;
+  background-repeat:no-repeat!important;
+  background-position:center top!important;
+  background-size:cover!important;
+  background-attachment:fixed!important;
+  padding-bottom:0!important;
+ }
+ .controls{
+  position:fixed!important;
+  bottom:calc(7px + env(safe-area-inset-bottom,0px))!important;
+  left:50%!important;right:auto!important;
+  transform:translateX(-50%)!important;
+  width:270px!important;
+  max-width:calc(100vw - 24px)!important;
+  padding:4px 7px!important;
+  gap:7px!important;
+  min-height:43px!important;
+  margin:0!important;
+  border-radius:25px!important;
+  justify-content:space-between!important;
+  background:rgba(79,48,30,.72)!important;
+ }
+ .controls button{
+  width:36px!important;height:36px!important;
+  min-width:36px!important;min-height:36px!important;
+  flex:0 0 36px!important;
+  font-size:20px!important;
+ }
+ #page-label{
+  min-width:0!important;
+  flex:1 1 auto!important;
+  font-size:12px!important;
+  white-space:nowrap!important;
+  text-align:center!important;
+ }
+}
+
+/* Index opens with today's date and story, then runs straight into the full archive. */
+#book .archivepage .index-intro{margin:0 0 13px!important}
+#book .archivepage .index-current-date{
+ font-family:'Caveat',cursive!important;font-size:22px!important;
+ font-weight:600!important;color:#7c604a!important;
+ margin:0 0 3px!important;
+}
+#book .archivepage .index-today{
+ display:block!important;width:100%!important;
+ padding:3px 2px 9px!important;text-align:left!important;
+ background:transparent!important;border:0!important;
+}
+#book .archivepage .index-today span{
+ display:block!important;font-size:17px!important;
+ font-weight:700!important;color:#6f5542!important;
+}
+#book .archivepage .index-today strong{
+ display:block!important;font-size:22px!important;
+ line-height:1.14!important;font-weight:700!important;color:#1b3247!important;
+}
+#book .archivepage h2{margin:0 0 8px!important}
+#book .archivepage .archive-list{gap:5px!important}
+#book .archivepage .archive-list .archive-entry{padding:3px 2px!important}
+#book .archivepage .archive-list .archive-entry strong{font-size:18px!important;line-height:1.17!important}
+#book .archivepage .archive-list .archive-entry span{font-size:14px!important;line-height:1.18!important}
+
+/* Three collaborators on each notebook page; no introduction or end leaf. */
+#book .contributor-pair{gap:12px!important;margin-top:10px!important}
+#book .contributor-card{grid-template-columns:76px minmax(0,1fr)!important;gap:12px!important}
+#book .contributor-photo{width:76px!important;height:84px!important}
+#book .contributor-details h3{font-size:17px!important;margin:0 0 3px!important}
+#book .contributor-details p{font-size:12px!important;line-height:1.22!important;margin:0 0 3px!important}
+#book .contributor-details .contributor-note{font-size:11px!important}
+#book .contributor-details a{font-size:12px!important}
+@media(max-width:700px){
+ #book .contributor-pair{gap:10px!important}
+ #book .contributor-card{grid-template-columns:72px minmax(0,1fr)!important;gap:10px!important}
+ #book .contributor-photo{width:72px!important;height:82px!important}
+}
+
+/* A bullet-journal index: ink dots and breathing room, no digital divider rules. */
+#book .archivepage .archive-list .archive-entry{
+ border:0!important;
+ border-bottom:0!important;
+ box-shadow:none!important;
+ position:relative!important;
+ padding-left:17px!important;
+ margin-bottom:5px!important;
+}
+#book .archivepage .archive-list .archive-entry::before{
+ content:""!important;
+ position:absolute!important;
+ top:16px!important;
+ left:1px!important;
+ width:5px!important;
+ height:5px!important;
+ border-radius:50%!important;
+ background:#7e705f!important;
+ opacity:.65!important;
+}
+#book .archivepage .archive-list .index-today::before{
+ width:7px!important;height:7px!important;
+ background:#bf8059!important;opacity:1!important;
+}
+
+/* Collaborators: match the journal's handwritten headings and serif prose. */
+#book .contributor-details h3{
+ font-family:'Caveat','Segoe Print',cursive!important;
+ font-size:23px!important;
+ font-weight:700!important;
+ line-height:1.05!important;
+ color:#172942!important;
+ letter-spacing:0!important;
+}
+#book .contributor-details p{
+ font-family:Georgia,serif!important;
+ font-size:13px!important;
+ line-height:1.28!important;
+ color:#24364a!important;
+}
+#book .contributor-details .contributor-note{
+ font-family:'Caveat','Segoe Print',cursive!important;
+ font-size:17px!important;
+ font-style:normal!important;
+ color:#866443!important;
+}
+#book .contributor-details a{
+ font-family:'Caveat','Segoe Print',cursive!important;
+ font-size:17px!important;
+ color:#24364a!important;
+}
+
+
+/* Keep desktop spreads visible whenever both pages can fit.
+   Anchor the coffee table to the browser's right edge as the window narrows. */
+@media(min-width:701px){
+ html,body{overflow-x:hidden!important}
+ body{
+  background-image:url('assets/hummingbird-table.png')!important;
+  background-repeat:no-repeat!important;
+  background-position:right top!important;
+  background-size:cover!important;
+  background-attachment:fixed!important;
+ }
+ .stage,.stage.open-book,.stage:not(.open-book){
+  --desktop-scene-width:min(1580px, calc((100vw - 24px) * 1.69163))!important;
+  --scene-width:var(--desktop-scene-width)!important;
+  width:var(--desktop-scene-width)!important;
+  min-width:0!important;max-width:none!important;
+  height:auto!important;
+  aspect-ratio:1536 / 1024!important;
+  margin-left:calc(50vw - var(--desktop-scene-width) * .5533854)!important;
+  margin-right:0!important;
+  margin-top:-65px!important;
+  transform:perspective(2050px) rotateX(13deg) rotateZ(0deg)!important;
+ }
+}
+@media(min-width:701px) and (max-width:1020px){
+ /* Slightly tighter text at smaller desktop sizes, without changing the layout. */
+ #book .story .copy,#book .reflection .copy{
+  font-size:clamp(12px,1.5vw,15px)!important;
+  line-height:1.38!important;
+ }
+ #book .story h2{font-size:clamp(19px,2.35vw,27px)!important}
+ #book .page .eyebrow{font-size:clamp(15px,1.8vw,20px)!important}
+ #book .page .page-inner{padding:clamp(12px,1.4vw,19px)!important}
+}
+
+/* Hummingbird-inspired cardstock bookmarks: muted lilac, sky blue and sage. */
+.stage .journal-tabs button:nth-child(1),
+.stage.open-book .journal-tabs button:nth-child(1){
+ background-color:#bdacd9!important;
+ color:#253047!important;
+}
+.stage .journal-tabs button:nth-child(2),
+.stage.open-book .journal-tabs button:nth-child(2){
+ background-color:#a2c8de!important;
+ color:#253047!important;
+}
+.stage .journal-tabs button:nth-child(3),
+.stage.open-book .journal-tabs button:nth-child(3){
+ background-color:#aacaac!important;
+ color:#253047!important;
+}
+
+/* Preserve crisp glyph rasterisation: don't 3D-transform live page text.
+   Depth comes from the photographed leather, page edges and shadows. */
+@media(min-width:701px){
+ .stage,.stage.open-book,.stage:not(.open-book){
+  transform:none!important;
+  filter:none!important;
+ }
+}
+@media(max-width:700px){
+ .stage,.stage.open-book{
+  transform:none!important;
+ }
+}
+
+/* Desktop: keep the bookmark tops below the coffee mug, and the notebook
+   above the fixed navigation. Size against viewport height as well as width. */
+@media(min-width:701px){
+ .stage,.stage.open-book,.stage:not(.open-book){
+  --desktop-scene-width:min(
+    1580px,
+    calc((100vw - 24px) * 1.69163),
+    calc((100dvh - 210px) * 2.1)
+  )!important;
+  --scene-width:var(--desktop-scene-width)!important;
+  width:var(--desktop-scene-width)!important;
+  margin-top:clamp(-65px,calc(165px - var(--desktop-scene-width) * .153),65px)!important;
+ }
+}
+
+/* Compact handwritten switcher for reading the original or any contributor's thoughts. */
+#book .voice-story .voice-menu{
+ display:flex!important;flex-direction:column!important;gap:5px!important;
+ align-items:flex-start!important;margin:0 0 9px!important;
+ width:100%!important;min-width:0!important;
+}
+#book .voice-story .voice-buttons{
+ display:flex!important;flex-wrap:wrap!important;align-items:center!important;
+ column-gap:12px!important;row-gap:3px!important;width:100%!important;
+}
+#book .voice-story .voice-choice{
+ font-family:'Caveat','Segoe Print',cursive!important;
+ font-size:21px!important;line-height:1.12!important;
+ color:#283f53!important;background:transparent!important;
+ border:0!important;border-radius:0!important;box-shadow:none!important;
+ margin:0!important;padding:1px 0!important;cursor:pointer!important;
+ font-weight:400!important;text-decoration:none!important;
+}
+#book .voice-story .voice-choice.selected{font-weight:700!important}
+#book .voice-story .voice-choice:focus-visible{outline:2px solid #425b69!important;outline-offset:2px!important}
+#book .voice-story .reflection-count{
+ font-family:'Caveat','Segoe Print',cursive!important;
+ font-weight:600!important;font-size:17px!important;
+ line-height:1.1!important;color:#826148!important;
+}
+#book .voice-story .menu-count{display:none!important}
+#book .voice-story .intro-count{display:block!important;margin-top:-5px!important}
+#book .voice-story .voice-part-count{
+ font-family:'Caveat','Segoe Print',cursive!important;font-size:17px!important;
+ color:#866443!important;align-self:flex-end!important;
+}
+#book .voice-story .voice-copy{margin-top:2px!important}
+@media(max-width:700px){
+ #book .voice-story .voice-choice{font-size:20px!important}
+ #book .voice-story .voice-buttons{column-gap:10px!important}
+}
+
+/* Reveal the voices only when someone clicks the reflections count. */
+#book .voice-story .voice-menu{display:none!important;margin:0 0 8px!important}
+#book .voice-story .voice-menu.expanded{display:flex!important}
+#book .voice-story .reflection-toggle{
+ font-family:'Caveat','Segoe Print',cursive!important;
+ font-size:19px!important;line-height:1.12!important;
+ font-weight:600!important;color:#826148!important;
+ background:transparent!important;border:0!important;box-shadow:none!important;
+ cursor:pointer!important;padding:1px 0!important;margin:0!important;
+ text-align:left!important;white-space:nowrap!important;
+}
+#book .voice-story .reflection-toggle span{font-size:14px!important}
+#book .voice-story .reflection-toggle:focus-visible{outline:2px solid #425b69!important;outline-offset:3px!important}
+#book .voice-story .story-intro{gap:9px!important;margin-bottom:9px!important}
+#book .voice-story .story-intro-text{gap:6px!important}
+#book .voice-story .story-intro .paper-photo{
+ flex:0 0 44%!important;width:44%!important;max-width:44%!important;
+}
+#book .voice-story .story-date{
+ white-space:nowrap!important;
+ font-size:14px!important;
+ line-height:1.1!important;
+ letter-spacing:-.025em!important;
+}
+
+/* Strong explicit initial hiding, independent of earlier journal CSS rules. */
+#book .page.voice-story nav.voice-menu[hidden],
+#book .page.voice-story nav.voice-menu:not(.expanded){
+ display:none!important;
+ visibility:hidden!important;
+}
+#book .page.voice-story nav.voice-menu.expanded:not([hidden]){
+ display:flex!important;
+ visibility:visible!important;
+}
+
+/* Final notebook adjustments: physical facing pages, lower desktop position,
+   legible dates, and matching handwriting on reflection names. */
+@media(min-width:701px){
+ .stage,.stage.open-book,.stage:not(.open-book){
+  margin-top:clamp(-20px,calc(205px - var(--desktop-scene-width) * .153),95px)!important;
+ }
+}
+#book .voice-story .story-date{
+ font-size:17px!important;
+ letter-spacing:-.035em!important;
+ white-space:nowrap!important;
+}
+#book .archivepage .archive-list .archive-entry span{
+ font-size:17px!important;
+ line-height:1.2!important;
+}
+#book .archivepage .index-current-date{
+ font-size:24px!important;
+}
+#book .voice-story .voice-choice,
+#book .voice-story .reflection-toggle{
+ font-family:'Caveat','Segoe Print',cursive!important;
+ font-size:19px!important;
+ line-height:1.12!important;
+ color:#826148!important;
+}
+#book .voice-story .voice-choice.selected{
+ font-weight:700!important;
+}
+
+/* Reflection navigation uses the notebook ink blue; the currently displayed
+   perspective is marked with the same subtle peach highlighter as titles. */
+#book .voice-story .reflection-toggle,
+#book .voice-story .voice-choice{
+ color:#203851!important;
+}
+#book .voice-story .voice-choice.selected{
+ color:#203851!important;
+ font-weight:700!important;
+ background:linear-gradient(to bottom,transparent 48%,rgba(239,172,143,.55) 48%,rgba(239,172,143,.55) 88%,transparent 88%)!important;
+ -webkit-box-decoration-break:clone!important;
+ box-decoration-break:clone!important;
+}
+#book .voice-story .reflection-toggle.active-reflection{
+ background:linear-gradient(to bottom,transparent 52%,rgba(239,172,143,.48) 52%,rgba(239,172,143,.48) 87%,transparent 87%)!important;
+}
+
+/* Continuation pages are clean: small title only, no reflection controls. */
+#book .voice-story .story-continuation-title{
+ font-family:'Caveat','Segoe Print',cursive!important;
+ font-size:21px!important;line-height:1.18!important;
+ font-weight:600!important;color:#203851!important;
+ letter-spacing:0!important;margin:0 0 12px!important;
+}
+#book .static-left .blankpage .page-inner,
+#book .static-right .blankpage .page-inner{min-height:100%!important}
+
+/* Blank physical leaves match the real paper exactly, never a separate canvas. */
+#book .static-leaf>.page.blankpage{
+ position:relative!important;
+ inset:auto!important;
+ width:100%!important;
+ height:100%!important;
+ min-height:0!important;
+ min-width:0!important;
+ max-height:100%!important;
+ max-width:100%!important;
+ box-sizing:border-box!important;
+ margin:0!important;
+ padding:0!important;
+ overflow:hidden!important;
+ transform:none!important;
+}
+#book .static-leaf>.page.blankpage>.page-inner{
+ width:100%!important;
+ height:100%!important;
+ min-height:0!important;
+ max-height:100%!important;
+ box-sizing:border-box!important;
+}
+#book .blankpage .page-logo{visibility:hidden!important}
+#book .blankpage .blank-page-content{visibility:hidden!important}
+
+/* Highlight today's Inspiration title; no separate Index heading on paper. */
+#book .archivepage .index-title-highlight{
+ display:inline!important;
+ background:linear-gradient(178deg,transparent 6%,rgba(239,172,143,.56) 9%,rgba(239,172,143,.56) 91%,transparent 95%)!important;
+ -webkit-box-decoration-break:clone!important;
+ box-decoration-break:clone!important;
+ padding:1px 2px 3px!important;
+}
+#book .archivepage .archive-list-continued{margin-top:22px!important}
+/* Final notebook page, independent of each Inspiration's length. */
+#book .closingpage .journal-ending{
+ display:flex!important;flex:1 1 auto!important;
+ min-height:0!important;justify-content:center!important;
+ align-items:center!important;padding:15px 22px!important;text-align:center!important;
+}
+#book .closingpage .journal-ending p{
+ font-family:Georgia,serif!important;color:#203851!important;
+ font-size:clamp(15px,1.55vw,20px)!important;
+ line-height:1.55!important;margin:0!important;max-width:20em!important;
+}
+
+#book .archivepage .index-today strong span.index-title-highlight{
+ display:inline!important;
+ font-family:'Caveat','Segoe Print',cursive!important;
+ font-size:inherit!important;
+ line-height:inherit!important;
+ font-weight:inherit!important;
+ color:inherit!important;
+ background:linear-gradient(178deg,transparent 6%,rgba(239,172,143,.56) 9%,rgba(239,172,143,.56) 91%,transparent 95%)!important;
+ -webkit-box-decoration-break:clone!important;
+ box-decoration-break:clone!important;
+}
+
+/* Slightly larger desktop journal while keeping its tabs below the mug and
+   its lower edge clear of the fixed bottom navigation.  The responsive
+   height limit prevents short screens from cropping the notebook. */
+@media (min-width:701px){
+ .stage,.stage.open-book,.stage:not(.open-book){
+  --desktop-scene-width:min(
+   1600px,
+   calc((100vw - 24px) * 1.69163),
+   calc((100dvh - 170px) * 2.12)
+  )!important;
+  --scene-width:var(--desktop-scene-width)!important;
+  width:var(--desktop-scene-width)!important;
+  margin-left:calc(50vw - var(--desktop-scene-width) * .5533854)!important;
+  margin-top:clamp(-35px,calc(205px - var(--desktop-scene-width) * .153),85px)!important;
+ }
+}
+
+/* Closing leaf is always on the right of the final spread.
+   Hide the top bookmarks only while the closing leaf is displayed. */
+.stage.at-final-page .journal-tabs,
+.stage.open-book.at-final-page .journal-tabs{
+ visibility:hidden!important;pointer-events:none!important;
+}
+</style>
+
+</head>
+<body>
+
+
+<main>
+ <div class="stage" id="journal-stage"><div class="open-leather" aria-hidden="true"></div><div class="closed-leather" aria-hidden="true"></div><div class="sunlight" aria-hidden="true"></div><div class="journal-tabs"><button type="button" data-section="archive">Index</button><button type="button" data-section="about">About</button><button type="button" data-section="collaborators">Collaborators</button></div><div id="book" aria-label="Interactive discovery notebook"></div></div>
+ <div class="controls"><button id="prev" aria-label="Previous page" disabled>‹</button><div id="page-label" aria-live="polite">Opening notebook…</div><button id="next" aria-label="Next page" disabled>›</button></div>
+</main>
+<script>
+(function(){
+'use strict';
+const esc=s=>String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const link=u=>{try{const x=new URL(u,location.href);return ['http:','https:'].includes(x.protocol)?esc(x.href):'#'}catch(e){return '#'}};
+const date=s=>new Intl.DateTimeFormat('en-GB',{weekday:'long',day:'numeric',month:'long',year:'numeric',timeZone:'UTC'}).format(new Date(s+'T12:00:00Z'));
+const root=document.getElementById('book');
+const label=document.getElementById('page-label'),prev=document.getElementById('prev'),next=document.getElementById('next');
+let flip=null,pages=[],all=[],current=0,sectionPages={};
+let collaboratorData=[];
+let activeInspiration=null,activeVoice=0,voiceMenuExpanded=false;
+function page(html,kind='',hard=false){return '<article class="page '+kind+'" '+(hard?'data-density="hard"':'')+'><div class="page-inner '+(kind==='coverpage'?'cover':'')+'">'+(kind==='coverpage'?'':'<img class="page-logo" src="assets/favicon.svg" alt="" aria-hidden="true">')+html+'</div></article>'}
+function foot(number,kind){return ''}
+function thoughtsTitle(name){let n=String(name||'Contributor').trim().split(/\s+/)[0];return esc(n)+(n.toLowerCase().endsWith('s')?'’':'’s')+' Thoughts'}
+function chunks(value,first=105,subsequent=155){
+ const words=String(value||'').trim().split(/\s+/).filter(Boolean),out=[];
+ let offset=0,limit=first;
+ while(offset<words.length){out.push(words.slice(offset,offset+limit).join(' '));offset+=limit;limit=subsequent}
+ return out.length?out:[''];
+}
+// Measure real rendered line wrapping in an invisible paper leaf.
+// Unlike a fixed word count, this fills the available space and tries not to split sentences.
+function paginateVoice(textContent, makeMarkup){
+ const remainingText=String(textContent||'').trim();
+ if(!remainingText)return [''];
+ const units=(remainingText.match(/[^.!?]+(?:[.!?]+(?=\s|$)|$)/g)||[remainingText]).map(x=>x.trim()).filter(Boolean);
+ const stage=document.getElementById('journal-stage');
+ const wasOpened=stage.classList.contains('open-book');
+ stage.classList.add('open-book');
+ const probe=document.createElement('div');
+ probe.className='static-leaf static-right';
+ probe.style.setProperty('visibility','hidden','important');
+ probe.style.setProperty('pointer-events','none','important');
+ root.appendChild(probe);
+ function fits(candidate,index,isLast){
+  probe.innerHTML=makeMarkup(candidate,index,isLast,999);
+  const copy=probe.querySelector('.voice-copy');
+  const paragraph=copy&&copy.querySelector('p');
+  if(!copy||!paragraph)return false;
+  // Check actual available box height, not the number of words.
+  return paragraph.scrollHeight<=copy.clientHeight-3 && copy.clientHeight>25;
+ }
+ const parts=[];
+ let rest=units.slice();
+ for(let guard=0;rest.length&&guard<100;guard++){
+  const index=parts.length;
+  let lo=1,hi=rest.length,best=0;
+  while(lo<=hi){
+   const mid=(lo+hi)>>1;
+   const candidate=rest.slice(0,mid).join(' ');
+   if(fits(candidate,index,mid===rest.length)){best=mid;lo=mid+1}
+   else hi=mid-1;
+  }
+  if(best){
+   parts.push(rest.splice(0,best).join(' '));
+  }else{
+   // A single unusually long sentence may itself exceed a page.
+   // Break that sentence at the last word that fits, never mid-word.
+   const words=rest[0].split(/\s+/);
+   let left=1,right=words.length,count=0;
+   while(left<=right){
+    const middle=(left+right)>>1;
+    if(fits(words.slice(0,middle).join(' '),index,false)){count=middle;left=middle+1}
+    else right=middle-1;
+   }
+   count=Math.max(1,count);
+   parts.push(words.slice(0,count).join(' '));
+   if(count>=words.length)rest.shift();
+   else rest[0]=words.slice(count).join(' ');
+  }
+ }
+ probe.remove();
+ if(!wasOpened)stage.classList.remove('open-book');
+ return parts;
+}
+function build(x){
+ let pieces=[];sectionPages={};
+ pieces.push(page('<img src="assets/02_closed_book.png" class="journal-cover-art" alt="Leather notebook cover embossed with a hummingbird" draggable="false" onerror="this.src=\'assets/journal.png\'">','coverpage',true));
+
+ sectionPages.archive=pieces.length;
+ const previous=all.filter(item=>item.id!==x.id);
+ const indexEntry=item=>'<button type="button" class="archive-entry" data-entry-id="'+esc(item.id)+'"><span>'+esc(date(item.date))+'</span><strong>'+esc(item.title)+'</strong></button>';
+ const firstEntries=previous.slice(0,5).map(indexEntry).join('');
+ pieces.push(page('<div class="index-intro"><div class="index-current-date">'+esc(date(x.date))+'</div><button type="button" class="archive-entry index-today" data-today="1"><span>Today’s Inspiration</span><strong><span class="index-title-highlight">'+esc(x.title)+'</span></strong></button></div><div class="archive-list">'+firstEntries+'</div>','archivepage'));
+ const perPage=6;
+ for(let j=5;j<previous.length;j+=perPage){
+  pieces.push(page('<div class="archive-list archive-list-continued">'+previous.slice(j,j+perPage).map(indexEntry).join('')+'</div>','archivepage'));
+ }
+ sectionPages.today=pieces.length;
+ const img=x.image?'<figure class="paper-photo"><img src="'+link(x.image)+'" alt="Image accompanying '+esc(x.title)+'" loading="lazy"><figcaption class="photo-credit">'+(x.image_credit_url?'<a href="'+link(x.image_credit_url)+'" target="_blank" rel="noopener noreferrer">'+esc(x.image_credit||'Image source')+'</a>':esc(x.image_credit||''))+(x.image_license_url?' · <a href="'+link(x.image_license_url)+'" target="_blank" rel="noopener noreferrer">Licence</a>':'')+'</figcaption></figure>':'';
+ const sources=(x.sources&&x.sources.length?x.sources:[{url:x.source}]).filter(a=>a.url);
+ const voices=[{label:'Original Story',text:x.summary,kind:'original'}];
+ if(x.discovery&&String(x.discovery).trim())voices.push({label:'AI',text:x.discovery,kind:'reflection'});
+ if(x.thoughts&&String(x.thoughts).trim())voices.push({label:'Liz',text:x.thoughts,kind:'reflection'});
+ (x.reflections||[]).filter(c=>c&&c.approved===true&&c.name&&c.text&&String(c.text).trim()).forEach(c=>{
+  const first=String(c.name).trim().split(/\s+/)[0];
+  voices.push({label:first,text:c.text,kind:'reflection'});
+ });
+ const selected=Math.min(activeVoice,voices.length-1);
+ const voiceButtons=voices.map((v,i)=>'<button type="button" class="voice-choice'+(i===selected?' selected':'')+'" data-voice="'+i+'" aria-pressed="'+(i===selected?'true':'false')+'">'+esc(v.label)+'</button>').join('');
+ const countLabel=(voices.length-1)+' reflection'+(voices.length===2?'':'s');
+ const toggle='<button type="button" class="reflection-toggle'+(selected>0?' active-reflection':'')+'" aria-expanded="'+(voiceMenuExpanded?'true':'false')+'" aria-label="Show or hide '+esc(countLabel)+'">'+esc(countLabel)+' <span aria-hidden="true">'+(voiceMenuExpanded?'▴':'▾')+'</span></button>';
+ const voiceMenu='<nav class="voice-menu'+(voiceMenuExpanded?' expanded':'')+'" '+(voiceMenuExpanded?'':'hidden ')+'aria-label="Choose a perspective"><div class="voice-buttons">'+voiceButtons+'</div></nav>';
+ const selectedText=voices[selected].text;
+ // Selected voices replace one another; only their own continuation pages are made.
+ const voicePageHtml=(part,i,isLast,pageTotal)=>{
+  const heading=i===0?'<div class="story-intro"><div class="story-intro-text"><h2><span class="ink-highlight">'+esc(x.title)+'</span></h2><div class="eyebrow story-date">'+esc(date(x.date))+'</div>'+toggle+'</div>'+img+'</div>':'<div class="eyebrow story-continuation-title">'+esc(x.title)+' · continued</div>';
+  const links=selected===0&&isLast?'<div class="story-links">'+sources.map(z=>'<a href="'+link(z.url)+'" target="_blank" rel="noopener noreferrer">Read original story ↗</a>').join(' · ')+'</div>':'';
+  const continuation=pageTotal>1?'<span class="voice-part-count">'+(i+1)+' / '+pageTotal+'</span>':'';
+  return page(heading+(i===0?voiceMenu:'')+'<div class="copy voice-copy"><p>'+esc(part)+'</p></div>'+links+continuation,'story voice-story');
+ };
+ const storyParts=paginateVoice(selectedText,voicePageHtml);
+ storyParts.forEach((part,i)=>pieces.push(voicePageHtml(part,i,i===storyParts.length-1,storyParts.length)));
+ sectionPages.about=pieces.length;
+ const aboutHtml='<h2>About Daily Hummingbird</h2><div class="copy about-copy">'+"\n        <p>\n          I'm Liz Stephens,\n          <a href=\"https://research.reading.ac.uk/meteorology/people/liz-stephens/\" target=\"_blank\" rel=\"noopener noreferrer\">\n            Professor of Climate Risks and Resilience at the University of Reading\n          </a>\n          , in a joint role with the Red Cross Red Crescent Climate Centre.\n        </p>\n        <p>\n          I spend much of my professional life thinking about climate risk, forecasting and how scientific information can be put to use. Though I'm a scientist by background, I find myself most energised and inspired by engaging with people and ideas from many different backgrounds.\n        </p>\n        <p>\n          I'm also experimenting with using generative AI in different areas of my work, trying to understand how it can make me better at what I do (rather than replace me!).\n        </p>\n        <p>\n          Daily Hummingbird has grown out of that experimentation. I use ChatGPT to find me interesting articles from, well, just about anywhere; science to humanities, art to technology. It's designed to be a quick, cup-of-tea-sized encounter with something to inspire me at the start of the day. Through our conversations, ChatGPT learns what interests me and why, helping me curate the content. I'm now adding my own reflections, so you can see what's AI-generated and what's human.\n        </p>\n        <p>\n          Sometimes the connection to my work is obvious, sometimes it's unexpected, and sometimes it's just a bit of fun.\n        </p>\n        <p>\n          Over time, I'd like to invite other people to share their perspectives too. Looking at the same idea from different backgrounds can help cross-pollinate ideas (hence the hummingbird).\n        </p>\n        <p>\n          <em>\n            This is a personal curation project, not an official publication of my affiliated institutions.\n          </em>\n        </p>\n        <p>\n          <a href=\"archive.html\" class=\"pill\">\n            Explore the archive →\n          </a>\n        </p>\n      "+'</div>';
+ const aboutParagraphs=[...aboutHtml.matchAll(/<p(?:\s[^>]*)?>[\s\S]*?<\/p>/g)].map(m=>m[0]);
+ // Group whole paragraphs by a conservative word budget so no About text is clipped.
+ const aboutGroups=[];let aboutGroup=[],aboutWords=0;
+ for(const paragraph of aboutParagraphs){
+  const words=paragraph.replace(/<[^>]*>/g,' ').trim().split(/\s+/).filter(Boolean).length;
+  if(aboutGroup.length&&aboutWords+words>105){aboutGroups.push(aboutGroup);aboutGroup=[];aboutWords=0}
+  aboutGroup.push(paragraph);aboutWords+=words;
+ }
+ if(aboutGroup.length)aboutGroups.push(aboutGroup);
+ aboutGroups.forEach((group,i)=>pieces.push(page((i===0?'<h2>About Daily Hummingbird</h2>':'<div class="eyebrow">About · continued</div>')+'<div class="copy about-copy">'+group.join('')+'</div>','aboutpage')));
+ sectionPages.collaborators=pieces.length;
+ const collaborators=collaboratorData.map(c=>({name:c.name,url:c.linkedin||'',img:c.image||'',note:(c.curator?'Curator & Collaborator':'Collaborator')+' · '+(c.country||''),desc:c.background||''}));
+ for(let i=0;i<collaborators.length;i+=3){
+  const cards=collaborators.slice(i,i+3).map(c=>'<div class="contributor-card"><div class="contributor-photo"><img src="'+link(c.img)+'" alt="Portrait of '+esc(c.name)+'" loading="lazy"></div><div class="contributor-details"><h3>'+esc(c.name)+'</h3><p class="contributor-note">'+esc(c.note.replace(/&amp;/g,'&'))+'</p><p>'+esc(c.desc)+'</p><a href="'+link(c.url)+'" target="_blank" rel="noopener noreferrer">Profile ↗</a></div></div>').join('');
+  pieces.push(page('<div class="eyebrow">People and perspectives · '+String(Math.floor(i/3)+1).padStart(2,'0')+'</div><h2>Collaborators</h2><div class="contributor-pair">'+cards+'</div>','personpage contributor-pair-page'));
+ }
+ // On a desktop spread, the final message must occupy a right-hand leaf.
+ // Insert an unprinted left leaf only when needed; the underlying photograph
+ // already provides its paper, so never draw a separate blank HTML page.
+ if((pieces.length-sectionPages.collaborators)%2===1)pieces.push(page('','spacerpage'));
+ pieces.push(page('<div class="journal-ending"><p><em>Daily inspiration through the cross-pollination of ideas and perspectives. An experiment in human collaboration, facilitated by AI.</em></p></div>','closingpage'));
+ return pieces;
+}
+function update(){
+ if(!flip)return;
+ current=flip.getCurrentPageIndex();const total=flip.getPageCount();
+ label.textContent=current===0?'Cover · Open the notebook':(current===total-1?'Last page':('Page '+current+' of '+(total-2)));
+ prev.disabled=current===0;next.disabled=current>=total-1;
+ document.getElementById('journal-stage').classList.toggle('open-book',current>0);
+ 
+}
+// Page indices are physical leaves. The right leaf is the selected page;
+// when the final continuation is a left leaf, a blank right leaf completes the spread.
+function sectionBounds(name=currentSection){
+ if(name==='collaborators')return {name,first:sectionPages.collaborators,last:sheets.length-1};
+ if(name==='about')return {name,first:sectionPages.about,last:sectionPages.collaborators-1};
+ // The Index and today's Inspiration occupy one continuous set of leaves.
+ return {name:'archive',first:sectionPages.archive,last:sectionPages.about-1};
+}
+function isSpacer(index){return sheets[index]&&sheets[index].includes('class="page spacerpage"')}
+function isSinglePage(){return window.matchMedia('(max-width:700px)').matches}
+function lastSpreadRight(bounds=sectionBounds()){
+ const length=bounds.last-bounds.first+1;
+ return bounds.first+Math.floor(length/2)*2;
+}
+function stepPage(direction){
+ if(sheetIndex===0){
+  if(direction>0){currentSection='archive';turnTo(sectionPages.archive,'next')}
+  return;
+ }
+ const bounds=sectionBounds();
+ const single=isSinglePage();
+ if(direction<0&&sheetIndex===bounds.first){
+  if(currentSection==='archive')turnTo(0,'prev');
+  return;
+ }
+ const increment=single?1:2;
+ const end=single?bounds.last:lastSpreadRight(bounds);
+ let target=Math.max(bounds.first,Math.min(end,sheetIndex+direction*increment));
+ if(single&&isSpacer(target))target=Math.max(bounds.first,Math.min(end,target+direction));
+ if(target!==sheetIndex)turnTo(target,direction>0?'next':'prev');
+}
+function openSection(name){
+ if(!sectionPages[name]||!sheets.length)return;
+ currentSection=(name==='today'?'archive':name);
+ const requested=sectionPages[name];
+ const bounds=sectionBounds();
+ const target=!isSinglePage()&&requested>bounds.first&&(requested-bounds.first)%2===1?requested+1:requested;
+ turnTo(Math.min(target,lastSpreadRight(bounds)),'next');
+}
+let sheets=[],sheetIndex=0,turning=false,currentSection='archive';
+function showSheet(){
+ const stage=document.getElementById('journal-stage');
+ const opened=sheetIndex>0;
+ const single=isSinglePage();
+ if(opened){
+  const bounds=sectionBounds();
+  // Changing viewport from a last left-hand spread to a phone needs a real page.
+  if(single&&sheetIndex>bounds.last)sheetIndex=bounds.last;
+ }
+ stage.classList.toggle('open-book',opened);
+ // The physical bookmark tabs disappear on the closing leaf.
+ stage.classList.toggle('at-final-page',opened&&sheetIndex===sheets.length-1);
+ stage.onclick=opened?null:()=>flip.flipNext();
+ stage.style.cursor=opened?'default':'pointer';
+ root.innerHTML='';
+ const bounds=sectionBounds();
+ // There is already a correctly proportioned paper spread in 03_open_book.png.
+ // Never draw an extra HTML leaf when a position has no content.
+ const canShowLeft=!single&&opened&&sheetIndex>bounds.first&&sheetIndex-1<=bounds.last&&!isSpacer(sheetIndex-1);
+ if(canShowLeft){
+  const holder=document.createElement('div');
+  holder.className='static-leaf static-left';
+  holder.innerHTML=sheets[sheetIndex-1];
+  root.appendChild(holder);
+ }
+ if(opened&&sheetIndex<=bounds.last&&!isSpacer(sheetIndex)){
+  const holder=document.createElement('div');
+  holder.className='static-leaf static-right';
+  holder.innerHTML=sheets[sheetIndex];
+  root.appendChild(holder);
+  holder.addEventListener('click',e=>{
+   if(e.target.closest('a,button,.archive-entry,.copy,.archive-list'))return;
+   flip.flipNext();
+  });
+ }
+ const length=bounds.last-bounds.first+1;
+ if(!opened)label.textContent='Cover · Open the notebook';
+ else{
+  const sectionName={archive:'Journal',today:'Journal',about:'About',collaborators:'Collaborators'}[currentSection];
+  const leftNo=sheetIndex-bounds.first;
+  const rightNo=leftNo+1;
+  const shown=single?'Page '+rightNo:
+    leftNo>0&&rightNo<=length?'Pages '+leftNo+'–'+rightNo:
+    leftNo>0?'Page '+leftNo:'Page 1';
+  label.textContent=sectionName+' · '+shown+' of '+length;
+ }
+ prev.disabled=sheetIndex===0||(sheetIndex===bounds.first&&currentSection!=='archive');
+ next.disabled=opened&&sheetIndex>=(single?bounds.last:lastSpreadRight(bounds));
+ root.querySelectorAll('.reflection-toggle').forEach(el=>el.addEventListener('click',e=>{
+  e.stopPropagation();voiceMenuExpanded=!voiceMenuExpanded;
+  root.querySelectorAll('.voice-menu').forEach(menu=>{menu.classList.toggle('expanded',voiceMenuExpanded);menu.hidden=!voiceMenuExpanded});
+  root.querySelectorAll('.reflection-toggle').forEach(btn=>{btn.setAttribute('aria-expanded',String(voiceMenuExpanded));const arrow=btn.querySelector('span');if(arrow)arrow.textContent=voiceMenuExpanded?'▴':'▾'});
+ }));
+ root.querySelectorAll('.voice-choice').forEach(el=>el.addEventListener('click',e=>{e.stopPropagation();chooseVoice(el.dataset.voice)}));
+ root.querySelectorAll('[data-today]').forEach(el=>el.addEventListener('click',()=>openSection('today')));
+ root.querySelectorAll('.archive-entry[data-entry-id]').forEach(el=>el.addEventListener('click',()=>{
+  const item=all.find(y=>y.id===el.dataset.entryId);
+  if(item){
+   history.replaceState(null,'','?id='+encodeURIComponent(item.id));
+   render(item);openSection('today');
+  }
+ }));
+}
+flip={
+ getCurrentPageIndex:()=>sheetIndex,getPageCount:()=>sheets.length,
+ flipNext:()=>stepPage(1),
+ flipPrev:()=>stepPage(-1),
+ flip:(n)=>turnTo(Math.max(1,Math.min(sheets.length-1,n)),'next'),
+ destroy:()=>{}
+};
+function turnTo(target,direction){
+ if(turning||target<0||target===sheetIndex&&sheetIndex!==0)return;
+ sheetIndex=target;showSheet();
+}
+function render(x){activeInspiration=x;activeVoice=0;voiceMenuExpanded=false;sheets=build(x);sheetIndex=0;currentSection='archive';turning=false;showSheet()}
+function chooseVoice(index){
+ if(!activeInspiration)return;
+ const chosen=Number(index);
+ if(!Number.isInteger(chosen)||chosen<0||chosen===activeVoice)return;
+ activeVoice=chosen;
+ sheets=build(activeInspiration);
+ currentSection='archive';
+ const storyStart=sectionPages.today;
+ sheetIndex=!isSinglePage()&&(storyStart-sectionPages.archive)%2===1?storyStart+1:storyStart;
+ sheetIndex=Math.min(sheetIndex,lastSpreadRight(sectionBounds()));
+ turning=false;
+ showSheet();
+}
+document.querySelectorAll('.journal-tabs button').forEach(btn=>btn.addEventListener('click',()=>{if(!flip)return;const section=btn.dataset.section;if(sectionPages[section]===undefined)return;openSection(section)}));
+prev.addEventListener('click',e=>{e.stopPropagation();if(flip)flip.flipPrev()});
+next.addEventListener('click',e=>{e.stopPropagation();if(flip)flip.flipNext()});
+document.addEventListener('keydown',e=>{if(!flip||e.target.matches('input,textarea,select,button'))return;if(e.key==='ArrowRight')flip.flipNext();if(e.key==='ArrowLeft')flip.flipPrev()});
+// Recompose the spread when crossing the phone/desktop layout breakpoint.
+const pageMode=window.matchMedia('(max-width:700px)');
+if(pageMode.addEventListener)pageMode.addEventListener('change',()=>{if(sheets.length)showSheet()});
+// Refit the current perspective whenever the browser width changes significantly.
+let lastLayoutWidth=window.innerWidth,resizeReflowTimer=null;
+window.addEventListener('resize',()=>{
+ if(!activeInspiration||!sheets.length||Math.abs(window.innerWidth-lastLayoutWidth)<24)return;
+ clearTimeout(resizeReflowTimer);
+ resizeReflowTimer=setTimeout(()=>{
+  if(!activeInspiration)return;
+  lastLayoutWidth=window.innerWidth;
+  const oldIndex=sheetIndex;
+  const oldBounds=sectionBounds();
+  const oldOffset=Math.max(0,oldIndex-oldBounds.first);
+  sheets=build(activeInspiration);
+  const newBounds=sectionBounds();
+  const single=isSinglePage();
+  const last=single?newBounds.last:lastSpreadRight(newBounds);
+  const step=single?1:2;
+  sheetIndex=oldIndex===0?0:Math.max(newBounds.first,Math.min(last,newBounds.first+Math.floor(oldOffset/step)*step));
+  showSheet();
+ },180);
+});
+
+Promise.all([fetch('inspiration.json').then(r=>{if(!r.ok)throw Error('Could not load discoveries');return r.json()}),fetch('collaborators.json',{cache:'no-store'}).then(r=>{if(!r.ok)throw Error('Could not load collaborators');return r.json()})]).then(([data,collaborators])=>{
+ collaboratorData=collaborators;
+ all=data.slice().sort((a,b)=>b.date.localeCompare(a.date));
+ const param=new URLSearchParams(location.search).get('id');const chosen=all.find(x=>x.id===param)||all[0];render(chosen);
+}).catch(err=>{console.error(err);label.textContent='Unable to load discoveries';root.innerHTML='<p class="fallback-message">The discovery data could not be loaded. Please refresh the page.</p>'});
+})();
+</script>
+</body></html>
