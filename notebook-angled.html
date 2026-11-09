@@ -2014,6 +2014,23 @@ body{
  -webkit-box-decoration-break:clone!important;
  box-decoration-break:clone!important;
 }
+
+/* Slightly larger desktop journal while keeping its tabs below the mug and
+   its lower edge clear of the fixed bottom navigation.  The responsive
+   height limit prevents short screens from cropping the notebook. */
+@media (min-width:701px){
+ .stage,.stage.open-book,.stage:not(.open-book){
+  --desktop-scene-width:min(
+   1600px,
+   calc((100vw - 24px) * 1.69163),
+   calc((100dvh - 170px) * 2.12)
+  )!important;
+  --scene-width:var(--desktop-scene-width)!important;
+  width:var(--desktop-scene-width)!important;
+  margin-left:calc(50vw - var(--desktop-scene-width) * .5533854)!important;
+  margin-top:clamp(-35px,calc(205px - var(--desktop-scene-width) * .153),85px)!important;
+ }
+}
 </style>
 
 </head>
