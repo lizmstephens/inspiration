@@ -1981,6 +1981,27 @@ body{
 }
 #book .blankpage .page-logo{visibility:hidden!important}
 #book .blankpage .blank-page-content{visibility:hidden!important}
+
+/* Highlight today's Inspiration title; no separate Index heading on paper. */
+#book .archivepage .index-title-highlight{
+ display:inline!important;
+ background:linear-gradient(178deg,transparent 6%,rgba(239,172,143,.56) 9%,rgba(239,172,143,.56) 91%,transparent 95%)!important;
+ -webkit-box-decoration-break:clone!important;
+ box-decoration-break:clone!important;
+ padding:1px 2px 3px!important;
+}
+#book .archivepage .archive-list-continued{margin-top:22px!important}
+/* Final notebook page, independent of each Inspiration's length. */
+#book .closingpage .journal-ending{
+ display:flex!important;flex:1 1 auto!important;
+ min-height:0!important;justify-content:center!important;
+ align-items:center!important;padding:15px 22px!important;text-align:center!important;
+}
+#book .closingpage .journal-ending p{
+ font-family:Georgia,serif!important;color:#203851!important;
+ font-size:clamp(15px,1.55vw,20px)!important;
+ line-height:1.55!important;margin:0!important;max-width:20em!important;
+}
 </style>
 
 </head>
@@ -2074,10 +2095,10 @@ function build(x){
  const previous=all.filter(item=>item.id!==x.id);
  const indexEntry=item=>'<button type="button" class="archive-entry" data-entry-id="'+esc(item.id)+'"><span>'+esc(date(item.date))+'</span><strong>'+esc(item.title)+'</strong></button>';
  const firstEntries=previous.slice(0,5).map(indexEntry).join('');
- pieces.push(page('<div class="index-intro"><div class="index-current-date">'+esc(date(x.date))+'</div><button type="button" class="archive-entry index-today" data-today="1"><span>Today’s Inspiration</span><strong>'+esc(x.title)+'</strong></button></div><h2>Index</h2><div class="archive-list">'+firstEntries+'</div>','archivepage'));
+ pieces.push(page('<div class="index-intro"><div class="index-current-date">'+esc(date(x.date))+'</div><button type="button" class="archive-entry index-today" data-today="1"><span>Today’s Inspiration</span><strong><span class="index-title-highlight">'+esc(x.title)+'</span></strong></button></div><div class="archive-list">'+firstEntries+'</div>','archivepage'));
  const perPage=6;
  for(let j=5;j<previous.length;j+=perPage){
-  pieces.push(page('<h2>Index · continued</h2><div class="archive-list">'+previous.slice(j,j+perPage).map(indexEntry).join('')+'</div>','archivepage'));
+  pieces.push(page('<div class="archive-list archive-list-continued">'+previous.slice(j,j+perPage).map(indexEntry).join('')+'</div>','archivepage'));
  }
  sectionPages.today=pieces.length;
  const img=x.image?'<figure class="paper-photo"><img src="'+link(x.image)+'" alt="Image accompanying '+esc(x.title)+'" loading="lazy"><figcaption class="photo-credit">'+(x.image_credit_url?'<a href="'+link(x.image_credit_url)+'" target="_blank" rel="noopener noreferrer">'+esc(x.image_credit||'Image source')+'</a>':esc(x.image_credit||''))+(x.image_license_url?' · <a href="'+link(x.image_license_url)+'" target="_blank" rel="noopener noreferrer">Licence</a>':'')+'</figcaption></figure>':'';
@@ -2122,6 +2143,7 @@ function build(x){
   const cards=collaborators.slice(i,i+3).map(c=>'<div class="contributor-card"><div class="contributor-photo"><img src="'+link(c.img)+'" alt="Portrait of '+esc(c.name)+'" loading="lazy"></div><div class="contributor-details"><h3>'+esc(c.name)+'</h3><p class="contributor-note">'+esc(c.note.replace(/&amp;/g,'&'))+'</p><p>'+esc(c.desc)+'</p><a href="'+link(c.url)+'" target="_blank" rel="noopener noreferrer">Profile ↗</a></div></div>').join('');
   pieces.push(page('<div class="eyebrow">People and perspectives · '+String(Math.floor(i/3)+1).padStart(2,'0')+'</div><h2>Collaborators</h2><div class="contributor-pair">'+cards+'</div>','personpage contributor-pair-page'));
  }
+ pieces.push(page('<div class="journal-ending"><p><em>Daily inspiration through the cross-pollination of ideas and perspectives. An experiment in human collaboration, facilitated by AI.</em></p></div>','closingpage'));
  return pieces;
 }
 function update(){
@@ -2137,8 +2159,8 @@ function update(){
 function sectionBounds(name=currentSection){
  if(name==='collaborators')return {name,first:sectionPages.collaborators,last:sheets.length-1};
  if(name==='about')return {name,first:sectionPages.about,last:sectionPages.collaborators-1};
- if(name==='today')return {name,first:sectionPages.today,last:sectionPages.about-1};
- return {name:'archive',first:sectionPages.archive,last:sectionPages.today-1};
+ // The Index and today's Inspiration occupy one continuous set of leaves.
+ return {name:'archive',first:sectionPages.archive,last:sectionPages.about-1};
 }
 function isSinglePage(){return window.matchMedia('(max-width:700px)').matches}
 function lastSpreadRight(bounds=sectionBounds()){
@@ -2163,7 +2185,11 @@ function stepPage(direction){
 }
 function openSection(name){
  if(!sectionPages[name]||!sheets.length)return;
- currentSection=name;turnTo(sectionPages[name],'next');
+ currentSection=(name==='today'?'archive':name);
+ const requested=sectionPages[name];
+ const bounds=sectionBounds();
+ const target=!isSinglePage()&&requested>bounds.first&&(requested-bounds.first)%2===1?requested+1:requested;
+ turnTo(Math.min(target,lastSpreadRight(bounds)),'next');
 }
 let sheets=[],sheetIndex=0,turning=false,currentSection='archive';
 function showSheet(){
@@ -2202,7 +2228,7 @@ function showSheet(){
  const length=bounds.last-bounds.first+1;
  if(!opened)label.textContent='Cover · Open the notebook';
  else{
-  const sectionName={archive:'Index',today:'Inspiration',about:'About',collaborators:'Collaborators'}[currentSection];
+  const sectionName={archive:'Journal',today:'Journal',about:'About',collaborators:'Collaborators'}[currentSection];
   const leftNo=sheetIndex-bounds.first;
   const rightNo=leftNo+1;
   const shown=single?'Page '+rightNo:
@@ -2245,8 +2271,10 @@ function chooseVoice(index){
  if(!Number.isInteger(chosen)||chosen<0||chosen===activeVoice)return;
  activeVoice=chosen;
  sheets=build(activeInspiration);
- currentSection='today';
- sheetIndex=sectionPages.today;
+ currentSection='archive';
+ const storyStart=sectionPages.today;
+ sheetIndex=!isSinglePage()&&(storyStart-sectionPages.archive)%2===1?storyStart+1:storyStart;
+ sheetIndex=Math.min(sheetIndex,lastSpreadRight(sectionBounds()));
  turning=false;
  showSheet();
 }
