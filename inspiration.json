@@ -1,5 +1,49 @@
 [
   {
+    "id": "parachute-randomised-trial",
+    "date": "2026-11-09",
+    "title": "The scientific study that proved parachutes don't work",
+    "summary": "In December 2018, researchers published a randomised controlled trial in The BMJ investigating whether parachutes prevent death or serious injury when jumping from aircraft. Twenty-three volunteers were randomly assigned either a parachute or an empty backpack before jumping. Remarkably, the researchers found no difference between the two groups: nobody was injured. There was, however, a rather important detail. All 23 participants had jumped from stationary aircraft on the ground, at an average height of just 60 centimetres. The researchers had been unable to recruit anyone willing to jump from a flying aircraft without a parachute. Published in the journal's Christmas edition, the deliberately humorous study demonstrated how a perfectly legitimate experimental design can produce a statistically sound but practically meaningless result when the participants and circumstances are unrepresentative.",
+    "thoughts": "A reminder that the best way to call something out is with humour! Also, more seriously, to really deeply consider our experimental design, and what is being unintentionally excluded. For example, mortality data collected by a hospital is only representative of the people who had the capacity to get there in the first place.",
+    "tags": [
+      "science",
+      "risk",
+      "decision-making",
+      "learning",
+      "behaviour"
+    ],
+    "source": "https://www.bmj.com/content/363/bmj.k5094",
+    "image": "",
+    "image_credit": "",
+    "image_credit_url": "",
+    "image_license_url": "",
+    "image_status": "permission required",
+    "discovery": "The parachute trial is funny precisely because the science is technically sound. The researchers followed the principles of a randomised controlled trial, but the circumstances were so different from those in which parachutes are actually needed that the results were meaningless for the real-world question. It illustrates a fundamental distinction between internal validity and external validity: an experiment can reliably tell us what happened under the conditions studied, without telling us whether the findings apply elsewhere. This is particularly important when evidence is used to inform decisions in unfamiliar or extreme circumstances. We often ask whether research is rigorous, but perhaps we should spend just as much time asking whether it is relevant. The most statistically robust answer to the wrong question may be less useful than an imperfect answer to the right one.",
+    "sources": [
+      {
+        "label": "Original source",
+        "url": "https://www.bmj.com/content/363/bmj.k5094"
+      }
+    ],
+    "reflections": [
+      {
+        "name": "Macarena",
+        "text": "Lol… this funny story highlights why we need to read the methods section!\nMore importantly, it’s why we need experts to translate science into\nsomething useful for policymakers, educators and, crucially, communications\nand newspapers!",
+        "approved": true
+      },
+      {
+        "name": "Erin",
+        "text": "I adore this study!! I think we need to be more critical of our scientific\nknowledge: how we select the questions we want to answer, how we answer\nthem, and how we communicate the results. I wonder if we could do a few\nexamples of this kind of silly thing with climate data analysis.",
+        "approved": true
+      },
+      {
+        "name": "Janot",
+        "text": "Pedantry aside. These researchers were after the wrong accolade - their \nresearch method might fare better with the Darwin awards;)",
+        "approved": true
+      }
+    ]
+  },
+  {
     "id": "pigeonblog",
     "date": "2026-11-08",
     "title": "The pigeons that became environmental reporters",
