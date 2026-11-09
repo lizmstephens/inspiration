@@ -1940,7 +1940,7 @@ function showSheet(){
  root.querySelectorAll('[data-today]').forEach(el=>el.addEventListener('click',()=>turnTo(sectionPages.today,'next')));
  root.querySelectorAll('.archive-entry[data-entry-id]').forEach(el=>el.addEventListener('click',()=>{
   const item=all.find(y=>y.id===el.dataset.entryId);
-  if(item){history.replaceState(null,'','?id='+encodeURIComponent(item.id));render(item);flip.flipNext()}
+  if(item){history.replaceState(null,'','?id='+encodeURIComponent(item.id));render(item);flip.flip(sectionPages.today)}
  }));
 }
 flip={
@@ -1983,10 +1983,13 @@ function turnTo(target,direction){
  setTimeout(()=>{leaf.remove();turning=false},760);
 }
 function render(x){sheets=build(x);sheetIndex=0;turning=false;showSheet()}
-document.querySelectorAll('.journal-tabs button').forEach(btn=>btn.addEventListener('click',()=>{if(!flip)return;const target=sectionPages[btn.dataset.section];if(target===undefined)return;const go=()=>{if(flip)flip.flip(target)};if(flip.getCurrentPageIndex()===0){flip.flipNext();setTimeout(go,850)}else go()}));
+document.querySelectorAll('.journal-tabs button').forEach(btn=>btn.addEventListener('click',()=>{if(!flip)return;const target=sectionPages[btn.dataset.section];if(target===undefined)return;flip.flip(target)}));
 prev.addEventListener('click',e=>{e.stopPropagation();if(flip)flip.flipPrev()});
 next.addEventListener('click',e=>{e.stopPropagation();if(flip)flip.flipNext()});
 document.addEventListener('keydown',e=>{if(!flip||e.target.matches('input,textarea,select,button'))return;if(e.key==='ArrowRight')flip.flipNext();if(e.key==='ArrowLeft')flip.flipPrev()});
+// Recompose the spread when crossing the phone/desktop layout breakpoint.
+const pageMode=window.matchMedia('(max-width:700px)');
+if(pageMode.addEventListener)pageMode.addEventListener('change',()=>{if(sheets.length)showSheet()});
 
 Promise.all([fetch('inspiration.json').then(r=>{if(!r.ok)throw Error('Could not load discoveries');return r.json()}),fetch('collaborators.json',{cache:'no-store'}).then(r=>{if(!r.ok)throw Error('Could not load collaborators');return r.json()})]).then(([data,collaborators])=>{
  collaboratorData=collaborators;
