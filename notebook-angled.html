@@ -1945,6 +1945,16 @@ body{
 #book .voice-story .reflection-toggle.active-reflection{
  background:linear-gradient(to bottom,transparent 52%,rgba(239,172,143,.48) 52%,rgba(239,172,143,.48) 87%,transparent 87%)!important;
 }
+
+/* Continuation pages are clean: small title only, no reflection controls. */
+#book .voice-story .story-continuation-title{
+ font-family:'Caveat','Segoe Print',cursive!important;
+ font-size:21px!important;line-height:1.18!important;
+ font-weight:600!important;color:#203851!important;
+ letter-spacing:0!important;margin:0 0 12px!important;
+}
+#book .static-left .blankpage .page-inner,
+#book .static-right .blankpage .page-inner{min-height:100%!important}
 </style>
 
 </head>
@@ -2061,10 +2071,10 @@ function build(x){
  const selectedText=voices[selected].text;
  // Selected voices replace one another; only their own continuation pages are made.
  const voicePageHtml=(part,i,isLast,pageTotal)=>{
-  const heading=i===0?'<div class="story-intro"><div class="story-intro-text"><h2><span class="ink-highlight">'+esc(x.title)+'</span></h2><div class="eyebrow story-date">'+esc(date(x.date))+'</div>'+toggle+'</div>'+img+'</div>':'<div class="eyebrow">'+esc(x.title)+' · continued</div>'+toggle;
+  const heading=i===0?'<div class="story-intro"><div class="story-intro-text"><h2><span class="ink-highlight">'+esc(x.title)+'</span></h2><div class="eyebrow story-date">'+esc(date(x.date))+'</div>'+toggle+'</div>'+img+'</div>':'<div class="eyebrow story-continuation-title">'+esc(x.title)+' · continued</div>';
   const links=selected===0&&isLast?'<div class="story-links">'+sources.map(z=>'<a href="'+link(z.url)+'" target="_blank" rel="noopener noreferrer">Read original story ↗</a>').join(' · ')+'</div>':'';
   const continuation=pageTotal>1?'<span class="voice-part-count">'+(i+1)+' / '+pageTotal+'</span>':'';
-  return page(heading+voiceMenu+'<div class="copy voice-copy"><p>'+esc(part)+'</p></div>'+links+continuation,'story voice-story');
+  return page(heading+(i===0?voiceMenu:'')+'<div class="copy voice-copy"><p>'+esc(part)+'</p></div>'+links+continuation,'story voice-story');
  };
  const storyParts=paginateVoice(selectedText,voicePageHtml);
  storyParts.forEach((part,i)=>pieces.push(voicePageHtml(part,i,i===storyParts.length-1,storyParts.length)));
@@ -2096,54 +2106,101 @@ function update(){
  document.getElementById('journal-stage').classList.toggle('open-book',current>0);
  
 }
-function sectionBounds(index){
- if(index>=sectionPages.collaborators)return {first:sectionPages.collaborators,last:sheets.length-1};
- if(index>=sectionPages.about)return {first:sectionPages.about,last:sectionPages.collaborators-1};
- return {first:0,last:sectionPages.about-1};
+// Page indices are physical leaves. The right leaf is the selected page;
+// when the final continuation is a left leaf, a blank right leaf completes the spread.
+function sectionBounds(name=currentSection){
+ if(name==='collaborators')return {name,first:sectionPages.collaborators,last:sheets.length-1};
+ if(name==='about')return {name,first:sectionPages.about,last:sectionPages.collaborators-1};
+ if(name==='today')return {name,first:sectionPages.today,last:sectionPages.about-1};
+ return {name:'archive',first:sectionPages.archive,last:sectionPages.today-1};
+}
+function isSinglePage(){return window.matchMedia('(max-width:700px)').matches}
+function lastSpreadRight(bounds=sectionBounds()){
+ const length=bounds.last-bounds.first+1;
+ return bounds.first+(Math.ceil(length/2)-1)*2;
 }
 function stepPage(direction){
- const bounds=sectionBounds(sheetIndex);
- const step=window.matchMedia('(max-width:700px)').matches?1:2;
- const target=direction>0&&sheetIndex===0?1:direction<0&&sheetIndex===1?0:
-  direction>0?Math.min(bounds.last,sheetIndex+step):Math.max(bounds.first,sheetIndex-step);
- if(target===sheetIndex)return;
- turnTo(target,direction>0?'next':'prev');
+ if(sheetIndex===0){
+  if(direction>0){currentSection='archive';turnTo(sectionPages.archive,'next')}
+  return;
+ }
+ const bounds=sectionBounds();
+ const single=isSinglePage();
+ if(direction<0&&sheetIndex===bounds.first){
+  if(currentSection==='archive')turnTo(0,'prev');
+  return;
+ }
+ const increment=single?1:2;
+ const end=single?bounds.last:lastSpreadRight(bounds);
+ const target=Math.max(bounds.first,Math.min(end,sheetIndex+direction*increment));
+ if(target!==sheetIndex)turnTo(target,direction>0?'next':'prev');
 }
-let sheets=[],sheetIndex=0,turning=false;
+function openSection(name){
+ if(!sectionPages[name]||!sheets.length)return;
+ currentSection=name;turnTo(sectionPages[name],'next');
+}
+let sheets=[],sheetIndex=0,turning=false,currentSection='archive';
 function showSheet(){
  const stage=document.getElementById('journal-stage');
  const opened=sheetIndex>0;
+ const single=isSinglePage();
+ if(opened){
+  const bounds=sectionBounds();
+  // Changing viewport from a last left-hand spread to a phone needs a real page.
+  if(single&&sheetIndex>bounds.last)sheetIndex=bounds.last;
+ }
  stage.classList.toggle('open-book',opened);
  stage.onclick=opened?null:()=>flip.flipNext();
  stage.style.cursor=opened?'default':'pointer';
  root.innerHTML='';
- const right=sheets[sheetIndex];
- const mobileSingle=window.matchMedia('(max-width:700px)').matches;
- const left=!mobileSingle&&opened&&sheetIndex>1?sheets[sheetIndex-1]:null;
- if(left){const holder=document.createElement('div');holder.className='static-leaf static-left';holder.innerHTML=left;root.appendChild(holder)}
- if(opened&&right){const holder=document.createElement('div');holder.className='static-leaf static-right';holder.innerHTML=right;root.appendChild(holder);holder.addEventListener('click',e=>{if(e.target.closest('a,button,.archive-entry,.copy,.archive-list'))return;flip.flipNext()})}
- const total=sheets.length;
- if(sheetIndex===0){label.textContent='Cover · Open the notebook'}
- else{
-  const range=sheetIndex<sectionPages.today?{name:'Index',first:sectionPages.archive,last:sectionPages.today-1}:
-    sheetIndex<sectionPages.about?{name:'Inspiration',first:sectionPages.today,last:sectionPages.about-1}:
-    sheetIndex<sectionPages.collaborators?{name:'About',first:sectionPages.about,last:sectionPages.collaborators-1}:
-    {name:'Collaborators',first:sectionPages.collaborators,last:total-1};
-  const count=range.last-range.first+1;
-  const right=sheetIndex-range.first+1;
-  const leftInRange=!mobileSingle&&sheetIndex>range.first&&sheetIndex>1;
-  label.textContent=range.name+' · '+(leftInRange?'Pages '+(right-1)+'–'+right:'Page '+right)+' of '+count;
+ const bounds=sectionBounds();
+ const blankLeaf=()=>page('','blankpage');
+ const canShowLeft=!single&&opened&&sheetIndex>bounds.first;
+ if(!single&&opened){
+  const leftContent=canShowLeft&&sheetIndex-1<=bounds.last?sheets[sheetIndex-1]:blankLeaf();
+  // The first Index rests against the cover; every other page has facing paper.
+  if(canShowLeft||currentSection!=='archive'||sheetIndex!==sectionPages.archive){
+   const holder=document.createElement('div');
+   holder.className='static-leaf static-left';
+   holder.innerHTML=leftContent;root.appendChild(holder);
+  }
  }
- const bounds=sectionBounds(sheetIndex);
- const step=mobileSingle?1:2;
- prev.disabled=sheetIndex===0||sheetIndex<=bounds.first;
- next.disabled=sheetIndex>=bounds.last;
- root.querySelectorAll('.reflection-toggle').forEach(el=>el.addEventListener('click',e=>{e.stopPropagation();voiceMenuExpanded=!voiceMenuExpanded;root.querySelectorAll('.voice-menu').forEach(menu=>{menu.classList.toggle('expanded',voiceMenuExpanded);menu.hidden=!voiceMenuExpanded;});root.querySelectorAll('.reflection-toggle').forEach(btn=>{btn.setAttribute('aria-expanded',String(voiceMenuExpanded));const arrow=btn.querySelector('span');if(arrow)arrow.textContent=voiceMenuExpanded?'▴':'▾';});}));
+ if(opened){
+  const holder=document.createElement('div');
+  holder.className='static-leaf static-right';
+  holder.innerHTML=sheetIndex<=bounds.last?sheets[sheetIndex]:blankLeaf();
+  root.appendChild(holder);
+  holder.addEventListener('click',e=>{
+   if(e.target.closest('a,button,.archive-entry,.copy,.archive-list'))return;
+   flip.flipNext();
+  });
+ }
+ const length=bounds.last-bounds.first+1;
+ if(!opened)label.textContent='Cover · Open the notebook';
+ else{
+  const sectionName={archive:'Index',today:'Inspiration',about:'About',collaborators:'Collaborators'}[currentSection];
+  const leftNo=sheetIndex-bounds.first;
+  const rightNo=leftNo+1;
+  const shown=single?'Page '+rightNo:
+    leftNo>0&&rightNo<=length?'Pages '+leftNo+'–'+rightNo:
+    leftNo>0?'Page '+leftNo:'Page 1';
+  label.textContent=sectionName+' · '+shown+' of '+length;
+ }
+ prev.disabled=sheetIndex===0||(sheetIndex===bounds.first&&currentSection!=='archive');
+ next.disabled=opened&&sheetIndex>=(single?bounds.last:lastSpreadRight(bounds));
+ root.querySelectorAll('.reflection-toggle').forEach(el=>el.addEventListener('click',e=>{
+  e.stopPropagation();voiceMenuExpanded=!voiceMenuExpanded;
+  root.querySelectorAll('.voice-menu').forEach(menu=>{menu.classList.toggle('expanded',voiceMenuExpanded);menu.hidden=!voiceMenuExpanded});
+  root.querySelectorAll('.reflection-toggle').forEach(btn=>{btn.setAttribute('aria-expanded',String(voiceMenuExpanded));const arrow=btn.querySelector('span');if(arrow)arrow.textContent=voiceMenuExpanded?'▴':'▾'});
+ }));
  root.querySelectorAll('.voice-choice').forEach(el=>el.addEventListener('click',e=>{e.stopPropagation();chooseVoice(el.dataset.voice)}));
- root.querySelectorAll('[data-today]').forEach(el=>el.addEventListener('click',()=>turnTo(sectionPages.today,'next')));
+ root.querySelectorAll('[data-today]').forEach(el=>el.addEventListener('click',()=>openSection('today')));
  root.querySelectorAll('.archive-entry[data-entry-id]').forEach(el=>el.addEventListener('click',()=>{
   const item=all.find(y=>y.id===el.dataset.entryId);
-  if(item){history.replaceState(null,'','?id='+encodeURIComponent(item.id));render(item);flip.flip(sectionPages.today)}
+  if(item){
+   history.replaceState(null,'','?id='+encodeURIComponent(item.id));
+   render(item);openSection('today');
+  }
  }));
 }
 flip={
@@ -2154,49 +2211,22 @@ flip={
  destroy:()=>{}
 };
 function turnTo(target,direction){
- if(turning||target<0||target>=sheets.length||target===sheetIndex)return;
- const current=root.querySelector('.static-right');
- // Temporarily avoid the rigid, oversized 3D overlay until spread geometry is stable.
- sheetIndex=target;showSheet();return;
-
- if(!current||sheetIndex===0||window.matchMedia('(prefers-reduced-motion: reduce)').matches){
-  sheetIndex=target;showSheet();return;
- }
- turning=true;
- const forward=direction!=='prev';
- const oldHTML=sheets[sheetIndex],newHTML=sheets[target];
+ if(turning||target<0||target===sheetIndex&&sheetIndex!==0)return;
  sheetIndex=target;showSheet();
- const leaf=document.createElement('div');
- leaf.className='static-leaf static-right page-turn-sheet '+(forward?'turn-next':'turn-previous');
- leaf.setAttribute('aria-hidden','true');
- const front=forward?oldHTML:newHTML;
- const back=forward?newHTML:oldHTML;
- leaf.innerHTML='<div class="turn-face turn-front">'+front+'</div><div class="turn-face turn-backface">'+back+'</div>';
- // Match the actual rendered paper, not the nominal percentage-based geometry.
- const reference=root.querySelector('.static-right:not(.page-turn-sheet)');
- if(reference){
-  const r=reference.getBoundingClientRect(),base=root.getBoundingClientRect();
-  leaf.style.setProperty('left',(r.left-base.left)+'px','important');
-  leaf.style.setProperty('top',(r.top-base.top)+'px','important');
-  leaf.style.setProperty('width',r.width+'px','important');
-  leaf.style.setProperty('height',r.height+'px','important');
- }
- root.appendChild(leaf);
- requestAnimationFrame(()=>requestAnimationFrame(()=>leaf.classList.add('turn-active')));
- setTimeout(()=>{leaf.remove();turning=false},760);
 }
-function render(x){activeInspiration=x;activeVoice=0;voiceMenuExpanded=false;sheets=build(x);sheetIndex=0;turning=false;showSheet()}
+function render(x){activeInspiration=x;activeVoice=0;voiceMenuExpanded=false;sheets=build(x);sheetIndex=0;currentSection='archive';turning=false;showSheet()}
 function chooseVoice(index){
  if(!activeInspiration)return;
  const chosen=Number(index);
  if(!Number.isInteger(chosen)||chosen<0||chosen===activeVoice)return;
  activeVoice=chosen;
  sheets=build(activeInspiration);
+ currentSection='today';
  sheetIndex=sectionPages.today;
  turning=false;
  showSheet();
 }
-document.querySelectorAll('.journal-tabs button').forEach(btn=>btn.addEventListener('click',()=>{if(!flip)return;const target=sectionPages[btn.dataset.section];if(target===undefined)return;flip.flip(target)}));
+document.querySelectorAll('.journal-tabs button').forEach(btn=>btn.addEventListener('click',()=>{if(!flip)return;const section=btn.dataset.section;if(sectionPages[section]===undefined)return;openSection(section)}));
 prev.addEventListener('click',e=>{e.stopPropagation();if(flip)flip.flipPrev()});
 next.addEventListener('click',e=>{e.stopPropagation();if(flip)flip.flipNext()});
 document.addEventListener('keydown',e=>{if(!flip||e.target.matches('input,textarea,select,button'))return;if(e.key==='ArrowRight')flip.flipNext();if(e.key==='ArrowLeft')flip.flipPrev()});
@@ -2212,11 +2242,14 @@ window.addEventListener('resize',()=>{
   if(!activeInspiration)return;
   lastLayoutWidth=window.innerWidth;
   const oldIndex=sheetIndex;
-  const oldSection=oldIndex>=sectionPages.collaborators?'collaborators':
-    oldIndex>=sectionPages.about?'about':oldIndex>=sectionPages.today?'today':'archive';
-  const oldOffset=oldIndex-sectionPages[oldSection];
+  const oldBounds=sectionBounds();
+  const oldOffset=Math.max(0,oldIndex-oldBounds.first);
   sheets=build(activeInspiration);
-  sheetIndex=oldIndex===0?0:Math.min(sheets.length-1,Math.max(1,sectionPages[oldSection]+Math.max(0,oldOffset)));
+  const newBounds=sectionBounds();
+  const single=isSinglePage();
+  const last=single?newBounds.last:lastSpreadRight(newBounds);
+  const step=single?1:2;
+  sheetIndex=oldIndex===0?0:Math.max(newBounds.first,Math.min(last,newBounds.first+Math.floor(oldOffset/step)*step));
   showSheet();
  },180);
 });
