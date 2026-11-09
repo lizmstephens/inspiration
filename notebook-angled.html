@@ -1862,6 +1862,31 @@ body{
  #book .voice-story .voice-choice{font-size:20px!important}
  #book .voice-story .voice-buttons{column-gap:10px!important}
 }
+
+/* Reveal the voices only when someone clicks the reflections count. */
+#book .voice-story .voice-menu{display:none!important;margin:0 0 8px!important}
+#book .voice-story .voice-menu.expanded{display:flex!important}
+#book .voice-story .reflection-toggle{
+ font-family:'Caveat','Segoe Print',cursive!important;
+ font-size:19px!important;line-height:1.12!important;
+ font-weight:600!important;color:#826148!important;
+ background:transparent!important;border:0!important;box-shadow:none!important;
+ cursor:pointer!important;padding:1px 0!important;margin:0!important;
+ text-align:left!important;white-space:nowrap!important;
+}
+#book .voice-story .reflection-toggle span{font-size:14px!important}
+#book .voice-story .reflection-toggle:focus-visible{outline:2px solid #425b69!important;outline-offset:3px!important}
+#book .voice-story .story-intro{gap:9px!important;margin-bottom:9px!important}
+#book .voice-story .story-intro-text{gap:6px!important}
+#book .voice-story .story-intro .paper-photo{
+ flex:0 0 44%!important;width:44%!important;max-width:44%!important;
+}
+#book .voice-story .story-date{
+ white-space:nowrap!important;
+ font-size:14px!important;
+ line-height:1.1!important;
+ letter-spacing:-.025em!important;
+}
 </style>
 
 </head>
@@ -1882,7 +1907,7 @@ const root=document.getElementById('book');
 const label=document.getElementById('page-label'),prev=document.getElementById('prev'),next=document.getElementById('next');
 let flip=null,pages=[],all=[],current=0,sectionPages={};
 let collaboratorData=[];
-let activeInspiration=null,activeVoice=0;
+let activeInspiration=null,activeVoice=0,voiceMenuExpanded=false;
 function page(html,kind='',hard=false){return '<article class="page '+kind+'" '+(hard?'data-density="hard"':'')+'><div class="page-inner '+(kind==='coverpage'?'cover':'')+'">'+(kind==='coverpage'?'':'<img class="page-logo" src="assets/favicon.svg" alt="" aria-hidden="true">')+html+'</div></article>'}
 function foot(number,kind){return ''}
 function thoughtsTitle(name){let n=String(name||'Contributor').trim().split(/\s+/)[0];return esc(n)+(n.toLowerCase().endsWith('s')?'’':'’s')+' Thoughts'}
@@ -1917,13 +1942,15 @@ function build(x){
  });
  const selected=Math.min(activeVoice,voices.length-1);
  const voiceButtons=voices.map((v,i)=>'<button type="button" class="voice-choice'+(i===selected?' selected':'')+'" data-voice="'+i+'" aria-pressed="'+(i===selected?'true':'false')+'">'+esc(v.label)+'</button>').join('');
- const voiceMenu='<nav class="voice-menu" aria-label="Choose a perspective"><span class="reflection-count">'+(voices.length-1)+' reflection'+(voices.length===2?'':'s')+'</span><div class="voice-buttons">'+voiceButtons+'</div></nav>';
+ const countLabel=(voices.length-1)+' reflection'+(voices.length===2?'':'s');
+ const toggle='<button type="button" class="reflection-toggle" aria-expanded="'+(voiceMenuExpanded?'true':'false')+'" aria-label="Show or hide '+esc(countLabel)+'">'+esc(countLabel)+' <span aria-hidden="true">'+(voiceMenuExpanded?'▴':'▾')+'</span></button>';
+ const voiceMenu='<nav class="voice-menu'+(voiceMenuExpanded?' expanded':'')+'" aria-label="Choose a perspective"><div class="voice-buttons">'+voiceButtons+'</div></nav>';
  const selectedText=voices[selected].text;
  // Selected voices replace one another; only their own continuation pages are made.
  const storyParts=chunks(selectedText,42,85);
  storyParts.forEach((part,i)=>{
-  const heading=i===0?'<div class="story-intro"><div class="story-intro-text"><h2><span class="ink-highlight">'+esc(x.title)+'</span></h2><div class="eyebrow story-date">'+esc(date(x.date))+'</div><span class="reflection-count intro-count">'+(voices.length-1)+' reflection'+(voices.length===2?'':'s')+'</span></div>'+img+'</div>':'<div class="eyebrow"> '+esc(x.title)+' · continued</div>';
-  const menu=voiceMenu.replace('class="reflection-count"','class="reflection-count menu-count"');
+  const heading=i===0?'<div class="story-intro"><div class="story-intro-text"><h2><span class="ink-highlight">'+esc(x.title)+'</span></h2><div class="eyebrow story-date">'+esc(date(x.date))+'</div>'+toggle+'</div>'+img+'</div>':'<div class="eyebrow"> '+esc(x.title)+' · continued</div>'+toggle;
+  const menu=voiceMenu;
   const links=selected===0&&i===storyParts.length-1?'<div class="story-links">'+sources.map(z=>'<a href="'+link(z.url)+'" target="_blank" rel="noopener noreferrer">Read original story ↗</a>').join(' · ')+'</div>':'';
   const continuation=storyParts.length>1?'<span class="voice-part-count">'+(i+1)+' / '+storyParts.length+'</span>':'';
   pieces.push(page(heading+menu+'<div class="copy voice-copy"><p>'+esc(part)+'</p></div>'+links+continuation,'story voice-story'));
@@ -1988,6 +2015,7 @@ function showSheet(){
  const step=mobileSingle?1:2;
  prev.disabled=sheetIndex===0||sheetIndex<=bounds.first;
  next.disabled=sheetIndex>=bounds.last;
+ root.querySelectorAll('.reflection-toggle').forEach(el=>el.addEventListener('click',e=>{e.stopPropagation();voiceMenuExpanded=!voiceMenuExpanded;root.querySelectorAll('.voice-menu').forEach(menu=>menu.classList.toggle('expanded',voiceMenuExpanded));root.querySelectorAll('.reflection-toggle').forEach(btn=>{btn.setAttribute('aria-expanded',String(voiceMenuExpanded));const arrow=btn.querySelector('span');if(arrow)arrow.textContent=voiceMenuExpanded?'▴':'▾';});}));
  root.querySelectorAll('.voice-choice').forEach(el=>el.addEventListener('click',e=>{e.stopPropagation();chooseVoice(el.dataset.voice)}));
  root.querySelectorAll('[data-today]').forEach(el=>el.addEventListener('click',()=>turnTo(sectionPages.today,'next')));
  root.querySelectorAll('.archive-entry[data-entry-id]').forEach(el=>el.addEventListener('click',()=>{
@@ -2034,7 +2062,7 @@ function turnTo(target,direction){
  requestAnimationFrame(()=>requestAnimationFrame(()=>leaf.classList.add('turn-active')));
  setTimeout(()=>{leaf.remove();turning=false},760);
 }
-function render(x){activeInspiration=x;activeVoice=0;sheets=build(x);sheetIndex=0;turning=false;showSheet()}
+function render(x){activeInspiration=x;activeVoice=0;voiceMenuExpanded=false;sheets=build(x);sheetIndex=0;turning=false;showSheet()}
 function chooseVoice(index){
  if(!activeInspiration)return;
  const chosen=Number(index);
