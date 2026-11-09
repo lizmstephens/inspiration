@@ -1810,6 +1810,21 @@ body{
   transform:none!important;
  }
 }
+
+/* Desktop: keep the bookmark tops below the coffee mug, and the notebook
+   above the fixed navigation. Size against viewport height as well as width. */
+@media(min-width:701px){
+ .stage,.stage.open-book,.stage:not(.open-book){
+  --desktop-scene-width:min(
+    1580px,
+    calc((100vw - 24px) * 1.69163),
+    calc((100dvh - 210px) * 2.1)
+  )!important;
+  --scene-width:var(--desktop-scene-width)!important;
+  width:var(--desktop-scene-width)!important;
+  margin-top:clamp(-65px,calc(165px - var(--desktop-scene-width) * .153),65px)!important;
+ }
+}
 </style>
 <script src="https://cdn.jsdelivr.net/npm/page-flip@2.0.7/dist/js/page-flip.browser.min.js" defer></script>
 </head>
