@@ -2117,7 +2117,7 @@ function sectionBounds(name=currentSection){
 function isSinglePage(){return window.matchMedia('(max-width:700px)').matches}
 function lastSpreadRight(bounds=sectionBounds()){
  const length=bounds.last-bounds.first+1;
- return bounds.first+(Math.ceil(length/2)-1)*2;
+ return bounds.first+Math.floor(length/2)*2;
 }
 function stepPage(direction){
  if(sheetIndex===0){
