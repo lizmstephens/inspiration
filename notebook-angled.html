@@ -1677,6 +1677,20 @@ body{
 #book .archivepage .archive-list .archive-entry{padding:3px 2px!important}
 #book .archivepage .archive-list .archive-entry strong{font-size:18px!important;line-height:1.17!important}
 #book .archivepage .archive-list .archive-entry span{font-size:14px!important;line-height:1.18!important}
+
+/* Three collaborators on each notebook page; no introduction or end leaf. */
+#book .contributor-pair{gap:12px!important;margin-top:10px!important}
+#book .contributor-card{grid-template-columns:76px minmax(0,1fr)!important;gap:12px!important}
+#book .contributor-photo{width:76px!important;height:84px!important}
+#book .contributor-details h3{font-size:17px!important;margin:0 0 3px!important}
+#book .contributor-details p{font-size:12px!important;line-height:1.22!important;margin:0 0 3px!important}
+#book .contributor-details .contributor-note{font-size:11px!important}
+#book .contributor-details a{font-size:12px!important}
+@media(max-width:700px){
+ #book .contributor-pair{gap:10px!important}
+ #book .contributor-card{grid-template-columns:72px minmax(0,1fr)!important;gap:10px!important}
+ #book .contributor-photo{width:72px!important;height:82px!important}
+}
 </style>
 <script src="https://cdn.jsdelivr.net/npm/page-flip@2.0.7/dist/js/page-flip.browser.min.js" defer></script>
 </head>
@@ -1742,13 +1756,11 @@ function build(x){
  const aboutParagraphs=[...aboutHtml.matchAll(/<p(?:\s[^>]*)?>[\s\S]*?<\/p>/g)].map(m=>m[0]);
  for(let i=0;i<aboutParagraphs.length;i+=4){pieces.push(page((i===0?'<h2>About Daily Hummingbird</h2>':'<div class="eyebrow">About · continued</div>')+'<div class="copy about-copy">'+aboutParagraphs.slice(i,i+4).join('')+'</div>','aboutpage'))}
  sectionPages.collaborators=pieces.length;
- pieces.push(page('<h2>Collaborators</h2><div class="copy"><p>Different people see different things in the same story. These are some of the people sharing their perspectives.</p></div>','people-intro'));
  const collaborators=collaboratorData.map(c=>({name:c.name,url:c.linkedin||'',img:c.image||'',note:(c.curator?'Curator & Collaborator':'Collaborator')+' · '+(c.country||''),desc:c.background||''}));
- for(let i=0;i<collaborators.length;i+=2){
-  const cards=collaborators.slice(i,i+2).map(c=>'<div class="contributor-card"><div class="contributor-photo"><img src="'+link(c.img)+'" alt="Portrait of '+esc(c.name)+'" loading="lazy"></div><div class="contributor-details"><h3>'+esc(c.name)+'</h3><p class="contributor-note">'+esc(c.note.replace(/&amp;/g,'&'))+'</p><p>'+esc(c.desc)+'</p><a href="'+link(c.url)+'" target="_blank" rel="noopener noreferrer">Profile ↗</a></div></div>').join('');
-  pieces.push(page('<div class="eyebrow">People and perspectives · '+String(Math.floor(i/2)+1).padStart(2,'0')+'</div><h2>Collaborators</h2><div class="contributor-pair">'+cards+'</div>','personpage contributor-pair-page'));
+ for(let i=0;i<collaborators.length;i+=3){
+  const cards=collaborators.slice(i,i+3).map(c=>'<div class="contributor-card"><div class="contributor-photo"><img src="'+link(c.img)+'" alt="Portrait of '+esc(c.name)+'" loading="lazy"></div><div class="contributor-details"><h3>'+esc(c.name)+'</h3><p class="contributor-note">'+esc(c.note.replace(/&amp;/g,'&'))+'</p><p>'+esc(c.desc)+'</p><a href="'+link(c.url)+'" target="_blank" rel="noopener noreferrer">Profile ↗</a></div></div>').join('');
+  pieces.push(page('<div class="eyebrow">People and perspectives · '+String(Math.floor(i/3)+1).padStart(2,'0')+'</div><h2>Collaborators</h2><div class="contributor-pair">'+cards+'</div>','personpage contributor-pair-page'));
  }
- pieces.push(page('<div class="eyebrow">The end · For now</div><h2>Where might this idea lead?</h2><p>Every reflection is a different way of looking at the same discovery.</p><p><a href="archive.html">Explore the archive ↗</a></p><p>Return tomorrow for another discovery.</p>','endpage',true));
  return pieces;
 }
 function update(){
