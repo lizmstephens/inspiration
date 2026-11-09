@@ -1595,6 +1595,62 @@ body{
  #book .contributor-card{grid-template-columns:90px minmax(0,1fr);gap:13px}
  #book .contributor-photo{width:90px;height:104px}
 }
+
+/* Consistent editorial body type on About pages, desktop and phone. */
+#book .aboutpage .copy,
+#book .aboutpage .copy.about-copy,
+#book .aboutpage .copy p{
+ font-size:14px!important;
+ line-height:1.52!important;
+ font-weight:400!important;
+ letter-spacing:normal!important;
+}
+#book .aboutpage .copy p{
+ margin:0 0 14px!important;
+}
+#book .aboutpage .copy a{font-weight:400!important}
+@media(max-width:700px){
+ /* The portrait photograph must cover the whole phone viewport,
+    including the area beneath the controls. */
+ html,body{min-height:100vh!important;min-height:100dvh!important}
+ body{
+  background-image:url('assets/hummingbird-table-mobile.png')!important;
+  background-color:#d9bd9a!important;
+  background-repeat:no-repeat!important;
+  background-position:center top!important;
+  background-size:cover!important;
+  background-attachment:fixed!important;
+  padding-bottom:0!important;
+ }
+ .controls{
+  position:fixed!important;
+  bottom:calc(7px + env(safe-area-inset-bottom,0px))!important;
+  left:50%!important;right:auto!important;
+  transform:translateX(-50%)!important;
+  width:270px!important;
+  max-width:calc(100vw - 24px)!important;
+  padding:4px 7px!important;
+  gap:7px!important;
+  min-height:43px!important;
+  margin:0!important;
+  border-radius:25px!important;
+  justify-content:space-between!important;
+  background:rgba(79,48,30,.72)!important;
+ }
+ .controls button{
+  width:36px!important;height:36px!important;
+  min-width:36px!important;min-height:36px!important;
+  flex:0 0 36px!important;
+  font-size:20px!important;
+ }
+ #page-label{
+  min-width:0!important;
+  flex:1 1 auto!important;
+  font-size:12px!important;
+  white-space:nowrap!important;
+  text-align:center!important;
+ }
+}
 </style>
 <script src="https://cdn.jsdelivr.net/npm/page-flip@2.0.7/dist/js/page-flip.browser.min.js" defer></script>
 </head>
