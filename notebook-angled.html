@@ -1928,6 +1928,23 @@ body{
 #book .voice-story .voice-choice.selected{
  font-weight:700!important;
 }
+
+/* Reflection navigation uses the notebook ink blue; the currently displayed
+   perspective is marked with the same subtle peach highlighter as titles. */
+#book .voice-story .reflection-toggle,
+#book .voice-story .voice-choice{
+ color:#203851!important;
+}
+#book .voice-story .voice-choice.selected{
+ color:#203851!important;
+ font-weight:700!important;
+ background:linear-gradient(to bottom,transparent 48%,rgba(239,172,143,.55) 48%,rgba(239,172,143,.55) 88%,transparent 88%)!important;
+ -webkit-box-decoration-break:clone!important;
+ box-decoration-break:clone!important;
+}
+#book .voice-story .reflection-toggle.active-reflection{
+ background:linear-gradient(to bottom,transparent 52%,rgba(239,172,143,.48) 52%,rgba(239,172,143,.48) 87%,transparent 87%)!important;
+}
 </style>
 
 </head>
@@ -2039,7 +2056,7 @@ function build(x){
  const selected=Math.min(activeVoice,voices.length-1);
  const voiceButtons=voices.map((v,i)=>'<button type="button" class="voice-choice'+(i===selected?' selected':'')+'" data-voice="'+i+'" aria-pressed="'+(i===selected?'true':'false')+'">'+esc(v.label)+'</button>').join('');
  const countLabel=(voices.length-1)+' reflection'+(voices.length===2?'':'s');
- const toggle='<button type="button" class="reflection-toggle" aria-expanded="'+(voiceMenuExpanded?'true':'false')+'" aria-label="Show or hide '+esc(countLabel)+'">'+esc(countLabel)+' <span aria-hidden="true">'+(voiceMenuExpanded?'▴':'▾')+'</span></button>';
+ const toggle='<button type="button" class="reflection-toggle'+(selected>0?' active-reflection':'')+'" aria-expanded="'+(voiceMenuExpanded?'true':'false')+'" aria-label="Show or hide '+esc(countLabel)+'">'+esc(countLabel)+' <span aria-hidden="true">'+(voiceMenuExpanded?'▴':'▾')+'</span></button>';
  const voiceMenu='<nav class="voice-menu'+(voiceMenuExpanded?' expanded':'')+'" '+(voiceMenuExpanded?'':'hidden ')+'aria-label="Choose a perspective"><div class="voice-buttons">'+voiceButtons+'</div></nav>';
  const selectedText=voices[selected].text;
  // Selected voices replace one another; only their own continuation pages are made.
