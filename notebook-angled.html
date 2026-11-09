@@ -1614,6 +1614,7 @@ const date=s=>new Intl.DateTimeFormat('en-GB',{weekday:'long',day:'numeric',mont
 const root=document.getElementById('book');
 const label=document.getElementById('page-label'),prev=document.getElementById('prev'),next=document.getElementById('next');
 let flip=null,pages=[],all=[],current=0,sectionPages={};
+let collaboratorData=[];
 function page(html,kind='',hard=false){return '<article class="page '+kind+'" '+(hard?'data-density="hard"':'')+'><div class="page-inner '+(kind==='coverpage'?'cover':'')+'">'+(kind==='coverpage'?'':'<img class="page-logo" src="assets/favicon.svg" alt="" aria-hidden="true">')+html+'</div></article>'}
 function foot(number,kind){return ''}
 function thoughtsTitle(name){let n=String(name||'Contributor').trim().split(/\s+/)[0];return esc(n)+(n.toLowerCase().endsWith('s')?'’':'’s')+' Thoughts'}
