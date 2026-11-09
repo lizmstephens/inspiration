@@ -2180,22 +2180,19 @@ function showSheet(){
  stage.style.cursor=opened?'default':'pointer';
  root.innerHTML='';
  const bounds=sectionBounds();
- // Blank leaves must use the identical DOM and paper geometry as written leaves.
- const blankLeaf=()=>page('<div class="copy blank-page-content" aria-hidden="true"></div>','story blankpage');
- const canShowLeft=!single&&opened&&sheetIndex>bounds.first;
- if(!single&&opened){
-  const leftContent=canShowLeft&&sheetIndex-1<=bounds.last?sheets[sheetIndex-1]:blankLeaf();
-  // The first Index rests against the cover; every other page has facing paper.
-  if(canShowLeft||currentSection!=='archive'||sheetIndex!==sectionPages.archive){
-   const holder=document.createElement('div');
-   holder.className='static-leaf static-left';
-   holder.innerHTML=leftContent;root.appendChild(holder);
-  }
+ // There is already a correctly proportioned paper spread in 03_open_book.png.
+ // Never draw an extra HTML leaf when a position has no content.
+ const canShowLeft=!single&&opened&&sheetIndex>bounds.first&&sheetIndex-1<=bounds.last;
+ if(canShowLeft){
+  const holder=document.createElement('div');
+  holder.className='static-leaf static-left';
+  holder.innerHTML=sheets[sheetIndex-1];
+  root.appendChild(holder);
  }
- if(opened){
+ if(opened&&sheetIndex<=bounds.last){
   const holder=document.createElement('div');
   holder.className='static-leaf static-right';
-  holder.innerHTML=sheetIndex<=bounds.last?sheets[sheetIndex]:blankLeaf();
+  holder.innerHTML=sheets[sheetIndex];
   root.appendChild(holder);
   holder.addEventListener('click',e=>{
    if(e.target.closest('a,button,.archive-entry,.copy,.archive-list'))return;
