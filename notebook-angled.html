@@ -1716,6 +1716,33 @@ body{
  width:7px!important;height:7px!important;
  background:#bf8059!important;opacity:1!important;
 }
+
+/* Collaborators: match the journal's handwritten headings and serif prose. */
+#book .contributor-details h3{
+ font-family:'Caveat','Segoe Print',cursive!important;
+ font-size:23px!important;
+ font-weight:700!important;
+ line-height:1.05!important;
+ color:#172942!important;
+ letter-spacing:0!important;
+}
+#book .contributor-details p{
+ font-family:Georgia,serif!important;
+ font-size:13px!important;
+ line-height:1.28!important;
+ color:#24364a!important;
+}
+#book .contributor-details .contributor-note{
+ font-family:'Caveat','Segoe Print',cursive!important;
+ font-size:17px!important;
+ font-style:normal!important;
+ color:#866443!important;
+}
+#book .contributor-details a{
+ font-family:'Caveat','Segoe Print',cursive!important;
+ font-size:17px!important;
+ color:#24364a!important;
+}
 </style>
 <script src="https://cdn.jsdelivr.net/npm/page-flip@2.0.7/dist/js/page-flip.browser.min.js" defer></script>
 </head>
@@ -1796,6 +1823,19 @@ function update(){
  document.getElementById('journal-stage').classList.toggle('open-book',current>0);
  
 }
+function sectionBounds(index){
+ if(index>=sectionPages.collaborators)return {first:sectionPages.collaborators,last:sheets.length-1};
+ if(index>=sectionPages.about)return {first:sectionPages.about,last:sectionPages.collaborators-1};
+ return {first:0,last:sectionPages.about-1};
+}
+function stepPage(direction){
+ const bounds=sectionBounds(sheetIndex);
+ const step=window.matchMedia('(max-width:700px)').matches?1:2;
+ const target=sheetIndex+direction*step;
+ if(direction>0&&target>bounds.last)return;
+ if(direction<0&&target<bounds.first)return;
+ turnTo(target,direction>0?'next':'prev');
+}
 let sheets=[],sheetIndex=0,turning=false;
 function showSheet(){
  const stage=document.getElementById('journal-stage');
@@ -1806,12 +1846,15 @@ function showSheet(){
  root.innerHTML='';
  const right=sheets[sheetIndex];
  const mobileSingle=window.matchMedia('(max-width:700px)').matches;
- const left=!mobileSingle&&opened&&sheetIndex>1?sheets[sheetIndex-1]:null;
+ const left=!mobileSingle&&opened&&sheetIndex>1&&sheetIndex!==sectionPages.about&&sheetIndex!==sectionPages.collaborators?sheets[sheetIndex-1]:null;
  if(left){const holder=document.createElement('div');holder.className='static-leaf static-left';holder.innerHTML=left;root.appendChild(holder)}
  if(opened&&right){const holder=document.createElement('div');holder.className='static-leaf static-right';holder.innerHTML=right;root.appendChild(holder);holder.addEventListener('click',e=>{if(e.target.closest('a,button,.archive-entry,.copy,.archive-list'))return;flip.flipNext()})}
  const total=sheets.length;
  label.textContent=sheetIndex===0?'Cover · Open the notebook':(mobileSingle?'Page '+sheetIndex+' of '+(total-1):'Pages '+Math.max(1,sheetIndex-1)+'–'+sheetIndex+' of '+(total-1));
- prev.disabled=sheetIndex===0;next.disabled=sheetIndex>=total-1;
+ const bounds=sectionBounds(sheetIndex);
+ const step=mobileSingle?1:2;
+ prev.disabled=sheetIndex===0||sheetIndex-step<bounds.first;
+ next.disabled=sheetIndex+step>bounds.last;
  root.querySelectorAll('[data-today]').forEach(el=>el.addEventListener('click',()=>turnTo(sectionPages.today,'next')));
  root.querySelectorAll('.archive-entry[data-entry-id]').forEach(el=>el.addEventListener('click',()=>{
   const item=all.find(y=>y.id===el.dataset.entryId);
@@ -1820,8 +1863,8 @@ function showSheet(){
 }
 flip={
  getCurrentPageIndex:()=>sheetIndex,getPageCount:()=>sheets.length,
- flipNext:()=>turnTo(sheetIndex===0?1:Math.min(sheets.length-1,sheetIndex+(window.matchMedia('(max-width:700px)').matches?1:2)),'next'),
- flipPrev:()=>turnTo(sheetIndex<=1?0:Math.max(1,sheetIndex-(window.matchMedia('(max-width:700px)').matches?1:2)),'prev'),
+ flipNext:()=>stepPage(1),
+ flipPrev:()=>stepPage(-1),
  flip:(n)=>turnTo(Math.max(1,Math.min(sheets.length-1,n)),'next'),
  destroy:()=>{}
 };
