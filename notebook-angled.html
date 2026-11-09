@@ -1955,6 +1955,32 @@ body{
 }
 #book .static-left .blankpage .page-inner,
 #book .static-right .blankpage .page-inner{min-height:100%!important}
+
+/* Blank physical leaves match the real paper exactly, never a separate canvas. */
+#book .static-leaf>.page.blankpage{
+ position:relative!important;
+ inset:auto!important;
+ width:100%!important;
+ height:100%!important;
+ min-height:0!important;
+ min-width:0!important;
+ max-height:100%!important;
+ max-width:100%!important;
+ box-sizing:border-box!important;
+ margin:0!important;
+ padding:0!important;
+ overflow:hidden!important;
+ transform:none!important;
+}
+#book .static-leaf>.page.blankpage>.page-inner{
+ width:100%!important;
+ height:100%!important;
+ min-height:0!important;
+ max-height:100%!important;
+ box-sizing:border-box!important;
+}
+#book .blankpage .page-logo{visibility:hidden!important}
+#book .blankpage .blank-page-content{visibility:hidden!important}
 </style>
 
 </head>
@@ -2154,7 +2180,8 @@ function showSheet(){
  stage.style.cursor=opened?'default':'pointer';
  root.innerHTML='';
  const bounds=sectionBounds();
- const blankLeaf=()=>page('','blankpage');
+ // Blank leaves must use the identical DOM and paper geometry as written leaves.
+ const blankLeaf=()=>page('<div class="copy blank-page-content" aria-hidden="true"></div>','story blankpage');
  const canShowLeft=!single&&opened&&sheetIndex>bounds.first;
  if(!single&&opened){
   const leftContent=canShowLeft&&sheetIndex-1<=bounds.last?sheets[sheetIndex-1]:blankLeaf();
