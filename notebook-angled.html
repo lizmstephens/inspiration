@@ -42,7 +42,7 @@ a{color:inherit}button,select{font:inherit}button{cursor:pointer}
 .bird{position:absolute;top:0;left:calc(50% + 340px);width:63px;height:45px;pointer-events:none;transition:transform .5s,opacity .5s;z-index:10}
 .bird svg{width:100%;height:100%}.bird.jump{transform:translateY(-17px) rotate(-8deg)}
 .fallback{max-width:650px;margin:15px auto;padding:0 20px}.fallback .page{display:block;margin:0 0 20px;min-height:460px;border-radius:8px}.fallback .page-inner{min-height:460px}.fallback-message{color:#eee;max-width:600px;margin:0 auto 15px}
-@media(max-width:700px){.top{padding:16px 20px;display:block;text-align:center}.top nav{justify-content:center;margin-top:12px;flex-wrap:wrap}.intro p{font-size:13px}.stage{min-height:480px;padding:12px 4px}.bird{left:auto;right:15px;top:4px;width:44px}.controls{margin-top:10px}.page .page-inner{padding:23px}.page .copy{font-size:15px}.reflection .copy{font-size:17px}.paper-photo img{height:120px}}
+@media(max-width:1100px){.top{padding:16px 20px;display:block;text-align:center}.top nav{justify-content:center;margin-top:12px;flex-wrap:wrap}.intro p{font-size:13px}.stage{min-height:480px;padding:12px 4px}.bird{left:auto;right:15px;top:4px;width:44px}.controls{margin-top:10px}.page .page-inner{padding:23px}.page .copy{font-size:15px}.reflection .copy{font-size:17px}.paper-photo img{height:120px}}
 @media(prefers-reduced-motion:reduce){.bird{transition:none}}
 
 /* Notebook experiment: everyday worn leather on a warm coffee-shop table.
@@ -99,7 +99,7 @@ body>header,body>.intro,body>.chapters,body>main{position:relative;z-index:1}
 .controls button{background:#684730b0;border-color:#efd4a8;color:#fff0d3}
 .controls button:hover{background:#4b3025}
 #page-label{color:#fff6e6;text-shadow:0 1px 3px #3b2113}
-@media(max-width:700px){.stage{filter:drop-shadow(0 12px 12px rgba(26,13,8,.4))}}
+@media(max-width:1100px){.stage{filter:drop-shadow(0 12px 12px rgba(26,13,8,.4))}}
 
 /* Photo-backed journal experiment: keep the working StPageFlip mechanism. */
 body{
@@ -126,10 +126,10 @@ body:before{background:radial-gradient(ellipse at 50% 50%,transparent 40%,rgba(4
 .page-inner:not(.cover):before{border-color:rgba(113,111,105,.06)}
 .controls button{background:rgba(74,48,32,.7);border-color:#eee0c6;color:#fff2df}
 #page-label{color:#fff8ea;text-shadow:0 1px 3px #3e2418}
-@media(max-width:700px){body{background-attachment:scroll}}
+@media(max-width:1100px){body{background-attachment:scroll}}
 /* Reliable locally served tabletop; no external hotlink redirects. */
 body{background-color:#c9a17d!important;background-image:url('assets/table.jpg')!important;background-position:center!important;background-size:cover!important;background-repeat:no-repeat!important;background-attachment:fixed!important}
-@media(max-width:700px){body{background-attachment:scroll!important}}
+@media(max-width:1100px){body{background-attachment:scroll!important}}
 
 /* Journal refinement — softly rounded, unruled paper and quieter typography. */
 #book .page:not(.coverpage){border-radius:15px!important;overflow:hidden!important}
@@ -145,7 +145,7 @@ body{background-color:#c9a17d!important;background-image:url('assets/table.jpg')
 #book .page .page-foot{position:relative;z-index:1}
 #book .page .doodle{width:58px;height:54px;right:26px;bottom:55px;opacity:.4}
 #book .page .doodle svg{width:100%;height:100%;fill:none;stroke:#9b7952;stroke-width:1.65;stroke-linecap:round;stroke-linejoin:round}
-@media(max-width:700px){
+@media(max-width:1100px){
  #book .reflection .copy{font-size:14px;line-height:1.53;margin-top:14px}
  #book .page .doodle{width:43px;height:40px;right:17px;bottom:46px}
 }
@@ -172,7 +172,7 @@ body{background-color:#c9a17d!important;background-image:url('assets/table.jpg')
 #book .page .copy{overflow-y:auto!important;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;touch-action:pan-y;user-select:text}
 #book .story .copy p:first-child{font-weight:400}
 #book .reflection .copy{font-size:clamp(14px,1.35vw,16px);line-height:1.58}
-@media(max-width:700px){
+@media(max-width:1100px){
  .top{padding:9px 12px 3px}
  .top nav{margin:0;gap:28px;font-size:14px}
  .chapters{margin:7px auto 0}
@@ -222,7 +222,7 @@ body{background-color:#c9a17d!important;background-image:url('assets/table.jpg')
 #book .page .page-foot{display:none!important}
 #book .page .story-links{margin-top:auto;padding-top:12px}
 #book .reflection .copy{margin-top:10px}
-@media(max-width:700px){
+@media(max-width:1100px){
  #book .page .eyebrow{font-size:19px;letter-spacing:0}
  #book .page h2{font-size:clamp(32px,8vw,41px);margin-bottom:12px}
  .stage{filter:drop-shadow(0 14px 13px rgba(45,25,13,.5))!important}
@@ -255,7 +255,7 @@ body{background-color:#c9a17d!important;background-image:url('assets/table.jpg')
 #book .page:not(.coverpage){background:#e8d9bc!important;border-color:#d2b994!important}
 #book .page-logo{width:39px;height:39px;right:22px;top:19px}
 .stage.open-book:after{content:"";pointer-events:none;position:absolute;z-index:-1;top:15px;bottom:15px;left:50%;width:2px;background:linear-gradient(90deg,#493121,#bca88b);box-shadow:0 0 9px 4px rgba(56,33,16,.23)}
-@media(max-width:700px){
+@media(max-width:1100px){
  .stage{padding:13px 13px 17px 22px!important}
  .stage:before{width:calc(100% - 12px);top:5px;bottom:6px;border-radius:20px 13px 13px 20px}
  .stage.open-book:after{
@@ -285,7 +285,7 @@ body{background-color:#c9a17d!important;background-image:url('assets/table.jpg')
  border:1px solid #d9c7a6!important;
  box-shadow:inset 12px 0 16px -14px rgba(49,28,15,.7),0 2px 5px rgba(42,24,13,.27)!important;
 }
-@media(max-width:700px){
+@media(max-width:1100px){
  .stage.open-book{padding-left:31px!important;padding-right:13px!important}
  .stage.open-book:before{left:50%;width:calc(100% - 8px);top:3px;bottom:4px}
  .stage.open-book:after{display:block!important;left:8px;top:17px;bottom:17px;width:24px;position:absolute;z-index:0;content:"";border-radius:4px 0 0 4px;background:repeating-linear-gradient(90deg,#e4d1ae 0 2px,#fff0d5 3px 5px,#ddc8a5 6px 7px);box-shadow:inset 5px 0 8px #52321c55,3px 0 6px #37211555}
@@ -299,7 +299,7 @@ body{background-color:#c9a17d!important;background-image:url('assets/table.jpg')
  content:"";position:absolute;inset:0;pointer-events:none;z-index:5;
  background:var(--sunbeam);mix-blend-mode:soft-light;border-radius:inherit;
 }
-@media(max-width:700px){
+@media(max-width:1100px){
  html,body{overflow-x:hidden}
  .stage{padding:13px 13px 17px 22px!important}
  .stage.open-book{padding:13px 13px 17px 22px!important}
@@ -327,7 +327,7 @@ body{background-color:#c9a17d!important;background-image:url('assets/table.jpg')
 }
 
 /* Correct the open spread: a genuine paper leaf to the left of the gutter. */
-@media(max-width:700px){
+@media(max-width:1100px){
  .stage.open-book{overflow:visible!important}
  .stage.open-book:after{
   content:""!important;display:block!important;
@@ -373,7 +373,7 @@ body{background-color:#c9a17d!important;background-image:url('assets/table.jpg')
  background-repeat:no-repeat!important;
  overflow:hidden!important;
 }
-@media(max-width:700px){
+@media(max-width:1100px){
  .stage.open-book:before{
   background-image:url('assets/journal.png')!important;
   background-size:calc(100% + 22px) calc(100% + 22px)!important;
@@ -398,7 +398,7 @@ body{background-color:#c9a17d!important;background-image:url('assets/table.jpg')
 .person-copy{font-size:15px!important;line-height:1.5!important}
 .about-copy{font-size:14px!important;line-height:1.5!important}
 .about-copy p{margin-bottom:12px}
-@media(max-width:700px){
+@media(max-width:1100px){
  .stage{padding-top:32px!important}
  .journal-tabs{top:0;right:20px;gap:6px}
  .journal-tabs button{font-size:17px;padding:7px 12px 10px}
@@ -408,7 +408,7 @@ body{background-color:#c9a17d!important;background-image:url('assets/table.jpg')
 }
 
 /* Left-hand leaf: paper inset inside a visible leather board, matching right corners. */
-@media(max-width:700px){
+@media(max-width:1100px){
  .stage.open-book:after{
   border:10px solid transparent!important;
   border-radius:21px 17px 17px 21px!important;
@@ -435,7 +435,7 @@ body{background-color:#c9a17d!important;background-image:url('assets/table.jpg')
 .archive-entry span{font:500 13px 'Caveat',cursive;color:#85684c}
 .archive-entry strong{font:600 17px 'Caveat',cursive}
 .archive-entry:hover strong{text-decoration:underline}
-@media(max-width:700px){
+@media(max-width:1100px){
  .journal-tabs{top:1px!important;right:12px!important;gap:4px!important}
  .journal-tabs button{padding:6px 9px 15px!important;font-size:16px!important}
  .stage.open-book:after{
@@ -477,7 +477,7 @@ body{background-color:#c9a17d!important;background-image:url('assets/table.jpg')
 .journal-tabs{top:10px!important;right:24px!important;z-index:3!important;align-items:flex-end}
 .journal-tabs button{min-height:57px;padding:9px 15px 23px!important;line-height:1.2!important;font-size:20px!important;white-space:nowrap}
 #book{z-index:4!important}
-@media(max-width:700px){
+@media(max-width:1100px){
  .stage{padding-top:64px!important}
  .stage.open-book{padding-top:64px!important}
  .stage.open-book .left-cover{
@@ -518,7 +518,7 @@ main{position:relative;max-width:1536px;margin:0 auto}
 #page-label{color:#fff8e9!important;text-shadow:0 1px 4px #321a0e}
 .reflection .copy{font-size:clamp(14px,1.4vw,16px)!important;line-height:1.55!important}
 .page h2{font-family:'Caveat',cursive!important;font-weight:700!important;background:linear-gradient(transparent 54%,#f8d0b7 54%,#f8d0b7 90%,transparent 90%);align-self:flex-start;padding:0 9px 0 3px}
-@media(max-width:700px){
+@media(max-width:1100px){
  .stage,.stage.open-book{padding:55px 0 0!important;margin:0 auto!important}
  .open-leather{top:55px;width:calc(200% - 14px);left:calc(50% - 50% + 7px);transform:translateX(-50%);height:calc(100% - 55px);background-size:100% 100%}
  #book{width:100%;max-width:none}
@@ -540,11 +540,11 @@ main{position:relative;max-width:1536px;margin:0 auto}
  pointer-events:none;
 }
 .stage:not(.open-book) .open-leather{display:none!important}
-@media(min-width:701px){
+@media(min-width:1101px){
  .stage{max-width:1060px!important}
  #book{max-width:980px!important}
 }
-@media(max-width:700px){
+@media(max-width:1100px){
  #book .coverpage .journal-cover-art{width:350%!important;height:135%!important;left:-212.5%!important;top:-17.5%!important}
 }
 
@@ -591,7 +591,7 @@ main{width:100%;max-width:none!important;overflow:hidden}
 .stage:not(.open-book) .journal-tabs{visibility:hidden!important;pointer-events:none!important}
 .stage.open-book .journal-tabs{visibility:visible!important;pointer-events:auto!important}
 .controls{margin:-1.5% auto 25px!important}
-@media(max-width:700px){
+@media(max-width:1100px){
  .stage,.stage.open-book{
   --scene-width:1000px;
   width:1000px!important;
@@ -615,7 +615,7 @@ main{width:100%;max-width:none!important;overflow:hidden}
 }
 #book .page-inner{min-height:0!important;height:100%!important;overflow:hidden!important}
 #book .story .copy{max-height:none!important}
-@media(max-width:700px){
+@media(max-width:1100px){
  .stage,.stage.open-book{
   --scene-width:1180px!important;
   width:1180px!important;height:786.667px!important;
@@ -638,7 +638,7 @@ main{width:100%;max-width:none!important;overflow:hidden}
 .stage.open-book .open-leather{z-index:0!important}
 
 /* Phone: single right-hand leaf; desktop: complete two-page spread. */
-@media(max-width:700px){
+@media(max-width:1100px){
  .stage,.stage.open-book{
   width:1180px!important;height:786.667px!important;
   margin-left:calc(50vw - 789px)!important;
@@ -663,7 +663,7 @@ main{width:100%;max-width:none!important;overflow:hidden}
  height:62.6953125%!important;
 }
 #book .stf__parent,#book .stf__wrapper{overflow:visible!important}
-@media(max-width:700px){
+@media(max-width:1100px){
  .stage,.stage.open-book{
   width:1180px!important;height:786.667px!important;
   margin-left:calc(50vw - 820px)!important;
@@ -687,7 +687,7 @@ main{width:100%;max-width:none!important;overflow:hidden}
 .stage:not(.open-book) .closed-leather{z-index:7!important}
 .stage.open-book .closed-leather{visibility:hidden!important}
 .stage .sunlight{pointer-events:none!important}
-@media(max-width:700px){
+@media(max-width:1100px){
  .stage,.stage.open-book{width:1180px!important;height:786.667px!important;margin-left:calc(50vw - 827px)!important}
  #book .static-left{display:none!important}
  #book .static-right{left:55.33854167%!important}
@@ -733,7 +733,7 @@ main{width:100%;max-width:none!important;overflow:hidden}
 .stage.open-book .closed-leather{visibility:hidden!important}
 #book{z-index:3!important}
 .stage .sunlight{z-index:8!important;pointer-events:none!important}
-@media(max-width:700px){
+@media(max-width:1100px){
  .stage .journal-tabs,.stage.open-book .journal-tabs{
   left:48.5%!important;right:auto!important;top:13.9%!important;
   gap:6px!important;
@@ -742,14 +742,14 @@ main{width:100%;max-width:none!important;overflow:hidden}
 
 /* Fine-tune bookmarks: move right relative to previous placement. */
 .stage .journal-tabs,.stage.open-book .journal-tabs{left:54%!important;right:auto!important}
-@media(max-width:700px){
+@media(max-width:1100px){
  .stage .journal-tabs,.stage.open-book .journal-tabs{left:54%!important;right:auto!important}
 }
 /* No category chips beneath the story headline. */
 #book .story .tags{display:none!important}
 
 /* Move bookmark tabs another 65 physical pixels right on phone. */
-@media(max-width:700px){
+@media(max-width:1100px){
  .stage .journal-tabs,.stage.open-book .journal-tabs{
   left:calc(54% + 65px)!important;
  }
@@ -757,7 +757,7 @@ main{width:100%;max-width:none!important;overflow:hidden}
 
 /* Mobile: retain the left leaf as a blank paper surface after the first
    opening. Do not hide it; it remains part of the same physical spread. */
-@media(max-width:700px){
+@media(max-width:1100px){
  #book .static-left{display:block!important}
 }
 
@@ -849,7 +849,7 @@ main{width:100%;max-width:none!important;overflow:hidden}
  min-height:0!important;
  height:auto!important;
 }
-@media(max-width:700px){
+@media(max-width:1100px){
  .stage .journal-tabs button{padding:5px 9px 7px!important;min-height:0!important;height:auto!important}
 }
 
@@ -863,7 +863,7 @@ main{width:100%;max-width:none!important;overflow:hidden}
  min-height:55px!important;
  height:auto!important;
 }
-@media(max-width:700px){
+@media(max-width:1100px){
  .stage .journal-tabs,.stage.open-book .journal-tabs{top:16.4%!important}
  .stage .journal-tabs button,.stage.open-book .journal-tabs button{
   padding:10px 9px 20px!important;
@@ -874,7 +874,7 @@ main{width:100%;max-width:none!important;overflow:hidden}
 
 /* Reveal a little more of each bookmark, while retaining its tucked base. */
 .stage .journal-tabs,.stage.open-book .journal-tabs{top:15.1%!important}
-@media(max-width:700px){
+@media(max-width:1100px){
  .stage .journal-tabs,.stage.open-book .journal-tabs{top:15.1%!important}
 }
 /* Soft, hand-torn tapered ends on each independently wrapped brushstroke. */
@@ -897,7 +897,7 @@ main{width:100%;max-width:none!important;overflow:hidden}
 }
 /* Use more of the mobile viewport without moving the page away from
    the screen centre: the right leaf's midpoint is 70.117% of scene. */
-@media(max-width:700px){
+@media(max-width:1100px){
  .stage,.stage.open-book{
   width:1320px!important;
   height:880px!important;
@@ -908,7 +908,7 @@ main{width:100%;max-width:none!important;overflow:hidden}
 
 /* Mobile reading view: modest enlargement, raised journal, persistent
    navigation independent of the tall illustrated scene. */
-@media(max-width:700px){
+@media(max-width:1100px){
  .stage,.stage.open-book{
   width:1360px!important;
   height:906.667px!important;
@@ -963,7 +963,7 @@ main{width:100%;max-width:none!important;overflow:hidden}
  font-weight:400!important;
 }
 #book .story .copy{margin-top:3px!important}
-@media(max-width:700px){
+@media(max-width:1100px){
  #book .story h2{font-size:29px!important;margin-bottom:12px!important}
  #book .story .paper-photo{width:78%!important;max-width:330px!important}
  #book .story .paper-photo img{height:112px!important}
@@ -1016,7 +1016,7 @@ main{width:100%;max-width:none!important;overflow:hidden}
  line-height:1.2!important;
  overflow-wrap:anywhere!important;
 }
-@media(max-width:700px){
+@media(max-width:1100px){
  #book .story .story-intro{gap:12px!important}
  #book .story .story-intro h2{font-size:24px!important}
  #book .story .story-intro .paper-photo{flex-basis:48%!important}
@@ -1265,7 +1265,7 @@ main{width:100%;max-width:none!important;overflow:hidden}
 
 /* Desktop correction: use exactly the same source-art rectangle as static paper.
    No opaque backing panel behind the rounded paper. */
-@media(min-width:701px){
+@media(min-width:1101px){
  #book .static-leaf.page-turn-sheet{
   left:55.3385416667%!important;
   top:18.65234375%!important;
@@ -1379,7 +1379,7 @@ main{width:100%;max-width:none!important;overflow:hidden}
 #book .index-today strong{font-weight:800!important}
 
 /* Desktop reading position and reachable navigation. */
-@media(min-width:701px){
+@media(min-width:1101px){
  .stage.open-book{margin-top:-85px!important}
  .controls{
   position:fixed!important;bottom:14px!important;
@@ -1402,7 +1402,7 @@ main{width:100%;max-width:none!important;overflow:hidden}
 }
 
 /* Keep closed and open artwork anchored to the identical desktop stage. */
-@media(min-width:701px){
+@media(min-width:1101px){
  .stage:not(.open-book){
   width:1320px!important;
   max-width:none!important;
@@ -1426,7 +1426,7 @@ main{width:100%;max-width:none!important;overflow:hidden}
 /* Desktop: one responsive stage for both cover and spread.
    The photographed book is right of the image centre, so offset the
    scene by the book's actual artwork centre (x ~850/1536). */
-@media(min-width:701px){
+@media(min-width:1101px){
  .stage,.stage.open-book,.stage:not(.open-book){
   --desktop-scene-width:min(1500px, 100vw)!important;
   --scene-width:var(--desktop-scene-width)!important;
@@ -1444,7 +1444,7 @@ main{width:100%;max-width:none!important;overflow:hidden}
 
 /* Angled desk experiment: tilt the complete photographed scene together.
    Tabs, leather, writing and shadows share a single perspective. */
-@media(min-width:701px){
+@media(min-width:1101px){
  body{overflow-x:hidden!important}
  .stage,.stage.open-book,.stage:not(.open-book){
   --desktop-scene-width:min(1450px,100vw)!important;
@@ -1460,7 +1460,7 @@ main{width:100%;max-width:none!important;overflow:hidden}
  }
  .controls{bottom:14px!important}
 }
-@media(max-width:700px){
+@media(max-width:1100px){
  .stage,.stage.open-book{
   transform-origin:55.33854% 52%!important;
   transform:perspective(1700px) rotateX(9deg) rotateZ(-3deg)!important;
@@ -1475,7 +1475,7 @@ body{
  linear-gradient(115deg,rgba(255,243,211,.26) 0%,rgba(255,243,211,.04) 35%,rgba(57,33,19,.23) 100%),
  url('assets/01_oak_table.png') center center / cover fixed no-repeat!important;
 }
-@media(min-width:701px){
+@media(min-width:1101px){
  .stage,.stage.open-book,.stage:not(.open-book){
   transform:perspective(1250px) rotateX(29deg) rotateZ(-7deg)!important;
   transform-origin:55.33854% 55%!important;
@@ -1483,7 +1483,7 @@ body{
   filter:drop-shadow(20px 35px 20px rgba(37,23,12,.34))!important;
  }
 }
-@media(max-width:700px){
+@media(max-width:1100px){
  .stage,.stage.open-book{
   transform:perspective(1250px) rotateX(21deg) rotateZ(-5deg)!important;
   transform-origin:55.33854% 55%!important;
@@ -1504,14 +1504,14 @@ body{
  background-size:cover,100% 100%,cover!important;
  background-attachment:fixed!important;
 }
-@media(min-width:701px){
+@media(min-width:1101px){
  .stage,.stage.open-book,.stage:not(.open-book){
   transform:perspective(1650px) rotateX(19deg) rotateZ(-5deg)!important;
   transform-origin:55.33854% 55%!important;
   margin-top:-18px!important;
  }
 }
-@media(max-width:700px){
+@media(max-width:1100px){
  .stage,.stage.open-book{
   transform:perspective(1550px) rotateX(15deg) rotateZ(-4deg)!important;
   margin-top:-12px!important;
@@ -1523,7 +1523,7 @@ html{background:#d9bd9a!important}
 body{
  background:#d9bd9a url('assets/hummingbird-table.png') center center / cover fixed no-repeat!important;
 }
-@media(max-width:700px){
+@media(max-width:1100px){
  body{background-position:40% center!important;background-attachment:scroll!important}
 }
 
@@ -1531,7 +1531,7 @@ body{
 .stage .sunlight{display:none!important;background:none!important;opacity:0!important}
 
 /* Slightly larger desktop journal while preserving the same book centre. */
-@media(min-width:701px){
+@media(min-width:1101px){
  .stage,.stage.open-book,.stage:not(.open-book){
   --desktop-scene-width:min(1580px,108vw)!important;
   --scene-width:var(--desktop-scene-width)!important;
@@ -1541,13 +1541,13 @@ body{
 }
 
 /* Camera looks squarely at the notebook: slight foreshortening only, no desk rotation. */
-@media(min-width:701px){
+@media(min-width:1101px){
  .stage,.stage.open-book,.stage:not(.open-book){
   transform:perspective(2400px) rotateX(9deg) rotateZ(0deg)!important;
   transform-origin:55.33854% 55%!important;
  }
 }
-@media(max-width:700px){
+@media(max-width:1100px){
  body{
   background:#d9bd9a url('assets/hummingbird-table-mobile.png') center top / 100% auto no-repeat!important;
   background-attachment:fixed!important;
@@ -1559,7 +1559,7 @@ body{
 }
 
 /* Larger, legible index entries; slightly raise desktop notebook. */
-@media(min-width:701px){
+@media(min-width:1101px){
  .stage,.stage.open-book,.stage:not(.open-book){margin-top:-65px!important}
 }
 #book .archivepage .archive-list{gap:10px!important}
@@ -1569,12 +1569,12 @@ body{
 #book .archivepage h2{font-size:25px!important}
 
 /* A touch more seated perspective, with no sideways rotation. */
-@media(min-width:701px){
+@media(min-width:1101px){
  .stage,.stage.open-book,.stage:not(.open-book){
   transform:perspective(2050px) rotateX(13deg) rotateZ(0deg)!important;
  }
 }
-@media(max-width:700px){
+@media(max-width:1100px){
  .stage,.stage.open-book{
   transform:perspective(1900px) rotateX(10deg) rotateZ(0deg)!important;
  }
@@ -1591,7 +1591,7 @@ body{
 #book .contributor-details p{font-size:13px;line-height:1.3;margin:0 0 6px}
 #book .contributor-details .contributor-note{font-size:12px;font-style:italic;color:#796454}
 #book .contributor-details a{font-size:13px}
-@media(max-width:700px){
+@media(max-width:1100px){
  #book .contributor-card{grid-template-columns:90px minmax(0,1fr);gap:13px}
  #book .contributor-photo{width:90px;height:104px}
 }
@@ -1609,7 +1609,7 @@ body{
  margin:0 0 14px!important;
 }
 #book .aboutpage .copy a{font-weight:400!important}
-@media(max-width:700px){
+@media(max-width:1100px){
  /* The portrait photograph must cover the whole phone viewport,
     including the area beneath the controls. */
  html,body{min-height:100vh!important;min-height:100dvh!important}
@@ -1686,7 +1686,7 @@ body{
 #book .contributor-details p{font-size:12px!important;line-height:1.22!important;margin:0 0 3px!important}
 #book .contributor-details .contributor-note{font-size:11px!important}
 #book .contributor-details a{font-size:12px!important}
-@media(max-width:700px){
+@media(max-width:1100px){
  #book .contributor-pair{gap:10px!important}
  #book .contributor-card{grid-template-columns:72px minmax(0,1fr)!important;gap:10px!important}
  #book .contributor-photo{width:72px!important;height:82px!important}
@@ -1743,6 +1743,15 @@ body{
  font-size:17px!important;
  color:#24364a!important;
 }
+
+/* Narrow laptop / half-window uses the single readable right-hand leaf.
+   Keep the wide tabletop photograph on tablets; phones use the portrait art. */
+@media(min-width:701px) and (max-width:1100px){
+ body{
+  background:#d9bd9a url('assets/hummingbird-table.png') center top / cover fixed no-repeat!important;
+ }
+ .stage,.stage.open-book{margin-top:-45px!important}
+}
 </style>
 <script src="https://cdn.jsdelivr.net/npm/page-flip@2.0.7/dist/js/page-flip.browser.min.js" defer></script>
 </head>
@@ -1789,7 +1798,7 @@ function build(x){
  const img=x.image?'<figure class="paper-photo"><img src="'+link(x.image)+'" alt="Image accompanying '+esc(x.title)+'" loading="lazy"><figcaption class="photo-credit">'+(x.image_credit_url?'<a href="'+link(x.image_credit_url)+'" target="_blank" rel="noopener noreferrer">'+esc(x.image_credit||'Image source')+'</a>':esc(x.image_credit||''))+(x.image_license_url?' · <a href="'+link(x.image_license_url)+'" target="_blank" rel="noopener noreferrer">Licence</a>':'')+'</figcaption></figure>':'';
  const tags=(x.tags||[]).map(t=>'<span class="tag">'+esc(t)+'</span>').join('');
  let sources=(x.sources&&x.sources.length?x.sources:[{url:x.source}]).filter(a=>a.url);
- const storyParts=chunks(x.summary,83,150);
+ const storyParts=chunks(x.summary,83,105);
  storyParts.forEach((part,i)=>{
   const heading=i===0?'<div class="story-intro"><div class="story-intro-text"><h2><span class="ink-highlight">'+esc(x.title)+'</span></h2><div class="eyebrow story-date">'+esc(date(x.date))+'</div></div>'+img+'</div>':'<div class="eyebrow">The discovery · continued</div>';
   const links=i===storyParts.length-1?'<div class="story-links">'+sources.map(z=>'<a href="'+link(z.url)+'" target="_blank" rel="noopener noreferrer">Read original story ↗</a>').join(' · ')+'</div>':'';
@@ -1798,7 +1807,7 @@ function build(x){
  const reflections=[{name:'AI Reflection',text:x.discovery||x.summary},{name:'Liz’s Thoughts',text:x.thoughts}];
  (x.reflections||[]).filter(c=>c&&c.approved===true&&c.name&&c.text).forEach(c=>reflections.push({name:thoughtsTitle(c.name),text:c.text}));
  reflections.filter(r=>r.text&&String(r.text).trim()).forEach((r,i)=>{
-  chunks(r.text,125,160).forEach((part,j)=>{
+  chunks(r.text,95,100).forEach((part,j)=>{
    pieces.push(page('<div class="eyebrow">A different perspective · '+String(i+1).padStart(2,'0')+(j?' · continued':'')+'</div><h2 class="reflection-head">'+esc(r.name)+'</h2><div class="copy"><p>'+esc(part)+'</p></div><span class="turn-cue" aria-hidden="true">Turn the page ›</span>','reflection'));
   });
  });
@@ -1830,7 +1839,7 @@ function sectionBounds(index){
 }
 function stepPage(direction){
  const bounds=sectionBounds(sheetIndex);
- const step=window.matchMedia('(max-width:700px)').matches?1:2;
+ const step=window.matchMedia('(max-width:1100px)').matches?1:2;
  const target=direction>0&&sheetIndex===0?1:direction<0&&sheetIndex===1?0:sheetIndex+direction*step;
  if(direction>0&&target>bounds.last)return;
  if(direction<0&&target<bounds.first)return;
@@ -1845,7 +1854,7 @@ function showSheet(){
  stage.style.cursor=opened?'default':'pointer';
  root.innerHTML='';
  const right=sheets[sheetIndex];
- const mobileSingle=window.matchMedia('(max-width:700px)').matches;
+ const mobileSingle=window.matchMedia('(max-width:1100px)').matches;
  const left=!mobileSingle&&opened&&sheetIndex>1&&sheetIndex!==sectionPages.about&&sheetIndex!==sectionPages.collaborators?sheets[sheetIndex-1]:null;
  if(left){const holder=document.createElement('div');holder.className='static-leaf static-left';holder.innerHTML=left;root.appendChild(holder)}
  if(opened&&right){const holder=document.createElement('div');holder.className='static-leaf static-right';holder.innerHTML=right;root.appendChild(holder);holder.addEventListener('click',e=>{if(e.target.closest('a,button,.archive-entry,.copy,.archive-list'))return;flip.flipNext()})}
