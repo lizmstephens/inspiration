@@ -1887,6 +1887,17 @@ body{
  line-height:1.1!important;
  letter-spacing:-.025em!important;
 }
+
+/* Strong explicit initial hiding, independent of earlier journal CSS rules. */
+#book .page.voice-story nav.voice-menu[hidden],
+#book .page.voice-story nav.voice-menu:not(.expanded){
+ display:none!important;
+ visibility:hidden!important;
+}
+#book .page.voice-story nav.voice-menu.expanded:not([hidden]){
+ display:flex!important;
+ visibility:visible!important;
+}
 </style>
 
 </head>
@@ -1944,7 +1955,7 @@ function build(x){
  const voiceButtons=voices.map((v,i)=>'<button type="button" class="voice-choice'+(i===selected?' selected':'')+'" data-voice="'+i+'" aria-pressed="'+(i===selected?'true':'false')+'">'+esc(v.label)+'</button>').join('');
  const countLabel=(voices.length-1)+' reflection'+(voices.length===2?'':'s');
  const toggle='<button type="button" class="reflection-toggle" aria-expanded="'+(voiceMenuExpanded?'true':'false')+'" aria-label="Show or hide '+esc(countLabel)+'">'+esc(countLabel)+' <span aria-hidden="true">'+(voiceMenuExpanded?'▴':'▾')+'</span></button>';
- const voiceMenu='<nav class="voice-menu'+(voiceMenuExpanded?' expanded':'')+'" aria-label="Choose a perspective"><div class="voice-buttons">'+voiceButtons+'</div></nav>';
+ const voiceMenu='<nav class="voice-menu'+(voiceMenuExpanded?' expanded':'')+'" '+(voiceMenuExpanded?'':'hidden ')+'aria-label="Choose a perspective"><div class="voice-buttons">'+voiceButtons+'</div></nav>';
  const selectedText=voices[selected].text;
  // Selected voices replace one another; only their own continuation pages are made.
  const storyParts=chunks(selectedText,42,85);
@@ -2015,7 +2026,7 @@ function showSheet(){
  const step=mobileSingle?1:2;
  prev.disabled=sheetIndex===0||sheetIndex<=bounds.first;
  next.disabled=sheetIndex>=bounds.last;
- root.querySelectorAll('.reflection-toggle').forEach(el=>el.addEventListener('click',e=>{e.stopPropagation();voiceMenuExpanded=!voiceMenuExpanded;root.querySelectorAll('.voice-menu').forEach(menu=>menu.classList.toggle('expanded',voiceMenuExpanded));root.querySelectorAll('.reflection-toggle').forEach(btn=>{btn.setAttribute('aria-expanded',String(voiceMenuExpanded));const arrow=btn.querySelector('span');if(arrow)arrow.textContent=voiceMenuExpanded?'▴':'▾';});}));
+ root.querySelectorAll('.reflection-toggle').forEach(el=>el.addEventListener('click',e=>{e.stopPropagation();voiceMenuExpanded=!voiceMenuExpanded;root.querySelectorAll('.voice-menu').forEach(menu=>{menu.classList.toggle('expanded',voiceMenuExpanded);menu.hidden=!voiceMenuExpanded;});root.querySelectorAll('.reflection-toggle').forEach(btn=>{btn.setAttribute('aria-expanded',String(voiceMenuExpanded));const arrow=btn.querySelector('span');if(arrow)arrow.textContent=voiceMenuExpanded?'▴':'▾';});}));
  root.querySelectorAll('.voice-choice').forEach(el=>el.addEventListener('click',e=>{e.stopPropagation();chooseVoice(el.dataset.voice)}));
  root.querySelectorAll('[data-today]').forEach(el=>el.addEventListener('click',()=>turnTo(sectionPages.today,'next')));
  root.querySelectorAll('.archive-entry[data-entry-id]').forEach(el=>el.addEventListener('click',()=>{
