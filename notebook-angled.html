@@ -1920,7 +1920,7 @@ function build(x){
  const voiceMenu='<nav class="voice-menu" aria-label="Choose a perspective"><span class="reflection-count">'+(voices.length-1)+' reflection'+(voices.length===2?'':'s')+'</span><div class="voice-buttons">'+voiceButtons+'</div></nav>';
  const selectedText=voices[selected].text;
  // Selected voices replace one another; only their own continuation pages are made.
- const storyParts=chunks(selectedText,55,100);
+ const storyParts=chunks(selectedText,42,85);
  storyParts.forEach((part,i)=>{
   const heading=i===0?'<div class="story-intro"><div class="story-intro-text"><h2><span class="ink-highlight">'+esc(x.title)+'</span></h2><div class="eyebrow story-date">'+esc(date(x.date))+'</div><span class="reflection-count intro-count">'+(voices.length-1)+' reflection'+(voices.length===2?'':'s')+'</span></div>'+img+'</div>':'<div class="eyebrow"> '+esc(x.title)+' · continued</div>';
   const menu=voiceMenu.replace('class="reflection-count"','class="reflection-count menu-count"');
@@ -1964,9 +1964,9 @@ function sectionBounds(index){
 function stepPage(direction){
  const bounds=sectionBounds(sheetIndex);
  const step=window.matchMedia('(max-width:700px)').matches?1:2;
- const target=direction>0&&sheetIndex===0?1:direction<0&&sheetIndex===1?0:sheetIndex+direction*step;
- if(direction>0&&target>bounds.last)return;
- if(direction<0&&target<bounds.first)return;
+ const target=direction>0&&sheetIndex===0?1:direction<0&&sheetIndex===1?0:
+  direction>0?Math.min(bounds.last,sheetIndex+step):Math.max(bounds.first,sheetIndex-step);
+ if(target===sheetIndex)return;
  turnTo(target,direction>0?'next':'prev');
 }
 let sheets=[],sheetIndex=0,turning=false;
@@ -1986,8 +1986,8 @@ function showSheet(){
  label.textContent=sheetIndex===0?'Cover · Open the notebook':(mobileSingle?'Page '+sheetIndex+' of '+(total-1):'Pages '+Math.max(1,sheetIndex-1)+'–'+sheetIndex+' of '+(total-1));
  const bounds=sectionBounds(sheetIndex);
  const step=mobileSingle?1:2;
- prev.disabled=sheetIndex===0||(sheetIndex!==1&&sheetIndex-step<bounds.first);
- next.disabled=sheetIndex+step>bounds.last;
+ prev.disabled=sheetIndex===0||sheetIndex<=bounds.first;
+ next.disabled=sheetIndex>=bounds.last;
  root.querySelectorAll('.voice-choice').forEach(el=>el.addEventListener('click',e=>{e.stopPropagation();chooseVoice(el.dataset.voice)}));
  root.querySelectorAll('[data-today]').forEach(el=>el.addEventListener('click',()=>turnTo(sectionPages.today,'next')));
  root.querySelectorAll('.archive-entry[data-entry-id]').forEach(el=>el.addEventListener('click',()=>{
