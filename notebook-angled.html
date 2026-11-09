@@ -2146,6 +2146,23 @@ document.addEventListener('keydown',e=>{if(!flip||e.target.matches('input,textar
 // Recompose the spread when crossing the phone/desktop layout breakpoint.
 const pageMode=window.matchMedia('(max-width:700px)');
 if(pageMode.addEventListener)pageMode.addEventListener('change',()=>{if(sheets.length)showSheet()});
+// Refit the current perspective whenever the browser width changes significantly.
+let lastLayoutWidth=window.innerWidth,resizeReflowTimer=null;
+window.addEventListener('resize',()=>{
+ if(!activeInspiration||!sheets.length||Math.abs(window.innerWidth-lastLayoutWidth)<24)return;
+ clearTimeout(resizeReflowTimer);
+ resizeReflowTimer=setTimeout(()=>{
+  if(!activeInspiration)return;
+  lastLayoutWidth=window.innerWidth;
+  const oldIndex=sheetIndex;
+  const oldSection=oldIndex>=sectionPages.collaborators?'collaborators':
+    oldIndex>=sectionPages.about?'about':oldIndex>=sectionPages.today?'today':'archive';
+  const oldOffset=oldIndex-sectionPages[oldSection];
+  sheets=build(activeInspiration);
+  sheetIndex=oldIndex===0?0:Math.min(sheets.length-1,Math.max(1,sectionPages[oldSection]+Math.max(0,oldOffset)));
+  showSheet();
+ },180);
+});
 
 Promise.all([fetch('inspiration.json').then(r=>{if(!r.ok)throw Error('Could not load discoveries');return r.json()}),fetch('collaborators.json',{cache:'no-store'}).then(r=>{if(!r.ok)throw Error('Could not load collaborators');return r.json()})]).then(([data,collaborators])=>{
  collaboratorData=collaborators;
