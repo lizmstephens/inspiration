@@ -2031,6 +2031,13 @@ body{
   margin-top:clamp(-35px,calc(205px - var(--desktop-scene-width) * .153),85px)!important;
  }
 }
+
+/* Closing leaf is always on the right of the final spread.
+   Hide the top bookmarks only while the closing leaf is displayed. */
+.stage.at-final-page .journal-tabs,
+.stage.open-book.at-final-page .journal-tabs{
+ visibility:hidden!important;pointer-events:none!important;
+}
 </style>
 
 </head>
@@ -2172,6 +2179,10 @@ function build(x){
   const cards=collaborators.slice(i,i+3).map(c=>'<div class="contributor-card"><div class="contributor-photo"><img src="'+link(c.img)+'" alt="Portrait of '+esc(c.name)+'" loading="lazy"></div><div class="contributor-details"><h3>'+esc(c.name)+'</h3><p class="contributor-note">'+esc(c.note.replace(/&amp;/g,'&'))+'</p><p>'+esc(c.desc)+'</p><a href="'+link(c.url)+'" target="_blank" rel="noopener noreferrer">Profile ↗</a></div></div>').join('');
   pieces.push(page('<div class="eyebrow">People and perspectives · '+String(Math.floor(i/3)+1).padStart(2,'0')+'</div><h2>Collaborators</h2><div class="contributor-pair">'+cards+'</div>','personpage contributor-pair-page'));
  }
+ // On a desktop spread, the final message must occupy a right-hand leaf.
+ // Insert an unprinted left leaf only when needed; the underlying photograph
+ // already provides its paper, so never draw a separate blank HTML page.
+ if((pieces.length-sectionPages.collaborators)%2===1)pieces.push(page('','spacerpage'));
  pieces.push(page('<div class="journal-ending"><p><em>Daily inspiration through the cross-pollination of ideas and perspectives. An experiment in human collaboration, facilitated by AI.</em></p></div>','closingpage'));
  return pieces;
 }
@@ -2191,6 +2202,7 @@ function sectionBounds(name=currentSection){
  // The Index and today's Inspiration occupy one continuous set of leaves.
  return {name:'archive',first:sectionPages.archive,last:sectionPages.about-1};
 }
+function isSpacer(index){return sheets[index]&&sheets[index].includes('class="page spacerpage"')}
 function isSinglePage(){return window.matchMedia('(max-width:700px)').matches}
 function lastSpreadRight(bounds=sectionBounds()){
  const length=bounds.last-bounds.first+1;
@@ -2209,7 +2221,8 @@ function stepPage(direction){
  }
  const increment=single?1:2;
  const end=single?bounds.last:lastSpreadRight(bounds);
- const target=Math.max(bounds.first,Math.min(end,sheetIndex+direction*increment));
+ let target=Math.max(bounds.first,Math.min(end,sheetIndex+direction*increment));
+ if(single&&isSpacer(target))target=Math.max(bounds.first,Math.min(end,target+direction));
  if(target!==sheetIndex)turnTo(target,direction>0?'next':'prev');
 }
 function openSection(name){
@@ -2231,20 +2244,22 @@ function showSheet(){
   if(single&&sheetIndex>bounds.last)sheetIndex=bounds.last;
  }
  stage.classList.toggle('open-book',opened);
+ // The physical bookmark tabs disappear on the closing leaf.
+ stage.classList.toggle('at-final-page',opened&&sheetIndex===sheets.length-1);
  stage.onclick=opened?null:()=>flip.flipNext();
  stage.style.cursor=opened?'default':'pointer';
  root.innerHTML='';
  const bounds=sectionBounds();
  // There is already a correctly proportioned paper spread in 03_open_book.png.
  // Never draw an extra HTML leaf when a position has no content.
- const canShowLeft=!single&&opened&&sheetIndex>bounds.first&&sheetIndex-1<=bounds.last;
+ const canShowLeft=!single&&opened&&sheetIndex>bounds.first&&sheetIndex-1<=bounds.last&&!isSpacer(sheetIndex-1);
  if(canShowLeft){
   const holder=document.createElement('div');
   holder.className='static-leaf static-left';
   holder.innerHTML=sheets[sheetIndex-1];
   root.appendChild(holder);
  }
- if(opened&&sheetIndex<=bounds.last){
+ if(opened&&sheetIndex<=bounds.last&&!isSpacer(sheetIndex)){
   const holder=document.createElement('div');
   holder.className='static-leaf static-right';
   holder.innerHTML=sheets[sheetIndex];
