@@ -1796,6 +1796,20 @@ body{
  background-color:#aacaac!important;
  color:#253047!important;
 }
+
+/* Preserve crisp glyph rasterisation: don't 3D-transform live page text.
+   Depth comes from the photographed leather, page edges and shadows. */
+@media(min-width:701px){
+ .stage,.stage.open-book,.stage:not(.open-book){
+  transform:none!important;
+  filter:none!important;
+ }
+}
+@media(max-width:700px){
+ .stage,.stage.open-book{
+  transform:none!important;
+ }
+}
 </style>
 <script src="https://cdn.jsdelivr.net/npm/page-flip@2.0.7/dist/js/page-flip.browser.min.js" defer></script>
 </head>
