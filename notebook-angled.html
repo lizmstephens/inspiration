@@ -1933,7 +1933,7 @@ function chunks(value,first=105,subsequent=155){
 function paginateVoice(textContent, makeMarkup){
  const remainingText=String(textContent||'').trim();
  if(!remainingText)return [''];
- const units=(remainingText.match(/[^.!?]+(?:[.!?]+(?=\\s|$)|$)/g)||[remainingText]).map(x=>x.trim()).filter(Boolean);
+ const units=(remainingText.match(/[^.!?]+(?:[.!?]+(?=\s|$)|$)/g)||[remainingText]).map(x=>x.trim()).filter(Boolean);
  const stage=document.getElementById('journal-stage');
  const wasOpened=stage.classList.contains('open-book');
  stage.classList.add('open-book');
@@ -1966,7 +1966,7 @@ function paginateVoice(textContent, makeMarkup){
   }else{
    // A single unusually long sentence may itself exceed a page.
    // Break that sentence at the last word that fits, never mid-word.
-   const words=rest[0].split(/\\s+/);
+   const words=rest[0].split(/\s+/);
    let left=1,right=words.length,count=0;
    while(left<=right){
     const middle=(left+right)>>1;
