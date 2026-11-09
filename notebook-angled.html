@@ -1898,6 +1898,36 @@ body{
  display:flex!important;
  visibility:visible!important;
 }
+
+/* Final notebook adjustments: physical facing pages, lower desktop position,
+   legible dates, and matching handwriting on reflection names. */
+@media(min-width:701px){
+ .stage,.stage.open-book,.stage:not(.open-book){
+  margin-top:clamp(-20px,calc(205px - var(--desktop-scene-width) * .153),95px)!important;
+ }
+}
+#book .voice-story .story-date{
+ font-size:17px!important;
+ letter-spacing:-.035em!important;
+ white-space:nowrap!important;
+}
+#book .archivepage .archive-list .archive-entry span{
+ font-size:17px!important;
+ line-height:1.2!important;
+}
+#book .archivepage .index-current-date{
+ font-size:24px!important;
+}
+#book .voice-story .voice-choice,
+#book .voice-story .reflection-toggle{
+ font-family:'Caveat','Segoe Print',cursive!important;
+ font-size:19px!important;
+ line-height:1.12!important;
+ color:#826148!important;
+}
+#book .voice-story .voice-choice.selected{
+ font-weight:700!important;
+}
 </style>
 
 </head>
@@ -2072,11 +2102,21 @@ function showSheet(){
  root.innerHTML='';
  const right=sheets[sheetIndex];
  const mobileSingle=window.matchMedia('(max-width:700px)').matches;
- const left=!mobileSingle&&opened&&sheetIndex>1&&sheetIndex!==sectionPages.about&&sheetIndex!==sectionPages.collaborators?sheets[sheetIndex-1]:null;
+ const left=!mobileSingle&&opened&&sheetIndex>1?sheets[sheetIndex-1]:null;
  if(left){const holder=document.createElement('div');holder.className='static-leaf static-left';holder.innerHTML=left;root.appendChild(holder)}
  if(opened&&right){const holder=document.createElement('div');holder.className='static-leaf static-right';holder.innerHTML=right;root.appendChild(holder);holder.addEventListener('click',e=>{if(e.target.closest('a,button,.archive-entry,.copy,.archive-list'))return;flip.flipNext()})}
  const total=sheets.length;
- label.textContent=sheetIndex===0?'Cover · Open the notebook':(mobileSingle?'Page '+sheetIndex+' of '+(total-1):'Pages '+Math.max(1,sheetIndex-1)+'–'+sheetIndex+' of '+(total-1));
+ if(sheetIndex===0){label.textContent='Cover · Open the notebook'}
+ else{
+  const range=sheetIndex<sectionPages.today?{name:'Index',first:sectionPages.archive,last:sectionPages.today-1}:
+    sheetIndex<sectionPages.about?{name:'Inspiration',first:sectionPages.today,last:sectionPages.about-1}:
+    sheetIndex<sectionPages.collaborators?{name:'About',first:sectionPages.about,last:sectionPages.collaborators-1}:
+    {name:'Collaborators',first:sectionPages.collaborators,last:total-1};
+  const count=range.last-range.first+1;
+  const right=sheetIndex-range.first+1;
+  const leftInRange=!mobileSingle&&sheetIndex>range.first&&sheetIndex>1;
+  label.textContent=range.name+' · '+(leftInRange?'Pages '+(right-1)+'–'+right:'Page '+right)+' of '+count;
+ }
  const bounds=sectionBounds(sheetIndex);
  const step=mobileSingle?1:2;
  prev.disabled=sheetIndex===0||sheetIndex<=bounds.first;
