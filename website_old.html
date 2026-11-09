@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#10243d">
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+    <link rel="stylesheet" href="styles.css?v=20261031-mastwidth">
+    <title>
+      Daily Hummingbird · Liz Stephens
+    </title>
+    <meta name="description" content="An interesting discovery each day, with thoughts from Liz Stephens.">
+  </head>
+  <body data-page="home">
+    <header>
+      <nav class="topnav wrap" aria-label="Main navigation">
+        <a href="index.html" data-nav="home">
+          Home
+        </a>
+        <a href="about.html" data-nav="about">
+          About
+        </a>
+        <a href="archive.html" data-nav="archive">
+          Archive
+        </a>
+        <a href="collaborators.html" data-nav="collaborators">
+          Collaborators
+        </a>
+        <a href="index.html#coming-soon">
+          Contribute
+        </a>
+      </nav>
+      <p class="header-tagline wrap">Daily inspiration through the cross-pollination of ideas and perspectives. An experiment in human collaboration, facilitated by AI.</p>
+      <section class="masthead">
+        <div class="responsive-masthead">
+          <picture class="responsive-masthead-picture">
+            <source media="(max-width: 650px)" srcset="assets/hummingbird-mobile-transparent.png">
+            <img src="assets/hummingbird-desktop-transparent.png" alt="Daily Hummingbird" style="display:block;width:100%;max-width:100%;height:auto;">
+          </picture>
+          
+        </div>
+      </section>
+    </header>
+    <main class="wrap">
+      <section class="feature" id="today">
+        <p id="status">
+          Loading today's inspiration…
+        </p>
+      </section>
+      <section class="below">
+        <article class="small-card">
+          <h3>
+            From the archive
+          </h3>
+          <div class="archive-preview" id="archive-preview">
+          </div>
+        </article>
+        <article class="small-card" id="coming-soon">
+          <h3 class="purple">
+            Coming soon
+          </h3>
+          <div class="coming">
+            <div class="seed" aria-hidden="true">
+              ✳
+            </div>
+            <div>
+              <h4>
+                Share your inspiration
+              </h4>
+              <p>
+                Soon you'll be able to suggest articles, ideas and projects that have caught your attention.
+              </p>
+            </div>
+          </div>
+        </article>
+      </section>
+      <nav class="archive-tags" id="tags" aria-label="Browse by theme">
+      </nav>
+    </main>
+    <footer>
+      <div class="wrap">
+        Daily Hummingbird · Curated by Liz Stephens
+        <br>
+        <a href="about.html">
+          About
+        </a>
+        <a href="archive.html">
+          Archive
+        </a>
+        <a href="collaborators.html">
+          Collaborators
+        </a>
+        <a href="contact.html">
+          Request a correction or removal
+        </a>
+        <br>
+        All linked articles and photographs remain the work of their respective creators.
+      </div>
+    </footer>
+    <script src="site.js?v=20261102-thoughts" defer>
+    </script>
+    <script>
+      document.querySelector('[data-nav="home"]').setAttribute('aria-current','page')
+    </script>
+  </body>
+</html>
