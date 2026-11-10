@@ -2086,9 +2086,30 @@ function paginateVoice(textContent, makeMarkup){
   probe.innerHTML=makeMarkup(candidate,index,isLast,999);
   const copy=probe.querySelector('.voice-copy');
   const paragraph=copy&&copy.querySelector('p');
-  if(!copy||!paragraph)return false;
-  // Check actual available box height, not the number of words.
-  return paragraph.scrollHeight<=copy.clientHeight-3 && copy.clientHeight>25;
+  const paper=probe.querySelector('.page-inner');
+  if(!copy||!paragraph||!paper)return false;
+  // On desktop a flex copy box may shrink to its content's height, even
+  // when there is much more empty paper beneath it. Comparing against
+  // copy.clientHeight incorrectly starts a new page halfway down.
+  // Instead measure the remaining space from the text top to the
+  // physical bottom of the paper, reserving room for links and folios.
+  if(!window.matchMedia('(min-width:701px)').matches){
+   return paragraph.scrollHeight<=copy.clientHeight-3 && copy.clientHeight>25;
+  }
+  const paperStyle=getComputedStyle(paper);
+  const paddingBottom=parseFloat(paperStyle.paddingBottom)||0;
+  const textTop=copy.getBoundingClientRect().top;
+  const paperBottom=paper.getBoundingClientRect().bottom;
+  const links=probe.querySelector('.story-links');
+  const folio=probe.querySelector('.voice-part-count');
+  const reserve=(links?Math.max(24,links.scrollHeight+10):0)
+    +(folio?Math.max(20,folio.scrollHeight+5):0)+8;
+  const available=paperBottom-paddingBottom-textTop-reserve;
+  const paragraphStyle=getComputedStyle(paragraph);
+  const textHeight=paragraph.scrollHeight
+   +(parseFloat(paragraphStyle.marginTop)||0)
+   +(parseFloat(paragraphStyle.marginBottom)||0);
+  return available>30&&textHeight<=available-3;
  }
  const parts=[];
  let rest=units.slice();
