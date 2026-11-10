@@ -2232,6 +2232,7 @@ function build(x){
  // Insert an unprinted left leaf only when needed; the underlying photograph
  // already provides its paper, so never draw a separate blank HTML page.
  if((pieces.length-sectionPages.collaborators)%2===1)pieces.push(page('','spacerpage'));
+ sectionPages.closing=pieces.length;
  pieces.push(page('<div class="journal-ending"><p><em>Daily inspiration through the cross-pollination of ideas and perspectives. An experiment in human collaboration, facilitated by AI.</em></p></div>','closingpage'));
  return pieces;
 }
@@ -2246,7 +2247,7 @@ function update(){
 // Page indices are physical leaves. The right leaf is the selected page;
 // when the final continuation is a left leaf, a blank right leaf completes the spread.
 function sectionBounds(name=currentSection){
- if(name==='collaborators')return {name,first:sectionPages.collaborators,last:sheets.length-1};
+ if(name==='collaborators')return {name,first:sectionPages.collaborators,last:sectionPages.closing};
  if(name==='about')return {name,first:sectionPages.about,last:sectionPages.collaborators-1};
  // The Index and today's Inspiration occupy one continuous set of leaves.
  return {name:'archive',first:sectionPages.archive,last:sectionPages.about-1};
@@ -2272,6 +2273,10 @@ function stepPage(direction){
  const end=single?bounds.last:lastSpreadRight(bounds);
  let target=Math.max(bounds.first,Math.min(end,sheetIndex+direction*increment));
  if(single&&isSpacer(target))target=Math.max(bounds.first,Math.min(end,target+direction));
+ // Always make the closing right-hand page the last destination in the book.
+ if(currentSection==='collaborators'&&direction>0&&sheetIndex< sectionPages.closing&&target>sectionPages.closing){
+  target=sectionPages.closing;
+ }
  if(target!==sheetIndex)turnTo(target,direction>0?'next':'prev');
 }
 function openSection(name){
@@ -2294,7 +2299,7 @@ function showSheet(){
  }
  stage.classList.toggle('open-book',opened);
  // The physical bookmark tabs disappear on the closing leaf.
- stage.classList.toggle('at-final-page',opened&&sheetIndex===sheets.length-1);
+ stage.classList.toggle('at-final-page',opened&&sheetIndex===sectionPages.closing);
  stage.onclick=opened?null:()=>flip.flipNext();
  stage.style.cursor=opened?'default':'pointer';
  root.innerHTML='';
@@ -2308,7 +2313,7 @@ function showSheet(){
   holder.innerHTML=sheets[sheetIndex-1];
   root.appendChild(holder);
  }
- if(opened&&sheetIndex<=bounds.last&&!isSpacer(sheetIndex)){
+ if(opened&&sheetIndex<=bounds.last&&(!isSpacer(sheetIndex)||sheetIndex===sectionPages.closing)){
   const holder=document.createElement('div');
   holder.className='static-leaf static-right';
   holder.innerHTML=sheets[sheetIndex];
