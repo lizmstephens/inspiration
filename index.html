@@ -2350,7 +2350,7 @@ window.addEventListener('resize',()=>{
  },180);
 });
 
-Promise.all([fetch('inspiration.json').then(r=>{if(!r.ok)throw Error('Could not load discoveries');return r.json()}),fetch('collaborators.json',{cache:'no-store'}).then(r=>{if(!r.ok)throw Error('Could not load collaborators');return r.json()})]).then(([data,collaborators])=>{
+Promise.all([fetch('inspiration.json',{cache:'no-store'}).then(r=>{if(!r.ok)throw Error('Could not load discoveries');return r.json()}),fetch('collaborators.json',{cache:'no-store'}).then(r=>{if(!r.ok)throw Error('Could not load collaborators');return r.json()})]).then(([data,collaborators])=>{
  collaboratorData=collaborators;
  all=data.slice().sort((a,b)=>b.date.localeCompare(a.date));
  const param=new URLSearchParams(location.search).get('id');const chosen=all.find(x=>x.id===param)||all[0];render(chosen);
