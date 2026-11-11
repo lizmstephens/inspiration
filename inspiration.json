@@ -1,5 +1,39 @@
 [
   {
+    "id": "bereavement-beyond-death-toll",
+    "date": "2026-11-11",
+    "title": "One death is never just one death",
+    "summary": "When we count the human cost of conflict, we usually focus on the number of people killed. But what about the people they leave behind? In a 2024 study published in Science Advances, researchers examined the wider consequences of conflict-related deaths across 16 populations, estimating how many surviving family members experience the loss of a parent, child, sibling or spouse. Their findings revealed how the impact of a single death extends far beyond the individual. In Syria, for example, each death was associated with an average of approximately 1.4 bereaved parents and 2.5 bereaved children. The researchers argued that conventional mortality statistics capture only part of the human cost of armed conflict. By quantifying bereavement, their work offers a different way of understanding the scale and lasting consequences of human loss.",
+    "thoughts": "This feels like the counterpart to the Wind Phone from an academic perspective. I feel like the switch to 'number of people bereaved' changes the narrative. While this paper is from a conflict perspective, I think many aspects apply to fatalities from natural hazards. The loss of a caregiver or source of household incomes will have long-term impacts, and I think it has implications for disaster memory too.",
+    "tags": [
+      "risk",
+      "resilience",
+      "community",
+      "communication",
+      "recovery"
+    ],
+    "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11277369/",
+    "image": "https://www.demogr.mpg.de/mediacms/22583_main_Graph%201%20The%20long-lasting%20effect%20of%20armed%20conflicts%20deaths_English.png",
+    "image_credit": "Graph: Max Planck Institute for Demographic Research; based on Alburez-Gutierrez et al. (2024), Science Advances.",
+    "image_credit_url": "https://www.demogr.mpg.de/en/news_events_6123/news_press_releases_4630/press/beyond_casualties_the_enduring_trauma_of_bereavement_after_armed_conflicts_13287",
+    "image_license_url": "",
+    "image_status": "permission required",
+    "discovery": "We often measure the human impact of disasters and conflicts through numbers: deaths, injuries, people displaced. These figures are important, but they can make the consequences seem more contained than they really are. Bereavement research reveals something that conventional statistics often overlook: a single death can profoundly affect many other lives.\n\nThis raises an interesting question about how we define and measure impact. If our indicators focus only on immediate outcomes, what longer-term consequences are we missing? The effects of bereavement can extend across generations, influencing families, communities and the support networks on which people depend.\n\nThere is also a challenge for communication. Numbers help us understand the scale of a crisis, but they can obscure the relationships behind them. Perhaps understanding human impact requires us to count not just individuals, but the connections between them.",
+    "sources": [
+      {
+        "label": "Original source",
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11277369/"
+      }
+    ],
+    "reflections": [
+      {
+        "name": "Sayanti",
+        "text": "I tend to agree. Most losses are just counted in hard stats, and\npsychosocial impacts of losses which can't be easily put into digits are\nhardly captured. Also similar to disaster losses. There are almost always\nmore stories of traditional land lost, cultures disrupted. Which is why I\nam really excited to see how the Fund for responding to Loss and Damage\nstarts performing and how countries are asking for compensation and whether\nthey even count these losses, as the Fund specifically seeks to fund\nnon-economic losses.",
+        "approved": true
+      }
+    ]
+  },
+  {
     "id": "musiclab-parallel-worlds",
     "date": "2026-11-10",
     "title": "Why the same songs become hits in different worlds",
