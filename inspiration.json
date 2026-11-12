@@ -1,5 +1,44 @@
 [
   {
+    "id": "up-goer-five",
+    "date": "2026-11-12",
+    "title": "The rocket explained using only 1,000 words",
+    "summary": "In November 2012, cartoonist Randall Munroe published an xkcd comic explaining NASA's Saturn V rocket using only the 1,000 most common English words. Because technical terms such as rocket were excluded, he renamed it the Up Goer Five, producing a detailed diagram with descriptions such as “people box” for the crew capsule. The comic inspired geneticist Theo Sanderson to create an online text editor that checks whether writing stays within the same restricted vocabulary. Scientists subsequently took up the challenge, producing descriptions of research ranging from particle physics to volcanology. The exercise became a popular science-communication activity, including at scientific conferences.",
+    "thoughts": "How clearly are we explaining to people something that is maybe hard to understand? Is this now a dead art form because we have know-everything machines to do this for us? Sometimes I think that this is what I end up doing anyway when I try to speak in a different language!",
+    "tags": [
+      "science",
+      "communication",
+      "learning",
+      "design",
+      "culture"
+    ],
+    "source": "https://xkcd.com/1133/",
+    "image": "https://imgs.xkcd.com/comics/up_goer_five.png",
+    "image_credit": "Randall Munroe / xkcd, CC BY-NC 2.5",
+    "image_credit_url": "https://xkcd.com/1133/",
+    "image_license_url": "https://xkcd.com/license.html",
+    "image_status": "licensed",
+    "discovery": "The Up Goer Five is funny because it turns sophisticated engineering into something that sounds almost childlike. But beneath the humour is a serious communication challenge: how much of our expertise depends on specialised language, and how much can we explain without it?\n\nTechnical vocabulary is useful because it allows experts to communicate complex ideas precisely and efficiently. But it can also create barriers, particularly when people from different disciplines need to work together. Restricting ourselves to everyday words forces us to reconsider what we actually mean, rather than relying on terminology that others may not understand.\n\nThere is a tension here, though. Simplifying language can make ideas more accessible, but it can also sacrifice important distinctions. Perhaps the real skill isn't explaining everything simply, but knowing which complexities matter, and which are merely habits of our own discipline.",
+    "sources": [
+      {
+        "label": "Original source",
+        "url": "https://xkcd.com/1133/"
+      }
+    ],
+    "reflections": [
+      {
+        "name": "Erin",
+        "text": "I'm a huge fan of Randall Monroe - he eventually wrote a whole book on\nthis. I've spent the last few days at a conference in which we argued over\nthe use of \"forecast verification\" vs \"forecast benchmarking\" lol. Munroe\nshows that precision of language is both critical and irrelevant.",
+        "approved": true
+      },
+      {
+        "name": "Sayanti",
+        "text": "Ah I wish we had something similar to communicate our climate work to\npeople from completely different fields. I often assume that by now\neveryone knows what climate change is doing to us, but very now and then I\nam shocked that I might be in a bubble.",
+        "approved": true
+      }
+    ]
+  },
+  {
     "id": "bereavement-beyond-death-toll",
     "date": "2026-11-11",
     "title": "One death is never just one death",
