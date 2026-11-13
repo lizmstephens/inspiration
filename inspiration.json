@@ -1,5 +1,39 @@
 [
   {
+    "id": "smellmap-amsterdam",
+    "date": "2026-11-13",
+    "title": "Mapping a city by its smells",
+    "summary": "In April 2013, artist and researcher Kate McLean invited 44 people to explore Amsterdam using their noses rather than their eyes. Across ten guided smellwalks, participants recorded more than 650 encounters with different smells, describing their intensity, location and personal associations. McLean organised these observations into 50 categories and created a colourful map showing where smells originated, how far they might travel and how prevailing winds influenced their movement. The resulting Smellmap: Amsterdam, exhibited in 2014, included specially recreated scents that visitors could experience alongside the map. The project demonstrated a method for documenting an aspect of urban environments that conventional maps rarely represent: their changing sensory character.",
+    "thoughts": "As a geographer by training this a reminder of always reflecting on the subjectivity of maps - who chooses what gets mapped, and why did they make the choices they did? I like how this maps a city from a completely different perspective, and I wonder if the brief was different, like using hearing rather than smell, the map might look completely different. In a world of big data, it is another reminder that the maps we create end up being of the data we collected, and not the data we didn't. The things that are important to some people may not be visible.",
+    "tags": [
+      "design",
+      "science",
+      "community",
+      "collaboration",
+      "communication"
+    ],
+    "source": "https://sensorymaps.com/",
+    "image": "",
+    "image_credit": "",
+    "image_credit_url": "",
+    "image_license_url": "",
+    "image_status": "placeholder",
+    "discovery": "Most maps tell us where things are, but the Amsterdam Smellmap asks a different question: what does a place actually feel like to experience? By mapping smells, Kate McLean captured something that conventional geographic data often misses: the subjective, fleeting and deeply personal character of our surroundings.\n\nWhat's particularly interesting is that the project didn't treat these subjective experiences as unreliable observations to be discarded. Instead, it brought them together to reveal patterns that no single participant could have identified alone.\n\nThis raises questions about what we consider legitimate evidence. Scientific measurements offer consistency and comparability, but they don't necessarily capture everything that matters to people. How might our understanding of a place change if we mapped not just its physical characteristics, but how people experience it?\n\nPerhaps the most revealing maps are sometimes those that show us what we've never thought to measure.",
+    "sources": [
+      {
+        "label": "Original source",
+        "url": "https://sensorymaps.com/"
+      }
+    ],
+    "reflections": [
+      {
+        "name": "Janot",
+        "text": "Reminds me of a fascinating Amsterdam science museum exhibit geared to draw \nteenagers: *on sex*! It displayed a bunch of stinky t-shirts that \nresearchers had got a bunch of guys to wear for a few days. The experiment \nwas for other people - generally on the other side of the sex spectrum - to \nsee whether each smelled good, bad or indifferent - to find out if the more \nclosely genetically related we are the more unpleasant we smell to each \nother! Being subtly more attracted to potential breeding partners who are \nmore distantly related (given no human being is more than about 50th cousin \nto any other human) than our biologically close family is “nature’s” way of \nencouraging hybrid vigor! Turns out our sense of smell is wired for mixing \nup the gene pool…An evolutionary biology principle lurking in these depths? \nTo borrow one of my father’s jokes: to keep the species from swimming into \nthe shallow end of the gene pool!",
+        "approved": true
+      }
+    ]
+  },
+  {
     "id": "up-goer-five",
     "date": "2026-11-12",
     "title": "The rocket explained using only 1,000 words",
