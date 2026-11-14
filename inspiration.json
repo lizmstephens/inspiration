@@ -1,5 +1,44 @@
 [
   {
+    "id": "library-of-missing-datasets",
+    "date": "2026-11-14",
+    "title": "The Library of Missing Datasets",
+    "summary": "In 2016, artist and researcher Mimi Ọnụọha created The Library of Missing Datasets, an installation consisting of a filing cabinet filled with labelled but empty folders. Each folder represented information that might reasonably be expected to exist, but was absent from otherwise data-rich systems. Examples included information about people excluded from public housing because of criminal records and the mobility of older adults with disabilities. By giving these absences a physical form, Ọnụọha drew attention to the social, political and institutional decisions that determine what gets recorded. Her accompanying research explored why datasets remain missing, including lack of incentives to collect them, difficulties in measurement, and situations where the absence of data benefits particular groups.",
+    "thoughts": "As we become more reliant on genAI to give us the answers it's important to have artists like Mimi Ọnụọha to help us engage critically with what it can't tell us.",
+    "tags": [
+      "data",
+      "science",
+      "culture",
+      "design",
+      "technology"
+    ],
+    "source": "https://www.mimionuoha.com/the-library-of-missing-datasets",
+    "image": "",
+    "image_credit": "",
+    "image_credit_url": "",
+    "image_license_url": "",
+    "image_status": "placeholder",
+    "discovery": "We often think of missing data as a problem to be solved. If only we could collect more information, we might make better decisions. But Mimi Ọnụọha's Library of Missing Datasets suggests that the gaps themselves can tell us something important.\n\nData doesn't simply exist, waiting to be collected. Someone has to decide what is worth measuring, invest in collecting it, and determine how it will be categorised. What remains unmeasured can reveal whose experiences are overlooked, which questions institutions prioritise, and where power lies.\n\nYet there's an interesting tension. Missing data can make people invisible to decision-makers, but collecting information about them can also expose them to surveillance, discrimination or harm.\n\nPerhaps the challenge isn't simply to fill the gaps in our datasets. It's to ask who decided what should be measured, whose interests those decisions serve, and whether more information will necessarily lead to better outcomes.",
+    "sources": [
+      {
+        "label": "Original source",
+        "url": "https://www.mimionuoha.com/the-library-of-missing-datasets"
+      }
+    ],
+    "reflections": [
+      {
+        "name": "Tesse",
+        "text": "When I tried to open the link, I actually couldn't find the library. A\nlittle google search brought me here:\nhttps://mimi-onuoha-9s0o.squarespace.com/the-library-of-missing-datasets\nand https://github.com/MimiOnuoha/missing-datasets - what a treat to get\nthis piece in my inbox!",
+        "approved": true
+      },
+      {
+        "name": "Erin",
+        "text": "What a lovely project! I wonder if it inspired any changes.",
+        "approved": true
+      }
+    ]
+  },
+  {
     "id": "smellmap-amsterdam",
     "date": "2026-11-13",
     "title": "Mapping a city by its smells",
@@ -29,6 +68,11 @@
       {
         "name": "Janot",
         "text": "Reminds me of a fascinating Amsterdam science museum exhibit geared to draw \nteenagers: *on sex*! It displayed a bunch of stinky t-shirts that \nresearchers had got a bunch of guys to wear for a few days. The experiment \nwas for other people - generally on the other side of the sex spectrum - to \nsee whether each smelled good, bad or indifferent - to find out if the more \nclosely genetically related we are the more unpleasant we smell to each \nother! Being subtly more attracted to potential breeding partners who are \nmore distantly related (given no human being is more than about 50th cousin \nto any other human) than our biologically close family is “nature’s” way of \nencouraging hybrid vigor! Turns out our sense of smell is wired for mixing \nup the gene pool…An evolutionary biology principle lurking in these depths? \nTo borrow one of my father’s jokes: to keep the species from swimming into \nthe shallow end of the gene pool!",
+        "approved": true
+      },
+      {
+        "name": "Sayanti",
+        "text": "Oh wow, I wonder if they could smell the stroopwaffels from Amsterdam. I\nwould love to have been a part of this!",
         "approved": true
       }
     ]
