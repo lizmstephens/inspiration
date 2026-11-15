@@ -1,5 +1,49 @@
 [
   {
+    "id": "world-without-oil",
+    "date": "2026-11-15",
+    "title": "The game that imagined an oil crisis",
+    "summary": "In 2007, World Without Oil invited people to participate in a 32-day online alternate reality game imagining a sudden global oil shortage. Participants wrote fictional blog posts, recorded videos and shared accounts of how the crisis might affect their everyday lives. Rather than following a predetermined storyline, they collectively developed a picture of how people might adapt, from changing their travel habits to organising local responses. The project brought together more than 1,800 registered players and generated over 1,500 contributions. It demonstrated an approach to exploring future crises through collaborative storytelling, allowing participants to imagine practical and social consequences rather than simply reading a forecast.",
+    "thoughts": "I went down a rabbit hole reading about this. I think it is an interesting exercise in imagination and collaborative storytelling, and I like how it was played over the course of a month rather than in a single workshop. However, I did wonder whether it changed anything (although as a game maybe it wasn't designed to). I found a critique of the design of the game as creating 'groupthink' rather than 'collective intelligence'. However, there is no single perfect way of designing and facilitating these exercises, and I think it is important that we continue to learn and improve on what we do, so both the game itself and the critique are valuable.",
+    "tags": [
+      "resilience",
+      "behaviour",
+      "collaboration",
+      "decision-making",
+      "learning"
+    ],
+    "source": "https://www.worldwithoutoil.org/",
+    "image": "",
+    "image_credit": "",
+    "image_credit_url": "",
+    "image_license_url": "",
+    "image_status": "placeholder",
+    "discovery": "Most exercises exploring future crises begin with a scenario designed by experts, which participants are then asked to respond to. World Without Oil reversed that relationship. It gave people a fictional crisis and invited them to imagine its consequences for themselves.\n\nWhat's fascinating is that the participants didn't simply predict what might happen. They created stories about how they would adapt, drawing on their own experiences, circumstances and imagination. Together, these individual contributions produced a much richer picture of a possible future than any single storyline could offer.\n\nBut there's an interesting tension here. Imagining a crisis is not the same as experiencing one, and the people willing to participate in an online game may not represent those most vulnerable to its consequences.\n\nPerhaps the value of participatory futures exercises lies less in predicting what will happen, and more in revealing the possibilities, assumptions and blind spots that emerge when different people imagine the same future.",
+    "sources": [
+      {
+        "label": "Original source",
+        "url": "https://www.worldwithoutoil.org/"
+      }
+    ],
+    "reflections": [
+      {
+        "name": "Sayanti",
+        "text": "Would be nice to see if the simulated responses provided by participants in\n2007 are similar/include any of the responses we have seen\npeople/communities take this year with the crisis. And I wonder if the\nresults of the game could have been promoted rapidly and widely, in a way\nthat it was global news, would people be more cautious and collaborative to\nnot get it to this situation?",
+        "approved": true
+      },
+      {
+        "name": "Macarena",
+        "text": "Amazing! I love this. Connecting and just seeing and hearing that others\nalso care, and that there may be a way to move forward together, is the\nbest way to fire-start action. It's not just one, and is a diversity of\nminds, capabilities, skill, AND contacts to ripple the effect. I had a\nquick look at the website, and I didn't get the sense that it got to\nsomething more concrete.... If, so, I wonder why? I guess that wasn't the\ngoal, but also, maybe, are we just so tired that we cannot push for the\nnext step? Are the barriers too high? Didn't we agree on what to do to get\nto that vision? Did we not have enough funds or political support? Did we\nask?! (NOTE: I am talking about \"we\" because it seems my writing style can\nsometimes sound judgmental or condescending. This is just a reflection!).",
+        "approved": true
+      },
+      {
+        "name": "Erin",
+        "text": "I'm interested to know how many of the imagined stories have come to pass\nduring recent oil price spikes! Conversely, are there real-world effects\nthat people failed to imagine?? I feel like this is a forecast verification\napproach, but I'd love to know the result.",
+        "approved": true
+      }
+    ]
+  },
+  {
     "id": "library-of-missing-datasets",
     "date": "2026-11-14",
     "title": "The Library of Missing Datasets",
