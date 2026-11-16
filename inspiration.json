@@ -1,5 +1,44 @@
 [
   {
+    "id": "asperitas-clouds",
+    "date": "2026-11-16",
+    "title": "The cloud discovered by people looking up",
+    "summary": "In 2006, Jane Wiggins photographed an unusual formation of rippling clouds above Cedar Rapids, Iowa, and submitted her photograph to the Cloud Appreciation Society. Similar observations from cloud enthusiasts around the world helped its founder, Gavin Pretor-Pinney, campaign for the formation to be formally recognised. In 2017, the World Meteorological Organization added asperitas to its International Cloud Atlas as a new supplementary cloud feature, characterised by chaotic, wave-like structures resembling the underside of a rough sea. It was the first addition of its kind in decades, demonstrating how observations by members of the public could contribute to an international scientific classification.",
+    "thoughts": "Spotting waves in the sky still feels somehow unexpected, we can see and feel them in water, but when I spot waves in clouds (like k-h waves), it feels like a more powerful reminder of the physics that governs our weather. I love the Cloud Appreciation Society, and that non-experts have helped improve meteorological understanding through documenting these clouds. We all live under the same sky - and are similarly fascinated by it.",
+    "tags": [
+      "science",
+      "collaboration",
+      "community",
+      "learning",
+      "communication"
+    ],
+    "source": "https://cloudappreciationsociety.org/cloud-library/asperitas/",
+    "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Rare_Asperitas_clouds_over_Channel_Islands%2C_California.jpg",
+    "image_credit": "Mjolevin, Rare Asperitas clouds over Channel Islands, California, CC BY 4.0, via Wikimedia Commons",
+    "image_credit_url": "https://commons.wikimedia.org/wiki/File:Rare_Asperitas_clouds_over_Channel_Islands,_California.jpg",
+    "image_license_url": "https://creativecommons.org/licenses/by/4.0/",
+    "image_status": "licensed",
+    "discovery": "The story of asperitas clouds is a lovely example of how scientific discovery doesn't always begin in a laboratory or research institution. Sometimes it begins with someone noticing something unusual, looking up, and asking what it is.\n\nWhat's particularly interesting is the relationship between amateur observation and scientific authority. The cloud enthusiasts didn't simply contribute photographs to an existing research project. Their curiosity helped initiate a process that eventually changed an international scientific classification.\n\nBut there's an important distinction between observing something and establishing what it means. Recognition required scientists to examine the evidence, agree on the characteristics of the formation, and determine how it fitted within existing knowledge.\n\nPerhaps the most interesting lesson is that expertise and curiosity needn't be competing sources of knowledge. Scientific institutions provide the rigour needed to evaluate observations, while people outside those institutions can help determine which questions are worth investigating in the first place.",
+    "sources": [
+      {
+        "label": "Original source",
+        "url": "https://cloudappreciationsociety.org/cloud-library/asperitas/"
+      }
+    ],
+    "reflections": [
+      {
+        "name": "Erin",
+        "text": "The widespread use of technology (e.g. cellphone cameras) has enabled\nexciting new amateur science contributions to established fields. A PhD\nstudent I advise recently discovered a mathematical error in a paper\npublished by an established scientist in an adjacent field. AI technology\nallowed the student to quickly write code that could check the original\nwork of that paper and find the mistake (a unit conversion error that\nchanges the outcome of the study!). I wonder how to facilitate this in a\nproductive way - breaking down established entry barriers in science.",
+        "approved": true
+      },
+      {
+        "name": "Janot",
+        "text": "If the WMO should like to encourage *cloud enthusiasts* to contribute observations...What Fun it might be to include a category for paraedolia. According to psychological research, paraedolia is a vestigial capacity for meaning-making derived from face recognition as an evolutionary advantage enabling the rapid distinction of friend vs. foe. Imagine a planetary scale data set of cloud phenomena effectively selected by the subconscious human impulse we might call meaning-making. I have a hunch that this method of image collection, subjected to machine learning analysis to identify predictors, could offer contributions not only to new cloud phenomena but also to how we have evolved into a weather-predicting species, and more fundamentally - how meaning making drives curiosity & creativity - which underlie exploration (enquiry & science), discovery (learning & societal integration) and innovation (learngin-by-doing & adaptive capacity).",
+        "approved": true
+      }
+    ]
+  },
+  {
     "id": "world-without-oil",
     "date": "2026-11-15",
     "title": "The game that imagined an oil crisis",
