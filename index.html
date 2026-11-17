@@ -2040,6 +2040,7 @@ body{
 }
 </style>
 
+<style id="reflections-images">.reflection-illustration{margin:0 auto 0.5rem;text-align:center}.reflection-illustration img{display:block;max-width:100%;width:auto;max-height:48vh;height:auto;object-fit:contain;margin:0 auto}.reflection-illustration figcaption{font-size:.85em}</style>
 </head>
 <body>
 
@@ -2163,9 +2164,9 @@ function build(x){
  const voices=[{label:'Original Story',text:x.summary,kind:'original'}];
  if(x.discovery&&String(x.discovery).trim())voices.push({label:'AI',text:x.discovery,kind:'reflection'});
  if(x.thoughts&&String(x.thoughts).trim())voices.push({label:'Liz',text:x.thoughts,kind:'reflection'});
- (x.reflections||[]).filter(c=>c&&c.approved===true&&c.name&&c.text&&String(c.text).trim()).forEach(c=>{
+ (x.reflections||[]).filter(c=>c&&c.approved===true&&c.name&&((c.text&&String(c.text).trim())||c.image)).forEach(c=>{
   const first=String(c.name).trim().split(/\s+/)[0];
-  voices.push({label:first,text:c.text,kind:'reflection'});
+  voices.push({label:first,text:c.text||'',image:c.image||'',kind:'reflection'});
  });
  const selected=Math.min(activeVoice,voices.length-1);
  const voiceButtons=voices.map((v,i)=>'<button type="button" class="voice-choice'+(i===selected?' selected':'')+'" data-voice="'+i+'" aria-pressed="'+(i===selected?'true':'false')+'">'+esc(v.label)+'</button>').join('');
@@ -2173,14 +2174,16 @@ function build(x){
  const toggle='<button type="button" class="reflection-toggle'+(selected>0?' active-reflection':'')+'" aria-expanded="'+(voiceMenuExpanded?'true':'false')+'" aria-label="Show or hide '+esc(countLabel)+'">'+esc(countLabel)+' <span aria-hidden="true">'+(voiceMenuExpanded?'▴':'▾')+'</span></button>';
  const voiceMenu='<nav class="voice-menu'+(voiceMenuExpanded?' expanded':'')+'" '+(voiceMenuExpanded?'':'hidden ')+'aria-label="Choose a perspective"><div class="voice-buttons">'+voiceButtons+'</div></nav>';
  const selectedText=voices[selected].text;
+ const selectedImage=voices[selected].image||'';
+ const imageHtml=selectedImage?'<figure class="reflection-illustration"><img src="'+esc(selectedImage)+'" alt="Illustration contributed by '+esc(voices[selected].label)+'" loading="lazy" onerror="this.hidden=true;this.nextElementSibling.hidden=false"><figcaption hidden>Illustration temporarily unavailable.</figcaption></figure>':'';
  // Selected voices replace one another; only their own continuation pages are made.
  const voicePageHtml=(part,i,isLast,pageTotal)=>{
   const heading=i===0?'<div class="story-intro"><div class="story-intro-text"><h2><span class="ink-highlight">'+esc(x.title)+'</span></h2><div class="eyebrow story-date">'+esc(date(x.date))+'</div>'+toggle+'</div>'+img+'</div>':'<div class="eyebrow story-continuation-title">'+esc(x.title)+' · continued</div>';
   const links=selected===0&&isLast?'<div class="story-links">'+sources.map(z=>'<a href="'+link(z.url)+'" target="_blank" rel="noopener noreferrer">Read original story ↗</a>').join(' · ')+'</div>':'';
   const continuation=pageTotal>1?'<span class="voice-part-count">'+(i+1)+' / '+pageTotal+'</span>':'';
-  return page(heading+(i===0?voiceMenu:'')+'<div class="copy voice-copy"><p>'+esc(part)+'</p></div>'+links+continuation,'story voice-story');
+  return page(heading+(i===0?voiceMenu:'')+'<div class="copy voice-copy">'+(imageHtml&&i===0?imageHtml:'')+(part?'<p>'+esc(part)+'</p>':'')+'</div>'+links+continuation,'story voice-story');
  };
- const storyParts=paginateVoice(selectedText,voicePageHtml);
+ const storyParts=selectedImage?['']:paginateVoice(selectedText,voicePageHtml);
  storyParts.forEach((part,i)=>pieces.push(voicePageHtml(part,i,i===storyParts.length-1,storyParts.length)));
  sectionPages.about=pieces.length;
  const aboutHtml='<h2>About Daily Hummingbird</h2><div class="copy about-copy">'+"\n        <p>\n          I'm Liz Stephens,\n          <a href=\"https://research.reading.ac.uk/meteorology/people/liz-stephens/\" target=\"_blank\" rel=\"noopener noreferrer\">\n            Professor of Climate Risks and Resilience at the University of Reading\n          </a>\n          , in a joint role with the Red Cross Red Crescent Climate Centre.\n        </p>\n        <p>\n          I spend much of my professional life thinking about climate risk, forecasting and how scientific information can be put to use. Though I'm a scientist by background, I find myself most energised and inspired by engaging with people and ideas from many different backgrounds.\n        </p>\n        <p>\n          I'm also experimenting with using generative AI in different areas of my work, trying to understand how it can make me better at what I do (rather than replace me!).\n        </p>\n        <p>\n          Daily Hummingbird has grown out of that experimentation. I use ChatGPT to find me interesting articles from, well, just about anywhere; science to humanities, art to technology. It's designed to be a quick, cup-of-tea-sized encounter with something to inspire me at the start of the day. Through our conversations, ChatGPT learns what interests me and why, helping me curate the content. I'm now adding my own reflections, so you can see what's AI-generated and what's human.\n        </p>\n        <p>\n          Sometimes the connection to my work is obvious, sometimes it's unexpected, and sometimes it's just a bit of fun.\n        </p>\n        <p>\n          Over time, I'd like to invite other people to share their perspectives too. Looking at the same idea from different backgrounds can help cross-pollinate ideas (hence the hummingbird).\n        </p>\n        <p>\n          <em>\n            This is a personal curation project, not an official publication of my affiliated institutions.\n          </em>\n        </p>\n        <p>\n          <a href=\"archive.html\" class=\"pill\">\n            Explore the archive →\n          </a>\n        </p>\n      "+'</div>';
