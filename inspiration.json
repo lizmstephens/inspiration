@@ -28,8 +28,9 @@
     "reflections": [
       {
         "name": "Janot",
-        "text": "￼",
-        "approved": true
+        "text": "",
+        "approved": true,
+        "image": "assets/janot-decision-cartoon.jpg"
       },
       {
         "name": "Macarena",
