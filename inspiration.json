@@ -1,5 +1,49 @@
 [
   {
+    "id": "coin-toss-prediction-luck",
+    "date": "2026-11-17",
+    "title": "When winning at coin tosses makes us believe we're better at predicting",
+    "summary": "In a 2025 study published in PNAS Nexus, researchers conducted five experiments involving more than 12,000 participants who predicted sequences of five fair coin tosses. Participants who happened to make more correct predictions became more optimistic about their future performance and more willing to take risks, while those who were less successful became more pessimistic and risk-averse. This happened even though the outcomes were entirely random, and participants understood the nature of the task. The effect was particularly strong among people who frequently changed their predictions. The experiments demonstrated how people can interpret random success and failure as evidence of their own predictive ability.",
+    "thoughts": "Well this is a rather disappointing reflection on human decision-making! It is interesting that even people who have a good knowledge of probabilities are affected by their prior success. I'm struck by the final lines of the paper, which are what we see with extreme / rare weather events too: \"even when the role of chance is clear and that nothing else can account for their experience, people simply cannot help but use the past, good or bad, as a guide for the future.\"",
+    "tags": [
+      "behaviour",
+      "science",
+      "decision-making",
+      "risk",
+      "learning"
+    ],
+    "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12378910/",
+    "image": "",
+    "image_credit": "",
+    "image_credit_url": "",
+    "image_license_url": "",
+    "image_status": "placeholder",
+    "discovery": "We know that a fair coin toss is random. Yet this study suggests that even when we understand that intellectually, we struggle to resist interpreting our successes and failures as evidence of our own abilities.\n\nWhat's particularly interesting is that the consequences extend beyond how people judge their performance. A run of lucky predictions can make someone more willing to take risks, while an unlucky run can make them more cautious. Random outcomes can therefore influence decisions that have nothing to do with the original task.\n\nThis raises an interesting question about how we learn from experience. We generally assume that feedback helps us improve our decisions, but feedback is only informative if we can distinguish between the quality of a decision and the outcome it produces.\n\nIn uncertain environments, a good decision can have a bad outcome, and a poor decision can succeed through luck. How do we design learning processes that recognise the difference?",
+    "sources": [
+      {
+        "label": "Original source",
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12378910/"
+      }
+    ],
+    "reflections": [
+      {
+        "name": "Janot",
+        "text": "￼",
+        "approved": true
+      },
+      {
+        "name": "Macarena",
+        "text": "I'd argue that this is no different from the superstitions and traditions we\n connect to certain outcomes. And I think that's actually OK! I don't\nnecessarily see any harm in it. Ultimately, I think what matters most about\nbelieving in luck or superstition is the hope it gives us, and how we\nchoose to interpret and make sense of events. Because that, in turn, shapes\nhow we feel about our experiences and how we perceive life.",
+        "approved": true
+      },
+      {
+        "name": "Sayanti",
+        "text": "Yes, I think it's something to do with hope. When you have positive\noutcomes, you get a sense of hope that future outcomes will continue to be\nin your favour. And when negative, then you are disheartened and less\nlikely to continue. I also have the same feeling when I am playing\ncard/board games. If I win, I want to keep playing and when I lose, I am\nlike its also okay to stop and play again another day!",
+        "approved": true
+      }
+    ]
+  },
+  {
     "id": "asperitas-clouds",
     "date": "2026-11-16",
     "title": "The cloud discovered by people looking up",
