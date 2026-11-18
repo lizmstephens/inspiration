@@ -1,5 +1,39 @@
 [
   {
+    "id": "strangers-willingness-to-help",
+    "date": "2026-11-18",
+    "title": "Strangers are much more helpful than we expect",
+    "summary": "In a 2008 study, researchers Francis Flynn and Vanessa Lake investigated whether people accurately predict how willing strangers are to help them. Across six experiments, participants made requests ranging from completing questionnaires to accompanying someone to another location. In one experiment, people estimated that they would need to approach an average of 7.2 strangers to find one willing to escort them to a university gym. In reality, they needed to ask just 2.3. The researchers found that people systematically underestimated others' willingness to help, partly because those asking focused on the inconvenience of helping while overlooking how uncomfortable it can be for someone to refuse a direct request.\n\nFurther reading (original paper, free full text): https://ecommons.cornell.edu/entities/publication/9c0adbfb-985c-4f7d-aae3-96959822bc4c",
+    "thoughts": "It's such a shame as humans that we're wired like this, though I would be interested to see the differences in the results if the same experiment was run among different demographics / cultures from a college environment in the US. I also think the researchers missed something in the explanation; helping a stranger isn't just about obligation, but the warm feeling you get afterwards. I wonder whether organisations have the same perceptions around how people might help each other, and what that means for understanding human behaviour during disasters. It speaks to the Hummingbird about the explosion on the train.",
+    "tags": [
+      "behaviour",
+      "collaboration",
+      "community",
+      "decision-making",
+      "science"
+    ],
+    "source": "https://www.gsb.stanford.edu/insights/francis-flynn-if-you-want-something-ask-it",
+    "image": "https://commons.wikimedia.org/wiki/Special:FilePath/A_Helping_Hand.jpg",
+    "image_credit": "Safiyyah Scoggins – PVisions1111, A Helping Hand, CC BY-SA 4.0, via Wikimedia Commons",
+    "image_credit_url": "https://commons.wikimedia.org/wiki/File:A_Helping_Hand.jpg",
+    "image_license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "image_status": "licensed",
+    "discovery": "We often hesitate to ask strangers for help because we assume we're imposing on them. Yet this research suggests that we're surprisingly poor at predicting how people will respond to our requests.\n\nWhat's particularly interesting is the explanation. When deciding whether to ask, we focus on the inconvenience we're creating for someone else. But we overlook the social pressure experienced by the person being asked, who may find it uncomfortable to refuse.\n\nThis creates an intriguing tension. The findings suggest that people are more willing to help than we expect, but not necessarily because they're more generous. Sometimes saying yes is simply easier than saying no.\n\nThat distinction matters. A successful request doesn't necessarily mean someone was happy to help, and a willingness to cooperate isn't always evidence of genuine enthusiasm.\n\nPerhaps the lesson isn't simply that we should ask for help more often. It's that we need to understand both sides of an interaction: the barriers that prevent people from asking, and the pressures that influence how others respond.",
+    "sources": [
+      {
+        "label": "Original source",
+        "url": "https://www.gsb.stanford.edu/insights/francis-flynn-if-you-want-something-ask-it"
+      }
+    ],
+    "reflections": [
+      {
+        "name": "Erin",
+        "text": "That's beautiful. What if we made 10% more direct requests? People would\nneed to learn the art of saying no, but it would be lovely to have lots of\nsupportive moments when you can say yes. The way to make a \"direct\" request\nwould likely need to vary by culture.",
+        "approved": true
+      }
+    ]
+  },
+  {
     "id": "coin-toss-prediction-luck",
     "date": "2026-11-17",
     "title": "When winning at coin tosses makes us believe we're better at predicting",
@@ -28,9 +62,8 @@
     "reflections": [
       {
         "name": "Janot",
-        "text": "",
-        "approved": true,
-        "image": "assets/janot-decision-cartoon.jpg"
+        "text": "￼",
+        "approved": true
       },
       {
         "name": "Macarena",
