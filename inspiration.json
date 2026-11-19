@@ -1,5 +1,33 @@
 [
   {
+    "id": "atlas-of-emotions",
+    "date": "2026-11-19",
+    "title": "The Atlas of Emotions",
+    "summary": "In 2016, the Dalai Lama launched the Atlas of Emotions, an interactive map designed to help people understand their emotional experiences. Developed by psychologist Paul Ekman and his daughter Eve Ekman, with visual design by Stamen, the Atlas represents five families of emotions — anger, fear, disgust, sadness and enjoyment — as colourful, explorable continents. Within each are different emotional states, their possible triggers and the responses they can produce. The project drew on a survey of 248 emotion researchers to identify areas of scientific agreement. Rather than presenting emotions as something to suppress, the Atlas invites visitors to explore how emotions arise and how greater awareness might help us respond to them.\n\nExplore the interactive Atlas: https://atlasofemotions.org/",
+    "thoughts": "This seems enormous and I'd want to have a lot of time to explore all of it! I like that when thinking about the visualisation they started off by finding areas of consensus and disagreement within a scientific community, and making sure they were capturing that, and there's a peer-reviewed paper to back that out. Diving in further I read about how some emotions are not as well researched or less understood because it's unethical to make people angry or sad in experiments. Naturally there are many things that are not understood about the most impactful natural hazards because it isn't necessarily ethical to talk to people in the aftermath. It's interesting how these issues affect our understanding of ourselves.",
+    "tags": [
+      "science",
+      "behaviour",
+      "design",
+      "communication",
+      "learning"
+    ],
+    "source": "https://stamen.com/in-2014-the-dalai-lama-asked-his-friend-scientist-dr-2a46f0c6bd80/",
+    "image": "",
+    "image_credit": "Atlas of Emotions © Stamen Design; image links to https://atlasofemotions.org/",
+    "image_credit_url": "https://atlasofemotions.org/",
+    "image_license_url": "",
+    "image_status": "permission required",
+    "discovery": "We often describe emotions as though they are things that happen to us: anger takes over, fear holds us back, or sadness descends. The Atlas of Emotions offers a different way of thinking about them, turning something invisible and deeply personal into a landscape we can explore.\n\nWhat's particularly interesting is the distinction between understanding something intellectually and recognising its influence on behaviour. Someone might know that their fear is disproportionate to a particular risk, for example, but that doesn't necessarily stop them feeling afraid or acting differently as a result.\n\nThis has implications for how information is communicated and decisions are made. In anticipatory action, considerable effort goes into helping people understand probabilities, forecasts and risks. But understanding the information isn't necessarily the same as understanding an emotional response to it. Fear, frustration, hope and even relief can shape how people interpret warnings and what they decide to do.\n\nThe Atlas suggests that recognising and naming emotions might be an important step towards responding to them more deliberately. But does greater emotional awareness actually change decisions, or simply help people explain them afterwards? Perhaps understanding the relationship between what people feel, what they think and what they do is just as important as improving the information available to them.",
+    "sources": [
+      {
+        "label": "Original source",
+        "url": "https://stamen.com/in-2014-the-dalai-lama-asked-his-friend-scientist-dr-2a46f0c6bd80/"
+      }
+    ],
+    "reflections": []
+  },
+  {
     "id": "strangers-willingness-to-help",
     "date": "2026-11-18",
     "title": "Strangers are much more helpful than we expect",
