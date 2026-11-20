@@ -1,5 +1,39 @@
 [
   {
+    "id": "positive-deviance-vietnam",
+    "date": "2026-11-20",
+    "title": "The families who were already solving the problem",
+    "summary": "In 1991, Jerry and Monique Sternin arrived in Vietnam with Save the Children and were given six months to show that childhood malnutrition could be reduced without relying on outside food aid. In some villages, more than 65% of children were malnourished.\n\nInstead of asking why so many children were undernourished, the team asked a different question: were there equally poor families whose children were nevertheless healthy? There were. Working with local communities, they found that these families were doing a few unusual things with resources available to everyone — collecting tiny shrimps, crabs and greens from rice paddies and adding them to children's meals, and feeding children three or four times a day rather than following the prevailing local practices.\n\nRather than simply telling other families what to do, the programme brought caregivers together to practise these behaviours themselves. The initial work rehabilitated several hundred malnourished children, and the approach was subsequently expanded across Vietnam and adapted internationally. It became one of the best-known examples of positive deviance: looking for people who are already succeeding against the odds, then learning from what they do differently.",
+    "thoughts": "I want to read a whole book on examples of positive deviance! It seems like such a powerful and uplifting way to enable change. I love the simple idea of looking at outlier datapoints, and then digging deeper into them. We're working on research around unprecedented events, and I wonder what we could discover by looking at locations which had unprecedented weather events but didn't see unprecedented impacts - what made them more resilient?",
+    "tags": [
+      "behaviour",
+      "community",
+      "learning",
+      "resilience",
+      "collaboration"
+    ],
+    "source": "https://positivedeviance.org/case-studies-all/2018/4/16/the-vietnam-story-25-years-later",
+    "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Vietnamese%20rice%20fields.jpg?width=1400",
+    "image_credit": "Photograph: Martaapue, Vietnamese rice fields · CC0 1.0 · Wikimedia Commons (illustrative image)",
+    "image_credit_url": "https://commons.wikimedia.org/wiki/File:Vietnamese_rice_fields.jpg",
+    "image_license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "image_status": "licensed",
+    "discovery": "Positive deviance turns the usual logic of problem-solving inside out. Instead of beginning with experts, best practice or a catalogue of failures, it starts by looking for people who are already achieving unusually good outcomes under the same constraints as everyone else.\n\nThat matters because solutions that emerge locally can reveal things an external analysis might miss: tacit knowledge, workarounds, social norms and small behavioural differences that are hard to capture in a formal model. It also changes the role of evidence. The question is not only “what should work?” but “what is already working here, and why?”\n\nThe challenge is knowing when an apparent success is genuinely transferable. A positive outlier may be useful because of a reproducible practice — or simply because of luck, hidden resources or circumstances that do not generalise. The power of the approach lies in treating local success as something to investigate, not simply imitate.",
+    "sources": [
+      {
+        "label": "Original source",
+        "url": "https://positivedeviance.org/case-studies-all/2018/4/16/the-vietnam-story-25-years-later"
+      }
+    ],
+    "reflections": [
+      {
+        "name": "Erin",
+        "text": "I think positive deviance is so powerful - I'd love to see how we can\nsystematically look for stories of resilience and success. I wish we did\nmore of this. However, we have to be careful not to see to much signal in\nnoise, and also avoid victim blaming (why have others not had the same\nsuccess).",
+        "approved": true
+      }
+    ]
+  },
+  {
     "id": "atlas-of-emotions",
     "date": "2026-11-19",
     "title": "The Atlas of Emotions",
