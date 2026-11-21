@@ -1,5 +1,33 @@
 [
   {
+    "id": "unthinkable-not-un-educable",
+    "date": "2026-11-21",
+    "title": "Unthinkable is not un-educable",
+    "summary": "In 2021, researchers Ossi Heino, Annina Takala and Vesa Huotari asked an awkward question about emergency preparedness: can training for past crises actually make us less able to deal with something genuinely unprecedented?\n\nTheir argument was that preparedness exercises naturally draw on things that have happened before. Procedures are developed, lessons are learned and people practise how to respond. But increasingly complex systems can produce crises that do not resemble previous ones. In those circumstances, the lessons absorbed from past experience may become part of the problem if responders become too confident that they know what sort of situation they are facing.\n\nThe researchers therefore argue that preparedness should not only teach people what to do. It should also develop their ability to recognise when familiar assumptions no longer apply, improvise and work with uncertainty. Their deliberately provocative conclusion is that the unthinkable is not necessarily un-educable: we cannot train people for every future event, but we may be able to train them to cope better with being unprepared.",
+    "thoughts": "Simulation exercises are used routinely within the humanitarian sector, and with good reason, because plans and procedures are often 'owned' by one person and need to be understood by many. However, this study shows that we need to be careful about not relying on these exercises as a way of ensuring that we're prepared for what can happen in future. The question is how we can run these events better so we do help people become more resilient - and I don't think it is just about rehearsing unfamiliar events, but how we facilitate the exercises too.",
+    "tags": [
+      "preparedness",
+      "learning",
+      "resilience",
+      "uncertainty",
+      "decision-making"
+    ],
+    "source": "https://www.sciencedirect.com/science/article/pii/S2212420921004313",
+    "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Emergency%20drill%20(8691128285).jpg?width=1400",
+    "image_credit": "Photograph: Brussels Airport · Emergency drill · CC BY-SA 2.0 · Wikimedia Commons",
+    "image_credit_url": "https://commons.wikimedia.org/wiki/File:Emergency_drill_(8691128285).jpg",
+    "image_license_url": "https://creativecommons.org/licenses/by-sa/2.0/",
+    "image_status": "licensed",
+    "discovery": "Preparedness often assumes that the purpose of training is to make future situations feel more familiar. Procedures are practised, roles clarified and responses rehearsed so that people can act quickly when something similar happens again.\n\nBut that creates a paradox. The better a system becomes at recognising familiar patterns, the more vulnerable it may become when an event does not fit them.\n\nThis suggests that preparedness has at least two different jobs: helping people respond efficiently when the situation is recognisable, and helping them notice when the situation is no longer the one they trained for. The second requires different capabilities — questioning assumptions, improvising, sharing uncertainty and resisting the temptation to force an unfamiliar event into a familiar template.\n\nPerhaps the most useful training for an unprecedented event is not a simulation of the event itself, but practice in recognising when your simulation has stopped being useful.",
+    "sources": [
+      {
+        "label": "Original source",
+        "url": "https://www.sciencedirect.com/science/article/pii/S2212420921004313"
+      }
+    ],
+    "reflections": []
+  },
+  {
     "id": "positive-deviance-vietnam",
     "date": "2026-11-20",
     "title": "The families who were already solving the problem",
