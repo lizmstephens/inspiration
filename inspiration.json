@@ -1,5 +1,39 @@
 [
   {
+    "id": "ai-data-story-pudding",
+    "date": "2026-11-22",
+    "title": "Can AI make a data-driven visual story?",
+    "summary": "In July 2024, the visual journalism studio The Pudding tested whether an AI system could produce one of its signature interactive, data-driven stories. The team guided Claude through four stages: generating an idea, collecting and analysing data, storyboarding, and building the final article. At each stage, the journalists evaluated the AI's work and gave it a grade, intervening as little as possible while adapting tasks when the system repeatedly failed. The resulting experiment was published as an interactive feature in which readers can switch between the journalists' account of the process and the story the AI produced, allowing them to inspect both the finished product and how it was made.",
+    "thoughts": "As someone pointed out to me, their assessment is probably already way out of date, because it was done 2 years ago. However, I think what they did is important for all of us to be doing - what parts of our workflows can genAI tools do well, what do they struggle at.",
+    "tags": [
+      "technology",
+      "communication",
+      "data",
+      "design",
+      "learning"
+    ],
+    "source": "https://pudding.cool/2024/07/ai/",
+    "image": "https://pudding.cool/2024/07/ai/assets/img/scatterplot2.jpg",
+    "image_credit": "Screenshot: The Pudding / Russell Samora and Michelle Pera-McGhee (2024). Used as an attributed excerpt to discuss the original article.",
+    "image_credit_url": "https://pudding.cool/2024/07/ai/",
+    "image_license_url": "",
+    "image_status": "permission required",
+    "discovery": "The Pudding's experiment raises an interesting distinction between producing something and understanding what makes it good. AI can generate ideas, analyse data, write narratives and build interactive visualisations. But the journalists still had to decide whether the questions were interesting, the analysis meaningful and the story worth telling.\n\nPerhaps the most revealing part of the experiment is the need for human intervention. If AI completes 90% of a task but requires expert judgement to identify and correct the remaining 10%, how much expertise has really been replaced?\n\nThis matters particularly when we use AI to communicate complex information or support decisions. A convincing visualisation is not necessarily an insightful one, and a technically correct analysis is not necessarily asking the right question.\n\nThe experiment suggests that the value of expertise may increasingly lie not in producing answers, but in recognising which answers are worth pursuing, which are misleading, and what is missing altogether.",
+    "sources": [
+      {
+        "label": "Original source",
+        "url": "https://pudding.cool/2024/07/ai/"
+      }
+    ],
+    "reflections": [
+      {
+        "name": "Tesse",
+        "text": "The Pudding People have responded quite pro-actively to a feeling of dread\nthat I have had for a while - will what I get paid to do, still be relevant\nin a couple years?",
+        "approved": true
+      }
+    ]
+  },
+  {
     "id": "unthinkable-not-un-educable",
     "date": "2026-11-21",
     "title": "Unthinkable is not un-educable",
