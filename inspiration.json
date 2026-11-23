@@ -1,5 +1,39 @@
 [
   {
+    "id": "nasa-aviation-safety-reporting-system",
+    "date": "2026-11-23",
+    "title": "The safety system built from a near-miss",
+    "summary": "In 1974, a United Airlines crew flying towards Dulles Airport misunderstood an air-traffic-control instruction and began descending too early. They realised just in time and narrowly avoided hitting a mountain. The crew reported the incident to their airline, which warned its own pilots.\n\nSix weeks later, a TWA crew misunderstood the same instruction in the same way. This time the aircraft struck the mountain and everyone on board was killed. Investigators discovered that the earlier near-miss had contained exactly the warning the wider aviation system needed — but there had been no mechanism for sharing it between airlines.\n\nThe accident helped prompt the creation of the Aviation Safety Reporting System in 1976. Pilots, air-traffic controllers and other aviation staff could voluntarily report mistakes, near-misses and unsafe situations to NASA, which acted as an independent third party. Reports were kept confidential and identifying details removed; the FAA also provided limited protection from enforcement action for eligible reports.\n\nThe premise was simple: if you want to learn from mistakes before they become disasters, people need to feel safe enough to tell you about them.",
+    "thoughts": "I wonder how many lives have been saved through this system.? Though it doesn't have such high-stakes as aviation safety, I fear that in early warning systems / anticipatory action work there are too many disincentives to being open about mistakes, and this stifles the ability for the wider community to learn. Creating anonymous processes may be one way of doing this, but also, like the Vision Zero road safety work, we also have to create a culture of accepting that human error happens.",
+    "tags": [
+      "learning",
+      "risk",
+      "safety",
+      "systems",
+      "communication"
+    ],
+    "source": "https://asrs.arc.nasa.gov/publications/callback/cb_555.html",
+    "image": "https://commons.wikimedia.org/wiki/Special:FilePath/DEN%20Air%20Traffic%20Control%20Tower.jpg?width=1400",
+    "image_credit": "Photograph: Bmurphy380 · DEN Air Traffic Control Tower · CC BY-SA 4.0 · Wikimedia Commons (illustrative image)",
+    "image_credit_url": "https://commons.wikimedia.org/wiki/File:DEN_Air_Traffic_Control_Tower.jpg",
+    "image_license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "image_status": "licensed",
+    "discovery": "Near-misses are valuable because they reveal how a system can fail without paying the full cost of failure. But that information only becomes useful if people are willing to share it.\n\nThe Aviation Safety Reporting System recognised that this is partly a design problem. If admitting a mistake creates a strong risk of punishment, people will naturally hide information that could help others. By separating learning from blame, the system made previously invisible risks visible.\n\nThat does not mean accountability disappears. It means distinguishing between deliberate wrongdoing and the ordinary errors, misunderstandings and weak signals that complex systems need to learn from.\n\nThe deeper lesson is that a learning organisation cannot simply ask people to be open. It has to create conditions in which openness is rational.",
+    "sources": [
+      {
+        "label": "Original source",
+        "url": "https://asrs.arc.nasa.gov/publications/callback/cb_555.html"
+      }
+    ],
+    "reflections": [
+      {
+        "name": "Erin",
+        "text": "Wow - that is so impressive! I'd love more mistake-sharing in the rest of\nour lives, too.",
+        "approved": true
+      }
+    ]
+  },
+  {
     "id": "ai-data-story-pudding",
     "date": "2026-11-22",
     "title": "Can AI make a data-driven visual story?",
