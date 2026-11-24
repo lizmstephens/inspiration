@@ -1,5 +1,44 @@
 [
   {
+    "id": "wintergatan-marble-machine",
+    "date": "2026-11-24",
+    "title": "The Marble Machine",
+    "summary": "In 2016, Swedish musician Martin Molin, of the band Wintergatan, unveiled a hand-built musical instrument containing approximately 3,000 components and 2,000 steel marbles. Operated by a hand crank, the Marble Machine uses programmable wheels to release marbles onto a vibraphone, bass guitar and percussion instruments, producing a complete musical composition. Molin originally expected construction to take two months; it took 16. The finished machine became the subject of a four-minute music video, while a series of behind-the-scenes films documented its design and construction.",
+    "thoughts": "This feels like a much-needed antidote to the age of AI; a machine where you can see how it actually works, someone who has spent months programming something rather than vibe-coding away in 30 seconds, and a whole community of enthusiasts who have covered the original piece of music using, in many cases, their own home-made music (take a look at the YouTube page). Absolutely love this.",
+    "tags": [
+      "design",
+      "technology",
+      "learning",
+      "creativity",
+      "science"
+    ],
+    "source": "https://www.youtube.com/watch?v=IvUU8joBb1Q",
+    "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Wintergatan_Marble_Machine.png",
+    "image_credit": "BrokenSoul1979 / Wikimedia Commons, CC BY-SA 4.0",
+    "image_credit_url": "https://commons.wikimedia.org/wiki/File:Wintergatan_Marble_Machine.png",
+    "image_license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "image_status": "licensed",
+    "discovery": "The Marble Machine is a wonderful example of the difference between making something work and making something work reliably. Its intricate mechanisms translate a musical composition into a sequence of physical actions, but every marble must arrive in the right place at the right time. A tiny mechanical imperfection can interrupt the whole performance.\n\nThis is a familiar challenge in many complex systems. We often judge a new technology by whether it can demonstrate an impressive result, rather than whether it can reproduce that result consistently under real-world conditions. The journey from prototype to dependable operation can be much longer, and more revealing, than the original invention.\n\nPerhaps reliability is not the boring work that follows creativity, but a different kind of creativity altogether.",
+    "sources": [
+      {
+        "label": "Original source",
+        "url": "https://www.youtube.com/watch?v=IvUU8joBb1Q"
+      }
+    ],
+    "reflections": [
+      {
+        "name": "Erin",
+        "text": "Woah! So cool! I imagined the machine was totally automated, but I loved\nwhen watching the video that the artist himself participated in the making\nof the music.",
+        "approved": true
+      },
+      {
+        "name": "Macarena",
+        "text": "Gosh, this is really a clear reminder that there is virtually no limit to\nhuman creativity when we apply determination to simple methods and\nmaterials. I wonder when our collective capacity to solve and create, if we\ncommit to it, will focus our ingenuity required to engineer solutions for\nour pressing climate, environmental, and social crises. When?",
+        "approved": true
+      }
+    ]
+  },
+  {
     "id": "nasa-aviation-safety-reporting-system",
     "date": "2026-11-23",
     "title": "The safety system built from a near-miss",
