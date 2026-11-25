@@ -1,5 +1,39 @@
 [
   {
+    "id": "surprisingly-popular-method",
+    "date": "2026-11-25",
+    "title": "When the minority knows something the majority doesn’t",
+    "summary": "The usual “wisdom of crowds” idea assumes that asking enough independent people and taking the majority answer will tend to produce a good result. But that breaks down when a knowledgeable minority possesses information that most people do not.\n\nIn 2017, researchers Dražen Prelec, H. Sebastian Seung and John McCoy proposed a different approach. Instead of asking people only what they think the answer is, they also asked what they think everyone else will answer.\n\nConsider the question: Is Philadelphia the capital of Pennsylvania? Many people incorrectly answer yes, and they also expect most other people to answer yes. The smaller group who know that Harrisburg is the capital answer no — but crucially, they also realise that many other people probably believe it is Philadelphia.\n\nThat makes “no” more popular than the crowd expected it to be.\n\nThe researchers called this the Surprisingly Popular method. Across tests involving general knowledge, medical diagnoses and art prices, it outperformed simple majority voting. Rather than identifying experts in advance, it creates a way for information held by an informed minority to reveal itself through the pattern of everyone’s expectations.",
+    "thoughts": "It seems so simple a concept, I particularly like the artwork value application in the Nature paper. It mirrors David Spiegelhalter's work (and games) on overconfidence, which also drew the conclusion that people in general are overconfident. I'm wondering how to apply this to my work; ensemble weather prediction is based on a wisdom of the crowd idea, but I don't think that this 'Surprisingly Popular' method can be applied to that directly. However, it could work on the decisions that will be taken from the forecasts.",
+    "tags": [
+      "decision-making",
+      "collective intelligence",
+      "uncertainty",
+      "expertise",
+      "forecasting"
+    ],
+    "source": "https://research.princeton.edu/news/crowd-wisdom-surprisingly-popular-answer-can-trump-ignorance-masses",
+    "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Show_of_Hands.jpg?width=1400",
+    "image_credit": "Photograph: Brian Marks · Show of Hands · CC BY 2.0 · Wikimedia Commons (illustrative image)",
+    "image_credit_url": "https://commons.wikimedia.org/wiki/File:Show_of_Hands.jpg",
+    "image_license_url": "https://creativecommons.org/licenses/by/2.0/",
+    "image_status": "licensed",
+    "discovery": "The Surprisingly Popular method works because information is revealed not only through an answer, but through the gap between an answer and the answer people expect everyone else to give.\n\nThat is powerful because informed minorities often know two things at once: the correct answer, and the fact that most other people are likely to get it wrong. A simple majority discards that second piece of information. The method recovers it.\n\nIt is also a useful reminder that disagreement is not always noise. Sometimes a minority view is interesting precisely because it is held by people who understand both the dominant belief and why it may be mistaken.\n\nThe broader lesson is that better collective decisions may come not from asking more people the same question, but from designing questions that reveal more about what people know.",
+    "sources": [
+      {
+        "label": "Original source",
+        "url": "https://research.princeton.edu/news/crowd-wisdom-surprisingly-popular-answer-can-trump-ignorance-masses"
+      }
+    ],
+    "reflections": [
+      {
+        "name": "Erin",
+        "text": "This is genius! And so elegant. Can we apply this to other areas of\nforecasting?",
+        "approved": true
+      }
+    ]
+  },
+  {
     "id": "wintergatan-marble-machine",
     "date": "2026-11-24",
     "title": "The Marble Machine",
