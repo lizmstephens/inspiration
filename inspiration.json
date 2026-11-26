@@ -1,5 +1,33 @@
 [
   {
+    "id": "low-tech-magazine-solar-website",
+    "date": "2026-11-26",
+    "title": "The website that goes offline when the weather is bad",
+    "summary": "In 2018, Low-tech Magazine redesigned its website around an unusual principle: rather than hiding the environmental constraints of running a website, make them visible.\n\nThe site is hosted on a small computer powered by a solar panel and battery. Its pages are deliberately lightweight, using static files, compressed images and a minimal design to reduce electricity use. But the most distinctive decision was not to install enough batteries to guarantee that the website would always be available.\n\nWhen prolonged cloudy weather leaves too little stored energy, the website simply goes offline.\n\nThat unreliability is deliberate. The designers argue that guaranteeing 100% availability would require substantially more battery storage, increasing the materials, cost and embodied energy needed to run the system. During one year of monitoring, the website achieved about 95% uptime. Visitors can see the current battery level and weather conditions, making the physical limits behind an apparently immaterial digital service unusually visible.\n\nIt is a small experiment with a much larger question: rather than designing technology so that environmental constraints are invisible to users, what changes when we allow those constraints to shape the service itself?",
+    "thoughts": "I love how this website practices what it preaches! Also, I've learnt about 'dithering' images and somehow this consistent style applied to compress the images creates a bit of a branding for the website too. Super clever.",
+    "tags": [
+      "design",
+      "sustainability",
+      "technology",
+      "energy",
+      "constraints"
+    ],
+    "source": "https://solar.lowtechmagazine.com/about/the-solar-website/",
+    "image": "https://commons.wikimedia.org/wiki/Special:FilePath/3%20Level%20RGB%20Dither%20example.png",
+    "image_credit": "Dithered image example: original photograph Adrian Pingstone; edit by 4throck · CC0 1.0 · Wikimedia Commons (illustrative image)",
+    "image_credit_url": "https://commons.wikimedia.org/wiki/File:3_Level_RGB_Dither_example.png",
+    "image_license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "image_status": "licensed",
+    "discovery": "The solar-powered website is interesting because it treats constraint as part of the design rather than as a defect to be engineered away.\n\nMost digital services are built around an assumption of seamless availability. The energy, hardware and infrastructure required to create that experience are largely invisible to the user. Low-tech Magazine does the opposite: the battery level is visible, the visual style reflects efforts to reduce data use, and sometimes the site simply disappears.\n\nThat creates a different relationship between reliability and sustainability. Instead of asking only how to make a service available all the time, it asks what level of availability is actually necessary — and what environmental cost we are willing to pay for the final few percent.\n\nPerhaps some of the most interesting design choices emerge when limits are made visible rather than hidden.",
+    "sources": [
+      {
+        "label": "Original source",
+        "url": "https://solar.lowtechmagazine.com/about/the-solar-website/"
+      }
+    ],
+    "reflections": []
+  },
+  {
     "id": "surprisingly-popular-method",
     "date": "2026-11-25",
     "title": "When the minority knows something the majority doesn’t",
