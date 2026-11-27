@@ -1,5 +1,33 @@
 [
   {
+    "id": "dollar-street",
+    "date": "2026-11-27",
+    "title": "What if everyone in the world lived on the same street?",
+    "summary": "In 2016, Anna Rosling Rönnlund, co-founder of Gapminder, launched Dollar Street, a project that imagines all the households in the world living along a single street, arranged not by geography but by income.\n\nPhotographers visited hundreds of families across more than 50 countries, systematically documenting the ordinary details of their lives: toothbrushes, beds, toilets, cooking utensils, children's toys, shoes and even the things people most treasured.\n\nThe resulting interactive website allows visitors to compare these everyday objects across households at different income levels. You can look at kitchens in Cambodia, Nigeria and Colombia, or compare what children play with at different points along the street.\n\nWhat emerges is a different picture of global inequality from the one we typically encounter through maps and national statistics. Families living thousands of miles apart can have remarkably similar living conditions, while families within the same country can inhabit very different worlds.\n\nThe project is an experiment in using photographs as data, making global living standards something that people can explore for themselves rather than simply read about.",
+    "thoughts": "such a nice idea, I can't to show it to my children. I'm already thinking about if we could show what floods look like in different parts of the world, just showing the diversity of experiences.",
+    "tags": [
+      "data",
+      "communication",
+      "inequality",
+      "perception",
+      "design"
+    ],
+    "source": "https://www.gapminder.org/dollar-street/",
+    "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Gapminder_-_Dollar_Street_-_landing_page.png",
+    "image_credit": "Gapminder / Dollar Street — photographs by Kakuma Film Team, Luc Forsyth, Zoriah Miller, Darko Rajkovic and Angie Hjort · CC BY 4.0 · Wikimedia Commons (original website collage; individual photo credits at source)",
+    "image_credit_url": "https://commons.wikimedia.org/wiki/File:Gapminder_-_Dollar_Street_-_landing_page.png",
+    "image_license_url": "https://creativecommons.org/licenses/by/4.0/",
+    "image_status": "licensed",
+    "discovery": "Dollar Street does something interesting with data: it changes the way we organise the world before asking us to explore it. By replacing geography with income, it reveals similarities that conventional maps tend to obscure.\n\nThere is also something powerful about allowing people to discover patterns for themselves. A statistic about inequality tells us what to know; a collection of photographs invites us to investigate, compare and potentially challenge our own assumptions.\n\nBut income is only one lens through which to understand people's lives. What might a different street reveal if households were arranged by access to education, exposure to environmental hazards or the strength of their social networks?\n\nPerhaps the most interesting question is not simply how we visualise data, but how our choice of organising principle shapes what we notice and what remains invisible.",
+    "sources": [
+      {
+        "label": "Original source",
+        "url": "https://www.gapminder.org/dollar-street/"
+      }
+    ],
+    "reflections": []
+  },
+  {
     "id": "low-tech-magazine-solar-website",
     "date": "2026-11-26",
     "title": "The website that goes offline when the weather is bad",
