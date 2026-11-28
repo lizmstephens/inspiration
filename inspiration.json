@@ -1,5 +1,39 @@
 [
   {
+    "id": "data-cuisine",
+    "date": "2026-11-28",
+    "title": "What does data taste like?",
+    "summary": "In 2012, data visualisation specialist Moritz Stefaner and curator Susanne Jaschko held an experimental workshop in Helsinki exploring an unusual question: could food be used as a medium for communicating statistics?\n\nTheir project, Data Cuisine, brings together chefs, designers and members of the public to transform local datasets into edible creations. Instead of relying on the conventional tools of data visualisation — colour, size and position — participants can also use flavour, texture, temperature, ingredients and the physical experience of eating.\n\nAt a workshop in Boston, for example, Joshua Pablo Rosenstock created a deconstructed fruit smoothie. Each fruit purée had to be consumed through a straw whose length represented the distance that fruit had travelled to Boston. Drinking Canadian blueberries required a short straw; Chilean blackberries required one nearly a metre long. The physical effort of drinking became part of the way the information was communicated.\n\nThe workshops have produced dozens of edible interpretations of data, covering everything from energy consumption to dating habits and demographic change. Each workshop culminates in a meal where participants can taste and discuss the statistics.",
+    "thoughts": "I really love this, turning numbers into something that you can actually sense. I'm concerned what an unprecedented event might taste like though!",
+    "tags": [
+      "data",
+      "creativity",
+      "communication",
+      "design",
+      "participation"
+    ],
+    "source": "https://data-cuisine.net/data-dishes",
+    "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Fresh%20fruit%20smoothie%20being%20poured%20into%20a%20glass.jpg?width=1400",
+    "image_credit": "Photograph: Shixart1985 · Fresh fruit smoothie being poured into a glass · CC BY 2.0 · Wikimedia Commons (illustrative image, not a Data Cuisine dish)",
+    "image_credit_url": "https://commons.wikimedia.org/wiki/File:Fresh_fruit_smoothie_being_poured_into_a_glass.jpg",
+    "image_license_url": "https://creativecommons.org/licenses/by/2.0/",
+    "image_status": "licensed",
+    "discovery": "Data Cuisine challenges the assumption that making information easier to understand is always the primary goal of data visualisation. The long straw in the food miles smoothie deliberately makes consuming something more difficult. That inconvenience is precisely what communicates the message.\n\nThis introduces an interesting distinction between understanding a statistic intellectually and experiencing something of what it represents. Eating, tasting and physically interacting with data may create memories and emotional associations that a conventional graph cannot.\n\nOf course, translating data into a sensory experience introduces another layer of interpretation. A bitter taste might communicate something undesirable, but that association is neither universal nor objective.\n\nPerhaps the most interesting potential lies in combining the precision of conventional data visualisation with the memorability of an experience. What if we designed data communication not just around what people need to understand, but around what we want them to remember?",
+    "sources": [
+      {
+        "label": "Original source",
+        "url": "https://data-cuisine.net/data-dishes"
+      }
+    ],
+    "reflections": [
+      {
+        "name": "Erin",
+        "text": "Woah what a cool idea!! I want to try this! I wonder how to communicate\nfood system stress from climate change.",
+        "approved": true
+      }
+    ]
+  },
+  {
     "id": "dollar-street",
     "date": "2026-11-27",
     "title": "What if everyone in the world lived on the same street?",
